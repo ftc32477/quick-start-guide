@@ -3,44 +3,53 @@ name: Sync and Build to GitHub Pages
 on:
   push:
     branches:
-      - main # 如果你的默认分支是 master，请修改为 master
+      - main # 如果默认分支是 master，请修改为 master
 
 jobs:
   build-and-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出源仓库源码
+      - name: 检出源码
         uses: actions/checkout@v4
 
-      - name: 配置 Node.js 环境
+      - name: 配置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # 👈 升级 Node.js 版本为 22 (LTS)
+          node-version: '22'
 
-      - name: 安装 HonKit 并编译为 HTML 网页
+      - name: 安装 Calibre（PDF 渲染引擎）与 HonKit
         run: |
+          sudo apt-get update
+          sudo apt-get install -y calibre
           npm install -g honkit
+
+      - name: 编译 HTML 网页并导出 PDF
+        run: |
+          # 1. 编译网页到 _book 目录
           npx honkit build ./ _book
+          
+          # 2. 生成 PDF 文件直接放入 _book 目录中，命名为 team-guide.pdf
+          npx honkit pdf ./ _book/team-guide.pdf
 
       - name: 克隆目标仓库并更新 docs 目录
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # 1. 使用 PAT 克隆 ftc32477.github.io 仓库
+          # 1. 使用 PAT 克隆目标仓库
           git clone https://${{ secrets.GH_PAT }}@github.com/ftc32477/ftc32477.github.io.git target-repo
 
-          # 2. 清理目标仓库原来的 docs 文件夹，并将编译好的 _book 复制进去
+          # 2. 覆盖 target-repo/docs 目录（包含网页和 PDF）
           rm -rf target-repo/docs
           mkdir -p target-repo/docs
           cp -r _book/* target-repo/docs/
 
-          # 3. 提交并推送到 ftc32477.github.io 的 main 分支
+          # 3. 提交并推送
           cd target-repo
           git add docs
           if git diff --staged --quiet; then
             echo "内容未发生变化，跳过提交"
           else
-            git commit -m "Auto-sync docs from quick-start-guide [skip ci]"
+            git commit -m "Auto-sync docs and PDF from quick-start-guide [skip ci]"
             git push origin main
           fi
