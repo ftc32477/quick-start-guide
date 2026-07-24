@@ -17,12 +17,13 @@ jobs:
         with:
           node-version: '22'
 
-      - name: 安装 Calibre（PDF 渲染引擎）与 HonKit
+      - name: 安装 Calibre（PDF 渲染引擎）、中文字体与 HonKit
         run: |
           sudo apt-get update
-          sudo apt-get install -y calibre
+          # 📍 关键：增加安装中文字体库 fonts-wqy-zenhei 和 fonts-noto-cjk
+          sudo apt-get install -y calibre fonts-wqy-zenhei fonts-noto-cjk
           npm install -g honkit
-
+          
       - name: 编译 HTML 网页并导出 PDF
         run: |
           # 1. 编译网页到 _book 目录
