@@ -3,7 +3,7 @@ name: Sync and Build to GitHub Pages
 on:
   push:
     branches:
-      - main # 监听 main 分支的提交（如果 GitBook 同步的是 master，请改为 master）
+      - main # 如果你的默认分支是 master，请修改为 master
 
 jobs:
   build-and-sync:
@@ -15,7 +15,7 @@ jobs:
       - name: 配置 Node.js 环境
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22' # 👈 升级 Node.js 版本为 22 (LTS)
 
       - name: 安装 HonKit 并编译为 HTML 网页
         run: |
