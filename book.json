@@ -1,0 +1,17 @@
+{
+  "pdf": {
+    "pageNumbers": true,
+    "fontFamily": "WenQuanYi Micro Hei",
+    "fontSize": 12,
+    "paperSize": "a4",
+    "margin": {
+      "right": 50,
+      "left": 50,
+      "top": 50,
+      "bottom": 50
+    }
+  },
+  "styles": {
+    "pdf": "styles/pdf.css"
+  }
+}
