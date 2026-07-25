@@ -2,8 +2,8 @@
 
 * [前言](README.md)
 * [1 队员须知](must-read/README.md)
-  * [1.1 基本资料](must-read/ji-ben-zi-liao.md)
-  * [1.2 环境配置](must-read/huan-jing-pei-zhi.md)
+  * [1.1 基本资料](must-read/basic-information.md)
+  * [1.2 环境配置](must-read/environment-configuration.md)
 * [2 建模设计](cad-design.md)
 * [3 结构建造](hardware-build.md)
 * [4 程序设计](software-dev.md)
