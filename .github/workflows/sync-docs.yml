@@ -15,7 +15,7 @@ jobs:
       - name: 配置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
       - name: 安装 Calibre（PDF 渲染引擎）、中文字体与 HonKit
         run: |
