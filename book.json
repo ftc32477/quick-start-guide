@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "hints"
+  ],
   "pdf": {
     "pageNumbers": true,
     "fontFamily": "WenQuanYi Micro Hei",
