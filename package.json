@@ -1,0 +1,15 @@
+{
+  "name": "quick-start-guide",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "honkit build ./ _book",
+    "pdf": "honkit pdf ./ _book/team-guide.pdf"
+  },
+  "dependencies": {
+    "honkit": "^6.0.0",
+    "gitbook-plugin-hints": "^1.0.2",
+    "gitbook-plugin-tabs": "^2.0.1",
+    "gitbook-plugin-expandable-chapters": "^0.2.1"
+  }
+}
