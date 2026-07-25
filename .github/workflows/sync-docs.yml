@@ -15,7 +15,7 @@ jobs:
       - name: 配置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # 建议使用 20 LTS 版本，与 HonKit 及 Calibre 插件兼容性更好
+          node-version: '20'
 
       - name: 安装 Calibre（PDF 渲染引擎）、中文字体与 HonKit
         run: |
@@ -24,15 +24,18 @@ jobs:
           sudo apt-get install -y calibre fonts-wqy-zenhei fonts-noto-cjk
           npm install -g honkit
 
-      - name: 编译 HTML 网页并导出 PDF
+      - name: 安装 HonKit 插件并编译网页/导出 PDF
         run: |
-          # 1. 编译网页到 _book 目录
+          # 1. 安装 book.json 中声明的插件（包括 hints 插件）
+          npx honkit install
+
+          # 2. 编译网页到 _book 目录
           npx honkit build ./ _book
           
-          # 2. 生成 PDF 文件直接放入 _book 目录中，命名为 team-guide.pdf
+          # 3. 生成 PDF 文件直接放入 _book 目录中，命名为 team-guide.pdf
           npx honkit pdf ./ _book/team-guide.pdf
 
-          # 3. 在编译产物中创建 .nojekyll，禁用 Jekyll 编译
+          # 4. 在编译产物中创建 .nojekyll，禁用 Jekyll 编译
           touch _book/.nojekyll
 
       - name: 克隆目标仓库并更新 docs 目录
@@ -48,10 +51,10 @@ jobs:
           mkdir -p target-repo/docs
           cp -r _book/* target-repo/docs/
 
-          # 3. 在目标仓库根目录也补全一个 .nojekyll 文件（双保险）
+          # 3. 在目标仓库根目录补全 .nojekyll 文件
           touch target-repo/.nojekyll
 
-          # 4. 提交并推送（改用 git add -A 确保隐藏文件 .nojekyll 也被提交）
+          # 4. 提交并推送
           cd target-repo
           git add -A
           if git diff --staged --quiet; then
