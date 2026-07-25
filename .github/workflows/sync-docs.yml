@@ -17,25 +17,23 @@ jobs:
         with:
           node-version: '20'
 
-      - name: 安装 Calibre（PDF 渲染引擎）、中文字体与 HonKit
+      - name: 安装 Calibre（PDF 渲染引擎）与中文字体
         run: |
           sudo apt-get update
-          # 📍 安装中文字体库 fonts-wqy-zenhei 和 fonts-noto-cjk
           sudo apt-get install -y calibre fonts-wqy-zenhei fonts-noto-cjk
-          npm install -g honkit
 
-      - name: 安装 HonKit 插件并编译网页/导出 PDF
+      - name: 安装项目依赖（HonKit 及所有 GitBook 插件）
+        run: npm install
+
+      - name: 编译 HTML 网页并导出 PDF
         run: |
-          # 1. 安装 book.json 中声明的插件（包括 hints 插件）
-          npx honkit install
-
-          # 2. 编译网页到 _book 目录
+          # 1. 编译网页到 _book 目录
           npx honkit build ./ _book
           
-          # 3. 生成 PDF 文件直接放入 _book 目录中，命名为 team-guide.pdf
+          # 2. 生成 PDF 文件直接放入 _book 目录中，命名为 team-guide.pdf
           npx honkit pdf ./ _book/team-guide.pdf
 
-          # 4. 在编译产物中创建 .nojekyll，禁用 Jekyll 编译
+          # 3. 在编译产物中创建 .nojekyll，防止目标仓库触发 Jekyll 报错
           touch _book/.nojekyll
 
       - name: 克隆目标仓库并更新 docs 目录
@@ -51,7 +49,7 @@ jobs:
           mkdir -p target-repo/docs
           cp -r _book/* target-repo/docs/
 
-          # 3. 在目标仓库根目录补全 .nojekyll 文件
+          # 3. 在目标仓库根目录也补全一个 .nojekyll 文件（双保险）
           touch target-repo/.nojekyll
 
           # 4. 提交并推送
