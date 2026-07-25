@@ -1,6 +1,8 @@
 {
   "plugins": [
-    "hints"
+    "hints",
+    "tabs",
+    "expandable-chapters"
   ],
   "pdf": {
     "pageNumbers": true,
