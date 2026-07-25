@@ -2,7 +2,8 @@
   "plugins": [
     "hints",
     "tabs",
-    "expandable-chapters"
+    "expandable-chapters",
+    "stepper"
   ],
   "pdf": {
     "pageNumbers": true,
