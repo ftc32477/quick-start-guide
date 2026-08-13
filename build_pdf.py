@@ -221,7 +221,7 @@ html,body{{margin:0;padding:0}}
   background:#d32f2f;opacity:.14;top:-160px;left:-160px
 }}
 .back img.logo{{
-  width:150px;height:150px;border-radius:32px;opacity:.94;
+  width:61.8vw;height:61.8vw;border-radius:21.3%;opacity:.94;
   box-shadow:0 8px 32px rgba(0,0,0,.4)
 }}
 .back .date{{
