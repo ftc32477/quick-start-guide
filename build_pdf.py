@@ -11,7 +11,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 用法:
     python3 build_pdf.py            # 导出所有语言的单页 PDF + 合并 PDF
-    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-cn / zh-tw / en-us / fr）
+    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr）
     python3 build_pdf.py --page member  # 仅导出指定页面（仅单页，不含封面封底）
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
@@ -62,7 +62,7 @@ FONT_FAMILY = "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHe
 
 # 封面/封底的本地化文案
 PDF_TEXTS = {
-    "zh-cn": {
+    "zh-hans": {
         "badge": "TEAM 32477 ORIGIN",
         "title": "FIRST\u00ae Tech Challenge",
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
@@ -71,7 +71,7 @@ PDF_TEXTS = {
         "date": "2026\u5e748\u6708\u7b2c1\u7248",
         "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
-    "zh-tw": {
+    "zh-hant": {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
         "date": "2026\u5e748\u6708\u7b2c1\u7248",
@@ -95,22 +95,22 @@ PDF_TEXTS = {
 
 # 目录标题本地化
 TOC_TITLES = {
-    "zh-cn": "\u76ee\u5f55",
-    "zh-tw": "\u76ee\u9304",
+    "zh-hans": "\u76ee\u5f55",
+    "zh-hant": "\u76ee\u9304",
     "en-us": "Table of Contents",
     "fr": "Table des mati\u00e8res",
 }
 
 # 页脚文案（reportlab 盖印，x=当前页 y=总页数）与字体（内置 CID 字体）
 FOOTER_TEXTS = {
-    "zh-cn": "\u7b2c {x} \u9875\uff0c\u5171 {y} \u9875",
-    "zh-tw": "\u7b2c {x} \u9801\uff0c\u5171 {y} \u9801",
+    "zh-hans": "\u7b2c {x} \u9875\uff0c\u5171 {y} \u9875",
+    "zh-hant": "\u7b2c {x} \u9801\uff0c\u5171 {y} \u9801",
     "en-us": "Page {x} of {y}",
     "fr": "Page {x} sur {y}",
 }
 FOOTER_FONTS = {
-    "zh-cn": "STSong-Light",
-    "zh-tw": "MSung-Light",
+    "zh-hans": "STSong-Light",
+    "zh-hant": "MSung-Light",
     "en-us": "Helvetica",
     "fr": "Helvetica",
 }
@@ -142,7 +142,7 @@ def free_port():
 # ============================================================
 
 def render_cover(lang_key):
-    t = dict(PDF_TEXTS["zh-cn"])
+    t = dict(PDF_TEXTS["zh-hans"])
     t.update(PDF_TEXTS[lang_key])
     logo_path = "file://" + os.path.join(IMAGES_DIR, "basic", "team_logo.png")
     return f"""<!DOCTYPE html>
@@ -203,7 +203,7 @@ html,body{{margin:0;padding:0}}
 
 
 def render_back(lang_key):
-    t = dict(PDF_TEXTS["zh-cn"])
+    t = dict(PDF_TEXTS["zh-hans"])
     t.update(PDF_TEXTS[lang_key])
     logo_path = "file://" + os.path.join(IMAGES_DIR, "basic", "team_logo.png")
     return f"""<!DOCTYPE html>

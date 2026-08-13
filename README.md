@@ -14,7 +14,7 @@
 ```
 ftc_quick_start_guide/
 ├── src/                       # Markdown 源文件（内容组在此编辑）
-│   ├── zh-cn/                 # 简体中文源文件
+│   ├── zh-hans/                 # 简体中文源文件
 │   │   ├── index.md           # 前言
 │   │   ├── member.md          # 队员须知
 │   │   ├── modeling.md        # 建模设计
@@ -22,8 +22,8 @@ ftc_quick_start_guide/
 │   │   ├── programming.md     # 程序设计
 │   │   ├── outreach.md        # 外部联络
 │   │   └── afterword.md       # 后记
-│   ├── zh-tw/                 # 繁体中文源文件（同 zh-cn 结构）
-│   └── en-us/                 # 英文（美式）源文件（同 zh-cn 结构）
+│   ├── zh-hant/                 # 繁体中文源文件（同 zh-hans 结构）
+│   └── en-us/                 # 英文（美式）源文件（同 zh-hans 结构）
 ├── images/                    # 图片资源（构建时自动复制到 dist/images/）
 │   ├── basic/                 # 通用资源（四语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
@@ -31,14 +31,14 @@ ftc_quick_start_guide/
 │   └── afterword/             # 后记专用图片（大合照等）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
 │   ├── index.html             # 主页（语言选择落地页，含 PDF 下载链接）
-│   ├── zh-cn/                 # 简体中文网站（7 页）
-│   ├── zh-tw/                 # 繁体中文网站（7 页）
+│   ├── zh-hans/                 # 简体中文网站（7 页）
+│   ├── zh-hant/                 # 繁体中文网站（7 页）
 │   ├── en-us/                 # 英文（美式）网站（7 页）
 │   ├── fr/                    # 法语网站（7 页）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（仅保留四语言合并版指南）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-cn.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-tw.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf  # 繁体中文完整指南
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf  # 英文（美式）完整指南
 │       └── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf     # 法语完整指南
 ├── build.py                   # HTML 构建脚本
@@ -168,7 +168,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ### 语言切换行为
 
-- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US) / Français），选择后跳转到**当前页面**的对应语言版本（如 `zh-cn/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
+- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US) / Français），选择后跳转到**当前页面**的对应语言版本（如 `zh-hans/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
 - **移动端顶栏**：下拉选项栏（`<select>`）同样显示全称，切换即跳转。
 - 页面标题格式：`{页面名}｜{站点名}`（如 `队员须知｜FTC 32477 Origin 快速入门指南`）。
 - 侧边栏导航标题、页脚、`<title>` 均随语言自动本地化。
@@ -304,14 +304,14 @@ dist/（HTML 网站 + PDF 文档）
 本项目所有文本的流转方向是**单向的**，顺序如下，不可颠倒：
 
 ```
-① 简体中文 .md（src/zh-cn/）        ← 唯一的编辑源头
+① 简体中文 .md（src/zh-hans/）        ← 唯一的编辑源头
         │
         ▼ 翻译/本地化
-② 繁體中文 .md（src/zh-tw/）
+② 繁體中文 .md（src/zh-hant/）
    English (US) .md（src/en-us/）
         │
         ▼ 构建（python3 build.py）
-③ HTML 网站（dist/zh-cn/、dist/zh-tw/、dist/en-us/）
+③ HTML 网站（dist/zh-hans/、dist/zh-hant/、dist/en-us/）
         │
         ▼ 导出（python3 build_pdf.py）
 ④ PDF 文档（dist/pdf/）
@@ -322,8 +322,8 @@ dist/（HTML 网站 + PDF 文档）
 
 **规则：**
 
-1. **一切内容修改必须从 `src/zh-cn/` 下的简体中文 .md 文件开始**。简体中文版是内容的事实标准（source of truth）。
-2. 简体中文版定稿后，再同步翻译到 `src/zh-tw/`（繁体中文）和 `src/en-us/`（English (US)）。
+1. **一切内容修改必须从 `src/zh-hans/` 下的简体中文 .md 文件开始**。简体中文版是内容的事实标准（source of truth）。
+2. 简体中文版定稿后，再同步翻译到 `src/zh-hant/`（繁体中文）和 `src/en-us/`（English (US)）。
 3. 构建脚本只做**单向转换**（.md → .html → .pdf），**不支持**从 HTML 或 PDF 反向生成 .md。
 4. 不要直接编辑 `dist/` 下的 HTML 或 PDF——它们每次构建都会被覆盖。如需重新生成产物，请联系 HTML/PDF 维护组员运行构建脚本。
 5. 修改内容后由维护组员依次运行：
@@ -334,7 +334,7 @@ dist/（HTML 网站 + PDF 文档）
 
 **外部素材的整合方式：**
 - 会议记录、培训录音、旧版资料等外部素材，一律以现有指南为核心**取其精华**，不得推翻重来。
-- 整合时先归类到对应章节（结构建造/程序设计/外部联络等），在 zh-cn 版定稿后再翻译。
+- 整合时先归类到对应章节（结构建造/程序设计/外部联络等），在 zh-hans 版定稿后再翻译。
 
 ## 二、多语言维护
 
@@ -342,8 +342,8 @@ dist/（HTML 网站 + PDF 文档）
 
 | 目录 | 显示名称 | 说明 |
 |------|----------|------|
-| zh-cn | 简体中文 | 大陆简体 |
-| zh-tw | 繁體中文 | 台湾正体，使用区域用语（程式設計、網路、雷射切割等） |
+| zh-hans | 简体中文 | 大陆简体 |
+| zh-hant | 繁體中文 | 台湾正体，使用区域用语（程式設計、網路、雷射切割等） |
 | en-us | English (US) | 美式英语，**目录名必须为 en-us**（与 `en` 区分，明确美式变体） |
 | fr | Français | 法语（法国），正式 vous 语体，遵循法语排版规范（« guillemets »、双标点前不换行空格等） |
 

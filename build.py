@@ -7,7 +7,7 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
     python3 build.py --watch  # 监听文件变化并自动构建
 
 目录结构:
-    src/{zh-cn,zh-tw,en}/   — 各语言 Markdown 源文件（在此编辑内容）
+    src/{zh-hans,zh-hant,en-us,fr}/   — 各语言 Markdown 源文件（在此编辑内容）
     images/                 — 图片资源（自动复制到 dist/images/）
     dist/                   — 生成的 HTML 网站（含各语言子目录）
 """
@@ -37,7 +37,7 @@ PAGE_KEYS = [
 
 # 各语言配置
 LANGUAGES = {
-    "zh-cn": {
+    "zh-hans": {
         "label": "简体中文",
         "brand": "快速入门指南",
         "footer": "2026年8月第1版 &middot; 编写小组",
@@ -52,7 +52,7 @@ LANGUAGES = {
             "afterword":   "后记",
         },
     },
-    "zh-tw": {
+    "zh-hant": {
         "label": "繁體中文",
         "brand": "快速入門指南",
         "footer": "2026年8月第1版 &middot; 編寫小組",
@@ -99,7 +99,7 @@ LANGUAGES = {
     },
 }
 
-DEFAULT_LANG = "zh-cn"
+DEFAULT_LANG = "zh-hans"
 
 
 # ============================================================
@@ -677,7 +677,7 @@ tr:nth-child(even){background:#fafafa}
   .img-fig{page-break-inside:avoid}
   .img-row .img-fig{flex:1 1 0}
   /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
-  html[lang="zh-cn"] main p,html[lang="zh-tw"] main p{text-indent:2em}
+  html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
   /* 标题间距：一级标题前空约两行，二级标题前空约一行 */
   h1{margin:3.2em 0 1em}
   h2{margin:2em 0 .8em}
@@ -871,8 +871,8 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
   transition:transform .18s,box-shadow .18s;border-top:3px solid transparent
 }
 .lang-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.09)}
-.lang-card.zh-cn{border-top-color:var(--red)}
-.lang-card.zh-tw{border-top-color:#e65100}
+.lang-card.zh-hans{border-top-color:var(--red)}
+.lang-card.zh-hant{border-top-color:#e65100}
 .lang-card.en-us{border-top-color:#1565c0}
 .lang-card.fr{border-top-color:#0055a4}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
@@ -962,24 +962,24 @@ def render_homepage():
         )
 
     lang_cards.append(f"""
-<div class="lang-card zh-cn">
+<div class="lang-card zh-hans">
   <h3>\u7b80\u4f53\u4e2d\u6587</h3>
   <div class="lang-name">Simplified Chinese</div>
   <div class="desc">\u9762\u5411\u7b80\u4f53\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
   <div class="btn-row">
-    <a class="btn primary" href="zh-cn/index.html">\u5728\u7ebf\u6d4f\u89c8 \u2192</a>
-    {pdf_link("zh-cn", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-cn.pdf")}
+    <a class="btn primary" href="zh-hans/index.html">\u5728\u7ebf\u6d4f\u89c8 \u2192</a>
+    {pdf_link("zh-hans", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf")}
   </div>
 </div>""")
 
     lang_cards.append(f"""
-<div class="lang-card zh-tw">
+<div class="lang-card zh-hant">
   <h3>\u7e41\u4f53\u4e2d\u6587</h3>
   <div class="lang-name">Traditional Chinese</div>
   <div class="desc">\u9762\u5411\u7e41\u9ad4\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u7dda\u4e0a\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u500b\u7ae0\u7bc0\u3002</div>
   <div class="btn-row">
-    <a class="btn primary" href="zh-tw/index.html">\u5728\u7dda\u700f\u89bd \u2192</a>
-    {pdf_link("zh-tw", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-tw.pdf")}
+    <a class="btn primary" href="zh-hant/index.html">\u5728\u7dda\u700f\u89bd \u2192</a>
+    {pdf_link("zh-hant", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf")}
   </div>
 </div>""")
 
@@ -1028,7 +1028,7 @@ def render_homepage():
     chapters_html = "\n".join(chapter_items)
 
     return f"""<!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
