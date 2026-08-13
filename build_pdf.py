@@ -77,6 +77,12 @@ PDF_TEXTS = {
         "school": "Beijing National Day Experimental School",
         "date": "August 2026 \u00b7 1st Edition",
     },
+    "fr": {
+        "name": "32477 Origin Guide de d\u00e9marrage rapide",
+        "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
+        "school": "Beijing National Day Experimental School",
+        "date": "Ao\u00fbt 2026 \u00b7 1re \u00e9dition",
+    },
 }
 
 # 目录标题本地化
@@ -84,6 +90,7 @@ TOC_TITLES = {
     "zh-cn": "\u76ee\u5f55",
     "zh-tw": "\u76ee\u9304",
     "en-us": "Table of Contents",
+    "fr": "Table des mati\u00e8res",
 }
 
 # 页脚文案（reportlab 盖印，x=当前页 y=总页数）与字体（内置 CID 字体）
@@ -91,11 +98,13 @@ FOOTER_TEXTS = {
     "zh-cn": "\u7b2c {x} \u9875\uff0c\u5171 {y} \u9875",
     "zh-tw": "\u7b2c {x} \u9801\uff0c\u5171 {y} \u9801",
     "en-us": "Page {x} of {y}",
+    "fr": "Page {x} sur {y}",
 }
 FOOTER_FONTS = {
     "zh-cn": "STSong-Light",
     "zh-tw": "MSung-Light",
     "en-us": "Helvetica",
+    "fr": "Helvetica",
 }
 
 # 纸张与页边距：A4（210×297mm），上下 2.54cm，左右 3.18cm

@@ -25,7 +25,7 @@ ftc_quick_start_guide/
 │   ├── zh-tw/                 # 繁体中文源文件（同 zh-cn 结构）
 │   └── en-us/                 # 英文（美式）源文件（同 zh-cn 结构）
 ├── images/                    # 图片资源（构建时自动复制到 dist/images/）
-│   ├── basic/                 # 通用资源（三语言共用）
+│   ├── basic/                 # 通用资源（四语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
 │   │   └── team_logo.png      # 队徽（侧边栏/顶栏/主页英雄区）
 │   └── afterword/             # 后记专用图片（大合照等）
@@ -34,6 +34,7 @@ ftc_quick_start_guide/
 │   ├── zh-cn/                 # 简体中文网站（7 页）
 │   ├── zh-tw/                 # 繁体中文网站（7 页）
 │   ├── en-us/                 # 英文（美式）网站（7 页）
+│   ├── fr/                    # 法语网站（7 页）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物
 │       ├── zh-cn/             # 简体中文各页单独 PDF
@@ -80,7 +81,7 @@ python3 build.py --watch      # 监听模式（文件变化自动重建）
 ### 导出 PDF
 
 ```bash
-python3 build_pdf.py                # 导出全部三种语言的 PDF
+python3 build_pdf.py                # 导出全部四种语言的 PDF
 python3 build_pdf.py --lang en-us   # 仅导出英文（美式）
 python3 build_pdf.py --page member  # 仅导出"队员须知"页面
 python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
@@ -133,9 +134,10 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
   3. 地址——北京市海淀区太平路8号 · 邮政编码 100039
   4. 最新版本——2026年8月第1版
 - **中英文平等**：主页所有内容的中英文字号、字重、颜色完全一致（仅字体不同），以示平等。
-- **语言选择**：三张卡片（简体中文 / 繁體中文 / English (US)），每张含：
+- **语言选择**：四张卡片（简体中文 / 繁體中文 / English (US) / Français），每张含：
   - 在线浏览按钮 → `{lang}/index.html`
   - PDF 下载按钮 → `pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf`（新标签页打开）
+  - 法语卡片为入口性质（主页其余内容不做法语版），卡片文案为中法双语
 - **内容结构**：7 章节三语言名称对照列表。
 - **PDF 智能检测**：构建时自动检测 `dist/pdf/` 下对应 PDF 是否存在——存在则显示下载按钮（不显示文件大小），不存在则显示灰色禁用按钮并提示运行 `python3 build_pdf.py`。
 - `build_pdf.py` 导出完成后会自动重新生成主页以刷新 PDF 存在状态（无需手动运行 `build.py`）。
@@ -251,7 +253,7 @@ dist/（HTML 网站 + PDF 文档）
 线上站点 https://ftc32477.github.io/docs/
 ```
 
-- ① 本地构建：生成 21 页 HTML 与三语言 PDF（需 Chrome 与 Python 依赖，见"一、使用的工具与依赖"）
+- ① 本地构建：生成 28 页 HTML 与四语言 PDF（需 Chrome 与 Python 依赖，见"一、使用的工具与依赖"）
 - ② 提交推送：src 与 dist 一并提交到主仓库，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 把 dist 整体同步为发布仓库的 docs（先清空再复制，避免残留旧文件；无变化时自动跳过提交）
 - ④ 站点生效：推送后约 1–2 分钟
@@ -322,8 +324,8 @@ dist/（HTML 网站 + PDF 文档）
 4. 不要直接编辑 `dist/` 下的 HTML 或 PDF——它们每次构建都会被覆盖。如需重新生成产物，请联系 HTML/PDF 维护组员运行构建脚本。
 5. 修改内容后由维护组员依次运行：
    ```bash
-   python3 build.py       # ②③ 生成三语言 HTML
-   python3 build_pdf.py   # ④ 生成三语言 PDF
+   python3 build.py       # ②③ 生成四语言 HTML
+   python3 build_pdf.py   # ④ 生成四语言 PDF
    ```
 
 **外部素材的整合方式：**
@@ -339,21 +341,22 @@ dist/（HTML 网站 + PDF 文档）
 | zh-cn | 简体中文 | 大陆简体 |
 | zh-tw | 繁體中文 | 台湾正体，使用区域用语（程式設計、網路、雷射切割等） |
 | en-us | English (US) | 美式英语，**目录名必须为 en-us**（与 `en` 区分，明确美式变体） |
+| fr | Français | 法语（法国），正式 vous 语体，遵循法语排版规范（« guillemets »、双标点前不换行空格等） |
 
-- 语言切换 UI **必须显示全称**：简体中文 / 繁體中文 / English (US)，不使用简写。
+- 语言切换 UI **必须显示全称**：简体中文 / 繁體中文 / English (US) / Français，不使用简写。
 - 放不下时采用**下拉选项栏**（侧边栏与移动端顶栏均为下拉栏）。
 
-### 页面清单（page key 三语言对照）
+### 页面清单（page key 四语言对照）
 
-| 文件名 | 简体中文 | 繁體中文 | English (US) |
-|--------|----------|----------|---------|
-| index.md | 前言 | 前言 | Preface |
-| member.md | 队员须知 | 隊員須知 | Team Essentials |
-| modeling.md | 建模设计 | 建模設計 | Modeling & Design |
-| build.md | 结构建造 | 結構建造 | Hardware & Build |
-| programming.md | 程序设计 | 程式設計 | Programming |
-| outreach.md | 外部联络 | 外部聯絡 | Outreach & PR |
-| afterword.md | 后记 | 後記 | Afterword |
+| 文件名 | 简体中文 | 繁體中文 | English (US) | Français |
+|--------|----------|----------|---------|---------|
+| index.md | 前言 | 前言 | Preface | Préface |
+| member.md | 队员须知 | 隊員須知 | Team Essentials | Essentiels de l'équipe |
+| modeling.md | 建模设计 | 建模設計 | Modeling & Design | Modélisation & Conception |
+| build.md | 结构建造 | 結構建造 | Hardware & Build | Matériel & Construction |
+| programming.md | 程序设计 | 程式設計 | Programming | Programmation |
+| outreach.md | 外部联络 | 外部聯絡 | Outreach & PR | Sensibilisation & Relations publiques |
+| afterword.md | 后记 | 後記 | Afterword | Postface |
 
 ## 三、Markdown 语法参考
 
@@ -447,7 +450,7 @@ dist/（HTML 网站 + PDF 文档）
 
 **效果：** 在页面中插入图片。
 
-**用途：** 在文档中插入照片、截图、示意图等。先将图片放入项目根目录的 `images/` 文件夹（建议按用途分子目录，如 `basic/`、`afterword/`），构建时会自动复制到 `dist/images/`，三语言页面共用。
+**用途：** 在文档中插入照片、截图、示意图等。先将图片放入项目根目录的 `images/` 文件夹（建议按用途分子目录，如 `basic/`、`afterword/`），构建时会自动复制到 `dist/images/`，四语言页面共用。
 
 **路径注意：** 语言页面位于 `dist/{lang}/` 子目录中，Markdown 中的相对路径需以 `../images/` 开头（如 `../images/afterword/photo.jpg`）。
 

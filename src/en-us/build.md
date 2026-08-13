@@ -144,7 +144,7 @@ Available from a wide range of sources:
 
 #### Specialized Materials
 
-Official REV and goBILDA products, plus Zhou Yu's specialized extrusion suppliers.
+Official REV and goBILDA products, plus Zhou Yu as a specialized extrusion supplier.
 
 #### Material Characteristics
 
@@ -185,7 +185,7 @@ Official REV and goBILDA products, plus Zhou Yu's specialized extrusion supplier
 | PLA | 220°C | Standard base plastic filament |
 | PETG-CF | 240+°C | Carbon-fiber-reinforced filament |
 
-Purchase official Bambu Lab or 3Green filaments for consistent quality.
+Purchase official Bambu Lab or SUNLU filaments for consistent quality.
 
 **Shrinkage:**
 

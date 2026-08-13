@@ -82,6 +82,21 @@ LANGUAGES = {
             "afterword":   "Afterword",
         },
     },
+    "fr": {
+        "label": "Français",
+        "brand": "Guide de démarrage rapide",
+        "footer": "Août 2026, 1re éd. &middot; Équipe éditoriale",
+        "site_title": "Guide de démarrage rapide FTC 32477 Origin",
+        "pages": {
+            "index":       "Préface",
+            "member":      "Essentiels de l'équipe",
+            "modeling":    "Modélisation &amp; Conception",
+            "build":       "Matériel &amp; Construction",
+            "programming": "Programmation",
+            "outreach":    "Sensibilisation &amp; Relations publiques",
+            "afterword":   "Postface",
+        },
+    },
 }
 
 DEFAULT_LANG = "zh-cn"
@@ -844,6 +859,7 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .lang-card.zh-cn{border-top-color:var(--red)}
 .lang-card.zh-tw{border-top-color:#e65100}
 .lang-card.en-us{border-top-color:#1565c0}
+.lang-card.fr{border-top-color:#0055a4}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .lang-card .lang-name{font-size:13px;color:var(--muted);margin-bottom:12px}
 .lang-card .desc{font-size:13px;color:var(--text);flex:1;margin-bottom:18px}
@@ -960,6 +976,17 @@ def render_homepage():
   <div class="btn-row">
     <a class="btn primary" href="en-us/index.html">Read Online \u2192</a>
     {pdf_link("en-us", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf")}
+  </div>
+</div>""")
+
+    lang_cards.append(f"""
+<div class="lang-card fr">
+  <h3>Fran\u00e7ais</h3>
+  <div class="lang-name">French \u00b7 France</div>
+  <div class="desc">\u9762\u5411\u6cd5\u8bed\u4f7f\u7528\u8005\u7684\u6cd5\u6587\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002<br>\u00c9dition en ligne en fran\u00e7ais, couvrant l'ensemble des 7 chapitres.</div>
+  <div class="btn-row">
+    <a class="btn primary" href="fr/index.html">Consulter en ligne \u2192</a>
+    {pdf_link("fr", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf")}
   </div>
 </div>""")
 
