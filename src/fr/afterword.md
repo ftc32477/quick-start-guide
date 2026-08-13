@@ -3,7 +3,7 @@
 Membres de l'équipe de rédaction de ce guide :
 
 - **Rédacteur en chef** : Fu Xiuqi
-- **Comité de rédaction** : Du Xingzhou, et al.
+- **Comité de rédaction** : Du Xingzhou, Xie Jincan, et al.
 
 La rédaction de ce guide a été rendue possible grâce à l'aide de nombreuses personnes.
 
