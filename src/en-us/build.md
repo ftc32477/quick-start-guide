@@ -49,7 +49,7 @@ Bambu Studio is the 3D-printing solution adopted by our team.
 
 - On Windows, you may change the installation directory, as long as the path ends with `..\Bambu Studio\`. During installation, check "Open .3mf files with Bambu Studio", "Open .stl files with Bambu Studio", and "Open .step/.stp files with Bambu Studio".
 - On macOS, drag `BambuStudio.app` into the Applications folder.
-- Launch Bambu Studio. Select "Mainland China" as the login region. Select only the **Bambu Lab P1S** and **Bambu Lab P2S** printers; keep materials at default settings. Check "Install Bambu Network plugin".
+- Launch Bambu Studio. Select "Mainland China" as the login region. Select at least the **Bambu Lab P1S** and **Bambu Lab P2S** printers; keep materials at default settings. Check "Install Bambu Network plugin".
 - Log in to your Bambu account with a phone number or another method.
 
 ### RD Works V8
@@ -113,21 +113,17 @@ A flexible metal tape with a spring retraction mechanism, used for measuring lon
 
 A vernier caliper consists of a main scale (A) and a vernier scale (B) that slides along it.
 
-**Principle:** A vernier caliper exploits the fixed small difference between the unit graduations of the main scale (1 mm) and those of the vernier scale to improve measurement precision. Common vernier calipers come in 10-division, 20-division, and 50-division varieties.
-
-**Reading:** Read the main scale first — locate the zero line of the vernier scale relative to the main scale graduations. Then read the vernier scale — find which graduation line aligns exactly with a main scale line. Combine the two readings to obtain the measured length.
-
-**Usage:** When the two jaws of the outside (inside) measuring faces touch, the zero line of the vernier scale aligns with the zero line of the main scale. Clamp (or seat) the object between the jaws and combine the main and vernier readings to obtain the object's length.
+- **Principle**: A vernier caliper exploits the fixed small difference between the unit graduations of the main scale (1 mm) and those of the vernier scale to improve measurement precision. Common vernier calipers come in 10-division, 20-division, and 50-division varieties.
+- **Reading**: Read the main scale first — locate the zero line of the vernier scale relative to the main scale graduations. Then read the vernier scale — find which graduation line aligns exactly with a main scale line. Combine the two readings to obtain the measured length.
+- **Usage**: When the two jaws of the outside (inside) measuring faces touch, the zero line of the vernier scale aligns with the zero line of the main scale. Clamp (or seat) the object between the jaws and combine the main and vernier readings to obtain the object's length.
 
 #### Micrometer
 
 A micrometer consists of an anvil (A) and a fixed sleeve scale (B) mounted on a frame (C). The thimble scale (E), thimble (D), and ratchet stop (D') are connected to the spindle (F), which threads through B via a precision screw.
 
-**Principle:** When the thimble D rotates one full turn, the spindle F advances or retracts one pitch along the axis. The fixed sleeve scale B has a pitch of 0.5 mm, and the thimble scale E has 50 equal divisions — so each thimble division corresponds to 0.01 mm of spindle travel. A micrometer measures accurately to 0.01 mm.
-
-**Reading:** Read scale B first, noting whether the half-millimeter line is exposed. Then read scale E, where each division corresponds to 0.01 mm. Combine the readings from B and E to obtain the measured length.
-
-**Usage:** To measure small dimensions, first bring F into contact with A and align the left edge of E with the zero line of B. Place the object between F and A, rotate D until F approaches the object, then switch to the ratchet D' and stop when you hear the "click". Then take the reading.
+- **Principle**: When the thimble D rotates one full turn, the spindle F advances or retracts one pitch along the axis. The fixed sleeve scale B has a pitch of 0.5 mm, and the thimble scale E has 50 equal divisions — so each thimble division corresponds to 0.01 mm of spindle travel. A micrometer measures accurately to 0.01 mm.
+- **Reading**: Read scale B first, noting whether the half-millimeter line is exposed. Then read scale E, where each division corresponds to 0.01 mm. Combine the readings from B and E to obtain the measured length.
+- **Usage**: To measure small dimensions, first bring F into contact with A and align the left edge of E with the zero line of B. Place the object between F and A, rotate D until F approaches the object, then switch to the ratchet D' and stop when you hear the "click". Then take the reading.
 
 ### Common Materials
 
@@ -328,8 +324,8 @@ Download and install, clicking "Next" throughout. Note the installation location
 
 | Printer | Nozzle | Filament |
 |--------|------|------|
-| P2S (stock nozzle) | 0.4 mm | PLA Basic |
-| P2S (nozzle replaced, dedicated to carbon filament) | Per configuration | PETG-CF |
+| P1S (stock nozzle) | 0.4 mm | PLA Basic |
+| P1S (nozzle replaced, dedicated to carbon filament) | 0.6 mm | PETG-CF |
 | P1S (both units) | 0.4 mm | PLA Basic |
 
 **Process presets by part type:**
@@ -340,7 +336,7 @@ Download and install, clicking "Next" throughout. Note the installation location
 | Non-load-bearing structural parts | Team standard configuration |
 | Load-bearing structural parts | Team standard configuration (high strength) |
 
-> [!info] These presets are the standard configurations of our school's modeling group — modify them if you have special requirements.
+> [!info] These presets are our team's standard configurations — modify them if you have special requirements.
 
 **Multiple parts on one plate:**
 

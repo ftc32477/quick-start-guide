@@ -49,7 +49,7 @@ Bambu Studio est la solution d'impression 3D adoptée par notre équipe.
 
 - Sous Windows, vous pouvez modifier le répertoire d'installation, à condition que le chemin se termine par `..\Bambu Studio\`. Lors de l'installation, cochez « Ouvrir les fichiers .3mf avec Bambu Studio », « Ouvrir les fichiers .stl avec Bambu Studio » et « Ouvrir les fichiers .step/.stp avec Bambu Studio ».
 - Sous macOS, glissez simplement `BambuStudio.app` dans le dossier Applications.
-- Lancez Bambu Studio. Pour la région de connexion, sélectionnez « Chine continentale » ; pour les imprimantes, ne sélectionnez que **Bambu Lab P1S** et **Bambu Lab P2S** ; les matériaux peuvent rester à leur configuration par défaut. Cochez « Installer le plugin réseau Bambu ».
+- Lancez Bambu Studio. Pour la région de connexion, sélectionnez « Chine continentale » ; pour les imprimantes, sélectionnez au moins **Bambu Lab P1S** et **Bambu Lab P2S** ; les matériaux peuvent rester à leur configuration par défaut. Cochez « Installer le plugin réseau Bambu ».
 - Connectez-vous à votre compte Bambu à l'aide d'un numéro de téléphone ou d'un autre moyen.
 
 ### RD Works V8
@@ -113,21 +113,17 @@ Règle métallique flexible munie d'un mécanisme d'enroulement à ressort, util
 
 Le pied à coulisse se compose principalement d'une règle principale A et d'un vernier B coulissant le long de celle-ci.
 
-**Principe :** le pied à coulisse exploite la petite différence fixe entre la graduation unitaire de la règle principale (1 mm) et celle du vernier pour améliorer la précision de mesure. Les pieds à coulisse courants existent en trois variantes : 10, 20 et 50 divisions.
-
-**Lecture :** lisez d'abord la règle principale : repérez la position de la ligne zéro du vernier par rapport aux graduations de la règle principale. Lisez ensuite le vernier : déterminez quelle ligne de graduation du vernier coïncide avec une graduation de la règle principale. Combinez les deux lectures pour obtenir la longueur mesurée.
-
-**Utilisation :** lorsque les deux lames d'une mâchoire de mesure extérieure (intérieure) sont en contact, la ligne zéro du vernier coïncide exactement avec la ligne zéro de la règle principale. Serrez (ou enfilez) l'objet à mesurer entre ces deux lames : la somme des lectures de la règle principale et du vernier donne la longueur de l'objet.
+- **Principe** : le pied à coulisse exploite la petite différence fixe entre la graduation unitaire de la règle principale (1 mm) et celle du vernier pour améliorer la précision de mesure. Les pieds à coulisse courants existent en trois variantes : 10, 20 et 50 divisions.
+- **Lecture** : lisez d'abord la règle principale : repérez la position de la ligne zéro du vernier par rapport aux graduations de la règle principale. Lisez ensuite le vernier : déterminez quelle ligne de graduation du vernier coïncide avec une graduation de la règle principale. Combinez les deux lectures pour obtenir la longueur mesurée.
+- **Utilisation** : lorsque les deux lames d'une mâchoire de mesure extérieure (intérieure) sont en contact, la ligne zéro du vernier coïncide exactement avec la ligne zéro de la règle principale. Serrez (ou enfilez) l'objet à mesurer entre ces deux lames : la somme des lectures de la règle principale et du vernier donne la longueur de l'objet.
 
 #### Micromètre (palmer)
 
 Dans un micromètre, l'enclume A et la graduation fixe B sont fixées sur la monture C ; la graduation mobile E, le bouton D et la molette de friction D' sont solidaires de la vis micrométrique F, qui est montée sur B par un filetage de précision.
 
-**Principe :** lorsque le bouton D effectue un tour complet, la vis F avance ou recule d'un pas le long de l'axe de rotation. Le pas de la graduation fixe B du micromètre est de 0.5 mm, et la graduation mobile E comporte 50 divisions égales sur la circonférence : chaque division de la graduation mobile correspond donc à une avance ou un recul de 0.01 mm de la vis micrométrique F. Le micromètre permet de mesurer avec une précision de 0.01 mm.
-
-**Lecture :** lisez d'abord la graduation B, en vérifiant si la ligne des demi-millimètres de B est visible ; lisez ensuite la graduation E, chaque division valant 0.01 mm. Combinez les lectures de B et de E pour obtenir la longueur mesurée.
-
-**Utilisation :** mettez d'abord F en contact avec A et alignez le bord gauche de E sur la ligne zéro de B ; placez l'objet à mesurer entre F et A et tournez D ; lorsque F est presque en contact avec l'objet, cessez d'utiliser D et passez à D' ; arrêtez dès que vous entendez un « clic », puis effectuez la lecture.
+- **Principe** : lorsque le bouton D effectue un tour complet, la vis F avance ou recule d'un pas le long de l'axe de rotation. Le pas de la graduation fixe B du micromètre est de 0.5 mm, et la graduation mobile E comporte 50 divisions égales sur la circonférence : chaque division de la graduation mobile correspond donc à une avance ou un recul de 0.01 mm de la vis micrométrique F. Le micromètre permet de mesurer avec une précision de 0.01 mm.
+- **Lecture** : lisez d'abord la graduation B, en vérifiant si la ligne des demi-millimètres de B est visible ; lisez ensuite la graduation E, chaque division valant 0.01 mm. Combinez les lectures de B et de E pour obtenir la longueur mesurée.
+- **Utilisation** : mettez d'abord F en contact avec A et alignez le bord gauche de E sur la ligne zéro de B ; placez l'objet à mesurer entre F et A et tournez D ; lorsque F est presque en contact avec l'objet, cessez d'utiliser D et passez à D' ; arrêtez dès que vous entendez un « clic », puis effectuez la lecture.
 
 ### Matériaux courants
 
@@ -327,8 +323,8 @@ Téléchargez puis installez en cliquant sur « Suivant » ; faites attention a
 
 | Imprimante | Buse | Filament |
 |--------|------|------|
-| P2S (buse d'origine) | 0.4 mm | PLA Basic |
-| P2S (buse remplacée, dédiée au filament carbone) | Selon la configuration correspondante | PETG-CF |
+| P1S (buse d'origine) | 0.4 mm | PLA Basic |
+| P1S (buse remplacée, dédiée au filament carbone) | 0.6 mm | PETG-CF |
 | P1S (les deux unités) | 0.4 mm | PLA Basic |
 
 **Choix des paramètres selon le type de pièce :**
@@ -339,7 +335,7 @@ Téléchargez puis installez en cliquant sur « Suivant » ; faites attention a
 | Pièces structurelles non porteuses | Configuration courante du groupe de modélisation |
 | Pièces structurelles porteuses | Configuration courante du groupe de modélisation (haute résistance) |
 
-> [!info] Les paramètres ci-dessus sont les configurations courantes du groupe de modélisation de notre école : vous pouvez les modifier vous-même en cas de besoins particuliers.
+> [!info] Les paramètres ci-dessus sont les configurations courantes de notre équipe : vous pouvez les modifier vous-même en cas de besoins particuliers.
 
 **Disposition de plusieurs pièces :**
 
