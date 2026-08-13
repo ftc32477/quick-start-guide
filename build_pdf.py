@@ -65,23 +65,27 @@ PDF_TEXTS = {
         "name2": "Quick Start Guide",
         "school": "\u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66",
         "date": "2026\u5e748\u6708\u7b2c1\u7248",
+        "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
     "zh-tw": {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
         "date": "2026\u5e748\u6708\u7b2c1\u7248",
+        "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },
     "en-us": {
         "name": "32477 Origin Quick Start Guide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
         "date": "August 2026 \u00b7 1st Edition",
+        "lang": "English (US) Edition",
     },
     "fr": {
         "name": "32477 Origin Guide de d\u00e9marrage rapide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
         "date": "Ao\u00fbt 2026 \u00b7 1re \u00e9dition",
+        "lang": "\u00c9dition fran\u00e7aise",
     },
 }
 
@@ -160,19 +164,19 @@ html,body{{margin:0;padding:0}}
   background:#d32f2f;opacity:.14;top:-160px;right:-160px
 }}
 .cover img.logo{{
-  width:150px;height:150px;border-radius:32px;margin-bottom:28px;
+  width:150px;height:150px;border-radius:32px;margin-bottom:36px;
   box-shadow:0 8px 32px rgba(0,0,0,.4);position:relative
 }}
 .cover .badge{{
   background:#d32f2f;padding:6px 22px;border-radius:22px;
-  font-size:13px;font-weight:600;letter-spacing:3px;margin-bottom:22px;position:relative
+  font-size:13px;font-weight:600;letter-spacing:3px;margin-bottom:28px;position:relative
 }}
-.cover h1{{font-size:42px;margin:0 0 12px;font-weight:700;position:relative}}
+.cover h1{{font-size:42px;margin:0 0 18px;font-weight:700;position:relative}}
 .cover .name{{font-size:24px;font-weight:600;position:relative}}
-.cover .name2{{font-size:17px;opacity:.75;margin-top:8px;position:relative}}
-.cover .school{{font-size:16px;opacity:.7;margin-top:36px;position:relative}}
+.cover .name2{{font-size:17px;opacity:.75;margin-top:16px;position:relative}}
+.cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
-  position:absolute;bottom:36px;left:0;right:0;
+  position:absolute;bottom:56px;left:0;right:0;
   font-size:13px;opacity:.8;letter-spacing:2px
 }}
 </style>
@@ -188,7 +192,7 @@ html,body{{margin:0;padding:0}}
     <div class="name2">{t["name2"]}</div>
     <div class="school">{t["school"]}</div>
   </div>
-  <div class="date">{t["date"]}</div>
+  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
 </div>
 </body>
 </html>"""
@@ -221,7 +225,7 @@ html,body{{margin:0;padding:0}}
   box-shadow:0 8px 32px rgba(0,0,0,.4)
 }}
 .back .date{{
-  position:absolute;bottom:28px;right:36px;font-size:12px;color:#c9c9d4;letter-spacing:2px
+  position:absolute;bottom:48px;right:56px;font-size:12px;color:#c9c9d4;letter-spacing:2px
 }}
 </style>
 </head>
@@ -229,7 +233,7 @@ html,body{{margin:0;padding:0}}
 <div class="back">
   <div class="glow"></div>
   <img class="logo" src="{logo_path}">
-  <div class="date">{t["date"]}</div>
+  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
 </div>
 </body>
 </html>"""
