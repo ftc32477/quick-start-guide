@@ -1,0 +1,39 @@
+name: Deploy docs to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout quick-start-guide
+        uses: actions/checkout@v4
+
+      - name: Checkout pages repo
+        uses: actions/checkout@v4
+        with:
+          repository: ftc32477/ftc32477.github.io
+          token: ${{ secrets.PAGES_TOKEN }}
+          path: pages-repo
+
+      - name: Sync dist to docs
+        run: |
+          rm -rf pages-repo/docs
+          mkdir -p pages-repo/docs
+          cp -R dist/. pages-repo/docs/
+
+      - name: Commit and push
+        run: |
+          cd pages-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+          else
+            git commit -m "Auto-sync docs from quick-start-guide [skip ci]"
+            git push
+          fi
