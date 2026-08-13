@@ -126,6 +126,7 @@ def parse_markdown(text):
             buf.clear()
 
     para_buf = []
+    pending_ol_start = 0  # 被引用块打断的有序列表的下一项编号（跨块续号）
 
     while i < len(lines):
         line = lines[i]
@@ -133,6 +134,7 @@ def parse_markdown(text):
         # 代码块
         if line.strip().startswith("```"):
             flush_paragraph(para_buf)
+            pending_ol_start = 0
             code_lines = []
             i += 1
             while i < len(lines) and not lines[i].strip().startswith("```"):
@@ -147,6 +149,7 @@ def parse_markdown(text):
         img_match = re.match(r"^!\[(.*?)\]\((.*?)\)\s*$", line.strip())
         if img_match:
             flush_paragraph(para_buf)
+            pending_ol_start = 0
             imgs = []
             while i < len(lines):
                 m = re.match(r"^!\[(.*?)\]\((.*?)\)\s*$", lines[i].strip())
@@ -169,6 +172,7 @@ def parse_markdown(text):
         # 表格
         if "|" in line and line.strip().startswith("|"):
             flush_paragraph(para_buf)
+            pending_ol_start = 0
             table_lines = []
             while i < len(lines) and "|" in lines[i] and lines[i].strip().startswith("|"):
                 table_lines.append(lines[i])
@@ -184,6 +188,7 @@ def parse_markdown(text):
         # 水平线
         if re.match(r"^[-*_]{3,}\s*$", line.strip()):
             flush_paragraph(para_buf)
+            pending_ol_start = 0
             out.append("<hr>")
             i += 1
             continue
@@ -192,6 +197,7 @@ def parse_markdown(text):
         heading_match = re.match(r"^(#{1,6})\s+(.+)$", line)
         if heading_match:
             flush_paragraph(para_buf)
+            pending_ol_start = 0
             level = len(heading_match.group(1))
             content = heading_match.group(2).strip()
             content = re.sub(r"\s+#+\s*$", "", content)
@@ -214,15 +220,23 @@ def parse_markdown(text):
         ul_match = re.match(r"^(\s*)[-*+]\s+(.+)$", line)
         if ul_match:
             flush_paragraph(para_buf)
-            list_html, i = parse_list(lines, i, len(ul_match.group(1)), ordered=False)
+            pending_ol_start = 0
+            list_html, i, _ = parse_list(lines, i, len(ul_match.group(1)), ordered=False)
             out.append(list_html)
             continue
 
-        # 有序列表
+        # 有序列表（引用块打断后可通过 start 属性续号）
         ol_match = re.match(r"^(\s*)\d+\.\s+(.+)$", line)
         if ol_match:
             flush_paragraph(para_buf)
-            list_html, i = parse_list(lines, i, len(ol_match.group(1)), ordered=True)
+            list_html, i, item_count = parse_list(
+                lines, i, len(ol_match.group(1)), ordered=True
+            )
+            if pending_ol_start:
+                list_html = list_html.replace(
+                    "<ol>", f'<ol start="{pending_ol_start}">', 1
+                )
+            pending_ol_start = item_count + 1
             out.append(list_html)
             continue
 
@@ -259,6 +273,7 @@ def parse_markdown(text):
             continue
 
         # 普通文本行
+        pending_ol_start = 0
         para_buf.append(line)
         i += 1
 
@@ -308,7 +323,7 @@ def parse_list(lines, i, indent, ordered):
         while i < len(lines):
             sub = re.match(r"^(\s*)(\d+\.|[+\-*])\s+(.+)$", lines[i])
             if sub and len(sub.group(1)) > cur_indent:
-                sub_html, i = parse_list(
+                sub_html, i, _ = parse_list(
                     lines, i, len(sub.group(1)),
                     ordered=sub.group(2).rstrip(".").isdigit()
                 )
@@ -320,7 +335,7 @@ def parse_list(lines, i, indent, ordered):
     for item in items:
         html += f"<li>{item['content']}{item['sub']}</li>"
     html += f"</{tag}>"
-    return html, i
+    return html, i, len(items)
 
 
 def inline_parse(text):
@@ -930,7 +945,7 @@ footer .legal p:last-child{margin-bottom:0}
 
 def render_homepage():
     """生成主页（语言选择落地页）。"""
-    # 三种语言的卡片
+    # 四种语言的卡片
     lang_cards = []
 
     def pdf_link(lang_key, filename):
@@ -992,22 +1007,23 @@ def render_homepage():
 
     cards_html = "\n".join(lang_cards)
 
-    # 章节列表（三语言名称对照）
+    # 章节列表（中英双语名称对照）
     chapters = [
-        ("index", "前言", "前言", "Preface"),
-        ("member", "队员须知", "隊員須知", "Team Essentials"),
-        ("modeling", "建模设计", "建模設計", "Modeling & Design"),
-        ("build", "结构建造", "結構建造", "Hardware & Build"),
-        ("programming", "程序设计", "程式設計", "Programming"),
-        ("outreach", "外部联络", "外部聯絡", "Outreach & PR"),
-        ("afterword", "后记", "後記", "Afterword"),
+        ("index", "前言", "Preface"),
+        ("member", "队员须知", "Team Essentials"),
+        ("modeling", "建模设计", "Modeling & Design"),
+        ("build", "结构建造", "Hardware & Build"),
+        ("programming", "程序设计", "Programming"),
+        ("outreach", "外部联络", "Outreach & PR"),
+        ("afterword", "后记", "Afterword"),
     ]
+
     chapter_items = []
-    for num, (key, zh_cn, zh_tw, en) in enumerate(chapters, start=1):
+    for num, (key, zh_cn, en) in enumerate(chapters, start=1):
         chapter_items.append(
             f'<li><span class="num">{num}</span>'
             f'<span class="name">{zh_cn}</span>'
-            f'<span class="names">{zh_tw} · {en}</span></li>'
+            f'<span class="names">{en}</span></li>'
         )
     chapters_html = "\n".join(chapter_items)
 

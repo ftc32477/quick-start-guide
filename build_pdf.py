@@ -11,14 +11,18 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 用法:
     python3 build_pdf.py            # 导出所有语言的单页 PDF + 合并 PDF
-    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-cn / zh-tw / en-us）
+    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-cn / zh-tw / en-us / fr）
     python3 build_pdf.py --page member  # 仅导出指定页面（仅单页，不含封面封底）
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
 输出:
-    dist/pdf/{lang}/                 — 各页面单独 PDF（含页眉页脚）
     dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底）
     导出完成后自动刷新主页的 PDF 大小
+
+说明:
+    - 单页 PDF（dist/pdf/{lang}/{page}.pdf，含页眉页脚）仅通过 --page 参数
+      生成，用于内容调试；完整导出（不带 --page）在合并成功后会自动删除
+      单页 PDF 目录，dist/pdf/ 下只保留四语言合并版指南。
 
 依赖:
     - Google Chrome / Edge（无头模式 + 远程调试端口）
@@ -761,6 +765,7 @@ def export(lang_filter=None, page_filter=None):
                     print(f"  [失败] {page_key}: {e}")
 
             # 完整指南：封面 + 前言(罗马) + 目录(罗马) + 正文(阿拉伯) + 封底
+            merged_ok = False
             if set(PAGE_KEYS).issubset(rendered) and not page_filter:
                 cover_html = os.path.join(tmp_dir, f"cover-{lang}.html")
                 back_html = os.path.join(tmp_dir, f"back-{lang}.html")
@@ -853,12 +858,18 @@ def export(lang_filter=None, page_filter=None):
                         [rendered[k] for k in main_keys], back_pdf,
                         merged_path, lang, toc_entries,
                     )
+                    merged_ok = True
                     size_kb = os.path.getsize(merged_path) / 1024
                     print(f"  [合并] FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf "
                           f"（封面 + 前言 + 目录（{len(toc_entries)} 行）"
                           f" + {len(main_keys)} 章 + 封底，{size_kb:.0f} KB）")
                 except Exception as e:
                     print(f"  [失败] 封面/目录/封底: {e}")
+
+            # 单页 PDF 仅作调试用（--page）；完整导出合并成功后删除，只保留合并版
+            if not page_filter and merged_ok:
+                shutil.rmtree(lang_pdf_dir, ignore_errors=True)
+                print(f"  [清理] 已删除单页 PDF 目录 pdf/{lang}/（仅保留合并版）")
 
         shutil.rmtree(tmp_dir, ignore_errors=True)
     finally:
