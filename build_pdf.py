@@ -177,7 +177,7 @@ html,body{{margin:0;padding:0}}
 .cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
   position:absolute;bottom:56px;left:0;right:0;
-  font-size:13px;opacity:.8;letter-spacing:2px
+  font-size:16px;opacity:.8;letter-spacing:2px
 }}
 </style>
 </head>
@@ -225,7 +225,7 @@ html,body{{margin:0;padding:0}}
   box-shadow:0 8px 32px rgba(0,0,0,.4)
 }}
 .back .date{{
-  position:absolute;bottom:48px;right:56px;font-size:12px;color:#c9c9d4;letter-spacing:2px
+  position:absolute;bottom:48px;right:56px;font-size:15px;color:#c9c9d4;letter-spacing:2px
 }}
 </style>
 </head>
