@@ -230,27 +230,64 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ## 八、发布到 GitHub Pages
 
-构建产物通过 GitHub Actions **自动发布**到 **https://ftc32477.github.io/docs/**。
+构建产物通过 GitHub Actions **自动发布**到 **https://ftc32477.github.io/docs/**。发布仓库全程由云端维护，无需手动操作。
 
-- **主仓库**：`ftc32477/quick-start-guide`（本项目，含 src、images、构建脚本与 dist）
-- **发布仓库**：`ftc32477/ftc32477.github.io`（由 Actions 维护，视为只读，勿手动修改）
-- **自动同步**：向主仓库 `main` 分支推送后，GitHub Actions（`.github/workflows/deploy.yml`）自动将 `dist/` 整体同步为发布仓库根目录下的 `docs/`（docs 取代 dist）并推送
-- **密钥**：主仓库需在 Settings → Secrets 中配置 `PAGES_TOKEN`（对发布仓库有写入权限的 Personal Access Token）；PAT 过期后需重新生成并更新 Secret
+### 文件流转逻辑
 
-**本地发布流程（构建后提交推送即可，其余全自动）：**
-
-```bash
-python3 build.py && python3 build_pdf.py
-git add -A && git commit -m "更新快速入门指南" && git push
 ```
+本地工作区（src/*.md、images/）
+        │
+        ▼ ① 构建（python3 build.py + python3 build_pdf.py）
+dist/（HTML 网站 + PDF 文档）
+        │
+        ▼ ② 提交推送（git commit + git push）
+主仓库 ftc32477/quick-start-guide（main 分支）
+        │
+        ▼ ③ GitHub Actions 自动触发（.github/workflows/deploy.yml）
+        │   清空并整体复制 dist/ → docs/
+发布仓库 ftc32477/ftc32477.github.io
+        │
+        ▼ ④ GitHub Pages 自动部署
+线上站点 https://ftc32477.github.io/docs/
+```
+
+- ① 本地构建：生成 21 页 HTML 与三语言 PDF（需 Chrome 与 Python 依赖，见"一、使用的工具与依赖"）
+- ② 提交推送：src 与 dist 一并提交到主仓库，换机迁移只需 clone 主仓库
+- ③ 云端同步：Actions 把 dist 整体同步为发布仓库的 docs（先清空再复制，避免残留旧文件；无变化时自动跳过提交）
+- ④ 站点生效：推送后约 1–2 分钟
+
+### 借助的工具
+
+| 环节 | 工具 |
+|------|------|
+| 本地构建 | Python 3 + `build.py` / `build_pdf.py`（Chrome 无头打印、websocket-client、pypdf、reportlab） |
+| 版本控制 | Git（主仓库为唯一编辑入口） |
+| 云端同步 | GitHub Actions（`ubuntu-latest` 运行器，公共仓库免费） |
+| 跨仓库推送 | Fine-grained Personal Access Token（存为主仓库 Secret `PAGES_TOKEN`） |
+| 站点托管 | GitHub Pages（发布仓库根目录下的 docs/） |
+
+### 密钥信息（重要）
+
+- **Secret 名**：`PAGES_TOKEN`（位置：主仓库 Settings → Secrets and variables → Actions）
+- **PAT 名称**：`make-ftc-quick-start-guide-to-github-io`（Fine-grained personal access token）
+- **归属**：组织 `ftc32477` 名下
+- **权限**：对发布仓库 `ftc32477/ftc32477.github.io` 的 Contents 写入权限
+- **到期时间**：**2027-08-14（周六）**；到期后自动发布会失败，需提前重新生成 PAT 并更新主仓库 Secret
+
+### 何时需要更新
+
+| 场景 | 操作 |
+|------|------|
+| 修改指南内容 | 改 `src/` 下的 .md → 本地构建 → 提交推送（发布全自动） |
+| 更换工作电脑 | `git clone https://github.com/ftc32477/quick-start-guide.git` 即可，无需其他配置 |
+| PAT 到期（2027-08-14 前） | 重新生成 PAT → 更新主仓库 `PAGES_TOKEN` Secret |
+| 发布新版本（如第 2 版） | 同步更新 `build.py`（主页下载链接 3 处）与 `build_pdf.py`（合并输出文件名 2 处）中的版本日期 |
+| 自动发布失败排查 | 查看主仓库 Actions 页签运行日志；权限问题通常表现为推送被拒（403），检查 PAT 与 Secret |
 
 **注意：**
 
-- 推送后 Actions 自动同步，站点约 1–2 分钟内生效
-- 换机迁移：只需 `git clone https://github.com/ftc32477/quick-start-guide.git` 即可获得完整工作区
 - 旧的本机发布仓库克隆（`ftc32477.github.io/`）不再需要，可留作紧急备用
-- 不要直接在 GitHub 网页端修改发布仓库内容
-- **合并指南文件名内嵌版本日期**（如 `2026-08-01` 对应"2026年8月第1版"）；发布新版本时需同步更新 `build.py`（主页下载链接，共 3 处）与 `build_pdf.py`（合并输出文件名，共 2 处）中的该日期
+- 不要直接在 GitHub 网页端修改发布仓库内容，一切以主仓库的 dist 为准
 
 ---
 
