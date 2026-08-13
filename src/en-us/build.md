@@ -140,14 +140,14 @@ Available from a wide range of sources:
 
 #### Specialized Materials
 
-Official REV and goBILDA products, plus Zhou Yu as a specialized extrusion supplier.
+Official REV and goBILDA specialized extrusions.
 
 #### Material Characteristics
 
 | Brand | Characteristics |
 |------|------|
 | **REV** | Relatively old but core. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 6 mm REX shafts; gears and chains; 72:1 transverse motors and 40:1 motors are the most usable. |
-| **goBILDA & Zhou Yu** | C-channels, square or thin beams, 8 mm REX shafts, a wide range of modular connectors with well-rounded functionality. Primarily M4 screws (10 mm official); motors are mostly 5203 series. Suitable for direct-drive motor kits. |
+| **goBILDA** | C-channels, square or thin beams, 8 mm REX shafts, a wide range of modular connectors with well-rounded functionality. Primarily M4 screws (10 mm official); motors are mostly 5203 series. Suitable for direct-drive motor kits. |
 
 **REV details:**
 
@@ -165,14 +165,6 @@ Official REV and goBILDA products, plus Zhou Yu as a specialized extrusion suppl
 - **Screw spec**: Primarily M4 screws; the official pairing is M4×10 mm button-head screws.
 - **Shaft spec**: 8 mm REX shafts.
 - **Motors**: Commonly the 5203 series, suited to standard direct drive. Thanks to the strength of the 8 mm REX shaft and its motor mounting style, goBILDA is the kit of choice for direct motor drive.
-
-**Zhou Yu details:**
-
-> [!warning] Most goBILDA equivalents can be found at Zhou Yu, with some differences. Prefer official goBILDA hardware whenever possible; Zhou Yu is cheaper but may have quality issues.
-
-- Most materials have a corresponding goBILDA-style counterpart at Zhou Yu.
-- Zhou Yu also makes some special parts designed for domestic needs; some have no goBILDA equivalent. If you find an ingenious Zhou Yu part, you can buy it for testing.
-- Price-wise, Zhou Yu is the cheapest of the three suppliers, but workmanship is slightly below goBILDA.
 
 #### 3D Printing Filaments
 

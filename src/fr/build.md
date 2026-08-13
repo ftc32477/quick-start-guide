@@ -140,14 +140,14 @@ Disponibles auprès de toutes sortes de canaux :
 
 #### Matériaux spécifiques
 
-Les produits officiels REV et goBILDA, ainsi que Zhou Yu, fournisseur de profilés spécifiques.
+Profilés spécifiques officiels REV et goBILDA.
 
 #### Caractéristiques des matériaux
 
 | Marque | Caractéristiques |
 |------|------|
 | **REV** | Relativement ancienne mais essentielle. Les trois grands modules électroniques (Driver Hub, Control Hub, Expansion Hub) sont principalement des produits REV. Les pièces de structure comprennent divers profilés en aluminium (d'un usage relativement rare) ; les profilés peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire. Les profilés correspondent principalement aux vis à tête bombée M3 (uniquement), aux axes REX de 6 mm, aux engrenages et aux chaînes ; les moteurs transversaux 72:1 et les moteurs 40:1 sont les plus utilisables et les plus courants. |
-| **goBILDA & Zhou Yu** | Poutres en C, poutres carrées ou minces, axes REX de 8 mm, connecteurs modulaires variés et fonctions de connexion complètes. Utilise principalement des vis M4 (10 mm officiels) ; les moteurs sont majoritairement de la série 5203. Convient aux kits de transmission directe du moteur. |
+| **goBILDA** | Poutres en C, poutres carrées ou minces, axes REX de 8 mm, connecteurs modulaires variés et fonctions de connexion complètes. Utilise principalement des vis M4 (10 mm officiels) ; les moteurs sont majoritairement de la série 5203. Convient aux kits de transmission directe du moteur. |
 
 **Détails du fournisseur REV :**
 
@@ -165,14 +165,6 @@ Les produits officiels REV et goBILDA, ainsi que Zhou Yu, fournisseur de profil�
 - **Spécification des vis** : principalement des vis M4 ; la version officielle est une vis à tête bombée M4×10 mm.
 - **Spécification des axes** : correspond aux axes REX de 8 mm.
 - **Moteurs** : la série 5203 est couramment utilisée, adaptée à la transmission directe standard. Grâce à la résistance de l'axe REX de 8 mm et aux caractéristiques de montage des moteurs, goBILDA est le kit adapté à la transmission directe du moteur.
-
-**Détails du fournisseur Zhou Yu :**
-
-> [!warning] Chez Zhou Yu, on trouve la grande majorité des matériaux correspondant à goBILDA, avec toutefois des différences. Utilisez autant que possible les pièces officielles goBILDA ; Zhou Yu est moins cher, mais des problèmes de qualité sont possibles.
-
-- La grande majorité des matériaux trouvent chez Zhou Yu un produit du même type que goBILDA.
-- Zhou Yu fabrique également certaines pièces spéciales conçues selon les besoins du marché intérieur ; certaines n'ont pas d'équivalent chez goBILDA. Si vous rencontrez une pièce Zhou Yu ingénieuse, vous pouvez l'acheter pour la tester.
-- Côté prix, Zhou Yu est le moins cher des trois fournisseurs, mais la qualité de fabrication est légèrement inférieure à celle de goBILDA.
 
 #### Filaments d'impression 3D
 
