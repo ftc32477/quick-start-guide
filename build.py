@@ -950,7 +950,7 @@ def render_homepage():
 <div class="lang-card zh-cn">
   <h3>\u7b80\u4f53\u4e2d\u6587</h3>
   <div class="lang-name">Simplified Chinese</div>
-  <div class="desc">\u9762\u5411\u4e2d\u56fd\u5927\u9646\u961f\u5458\u7684\u7b80\u4f53\u4e2d\u6587\u5728\u7ebf\u7248\u672c\uff0c\u5305\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002<br>Online edition in Simplified Chinese, covering all 7 chapters.</div>
+  <div class="desc">\u9762\u5411\u7b80\u4f53\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002<br>Online edition in Simplified Chinese, covering all 7 chapters.</div>
   <div class="btn-row">
     <a class="btn primary" href="zh-cn/index.html">\u5728\u7ebf\u6d4f\u89c8 \u2192</a>
     {pdf_link("zh-cn", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-cn.pdf")}
@@ -961,7 +961,7 @@ def render_homepage():
 <div class="lang-card zh-tw">
   <h3>\u7e41\u4f53\u4e2d\u6587</h3>
   <div class="lang-name">Traditional Chinese</div>
-  <div class="desc">\u9762\u5411\u4f7f\u7528\u7e41\u9ad4\u4e2d\u6587\u7684\u968a\u54e1\u7684\u5728\u7dda\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u500b\u7ae0\u7bc0\u3002<br>Online edition in Traditional Chinese, covering all 7 chapters.</div>
+  <div class="desc">\u9762\u5411\u7e41\u9ad4\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u7dda\u4e0a\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u500b\u7ae0\u7bc0\u3002<br>Online edition in Traditional Chinese, covering all 7 chapters.</div>
   <div class="btn-row">
     <a class="btn primary" href="zh-tw/index.html">\u5728\u7dda\u700f\u89bd \u2192</a>
     {pdf_link("zh-tw", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-tw.pdf")}
@@ -972,7 +972,7 @@ def render_homepage():
 <div class="lang-card en-us">
   <h3>English (US)</h3>
   <div class="lang-name">English \u00b7 United States</div>
-  <div class="desc">The online edition in English (US) for international outreach and exchange, covering all 7 chapters.<br>\u9762\u5411\u56fd\u9645\u4ea4\u6d41\u7684\u82f1\u8bed\uff08\u7f8e\u5f0f\uff09\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
+  <div class="desc">The online edition in English (US), covering all 7 chapters.<br>\u9762\u5411\u82f1\u8bed\uff08\u7f8e\u5f0f\uff09\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
   <div class="btn-row">
     <a class="btn primary" href="en-us/index.html">Read Online \u2192</a>
     {pdf_link("en-us", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf")}
@@ -983,7 +983,7 @@ def render_homepage():
 <div class="lang-card fr">
   <h3>Fran\u00e7ais</h3>
   <div class="lang-name">French \u00b7 France</div>
-  <div class="desc">\u9762\u5411\u6cd5\u8bed\u4f7f\u7528\u8005\u7684\u6cd5\u6587\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002<br>\u00c9dition en ligne en fran\u00e7ais, couvrant l'ensemble des 7 chapitres.</div>
+  <div class="desc">\u00c9dition en ligne en fran\u00e7ais, couvrant l'ensemble des 7 chapitres.<br>\u9762\u5411\u6cd5\u8bed\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
   <div class="btn-row">
     <a class="btn primary" href="fr/index.html">Consulter en ligne \u2192</a>
     {pdf_link("fr", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf")}
