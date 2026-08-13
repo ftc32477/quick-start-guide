@@ -36,11 +36,11 @@ ftc_quick_start_guide/
 │   ├── en-us/                 # 英文（美式）网站（7 页）
 │   ├── fr/                    # 法语网站（7 页）
 │   ├── images/                # 图片（自动复制）
-│   └── pdf/                   # PDF 产物
-│       ├── zh-cn/             # 简体中文各页单独 PDF
+│   └── pdf/                   # PDF 产物（仅保留四语言合并版指南）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-cn.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── zh-tw/、FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-tw.pdf
-│       └── en-us/、FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-tw.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf  # 英文（美式）完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf     # 法语完整指南
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -87,6 +87,9 @@ python3 build_pdf.py --page member  # 仅导出"队员须知"页面
 python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 ```
 
+- 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留四语言合并版。
+- `--page` 用于内容调试：只生成指定页的单页 PDF（含页眉页脚），不删除。
+
 ### 链接行为约定
 
 - **站内导航（同一标签页）**：侧边栏/顶栏返回主页、页面切换、语言切换、锚点跳转均为当前标签页内跳转。
@@ -104,7 +107,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
    - 页脚：居中"第 X 页，共 Y 页"（随语言本地化），**从队员须知第一页重新从 1 计数**，总页数为正文总页数
 5. **封底**：与封面**镜像对称**（渐变方向翻转 135°→45°、光斑位置镜像），居中队徽（宽度为纸面宽度的 0.618 倍）+ 右下角"语言版本 · 日期"（位置略偏左上）
 
-单页 PDF（`pdf/{lang}/{page}.pdf`）同样含页眉页脚，页码按该 PDF 自身计。
+单页 PDF（`pdf/{lang}/{page}.pdf`）仅由 `--page` 参数生成（同样含页眉页脚，页码按该 PDF 自身计），供内容调试使用；完整导出结束后自动删除。
 
 **页面布局参数：** A4 纸（210×297mm）；上下页边距各 2.54cm（1in）、左右各 3.18cm（1.25in）；页眉页脚字号均为 11pt（文字高度一致）；封面封底边距为 0。
 
@@ -137,8 +140,8 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - **语言选择**：四张卡片（简体中文 / 繁體中文 / English (US) / Français），每张含：
   - 在线浏览按钮 → `{lang}/index.html`
   - PDF 下载按钮 → `pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf`（新标签页打开）
-  - 法语卡片为入口性质（主页其余内容不做法语版），卡片文案为中法双语
-- **内容结构**：7 章节三语言名称对照列表。
+  - 语言选择是全站主页唯一保留四语言的区域；主页其余内容（英雄区、项目概况、内容结构、法律声明）均只使用中英双语
+- **内容结构**：7 章节中英双语名称对照列表。
 - **PDF 智能检测**：构建时自动检测 `dist/pdf/` 下对应 PDF 是否存在——存在则显示下载按钮（不显示文件大小），不存在则显示灰色禁用按钮并提示运行 `python3 build_pdf.py`。
 - `build_pdf.py` 导出完成后会自动重新生成主页以刷新 PDF 存在状态（无需手动运行 `build.py`）。
 - **底部法律声明**：页脚下方居中展示中英双语法律声明（独立出版物、FIRST® 商标归属、非官方材料），字号字重一致，由 `render_homepage()` 生成；后记（afterword.md）末尾（合影之后、落款之前）亦包含同款声明，各语言版随语言本地化。
@@ -165,7 +168,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ### 语言切换行为
 
-- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US)），选择后跳转到**当前页面**的对应语言版本（如 `zh-cn/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
+- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US) / Français），选择后跳转到**当前页面**的对应语言版本（如 `zh-cn/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
 - **移动端顶栏**：下拉选项栏（`<select>`）同样显示全称，切换即跳转。
 - 页面标题格式：`{页面名}｜{站点名}`（如 `队员须知｜FTC 32477 Origin 快速入门指南`）。
 - 侧边栏导航标题、页脚、`<title>` 均随语言自动本地化。
@@ -242,7 +245,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
         ▼ ① 构建（python3 build.py + python3 build_pdf.py）
 dist/（HTML 网站 + PDF 文档）
         │
-        ▼ ② 提交推送（git commit + git push）
+        ▼ ② 提交 + 推送（git commit 本地自动；git push 人工确认后执行）
 主仓库 ftc32477/quick-start-guide（main 分支）
         │
         ▼ ③ GitHub Actions 自动触发（.github/workflows/deploy.yml）
@@ -254,7 +257,7 @@ dist/（HTML 网站 + PDF 文档）
 ```
 
 - ① 本地构建：生成 28 页 HTML 与四语言 PDF（需 Chrome 与 Python 依赖，见"一、使用的工具与依赖"）
-- ② 提交推送：src 与 dist 一并提交到主仓库，换机迁移只需 clone 主仓库
+- ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，src 与 dist 一并进入主仓库，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 把 dist 整体同步为发布仓库的 docs（先清空再复制，避免残留旧文件；无变化时自动跳过提交）
 - ④ 站点生效：推送后约 1–2 分钟
 
@@ -283,12 +286,12 @@ dist/（HTML 网站 + PDF 文档）
 | 修改指南内容 | 改 `src/` 下的 .md → 本地构建 → 提交推送（发布全自动） |
 | 更换工作电脑 | `git clone https://github.com/ftc32477/quick-start-guide.git` 即可，无需其他配置 |
 | PAT 到期（2027-08-14 前） | 重新生成 PAT → 更新主仓库 `PAGES_TOKEN` Secret |
-| 发布新版本（如第 2 版） | 同步更新 `build.py`（主页下载链接 3 处）与 `build_pdf.py`（合并输出文件名 2 处）中的版本日期 |
+| 发布新版本（如第 2 版） | 同步更新 `build.py`（主页下载链接 4 处）与 `build_pdf.py`（合并输出文件名 2 处）中的版本日期 |
 | 自动发布失败排查 | 查看主仓库 Actions 页签运行日志；权限问题通常表现为推送被拒（403），检查 PAT 与 Secret |
 
 **注意：**
 
-- **本地推送必须手动确认**：从本地到主仓库的推送（`git push`）必须由人手动执行，**绝不接入自动推送**——本地的更新通常是大量细小改动，还可能包含需要更正的错误，只有确认内容无误后才能推送到云端。云端 Actions 只负责第二步（主仓库 → 发布仓库）的自动同步
+- **本地自动提交、云端手动推送**：每次修改完成后自动 `git commit` 到本地仓库（`git push` 之前本地历史保留在本地）；从本地到主仓库的推送必须由人审查后给出明确指示才执行，**绝不接入自动推送**——本地的更新通常是大量细小改动，还可能包含需要更正的错误，只有确认内容无误后才能推送到云端。云端 Actions 只负责第二步（主仓库 → 发布仓库）的自动同步
 - 旧的本机发布仓库克隆（`ftc32477.github.io/`）不再需要，可留作紧急备用
 - 不要直接在 GitHub 网页端修改发布仓库内容，一切以主仓库的 dist 为准
 
