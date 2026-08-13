@@ -326,7 +326,7 @@ Download and install, clicking "Next" throughout. Note the installation location
 |--------|------|------|
 | P1S (stock nozzle) | 0.4 mm | PLA Basic |
 | P1S (nozzle replaced, dedicated to carbon filament) | 0.6 mm | PETG-CF |
-| P1S (both units) | 0.4 mm | PLA Basic |
+| P2S (both units) | 0.4 mm | PLA Basic |
 
 **Process presets by part type:**
 

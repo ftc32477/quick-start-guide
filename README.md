@@ -221,7 +221,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 ### 表格打印规则
 
 - `table-layout:fixed` + `width:100%` —— 表格宽度严格限制在页面内
-- `word-break:break-all` + `overflow-wrap:break-word` —— 长 URL 等强制折行
+- `word-break:normal` + `overflow-wrap:break-word` —— 普通单词以词为单位换行（不切断单词）；仅当单个超长词/URL 超出单元格宽度时才在任意位置切断，防止触发整页缩放
 - 打印时缩小单元格内边距（6px 8px）与字号（12px）
 - `tr{page-break-inside:avoid}` —— 行不跨页截断
 

@@ -325,7 +325,7 @@ Téléchargez puis installez en cliquant sur « Suivant » ; faites attention a
 |--------|------|------|
 | P1S (buse d'origine) | 0.4 mm | PLA Basic |
 | P1S (buse remplacée, dédiée au filament carbone) | 0.6 mm | PETG-CF |
-| P1S (les deux unités) | 0.4 mm | PLA Basic |
+| P2S (les deux unités) | 0.4 mm | PLA Basic |
 
 **Choix des paramètres selon le type de pièce :**
 
