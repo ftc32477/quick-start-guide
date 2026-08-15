@@ -6,7 +6,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 - 封面（队徽、队名、版本日期）
 - 封二版权页（完整书名、版次、版本号、发布日期、编写人员、法律声明）
 - 页眉（"FTC 32477 Origin 快速入门指南" + 当前章回）
-- 页脚（居中"第X页，共X页"）
+- 页脚（居中"— X —"式页码）
 - 封三资源页（在线版本、历史版本、开源仓库、意见反馈链接）
 - 封底（居中队徽 + 右下角版本日期）
 - 全部内容随语言自动本地化
@@ -104,12 +104,12 @@ TOC_TITLES = {
     "fr": "Table des mati\u00e8res",
 }
 
-# 页脚文案（reportlab 盖印，x=当前页 y=总页数）与字体（内置 CID 字体）
+# 页脚文案（reportlab 盖印，x=当前页）与字体（内置 CID 字体）
 FOOTER_TEXTS = {
-    "zh-hans": "\u7b2c {x} \u9875\uff0c\u5171 {y} \u9875",
-    "zh-hant": "\u7b2c {x} \u9801\uff0c\u5171 {y} \u9801",
-    "en-us": "Page {x} of {y}",
-    "fr": "Page {x} sur {y}",
+    "zh-hans": "\u2014 {x} \u2014",
+    "zh-hant": "\u2014 {x} \u2014",
+    "en-us": "\u2014 {x} \u2014",
+    "fr": "\u2014 {x} \u2014",
 }
 FOOTER_FONTS = {
     "zh-hans": "STSong-Light",
