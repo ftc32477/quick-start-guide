@@ -364,6 +364,17 @@ def parse_markdown(text):
             out.append(f"<blockquote{cls}>{bq_content}</blockquote>")
             continue
 
+        # 右对齐行（--> 前缀，如落款）
+        right_match = re.match(r"^-->\s?(.+)$", line)
+        if right_match:
+            flush_paragraph(para_buf)
+            pending_ol_start = 0
+            out.append(
+                f'<p class="align-right">{inline_parse(right_match.group(1).strip())}</p>'
+            )
+            i += 1
+            continue
+
         # 空行 → 段落边界
         if line.strip() == "":
             flush_paragraph(para_buf)
@@ -776,6 +787,7 @@ tr:nth-child(even){background:#fafafa}
   .img-row .img-fig{flex:1 1 0}
   /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
   html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
+  .align-right{text-align:right}
   /* 标题间距：一级标题前空约两行，二级标题前空约一行 */
   h1{margin:3.2em 0 1em}
   h2{margin:2em 0 .8em}
