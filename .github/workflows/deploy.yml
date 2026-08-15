@@ -44,5 +44,14 @@ jobs:
             echo "No changes to deploy."
           else
             git commit -m "Auto-sync docs from quick-start-guide [skip ci]"
-            git push
+            for i in 1 2 3 4 5; do
+              if git push; then
+                exit 0
+              fi
+              echo "Push rejected (concurrent sync?), pulling with rebase and retrying..."
+              git pull --rebase
+              sleep 5
+            done
+            echo "Push failed after retries."
+            exit 1
           fi
