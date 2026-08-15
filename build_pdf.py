@@ -380,11 +380,7 @@ html,body{{margin:0;padding:0}}
 }}
 table{{width:100%;border-collapse:collapse;font-size:12.5px}}
 td{{padding:9px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
-td.k{{width:110px;color:#666}}
-html[lang="zh-hans"] td.k,html[lang="zh-hant"] td.k{{
-  text-align:justify;text-align-last:justify;text-justify:inter-ideograph;
-  letter-spacing:.5px
-}}
+td.k{{width:150px;color:#666;padding-right:16px}}
 .legal{{margin-top:36px;font-size:10px;color:#9a9a9a;line-height:1.7}}
 a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
 </style>
@@ -419,7 +415,7 @@ h1{{font-size:20px;color:#1a1a2e;margin:0 0 6px;font-weight:700}}
 .intro{{font-size:12px;color:#666;margin:0 0 16px;line-height:1.7}}
 table{{width:100%;border-collapse:collapse;font-size:12.5px}}
 td{{padding:9px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
-td.k{{width:110px;color:#666}}
+td.k{{width:150px;color:#666;padding-right:16px}}
 a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
 </style>
 </head>
