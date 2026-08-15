@@ -16,7 +16,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
 输出:
-    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底），
+    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底），
         dist/pdf/ 不入库（.gitignore），仅供本地自查纠错；正式发布版上传为 GitHub Release 资产，
         线上主页的下载按钮指向 Release 资产链接
 
@@ -852,7 +852,7 @@ def export(lang_filter=None, page_filter=None):
 
                     merged_path = os.path.join(
                         PDF_DIR,
-                        f"FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf",
+                        f"FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf",
                     )
                     merge_guide(
                         cover_pdf, rendered["preface"], toc_pdf,
@@ -861,7 +861,7 @@ def export(lang_filter=None, page_filter=None):
                     )
                     merged_ok = True
                     size_kb = os.path.getsize(merged_path) / 1024
-                    print(f"  [合并] FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf "
+                    print(f"  [合并] FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf "
                           f"（封面 + 前言 + 目录（{len(toc_entries)} 行）"
                           f" + {len(main_keys)} 章 + 封底，{size_kb:.0f} KB）")
                 except Exception as e:

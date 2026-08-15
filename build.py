@@ -106,15 +106,15 @@ LANGUAGES = {
 
 DEFAULT_LANG = "zh-hans"
 
-# PDF 下载链接指向的 GitHub Release（每次发版同步更新 TAG 与文件名中的日期）
+# PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v2026.08.01"
+RELEASE_TAG = "v1.0.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按四语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
     {
-        "tag": "v2026.08.01",
+        "tag": "v1.0.0",
         "date": "2026-08-14",
         "status": "released",
         "name": {
@@ -150,14 +150,14 @@ VERSIONS = [
             ],
         },
         "pdfs": {
-            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf",
-            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf",
-            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf",
-            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf",
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-fr.pdf",
         },
     },
     {
-        "tag": "v2026.09.01-preview",
+        "tag": "v1.1.0-preview",
         "date": "",
         "status": "preview",
         "name": {

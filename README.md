@@ -38,10 +38,10 @@ ftc_quick_start_guide/
 │   ├── fr/                    # 法语网站（Accueil + 7 pages + Historique des versions）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf  # 英文（美式）完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-en-us.pdf  # 英文（美式）完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-fr.pdf     # 法语完整指南
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -99,7 +99,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ## 三、PDF 结构（多语言自动本地化）
 
-每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr）结构如下：
+每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr）结构如下：
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 · 日期"（如"简体中文版 · 2026年8月第1版"，位置略上移）
 2. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）
@@ -275,12 +275,21 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | `main` | 稳定发布线：只在新版本发布时从 dev 合并，线上内容阶段性更新 | https://ftc32477.github.io/docs/ |
 | `dev` | 持续开发线：日常所有修改提交到这里，同事随时 clone/pull 同步 | https://ftc32477.github.io/docs/dev/（预览站） |
 
+**版本号规则（SemVer + 版次混合）：** Git tag 与 PDF 文件名采用 SemVer（`v主.次.修`），版权页采用"第 N 版 + 日期"（仅主版本 +1 时版次 +1）。
+
+| 改动类型 | 示例 | SemVer | 版权页 |
+|---------|------|--------|--------|
+| 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 第2版 |
+| 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录 | 次版本 +1 → v1.1.0 | 第1版（日期随新） |
+| 勘误：错别字/样式/小修正 | 编委名单、法律声明 | 修订 +1 → v1.1.1 | 第1版·第2次修订 |
+| 开发中 | — | v1.2.0-preview | （仅预览站） |
+
 **发版流程（每次一版）：**
 
 1. 在 dev 定稿全部内容
-2. 同步更新 `build.py`（`RELEASE_TAG` 常量 + 4 处下载文件名日期、`VERSIONS` 列表顶部追加该版本条目（name/changes 需四语言填写）并把 status 改为 `released`）与 `build_pdf.py`（合并输出文件名 2 处）、README 中的日期描述
-3. 本地运行 `build_pdf.py` 生成 4 份 PDF 并自查
-4. 创建新 Release（tag 如 `v2026.08.02`）并上传 4 份 PDF 作为资产
+2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/文件名/name/changes 需四语言填写）并把 status 改为 `released`）与 `build_pdf.py`、README 中的版本描述；版权页日期按需更新
+3. 本地运行 `build_pdf.py` 生成 4 份 PDF（新文件名）并自查
+4. 创建新 Release（tag 如 `v1.1.0`）并上传 4 份 PDF 作为资产
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 
 ### 历史版本页（{lang}/versions.html）
