@@ -39,7 +39,7 @@ Profitez de la compétition, profitez de la création, et atteignons de nouveaux
 
 ---
 
-**Avis juridique :** Ce guide est une publication indépendante de l'équipe FTC 32477 Origin. Notre équipe n'est ni affiliée à FIRST® (For Inspiration and Recognition of Science and Technology), ni approuvée ni parrainée par cette organisation. FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge et FTC® sont des marques déposées de FIRST. Tous les designs, le code et les ressources partagés dans ce guide sont fournis par les membres de notre équipe et ne constituent pas des documents officiels de FIRST.
+**Avis juridique :** Ce guide est un produit indépendant de l'équipe FTC 32477 Origin. Notre équipe n'est ni affiliée à FIRST® (For Inspiration and Recognition of Science and Technology), ni approuvée ni parrainée par cette organisation. FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge et FTC® sont des marques déposées de FIRST. Les designs, le code et les ressources partagés dans ce guide sont principalement fournis par les membres de notre équipe et peuvent également intégrer des matériaux open source et les contributions d'autres personnes ; ils ne constituent pas des documents officiels de FIRST.
 
 ---
 

@@ -39,7 +39,7 @@ FTC 是一場硬核的科技競技，但它更是一個關於成長與陪伴的�
 
 ---
 
-**法律聲明：** 本指南是 FTC 32477 Origin 隊伍的獨立出版物。本隊伍與 FIRST®（For Inspiration and Recognition of Science and Technology）無隸屬、背書或贊助關係。FIRST®、FIRST® Robotics Competition、FRC®、FIRST® Tech Challenge 及 FTC® 均為 FIRST 的註冊商標。本指南中分享的所有隊伍設計、程式碼與資源均由隊伍成員提供，不代表 FIRST 官方材料。
+**法律聲明：** 本指南是 FTC 32477 Origin 隊伍的獨立出產品。本隊伍與 FIRST®（For Inspiration and Recognition of Science and Technology）無隸屬、背書或贊助關係。FIRST®、FIRST® Robotics Competition、FRC®、FIRST® Tech Challenge 及 FTC® 均為 FIRST 的註冊商標。本指南中分享的設計、程式碼與資源以隊伍成員提供的內容為主，亦可能包含經整理合併的開源材料與其他貢獻者的成果，不代表 FIRST 官方材料。
 
 ---
 

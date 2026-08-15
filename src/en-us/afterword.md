@@ -39,7 +39,7 @@ Enjoy the competition, enjoy creating, and let us reach new heights!
 
 ---
 
-**Legal Notice:** This guide is an independent publication of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST® (For Inspiration and Recognition of Science and Technology). FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge, and FTC® are registered trademarks of FIRST. All team designs, code, and resources shared in this guide are provided by our team members and do not represent official FIRST materials.
+**Legal Notice:** This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST® (For Inspiration and Recognition of Science and Technology). FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge, and FTC® are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.
 
 ---
 

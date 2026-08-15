@@ -1094,8 +1094,8 @@ def render_portal():
 <footer>
   32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u7f16\u5199\u5c0f\u7ec4 \u00b7 Editorial Team \u00b7 2026\u5e748\u6708
   <div class="legal">
-    <p>Legal Notice: This guide is an independent publication of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. All team designs, code, and resources shared in this guide are provided by our team members and do not represent official FIRST materials.</p>
-    <p>\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u51fa\u7248\u7269\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u6240\u6709\u961f\u4f0d\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u5747\u7531\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002</p>
+    <p>Legal Notice: This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.</p>
+    <p>\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u51fa\u4ea7\u54c1\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u4ee5\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\u7684\u5185\u5bb9\u4e3a\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7ecf\u6574\u7406\u5408\u5e76\u7684\u5f00\u6e90\u6750\u6599\u4e0e\u5176\u4ed6\u8d21\u732e\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002</p>
   </div>
 </footer>
 
@@ -1116,11 +1116,12 @@ LANG_HOME_TEXTS = {
             ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
         ],
         "download_title": "\u4e0b\u8f7d",
-        "download_btn": "\u2193 \u4e0b\u8f7d PDF\uff08\u672c\u8bed\u8a00\u5408\u5e76\u7248\uff09",
+        "download_desc": "\u4e0b\u8f7d\u7684\u662f\u79bb\u7ebf\u7248\u672c\uff1a\u65e0\u9700\u8054\u7f51\u5373\u53ef\u9605\u8bfb\uff0c\u4e5f\u53ef\u81ea\u884c\u6253\u5370\u6216\u5206\u4eab\u5b58\u6863\u3002",
+        "download_btn": "\u2193 \u4e0b\u8f7d PDF",
         "chapters_title": "\u5185\u5bb9\u7ed3\u6784",
         "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u56db\u8bed\u8a00 PDF\u3002",
         "versions_btn": "\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192",
-        "legal": "\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u51fa\u7248\u7269\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u6240\u6709\u961f\u4f0d\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u5747\u7531\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
+        "legal": "\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u51fa\u4ea7\u54c1\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u4ee5\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\u7684\u5185\u5bb9\u4e3a\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7ecf\u6574\u7406\u5408\u5e76\u7684\u5f00\u6e90\u6750\u6599\u4e0e\u5176\u4ed6\u8d21\u732e\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
     },
     "zh-hant": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u9580\u6307\u5357",
@@ -1133,11 +1134,12 @@ LANG_HOME_TEXTS = {
             ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
         ],
         "download_title": "\u4e0b\u8f09",
-        "download_btn": "\u2193 \u4e0b\u8f09 PDF\uff08\u672c\u8a9e\u8a00\u5408\u4f75\u7248\uff09",
+        "download_desc": "\u4e0b\u8f09\u7684\u662f\u96e2\u7dda\u7248\u672c\uff1a\u7121\u9700\u9023\u7dda\u5373\u53ef\u95b1\u8b80\uff0c\u4e5f\u53ef\u81ea\u884c\u5217\u5370\u6216\u5206\u4eab\u5b58\u6a94\u3002",
+        "download_btn": "\u2193 \u4e0b\u8f09 PDF",
         "chapters_title": "\u5167\u5bb9\u7d50\u69cb",
         "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u4e26\u4e0b\u8f09\u56db\u8a9e\u8a00 PDF\u3002",
         "versions_btn": "\u67e5\u770b\u6b77\u53f2\u7248\u672c \u2192",
-        "legal": "\u6cd5\u5f8b\u8072\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u968a\u4f0d\u7684\u7368\u7acb\u51fa\u7248\u7269\u3002\u672c\u968a\u4f0d\u8207 FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u7121\u96b8\u5c6c\u3001\u80cc\u66f8\u6216\u8d0a\u52a9\u95dc\u4fc2\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u70ba FIRST \u7684\u8a3b\u518a\u5546\u6a19\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u6240\u6709\u968a\u4f0d\u8a2d\u8a08\u3001\u7a0b\u5f0f\u78bc\u8207\u8cc7\u6e90\u5747\u7531\u968a\u4f0d\u6210\u54e1\u63d0\u4f9b\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
+        "legal": "\u6cd5\u5f8b\u8072\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u968a\u4f0d\u7684\u7368\u7acb\u51fa\u7522\u54c1\u3002\u672c\u968a\u4f0d\u8207 FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u7121\u96b8\u5c6c\u3001\u80cc\u66f8\u6216\u8d0a\u52a9\u95dc\u4fc2\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u70ba FIRST \u7684\u8a3b\u518a\u5546\u6a19\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8a2d\u8a08\u3001\u7a0b\u5f0f\u78bc\u8207\u8cc7\u6e90\u4ee5\u968a\u4f0d\u6210\u54e1\u63d0\u4f9b\u7684\u5167\u5bb9\u70ba\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7d93\u6574\u7406\u5408\u4f75\u7684\u958b\u6e90\u6750\u6599\u8207\u5176\u4ed6\u8ca2\u737b\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
     },
     "en-us": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Quick Start Guide",
@@ -1150,11 +1152,12 @@ LANG_HOME_TEXTS = {
             ("Latest Version", "1st Edition \u00b7 August 2026"),
         ],
         "download_title": "Download",
-        "download_btn": "\u2193 Download PDF (merged edition in this language)",
+        "download_desc": "Download the offline edition: read it without an internet connection, print it, or share and archive it.",
+        "download_btn": "\u2193 Download PDF",
         "chapters_title": "Table of Contents",
         "versions_desc": "See what changed in each release and download its PDFs in four languages.",
         "versions_btn": "View Version History \u2192",
-        "legal": "Legal Notice: This guide is an independent publication of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. All team designs, code, and resources shared in this guide are provided by our team members and do not represent official FIRST materials.",
+        "legal": "Legal Notice: This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.",
     },
     "fr": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Guide de d\u00e9marrage rapide",
@@ -1167,11 +1170,12 @@ LANG_HOME_TEXTS = {
             ("Derni\u00e8re version", "1re \u00e9dition \u00b7 ao\u00fbt 2026"),
         ],
         "download_title": "T\u00e9l\u00e9charger",
-        "download_btn": "\u2193 T\u00e9l\u00e9charger le PDF (\u00e9dition fusionn\u00e9e dans cette langue)",
+        "download_desc": "T\u00e9l\u00e9chargez l'\u00e9dition hors ligne : lisez-la sans connexion Internet, imprimez-la ou partagez-la et archivez-la.",
+        "download_btn": "\u2193 T\u00e9l\u00e9charger le PDF",
         "chapters_title": "Table des mati\u00e8res",
         "versions_desc": "Dates de publication et principaux changements de chaque version, avec t\u00e9l\u00e9chargement des PDF en quatre langues.",
         "versions_btn": "Voir l'historique des versions \u2192",
-        "legal": "Mention l\u00e9gale : ce guide est une publication ind\u00e9pendante de la FTC Team 32477 Origin. Notre \u00e9quipe n'est ni affili\u00e9e \u00e0 FIRST\u00ae (For Inspiration and Recognition of Science and Technology), ni approuv\u00e9e ni sponsoris\u00e9e par celui-ci. FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge et FTC\u00ae sont des marques d\u00e9pos\u00e9es de FIRST. Tous les concepts, codes et ressources d'\u00e9quipe partag\u00e9s dans ce guide sont fournis par les membres de notre \u00e9quipe et ne repr\u00e9sentent pas des documents officiels FIRST.",
+        "legal": "Mention l\u00e9gale : ce guide est un produit ind\u00e9pendant de la FTC Team 32477 Origin. Notre \u00e9quipe n'est ni affili\u00e9e \u00e0 FIRST\u00ae (For Inspiration and Recognition of Science and Technology), ni approuv\u00e9e ni sponsoris\u00e9e par celui-ci. FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge et FTC\u00ae sont des marques d\u00e9pos\u00e9es de FIRST. Les designs, le code et les ressources partag\u00e9s dans ce guide sont principalement fournis par les membres de notre \u00e9quipe et peuvent \u00e9galement int\u00e9grer des mat\u00e9riaux open source et les contributions d'autres personnes ; ils ne constituent pas des documents officiels de FIRST.",
     },
 }
 
@@ -1193,6 +1197,7 @@ LANG_HOME_CSS = r"""
 .lh-text{font-weight:500}
 .lh-pdf{display:inline-block;background:var(--dark);color:#fff;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:600;text-decoration:none}
 .lh-pdf:hover{background:var(--slate)}
+.lh-download-desc{color:#666;font-size:14px;margin-bottom:12px}
 .lh-note{color:#999;font-size:13px}
 .lh-chapters{margin:0;padding:0;list-style:none}
 .lh-chapters li{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 16px;margin-bottom:8px;font-size:14px}
@@ -1303,6 +1308,7 @@ def render_lang_homepage(lang_key):
     </section>
     <section id="download">
       <h2>{t["download_title"]}</h2>
+      <p class="lh-download-desc">{t["download_desc"]}</p>
       {pdf_block}
     </section>
     <section id="chapters">
