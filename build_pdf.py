@@ -244,6 +244,221 @@ html,body{{margin:0;padding:0}}
 </html>"""
 
 
+# 版权页（封二）与资源更新页（封三）文案
+IMPRINT_TEXTS = {
+    "zh-hans": {
+        "heading": "\u7248\u6743\u4fe1\u606f",
+        "fields": [
+            ("\u4e66\u540d", "\u5feb\u901f\u5165\u95e8\u6307\u5357"),
+            ("\u7248\u672c\u53f7", "{tag}"),
+            ("\u7248\u6b21", "{edition}"),
+            ("\u53d1\u5e03\u65e5\u671f", "{date}"),
+            ("\u8bed\u8a00\u7248\u672c", "{lang_edition}"),
+            ("\u4e3b\u7f16", "\u4ed8\u4fee\u9f50"),
+            ("\u7f16\u59d4", "\u675c\u661f\u6d32\u3001\u8c22\u91d1\u707f \u7b49"),
+            ("\u51fa\u54c1", "FTC 32477 Origin \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
+            ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
+        ],
+    },
+    "zh-hant": {
+        "heading": "\u7248\u6b0a\u8cc7\u8a0a",
+        "fields": [
+            ("\u66f8\u540d", "\u5feb\u901f\u5165\u9580\u6307\u5357"),
+            ("\u7248\u672c\u865f", "{tag}"),
+            ("\u7248\u6b21", "{edition}"),
+            ("\u767c\u5e03\u65e5\u671f", "{date}"),
+            ("\u8a9e\u8a00\u7248\u672c", "{lang_edition}"),
+            ("\u4e3b\u7de8", "\u4ed8\u4fee\u9f4a"),
+            ("\u7de8\u59d4", "\u675c\u661f\u6d32\u3001\u8b1d\u91d1\u71e6 \u7b49"),
+            ("\u51fa\u54c1", "FTC 32477 Origin \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
+            ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u901e\u5340\u865f 100039"),
+        ],
+    },
+    "en-us": {
+        "heading": "Imprint",
+        "fields": [
+            ("Title", "Quick Start Guide"),
+            ("Version", "{tag}"),
+            ("Edition", "{edition}"),
+            ("Release Date", "{date}"),
+            ("Language Edition", "{lang_edition}"),
+            ("Chief Editor", "Fu Xiuqi"),
+            ("Editorial Board", "Du Xingzhou, Xie Jincan, et al."),
+            ("Produced by", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
+            ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
+        ],
+    },
+    "fr": {
+        "heading": "Mentions l\u00e9gales",
+        "fields": [
+            ("Titre", "Guide de d\u00e9marrage rapide"),
+            ("Version", "{tag}"),
+            ("\u00c9dition", "{edition}"),
+            ("Date de publication", "{date}"),
+            ("\u00c9dition linguistique", "{lang_edition}"),
+            ("R\u00e9dacteur en chef", "Fu Xiuqi"),
+            ("Comit\u00e9 de r\u00e9daction", "Du Xingzhou, Xie Jincan, et al."),
+            ("Produit par", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
+            ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
+        ],
+    },
+}
+
+RESOURCE_TEXTS = {
+    "zh-hans": {
+        "heading": "\u8d44\u6e90\u4e0e\u66f4\u65b0",
+        "intro": "\u672c\u6307\u5357\u6301\u7eed\u4fee\u8ba2\uff0c\u53ef\u901a\u8fc7\u4ee5\u4e0b\u6e20\u9053\u83b7\u53d6\u6700\u65b0\u5185\u5bb9\uff1a",
+        "items": [
+            ("\u5728\u7ebf\u7248\u672c", "https://ftc32477.github.io/docs/"),
+            ("\u5386\u53f2\u7248\u672c", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("\u5f00\u6e90\u4ed3\u5e93", "https://github.com/ftc32477/quick-start-guide"),
+            ("\u610f\u89c1\u53cd\u9988", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+        "changelog": "\u7248\u672c\u53d8\u66f4",
+        "col_tag": "\u7248\u672c\u53f7",
+        "col_date": "\u53d1\u5e03\u65e5\u671f",
+        "col_changes": "\u4e3b\u8981\u53d8\u5316",
+    },
+    "zh-hant": {
+        "heading": "\u8cc7\u6e90\u8207\u66f4\u65b0",
+        "intro": "\u672c\u6307\u5357\u6301\u7e8c\u4fee\u8a02\uff0c\u53ef\u900f\u904e\u4ee5\u4e0b\u7ba1\u9053\u53d6\u5f97\u6700\u65b0\u5167\u5bb9\uff1a",
+        "items": [
+            ("\u7dda\u4e0a\u7248\u672c", "https://ftc32477.github.io/docs/"),
+            ("\u6b77\u53f2\u7248\u672c", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("\u958b\u6e90\u5009\u5eab", "https://github.com/ftc32477/quick-start-guide"),
+            ("\u610f\u898b\u53cd\u994b", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+        "changelog": "\u7248\u672c\u8b8a\u66f4",
+        "col_tag": "\u7248\u672c\u865f",
+        "col_date": "\u767c\u5e03\u65e5\u671f",
+        "col_changes": "\u4e3b\u8981\u8b8a\u5316",
+    },
+    "en-us": {
+        "heading": "Resources & Updates",
+        "intro": "This guide is revised continuously. Get the latest content through the following channels:",
+        "items": [
+            ("Online edition", "https://ftc32477.github.io/docs/"),
+            ("Version history", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("Open-source repository", "https://github.com/ftc32477/quick-start-guide"),
+            ("Feedback", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+        "changelog": "Release History",
+        "col_tag": "Version",
+        "col_date": "Release Date",
+        "col_changes": "Key Changes",
+    },
+    "fr": {
+        "heading": "Ressources & Mises \u00e0 jour",
+        "intro": "Ce guide est r\u00e9vis\u00e9 en continu. Obtenez les derniers contenus par les canaux suivants :",
+        "items": [
+            ("\u00c9dition en ligne", "https://ftc32477.github.io/docs/"),
+            ("Historique des versions", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("D\u00e9p\u00f4t open source", "https://github.com/ftc32477/quick-start-guide"),
+            ("Retours", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+        "changelog": "Historique des versions",
+        "col_tag": "Version",
+        "col_date": "Date de publication",
+        "col_changes": "Principaux changements",
+    },
+}
+
+
+def render_imprint(lang_key):
+    """版权页（封二）：版本号 / 版次 / 发布日期 / 编者 / 出品 / 法律声明。"""
+    t = dict(IMPRINT_TEXTS["zh-hans"])
+    t.update(IMPRINT_TEXTS[lang_key])
+    released = [v for v in build_mod.VERSIONS if v.get("status") != "preview"]
+    latest = released[0] if released else {}
+    edition = (latest.get("name", {}).get(lang_key)
+               or latest.get("name", {}).get("zh-hans", ""))
+    release_date = build_mod.format_release_date(lang_key, latest.get("date", ""))
+    lang_edition = PDF_TEXTS[lang_key].get("lang", PDF_TEXTS["zh-hans"]["lang"])
+    legal = build_mod.LANG_HOME_TEXTS[lang_key]["legal"]
+
+    rows = "".join(
+        f'<tr><td class="k">{k}</td><td>{v.format(tag=latest.get("tag", ""), edition=edition, date=release_date, lang_edition=lang_edition)}</td></tr>'
+        for k, v in t["fields"]
+    )
+    return f"""<!DOCTYPE html>
+<html lang="{lang_key}">
+<head>
+<meta charset="UTF-8">
+<style>
+html,body{{margin:0;padding:0}}
+.wrap{{font-family:{FONT_FAMILY};color:#2c2c2c;width:100%}}
+h1{{font-size:20px;color:#1a1a2e;margin:0 0 18px;font-weight:700}}
+table{{width:100%;border-collapse:collapse;font-size:12.5px}}
+td{{padding:9px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
+td.k{{width:110px;color:#666}}
+.legal{{margin-top:36px;font-size:10px;color:#9a9a9a;line-height:1.7}}
+a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>{t["heading"]}</h1>
+  <table>
+{rows}
+  </table>
+  <p class="legal">{legal}</p>
+</div>
+</body>
+</html>"""
+
+
+def render_resources(lang_key):
+    """资源与更新页（封三）：获取渠道 + 版本变更简表。"""
+    t = dict(RESOURCE_TEXTS["zh-hans"])
+    t.update(RESOURCE_TEXTS[lang_key])
+    items = "".join(
+        f'<tr><td class="k">{k}</td><td><a href="{v.format(lang=lang_key)}">{v.format(lang=lang_key)}</a></td></tr>'
+        for k, v in t["items"]
+    )
+    released = [v for v in build_mod.VERSIONS if v.get("status") != "preview"]
+    rows = ""
+    for v in released:
+        changes = "；".join(v.get("changes", {}).get(lang_key) or [])
+        date_str = build_mod.format_release_date(lang_key, v.get("date", ""))
+        rows += (
+            f'<tr><td class="mono">{v["tag"]}</td><td>{date_str}</td>'
+            f'<td>{changes}</td></tr>'
+        )
+    return f"""<!DOCTYPE html>
+<html lang="{lang_key}">
+<head>
+<meta charset="UTF-8">
+<style>
+html,body{{margin:0;padding:0}}
+.wrap{{font-family:{FONT_FAMILY};color:#2c2c2c;width:100%}}
+h1{{font-size:20px;color:#1a1a2e;margin:0 0 6px;font-weight:700}}
+.intro{{font-size:12px;color:#666;margin:0 0 16px;line-height:1.7}}
+table{{width:100%;border-collapse:collapse;font-size:12px}}
+td{{padding:8px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
+td.k{{width:110px;color:#666}}
+td.mono{{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:600;color:#1a1a2e;white-space:nowrap}}
+a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
+h2{{font-size:15px;color:#1a1a2e;margin:26px 0 10px;font-weight:700}}
+.hdr td{{border-bottom:2px solid #1a1a2e;color:#1a1a2e;font-weight:600}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>{t["heading"]}</h1>
+  <p class="intro">{t["intro"]}</p>
+  <table>
+{items}
+  </table>
+  <h2>{t["changelog"]}</h2>
+  <table>
+    <tr class="hdr"><td class="k">{t["col_tag"]}</td><td>{t["col_date"]}</td><td>{t["col_changes"]}</td></tr>
+{rows}
+  </table>
+</div>
+</body>
+</html>"""
+
+
 def header_template(lang_key, chapter_title):
     site = build_mod.LANGUAGES[lang_key]["site_title"]
     return (
@@ -573,11 +788,11 @@ def chapter_h2_pages(tmp_pdf, h2_count):
     return result[:h2_count]
 
 
-def merge_guide(cover_pdf, preface_pdf, toc_pdf, main_pdfs, back_pdf,
-                out_path, lang_key, toc_entries):
+def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
+                resources_pdf, back_pdf, out_path, lang_key, toc_entries):
     """
     合并完整指南并盖印页脚：
-    - 封面/封底不编号
+    - 封面/封二（版权页）/封三（资源页）/封底不编号
     - 前言与目录用罗马数字（仅当前页码，无总页码），前言从 I 连续
     - 正文（队员须知起）用阿拉伯数字连续编号并标注总页数
     - toc_entries: [{title, level, dest}]，dest 为全书 0 基目标页；
@@ -604,6 +819,9 @@ def merge_guide(cover_pdf, preface_pdf, toc_pdf, main_pdfs, back_pdf,
 
     # 封面（不编号）
     writer.append(cover_pdf)
+
+    # 封二（版权页，不编号）
+    writer.append(imprint_pdf)
 
     # 前言：罗马数字，仅当前页码
     preface_reader = PdfReader(preface_pdf)
@@ -635,6 +853,9 @@ def merge_guide(cover_pdf, preface_pdf, toc_pdf, main_pdfs, back_pdf,
     main_start_index = len(writer.pages)
     for p in main_pdfs:
         stamp(PdfReader(p), arabic_text)
+
+    # 封三（资源与更新页，不编号）
+    writer.append(resources_pdf)
 
     # 封底（不编号）
     writer.append(back_pdf)
@@ -765,19 +986,27 @@ def export(lang_filter=None, page_filter=None):
                 except Exception as e:
                     print(f"  [失败] {page_key}: {e}")
 
-            # 完整指南：封面 + 前言(罗马) + 目录(罗马) + 正文(阿拉伯) + 封底
+            # 完整指南：封面 + 封二(版权页) + 前言(罗马) + 目录(罗马) + 正文(阿拉伯) + 封三(资源页) + 封底
             merged_ok = False
             if set(PAGE_KEYS).issubset(rendered) and not page_filter:
                 cover_html = os.path.join(tmp_dir, f"cover-{lang}.html")
                 back_html = os.path.join(tmp_dir, f"back-{lang}.html")
+                imprint_html = os.path.join(tmp_dir, f"imprint-{lang}.html")
+                resources_html = os.path.join(tmp_dir, f"resources-{lang}.html")
                 toc_html = os.path.join(tmp_dir, f"toc-{lang}.html")
                 cover_pdf = os.path.join(tmp_dir, f"cover-{lang}.pdf")
                 back_pdf = os.path.join(tmp_dir, f"back-{lang}.pdf")
+                imprint_pdf = os.path.join(tmp_dir, f"imprint-{lang}.pdf")
+                resources_pdf = os.path.join(tmp_dir, f"resources-{lang}.pdf")
                 toc_pdf = os.path.join(tmp_dir, f"toc-{lang}.pdf")
                 with open(cover_html, "w", encoding="utf-8") as f:
                     f.write(render_cover(lang))
                 with open(back_html, "w", encoding="utf-8") as f:
                     f.write(render_back(lang))
+                with open(imprint_html, "w", encoding="utf-8") as f:
+                    f.write(render_imprint(lang))
+                with open(resources_html, "w", encoding="utf-8") as f:
+                    f.write(render_resources(lang))
                 try:
                     client.navigate("file://" + cover_html)
                     client.print_to_pdf(cover_pdf, margin_top=0, margin_bottom=0,
@@ -785,6 +1014,10 @@ def export(lang_filter=None, page_filter=None):
                     client.navigate("file://" + back_html)
                     client.print_to_pdf(back_pdf, margin_top=0, margin_bottom=0,
                                         margin_left=0, margin_right=0)
+                    client.navigate("file://" + imprint_html)
+                    client.print_to_pdf(imprint_pdf)
+                    client.navigate("file://" + resources_html)
+                    client.print_to_pdf(resources_pdf)
 
                     # 计算正文各章起始页码（队员须知 = 第 1 页）
                     from pypdf import PdfReader as _R
@@ -830,13 +1063,13 @@ def export(lang_filter=None, page_filter=None):
                         header=header_template(lang, TOC_TITLES[lang]),
                     )
 
-                    # 目标页（全书 0 基）：封面=0，前言=1…
+                    # 目标页（全书 0 基）：封面=0，封二=1，前言=2…
                     preface_pages = len(_R(rendered["preface"]).pages)
                     toc_pages = len(_R(toc_pdf).pages)
-                    base = 1 + preface_pages + toc_pages
+                    base = 2 + preface_pages + toc_pages
 
                     toc_entries = [
-                        {"title": preface_title, "level": 1, "dest": 1}
+                        {"title": preface_title, "level": 1, "dest": 2}
                     ]
                     for k in main_keys:
                         title = build_mod.LANGUAGES[lang]["pages"][k]
@@ -855,15 +1088,15 @@ def export(lang_filter=None, page_filter=None):
                         f"FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf",
                     )
                     merge_guide(
-                        cover_pdf, rendered["preface"], toc_pdf,
-                        [rendered[k] for k in main_keys], back_pdf,
+                        cover_pdf, imprint_pdf, rendered["preface"], toc_pdf,
+                        [rendered[k] for k in main_keys], resources_pdf, back_pdf,
                         merged_path, lang, toc_entries,
                     )
                     merged_ok = True
                     size_kb = os.path.getsize(merged_path) / 1024
                     print(f"  [合并] FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf "
-                          f"（封面 + 前言 + 目录（{len(toc_entries)} 行）"
-                          f" + {len(main_keys)} 章 + 封底，{size_kb:.0f} KB）")
+                          f"（封面 + 封二 + 前言 + 目录（{len(toc_entries)} 行）"
+                          f" + {len(main_keys)} 章 + 封三 + 封底，{size_kb:.0f} KB）")
                 except Exception as e:
                     print(f"  [失败] 封面/目录/封底: {e}")
 
