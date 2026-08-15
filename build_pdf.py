@@ -376,7 +376,7 @@ def render_imprint(lang_key):
 @page {{ size: A4; margin: 0; }}
 html,body{{margin:0;padding:0}}
 .wrap{{
-  width:100vw;height:100vh;box-sizing:border-box;padding:0.7in 0.75in;
+  width:100vw;height:100vh;box-sizing:border-box;padding:1in 1.25in;
   font-family:{FONT_FAMILY};color:#2c2c2c;
   display:flex;flex-direction:column;justify-content:flex-end
 }}
