@@ -30,8 +30,14 @@ jobs:
 
       - name: Sync dist to docs
         run: |
-          rm -rf "pages-repo/${{ steps.target.outputs.target }}"
-          mkdir -p "pages-repo/${{ steps.target.outputs.target }}"
+          if [ "${{ steps.target.outputs.target }}" = "docs" ]; then
+            # 正式站点整体重建，但保留 docs/dev 开发预览目录
+            mkdir -p pages-repo/docs
+            find pages-repo/docs -mindepth 1 -maxdepth 1 ! -name dev -exec rm -rf {} +
+          else
+            rm -rf "pages-repo/${{ steps.target.outputs.target }}"
+            mkdir -p "pages-repo/${{ steps.target.outputs.target }}"
+          fi
           cp -R dist/. "pages-repo/${{ steps.target.outputs.target }}/"
 
       - name: Commit and push
