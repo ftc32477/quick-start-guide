@@ -1422,7 +1422,7 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u6700\u65b0\u7248\u672c",
         "badge_preview": "\u9884\u89c8",
         "pdf_note": "PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "\u82f1\u6587\uff08\u7f8e\u56fd\uff09", "fr": "\u6cd5\u6587"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
     },
     "zh-hant": {
         "page_title": "\u6b77\u53f2\u7248\u672c",
@@ -1435,7 +1435,7 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u6700\u65b0\u7248\u672c",
         "badge_preview": "\u9810\u89bd",
         "pdf_note": "PDF \u5f85\u6b63\u5f0f\u767c\u5e03\u5f8c\u63d0\u4f9b\u4e0b\u8f09\u3002",
-        "pdf_langs": {"zh-hans": "\u7c21\u9ad4\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
     },
     "en-us": {
         "page_title": "Version History",
@@ -1448,7 +1448,7 @@ VERSIONS_TEXTS = {
         "badge_latest": "Latest",
         "badge_preview": "Preview",
         "pdf_note": "PDFs will be available after the official release.",
-        "pdf_langs": {"zh-hans": "Simplified Chinese", "zh-hant": "Traditional Chinese", "en-us": "English (US)", "fr": "French"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
     },
     "fr": {
         "page_title": "Historique des versions",
@@ -1461,7 +1461,7 @@ VERSIONS_TEXTS = {
         "badge_latest": "Derni\u00e8re version",
         "badge_preview": "Aper\u00e7u",
         "pdf_note": "Les PDF seront disponibles apr\u00e8s la publication officielle.",
-        "pdf_langs": {"zh-hans": "Chinois simplifi\u00e9", "zh-hant": "Chinois traditionnel", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
     },
 }
 
