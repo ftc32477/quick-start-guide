@@ -107,18 +107,44 @@ RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
 RELEASE_TAG = "v2026.08.01"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
+# name / changes 均按四语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
     {
         "tag": "v2026.08.01",
-        "name": "2026年8月第1版",
-        "date": "2026-08-01",
+        "date": "2026-08-14",
         "status": "released",
-        "changes": [
-            "首次发布：七章完整内容（前言、队员须知、建模设计、结构建造、程序设计、外部联络、后记）",
-            "四语言版本：简体中文、繁體中文、English (US)、Français",
-            "合并版 PDF（封面 + 目录 + 正文 + 封底）与在线网站同步发布",
-            "主页语言选择落地页与响应式布局",
-        ],
+        "name": {
+            "zh-hans": "2026年8月第1版",
+            "zh-hant": "2026年8月第1版",
+            "en-us": "August 2026, 1st Edition",
+            "fr": "Août 2026, 1re édition",
+        },
+        "changes": {
+            "zh-hans": [
+                "首次发布：七章完整内容（前言、队员须知、建模设计、结构建造、程序设计、外部联络、后记）",
+                "四语言版本：简体中文、繁體中文、English (US)、Français",
+                "合并版 PDF（封面 + 目录 + 正文 + 封底）与在线网站同步发布",
+                "主页语言选择落地页与响应式布局",
+            ],
+            "zh-hant": [
+                "首次發布：七章完整內容（前言、隊員須知、建模設計、結構建造、程式設計、外部聯絡、後記）",
+                "四語言版本：簡體中文、繁體中文、English (US)、Français",
+                "合併版 PDF（封面 + 目錄 + 正文 + 封底）與線上網站同步發布",
+                "首頁語言選擇落地頁與響應式布局",
+            ],
+            "en-us": [
+                "First release: all 7 chapters (Preface, Team Essentials, Modeling & Design, Hardware & Build, Programming, Outreach & PR, Afterword)",
+                "Four language editions: Simplified Chinese, Traditional Chinese, English (US), Français",
+                "Merged PDF (cover + table of contents + main content + back cover) published alongside the website",
+                "Language-selection landing page with responsive layout",
+            ],
+            "fr": [
+                "Première publication : les 7 chapitres complets (Préface, Essentiels de l'équipe, Modélisation & Conception, Matériel & Construction, Programmation, Sensibilisation & Relations publiques, Postface)",
+                "Quatre versions linguistiques : chinois simplifié, chinois traditionnel, English (US), Français",
+                "PDF fusionné (couverture + table des matières + contenu + quatrième de couverture) publié en même temps que le site",
+                "Page d'accueil de sélection de langue avec mise en page responsive",
+            ],
+        },
         "pdfs": {
             "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf",
             "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf",
@@ -128,12 +154,28 @@ VERSIONS = [
     },
     {
         "tag": "v2026.09.01-preview",
-        "name": "2026年9月第1版（开发中）",
         "date": "",
         "status": "preview",
-        "changes": [
-            "下一版本开发中：本条目仅用于演示开发预览（仅 dev 预览站显示），正式发布后替换为实际改动说明",
-        ],
+        "name": {
+            "zh-hans": "2026年9月第1版（开发中）",
+            "zh-hant": "2026年9月第1版（開發中）",
+            "en-us": "September 2026, 1st Edition (in development)",
+            "fr": "Septembre 2026, 1re édition (en développement)",
+        },
+        "changes": {
+            "zh-hans": [
+                "下一版本开发中：本条目仅用于演示开发预览（仅 dev 预览站显示），正式发布后替换为实际改动说明",
+            ],
+            "zh-hant": [
+                "下一版本開發中：本條目僅用於演示開發預覽（僅 dev 預覽站顯示），正式發布後替換為實際改動說明",
+            ],
+            "en-us": [
+                "Next release under development: this entry demonstrates the preview feature (shown only on the dev preview site) and will be replaced with actual release notes when published.",
+            ],
+            "fr": [
+                "Prochaine version en développement : cette entrée illustre la fonction d'aperçu (affichée uniquement sur le site d'aperçu dev) et sera remplacée par les notes de version réelles lors de la publication.",
+            ],
+        },
         "pdfs": {},
     },
 ]
@@ -974,7 +1016,6 @@ footer .legal p:last-child{margin-bottom:0}
 /* 历史版本入口 */
 .version-entry{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .version-entry .btn{display:inline-block;padding:10px 26px;width:auto}
-.version-entry-en{color:var(--muted);font-size:13px;font-weight:600}
 
 @media(max-width:600px){
   .hero{padding:48px 20px 44px}
@@ -1143,12 +1184,12 @@ def render_homepage():
     <div class="about-simple">
       <p class="about-line">
         <span class="tag-label">\u7248\u672c\u8bb0\u5f55</span>
-        <span class="text">\u6309\u7248\u672c\u67e5\u770b\u4e3b\u8981\u6539\u52a8\u4e0e\u56db\u8bed\u8a00 PDF \u4e0b\u8f7d <span class="en">Browse the changelog and PDF downloads of each release</span></span>
+        <span class="text">\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u56db\u8bed\u8a00 PDF\u3002 <span class="en">See what changed in each release and download its PDFs in four languages.</span></span>
       </p>
     </div>
     <div class="version-entry">
-      <a class="btn primary" href="versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192</a>
-      <span class="version-entry-en">View Version History \u2192</span>
+      <a class="btn primary" href="zh-hans/versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192</a>
+      <a class="btn primary" href="zh-hans/versions.html">View Version History \u2192</a>
     </div>
   </section>
 
@@ -1203,37 +1244,113 @@ VERSIONS_CSS = r"""
 """
 
 
-def render_versions_page():
-    """生成历史版本页：倒序长列表 + 正序/倒序切换 + 侧边栏版本号锚点。"""
+def format_release_date(lang_key, iso_date):
+    """按语言本地化发布日期（ISO 格式）。"""
+    try:
+        y, m, d = (int(x) for x in iso_date.split("-"))
+    except (ValueError, AttributeError):
+        return iso_date
+    if lang_key in ("zh-hans", "zh-hant"):
+        return f"{y}\u5e74{m}\u6708{d}\u65e5"
+    if lang_key == "en-us":
+        months = ["January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"]
+        return f"{months[m - 1]} {d}, {y}"
+    if lang_key == "fr":
+        months = ["janvier", "f\u00e9vrier", "mars", "avril", "mai", "juin",
+                  "juillet", "ao\u00fbt", "septembre", "octobre", "novembre", "d\u00e9cembre"]
+        return f"{d} {months[m - 1]} {y}"
+    return iso_date
+
+
+# 历史版本页各语言文案
+VERSIONS_TEXTS = {
+    "zh-hans": {
+        "page_title": "\u5386\u53f2\u7248\u672c",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u56db\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
+        "sort_desc": "\u6700\u65b0\u5728\u524d",
+        "sort_asc": "\u6700\u65e9\u5728\u524d",
+        "pdf_label": "\u4e0b\u8f7d\uff1a",
+        "status_dev": "\u72b6\u6001\uff1a\u5f00\u53d1\u4e2d\uff08\u672a\u53d1\u5e03\uff09",
+        "date_prefix": "\u53d1\u5e03\u65f6\u95f4\uff1a",
+        "badge_latest": "\u6700\u65b0\u7248\u672c",
+        "badge_preview": "\u9884\u89c8",
+        "pdf_note": "PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002",
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+    },
+    "zh-hant": {
+        "page_title": "\u6b77\u53f2\u7248\u672c",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u56db\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
+        "sort_desc": "\u6700\u65b0\u5728\u524d",
+        "sort_asc": "\u6700\u65e9\u5728\u524d",
+        "pdf_label": "\u4e0b\u8f09\uff1a",
+        "status_dev": "\u72c0\u614b\uff1a\u958b\u767c\u4e2d\uff08\u672a\u767c\u5e03\uff09",
+        "date_prefix": "\u767c\u5e03\u6642\u9593\uff1a",
+        "badge_latest": "\u6700\u65b0\u7248\u672c",
+        "badge_preview": "\u9810\u89bd",
+        "pdf_note": "PDF \u5f85\u6b63\u5f0f\u767c\u5e03\u5f8c\u63d0\u4f9b\u4e0b\u8f09\u3002",
+        "pdf_langs": {"zh-hans": "\u7c21\u9ad4\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+    },
+    "en-us": {
+        "page_title": "Version History",
+        "intro": "Release dates and key changes of each version. PDFs in four languages are provided for download; no web edition is kept for past versions.",
+        "sort_desc": "Newest first",
+        "sort_asc": "Oldest first",
+        "pdf_label": "Download:",
+        "status_dev": "Status: under development (unreleased)",
+        "date_prefix": "Released: ",
+        "badge_latest": "Latest",
+        "badge_preview": "Preview",
+        "pdf_note": "PDFs will be available after the official release.",
+        "pdf_langs": {"zh-hans": "Simplified Chinese", "zh-hant": "Traditional Chinese", "en-us": "English (US)", "fr": "French"},
+    },
+    "fr": {
+        "page_title": "Historique des versions",
+        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en quatre langues sont disponibles en t\u00e9l\u00e9chargement ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
+        "sort_desc": "Plus r\u00e9cents d'abord",
+        "sort_asc": "Plus anciens d'abord",
+        "pdf_label": "T\u00e9l\u00e9charger :",
+        "status_dev": "Statut : en d\u00e9veloppement (non publi\u00e9e)",
+        "date_prefix": "Publi\u00e9 : ",
+        "badge_latest": "Derni\u00e8re version",
+        "badge_preview": "Aper\u00e7u",
+        "pdf_note": "Les PDF seront disponibles apr\u00e8s la publication officielle.",
+        "pdf_langs": {"zh-hans": "Chinois simplifi\u00e9", "zh-hant": "Chinois traditionnel", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+    },
+}
+
+
+def render_versions_page(lang_key):
+    """生成某语言的历史版本页：倒序长列表 + 正序/倒序切换 + 侧边栏版本号锚点。"""
+    t = VERSIONS_TEXTS[lang_key]
+    lang = LANGUAGES[lang_key]
     versions = visible_versions()
-    pdf_labels = {
-        "zh-hans": "\u7b80\u4f53\u4e2d\u6587 PDF",
-        "zh-hant": "\u7e41\u9ad4\u4e2d\u6587 PDF",
-        "en-us": "English (US) PDF",
-        "fr": "Fran\u00e7ais PDF",
-    }
 
     cards = []
     nav_items = []
     for idx, v in enumerate(versions):
-        if v.get("status") == "preview":
-            badge = '<span class="ver-badge preview">\u9884\u89c8</span>'
+        is_preview = v.get("status") == "preview"
+        if is_preview:
+            badge = f'<span class="ver-badge preview">{t["badge_preview"]}</span>'
         elif idx == 0:
-            badge = '<span class="ver-badge latest">\u6700\u65b0\u7248\u672c</span>'
+            badge = f'<span class="ver-badge latest">{t["badge_latest"]}</span>'
         else:
             badge = ""
-        changes = "".join(f"<li>{c}</li>" for c in v.get("changes", []))
-        if v.get("status") == "preview":
-            date_line = '<div class="ver-date">\u72b6\u6001\uff1a\u5f00\u53d1\u4e2d\uff08\u672a\u53d1\u5e03\uff09</div>'
+        changes = "".join(
+            f"<li>{c}</li>" for c in v.get("changes", {}).get(lang_key) or []
+        )
+        if is_preview:
+            date_line = f'<div class="ver-date">{t["status_dev"]}</div>'
         else:
-            date_line = f'<div class="ver-date">\u53d1\u5e03\u65f6\u95f4\uff1a{v["date"]}</div>'
-        if v.get("status") == "preview":
-            pdf_row = (
-                '<p class="ver-pdf-note">PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002</p>'
+            date_line = (
+                f'<div class="ver-date">{t["date_prefix"]}'
+                f'{format_release_date(lang_key, v["date"])}</div>'
             )
+        if is_preview:
+            pdf_row = f'<p class="ver-pdf-note">{t["pdf_note"]}</p>'
         else:
             btns = []
-            for lk, label in pdf_labels.items():
+            for lk, label in t["pdf_langs"].items():
                 fname = v.get("pdfs", {}).get(lk)
                 if fname:
                     btns.append(
@@ -1241,14 +1358,15 @@ def render_versions_page():
                         f'target="_blank" rel="noopener">{label}</a>'
                     )
             pdf_row = (
-                '<div class="ver-pdfs"><span class="ver-pdf-label">PDF \u4e0b\u8f7d\uff1a</span>'
+                f'<div class="ver-pdfs"><span class="ver-pdf-label">{t["pdf_label"]}</span>'
                 + "".join(btns)
                 + "</div>"
             )
+        name = v.get("name", {}).get(lang_key) or v.get("name", {}).get("zh-hans", "")
         cards.append(
             f'<article class="ver-card" id="{v["tag"]}">'
             f'<div class="ver-head"><span class="ver-tag">{v["tag"]}</span>'
-            f'<span class="ver-name">{v["name"]}</span>{badge}</div>'
+            f'<span class="ver-name">{name}</span>{badge}</div>'
             f'{date_line}'
             f'<ul class="ver-changes">{changes}</ul>'
             f'{pdf_row}'
@@ -1259,28 +1377,29 @@ def render_versions_page():
     cards_html = "\n".join(cards)
     nav_html = "\n".join(nav_items)
 
-    # 语言切换：历史页为单语言中文，选择后前往对应语言的指南首页
+    # 语言切换：切换到历史版本页的对应语言版本（与指南页行为一致）
     select_options = "".join(
-        f'<option value="{lk}/index.html">{lc["label"]}</option>'
+        f'<option value="../{lk}/versions.html"{" selected" if lk == lang_key else ""}>'
+        f'{lc["label"]}</option>'
         for lk, lc in LANGUAGES.items()
     )
 
     return f"""<!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="{lang_key}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>\u5386\u53f2\u7248\u672c\uff5cFTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357</title>
-<link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
-<link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
+<title>{t["page_title"]}\uff5c{lang["site_title"]}</title>
+<link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}
 {VERSIONS_CSS}</style>
 </head>
 <body>
 
 <div class="topbar">
-  <img class="topbar-logo" src="images/basic/team_logo.png" alt="32477 Origin">
-  <span class="brand"><a href="index.html" title="\u8fd4\u56de\u4e3b\u9875">FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357</a></span>
+  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{lang["site_title"]}</a></span>
   <select class="lang-select" id="langSelect" aria-label="Language">
 {select_options}
   </select>
@@ -1290,10 +1409,10 @@ def render_versions_page():
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <a class="home-link" href="index.html" title="\u8fd4\u56de\u4e3b\u9875">
-      <img class="side-logo" src="images/basic/team_logo.png" alt="32477 Origin Team Logo">
+    <a class="home-link" href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">
+      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
       <div class="logo">FTC 32477<br>Origin</div>
-      <div class="sub">\u5386\u53f2\u7248\u672c</div>
+      <div class="sub">{t["page_title"]}</div>
     </a>
     <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
 {select_options}
@@ -1302,19 +1421,19 @@ def render_versions_page():
   <div class="sidebar-nav" id="verNav">
 {nav_html}
   </div>
-  <div class="sidebar-footer">2026\u5e748\u6708\u7b2c1\u7248 &middot; \u7f16\u5199\u5c0f\u7ec4</div>
+  <div class="sidebar-footer">{lang["footer"]}</div>
 </nav>
 
 <main>
   <div class="ver-page">
     <div class="ver-top">
-      <h1>\u5386\u53f2\u7248\u672c</h1>
-      <div class="ver-sort" role="group" aria-label="\u6392\u5e8f">
-        <button id="sortDesc" class="ver-sort-btn active" type="button">\u6700\u65b0\u5728\u524d</button>
-        <button id="sortAsc" class="ver-sort-btn" type="button">\u6700\u65e9\u5728\u524d</button>
+      <h1>{t["page_title"]}</h1>
+      <div class="ver-sort" role="group" aria-label="Sort">
+        <button id="sortDesc" class="ver-sort-btn active" type="button">{t["sort_desc"]}</button>
+        <button id="sortAsc" class="ver-sort-btn" type="button">{t["sort_asc"]}</button>
       </div>
     </div>
-    <p class="ver-intro">\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u56db\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002</p>
+    <p class="ver-intro">{t["intro"]}</p>
     <div class="ver-list" id="verList">
 {cards_html}
     </div>
@@ -1391,19 +1510,18 @@ def build():
                 f.write(full_html)
             total += 1
 
-        print(f"  [构建] {lang['label']} ({lang_key}) — {len(PAGE_KEYS)} 页")
+        # 该语言的历史版本页
+        versions_html = render_versions_page(lang_key)
+        with open(os.path.join(lang_dist, "versions.html"), "w", encoding="utf-8") as f:
+            f.write(versions_html)
+
+        print(f"  [构建] {lang['label']} ({lang_key}) — {len(PAGE_KEYS)} 页 + 历史版本页")
 
     # 生成主页（语言选择落地页）
     homepage_html = render_homepage()
     with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(homepage_html)
     print("  [生成] index.html（语言选择主页，含 PDF 下载链接）")
-
-    # 生成历史版本页
-    versions_html = render_versions_page()
-    with open(os.path.join(DIST_DIR, "versions.html"), "w", encoding="utf-8") as f:
-        f.write(versions_html)
-    print("  [生成] versions.html（历史版本页）")
 
     # 复制图片目录
     dist_images = os.path.join(DIST_DIR, "images")

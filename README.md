@@ -32,11 +32,10 @@ ftc_quick_start_guide/
 │   └── afterword/             # 后记专用图片（大合照等）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
 │   ├── index.html             # 主页（语言选择落地页，含 PDF 下载链接）
-│   ├── versions.html          # 历史版本页（单语言中文；版本卡片 + PDF 下载 + 排序切换）
-│   ├── zh-hans/                 # 简体中文网站（7 页）
-│   ├── zh-hant/                 # 繁体中文网站（7 页）
-│   ├── en-us/                 # 英文（美式）网站（7 页）
-│   ├── fr/                    # 法语网站（7 页）
+│   ├── zh-hans/                 # 简体中文网站（7 页 + 历史版本页）
+│   ├── zh-hant/                 # 繁体中文网站（7 页 + 歷史版本頁）
+│   ├── en-us/                 # 英文（美式）网站（7 页 + Version History）
+│   ├── fr/                    # 法语网站（7 页 + Historique des versions）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
@@ -145,7 +144,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
   - PDF 下载按钮 → GitHub Release 资产 URL（`https://github.com/ftc32477/quick-start-guide/releases/download/{RELEASE_TAG}/{文件名}.pdf`，新标签页打开）；`RELEASE_TAG` 与文件名日期在 `build.py` 顶部常量中维护，**每次发版同步更新**
   - 语言选择是主页中唯一保留四语言的区域；主页其余内容（英雄区、项目概况、内容结构、法律声明）只使用中英双语
 - **内容结构**：7 章节中英双语名称对照列表。
-- **历史版本入口**：中英双语小节（标题"历史版本 / Version History"+ 按钮"查看历史版本 →"），链接 `versions.html`，位于内容结构之后。
+- **历史版本入口**：中英双语小节位于内容结构之后，说明文字"查看各版本的发布时间与主要改动，并下载四语言 PDF。 / See what changed in each release and download its PDFs in four languages."；两个并排按钮（"查看历史版本 →" / "View Version History →"）均指向 `zh-hans/versions.html`。
 - **底部法律声明**：页脚下方居中展示中英双语法律声明（独立出版物、FIRST® 商标归属、非官方材料），字号字重一致，由 `render_homepage()` 生成；后记（afterword.md）末尾（合影之后、落款之前）亦包含同款声明，各语言版随语言本地化。
 
 ## 五、响应式布局策略
@@ -273,17 +272,17 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 **发版流程（每次一版）：**
 
 1. 在 dev 定稿全部内容
-2. 同步更新 `build.py`（`RELEASE_TAG` 常量 + 4 处下载文件名日期、`VERSIONS` 列表顶部追加该版本条目并把 status 改为 `released`）与 `build_pdf.py`（合并输出文件名 2 处）、README 中的日期描述
+2. 同步更新 `build.py`（`RELEASE_TAG` 常量 + 4 处下载文件名日期、`VERSIONS` 列表顶部追加该版本条目（name/changes 需四语言填写）并把 status 改为 `released`）与 `build_pdf.py`（合并输出文件名 2 处）、README 中的日期描述
 3. 本地运行 `build_pdf.py` 生成 4 份 PDF 并自查
 4. 创建新 Release（tag 如 `v2026.08.02`）并上传 4 份 PDF 作为资产
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 
-### 历史版本页（versions.html）
+### 历史版本页（{lang}/versions.html）
 
-- 单语言中文长页面，复用指南页外壳（侧边栏/顶栏/抽屉），主页"历史版本"小节进入
-- 数据来源为 `build.py` 顶部 `VERSIONS` 列表：版本号、发布日期、主要改动、四语言 PDF 资产文件名；卡片 PDF 按钮指向 GitHub Release 资产
+- **四语言各一份**（zh-hans / zh-hant / en-us / fr），复用指南页外壳（侧边栏/顶栏/抽屉）；语言下拉与指南页一致：切换到**历史版本页的对应语言版本**（`versions.html` → `../en-us/versions.html`）；主页入口默认进入 `zh-hans/versions.html`
+- 数据来源为 `build.py` 顶部 `VERSIONS` 列表：tag、发布日期（ISO 格式，页面按语言本地化展示）、`name`/`changes` 四语言字段、四语言 PDF 资产文件名；卡片 PDF 按钮指向 GitHub Release 资产，按钮只标注语言名（如"简体中文"），行首"下载："标签说明用途
 - 默认倒序（最新在前），正文顶部可切换正序；左侧边栏为版本号锚点，点击平滑滚动跳转
-- 语言下拉选择后跳转到对应语言的指南首页（历史页无多语言版本）
+- 历史页不保留过去版本的网页版（在线正文只有现版），卡片仅提供 PDF 下载
 - `status: "preview"` 条目仅在 dev 分支构建时显示（带"预览"徽标、无 PDF 按钮），正式构建自动隐藏
 
 ### 借助的工具
@@ -391,6 +390,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | programming.md | 程序设计 | 程式設計 | Programming | Programmation |
 | outreach.md | 外部联络 | 外部聯絡 | Outreach & PR | Sensibilisation & Relations publiques |
 | afterword.md | 后记 | 後記 | Afterword | Postface |
+| versions.html | 历史版本 | 歷史版本 | Version History | Historique des versions |
 
 ## 三、Markdown 语法参考
 
