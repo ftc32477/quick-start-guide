@@ -3,7 +3,7 @@
 Members of the Quick Start Guide editorial team:
 
 - **Editor-in-chief**: Fu Xiuqi
-- **Editorial board**: Du Xingzhou, Xie Jincan, et al.
+- **Writers**: Du Xingzhou, Xie Jincan, et al.
 
 The compilation of this guide was made possible with help from many people.
 

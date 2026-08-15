@@ -249,12 +249,12 @@ IMPRINT_TEXTS = {
     "zh-hans": {
         "title_label": "\u4e66\u540d",
         "fields": [
-            ("\u7248\u672c\u53f7", "{tag}"),
             ("\u7248\u6b21", "{edition}"),
+            ("\u7248\u672c\u53f7", "{tag}"),
             ("\u53d1\u5e03\u65e5\u671f", "{date}"),
             ("\u8bed\u8a00\u7248\u672c", "{lang_edition}"),
             ("\u4e3b\u7f16", "\u4ed8\u4fee\u9f50"),
-            ("\u7f16\u59d4", "\u675c\u661f\u6d32\u3001\u8c22\u91d1\u707f \u7b49"),
+            ("\u7f16\u5199\u4eba\u5458", "\u675c\u661f\u6d32\u3001\u8c22\u91d1\u707f \u7b49"),
             ("\u51fa\u54c1", "FTC 32477 Origin \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
         ],
@@ -262,12 +262,12 @@ IMPRINT_TEXTS = {
     "zh-hant": {
         "title_label": "\u66f8\u540d",
         "fields": [
-            ("\u7248\u672c\u865f", "{tag}"),
             ("\u7248\u6b21", "{edition}"),
+            ("\u7248\u672c\u865f", "{tag}"),
             ("\u767c\u5e03\u65e5\u671f", "{date}"),
             ("\u8a9e\u8a00\u7248\u672c", "{lang_edition}"),
             ("\u4e3b\u7de8", "\u4ed8\u4fee\u9f4a"),
-            ("\u7de8\u59d4", "\u675c\u661f\u6d32\u3001\u8b1d\u91d1\u71e6 \u7b49"),
+            ("\u7de8\u5beb\u4eba\u54e1", "\u675c\u661f\u6d32\u3001\u8b1d\u91d1\u71e6 \u7b49"),
             ("\u51fa\u54c1", "FTC 32477 Origin \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u901e\u5340\u865f 100039"),
         ],
@@ -275,12 +275,12 @@ IMPRINT_TEXTS = {
     "en-us": {
         "title_label": "Title",
         "fields": [
-            ("Version", "{tag}"),
             ("Edition", "{edition}"),
+            ("Version", "{tag}"),
             ("Release Date", "{date}"),
             ("Language Edition", "{lang_edition}"),
             ("Chief Editor", "Fu Xiuqi"),
-            ("Editorial Board", "Du Xingzhou, Xie Jincan, et al."),
+            ("Writers", "Du Xingzhou, Xie Jincan, et al."),
             ("Produced by", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
         ],
@@ -288,12 +288,12 @@ IMPRINT_TEXTS = {
     "fr": {
         "title_label": "Titre",
         "fields": [
-            ("Version", "{tag}"),
             ("\u00c9dition", "{edition}"),
+            ("Version", "{tag}"),
             ("Date de publication", "{date}"),
             ("\u00c9dition linguistique", "{lang_edition}"),
             ("R\u00e9dacteur en chef", "Fu Xiuqi"),
-            ("Comit\u00e9 de r\u00e9daction", "Du Xingzhou, Xie Jincan, et al."),
+            ("R\u00e9dacteurs", "Du Xingzhou, Xie Jincan, et al."),
             ("Produit par", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
         ],
@@ -381,6 +381,10 @@ html,body{{margin:0;padding:0}}
 table{{width:100%;border-collapse:collapse;font-size:12.5px}}
 td{{padding:9px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
 td.k{{width:110px;color:#666}}
+html[lang="zh-hans"] td.k,html[lang="zh-hant"] td.k{{
+  text-align:justify;text-align-last:justify;text-justify:inter-ideograph;
+  letter-spacing:.5px
+}}
 .legal{{margin-top:36px;font-size:10px;color:#9a9a9a;line-height:1.7}}
 a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
 </style>
