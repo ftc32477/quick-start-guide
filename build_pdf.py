@@ -13,7 +13,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 用法:
     python3 build_pdf.py            # 导出所有语言的单页 PDF + 合并 PDF
-    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr）
+    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr / es）
     python3 build_pdf.py --page member  # 仅导出指定页面（仅单页，不含封面封底）
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
@@ -25,7 +25,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 说明:
     - 单页 PDF（dist/pdf/{lang}/{page}.pdf，含页眉页脚）仅通过 --page 参数
       生成，用于内容调试；完整导出（不带 --page）在合并成功后会自动删除
-      单页 PDF 目录，dist/pdf/ 下只保留四语言合并版指南。
+      单页 PDF 目录，dist/pdf/ 下只保留五语言合并版指南。
 
 依赖:
     - Google Chrome / Edge（无头模式 + 远程调试端口）
@@ -71,28 +71,35 @@ PDF_TEXTS = {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "name2": "Quick Start Guide",
         "school": "\u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66",
-        "date": "2026\u5e748\u6708\u7b2c1\u7248",
+        "date": "2026\u5e748\u6708\u7b2c2\u7248",
         "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
     "zh-hant": {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
-        "date": "2026\u5e748\u6708\u7b2c1\u7248",
+        "date": "2026\u5e748\u6708\u7b2c2\u7248",
         "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },
     "en-us": {
         "name": "32477 Origin Quick Start Guide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "August 2026 \u00b7 1st Edition",
+        "date": "August 2026 \u00b7 2nd Edition",
         "lang": "English (US) Edition",
     },
     "fr": {
         "name": "32477 Origin Guide de d\u00e9marrage rapide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "Ao\u00fbt 2026 \u00b7 1re \u00e9dition",
+        "date": "Ao\u00fbt 2026 \u00b7 2e \u00e9dition",
         "lang": "\u00c9dition fran\u00e7aise",
+    },
+    "es": {
+        "name": "Gu\u00eda de inicio r\u00e1pido de 32477 Origin",
+        "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
+        "school": "Beijing National Day Experimental School",
+        "date": "2.\u00aa edici\u00f3n \u00b7 agosto de 2026",
+        "lang": "Edici\u00f3n en espa\u00f1ol",
     },
 }
 
@@ -102,6 +109,7 @@ TOC_TITLES = {
     "zh-hant": "\u76ee\u9304",
     "en-us": "Table of Contents",
     "fr": "Table des mati\u00e8res",
+    "es": "\u00cdndice",
 }
 
 # 页脚文案（reportlab 盖印，x=当前页）与字体（内置 CID 字体）
@@ -110,12 +118,14 @@ FOOTER_TEXTS = {
     "zh-hant": "\u2014 {x} \u2014",
     "en-us": "\u2014 {x} \u2014",
     "fr": "\u2014 {x} \u2014",
+    "es": "\u2014 {x} \u2014",
 }
 FOOTER_FONTS = {
     "zh-hans": "STSong-Light",
     "zh-hant": "MSung-Light",
     "en-us": "Helvetica",
     "fr": "Helvetica",
+    "es": "Helvetica",
 }
 
 # 纸张与页边距：A4（210×297mm），上下 2.54cm，左右 3.18cm
@@ -300,6 +310,19 @@ IMPRINT_TEXTS = {
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
         ],
     },
+    "es": {
+        "title_label": "T\u00edtulo",
+        "fields": [
+            ("Edici\u00f3n", "{edition}"),
+            ("Versi\u00f3n", "{tag}"),
+            ("Fecha de publicaci\u00f3n", "{date}"),
+            ("Edici\u00f3n ling\u00fc\u00edstica", "{lang_edition}"),
+            ("Redactor jefe", "Fu Xiuqi"),
+            ("Redactores", "Du Xingzhou, Xie Jincan, et al."),
+            ("Producido por", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
+            ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
+        ],
+    },
 }
 
 RESOURCE_TEXTS = {
@@ -341,6 +364,16 @@ RESOURCE_TEXTS = {
             ("Historique des versions", "https://ftc32477.github.io/docs/{lang}/versions.html"),
             ("D\u00e9p\u00f4t open source", "https://github.com/ftc32477/quick-start-guide"),
             ("Retours", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+    },
+    "es": {
+        "heading": "Recursos y actualizaciones",
+        "intro": "Esta gu\u00eda se revisa de forma continua. Obtenga los contenidos m\u00e1s recientes a trav\u00e9s de los siguientes canales:",
+        "items": [
+            ("Edici\u00f3n en l\u00ednea", "https://ftc32477.github.io/docs/"),
+            ("Historial de versiones", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("Repositorio de c\u00f3digo abierto", "https://github.com/ftc32477/quick-start-guide"),
+            ("Comentarios", "https://github.com/ftc32477/quick-start-guide/issues"),
         ],
     },
 }
