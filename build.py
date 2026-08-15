@@ -1188,8 +1188,7 @@ def render_homepage():
       </p>
     </div>
     <div class="version-entry">
-      <a class="btn primary" href="zh-hans/versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192</a>
-      <a class="btn primary" href="zh-hans/versions.html">View Version History \u2192</a>
+      <a class="btn primary" href="zh-hans/versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c / View Version History \u2192</a>
     </div>
   </section>
 
@@ -1276,7 +1275,7 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u6700\u65b0\u7248\u672c",
         "badge_preview": "\u9884\u89c8",
         "pdf_note": "PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "\u82f1\u6587\uff08\u7f8e\u56fd\uff09", "fr": "\u6cd5\u6587"},
     },
     "zh-hant": {
         "page_title": "\u6b77\u53f2\u7248\u672c",

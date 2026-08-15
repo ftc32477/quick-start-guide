@@ -144,7 +144,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
   - PDF 下载按钮 → GitHub Release 资产 URL（`https://github.com/ftc32477/quick-start-guide/releases/download/{RELEASE_TAG}/{文件名}.pdf`，新标签页打开）；`RELEASE_TAG` 与文件名日期在 `build.py` 顶部常量中维护，**每次发版同步更新**
   - 语言选择是主页中唯一保留四语言的区域；主页其余内容（英雄区、项目概况、内容结构、法律声明）只使用中英双语
 - **内容结构**：7 章节中英双语名称对照列表。
-- **历史版本入口**：中英双语小节位于内容结构之后，说明文字"查看各版本的发布时间与主要改动，并下载四语言 PDF。 / See what changed in each release and download its PDFs in four languages."；两个并排按钮（"查看历史版本 →" / "View Version History →"）均指向 `zh-hans/versions.html`。
+- **历史版本入口**：中英双语小节位于内容结构之后，说明文字"查看各版本的发布时间与主要改动，并下载四语言 PDF。 / See what changed in each release and download its PDFs in four languages."；单个按钮（文案"查看历史版本 / View Version History →"）指向 `zh-hans/versions.html`。
 - **底部法律声明**：页脚下方居中展示中英双语法律声明（独立出版物、FIRST® 商标归属、非官方材料），字号字重一致，由 `render_homepage()` 生成；后记（afterword.md）末尾（合影之后、落款之前）亦包含同款声明，各语言版随语言本地化。
 
 ## 五、响应式布局策略
