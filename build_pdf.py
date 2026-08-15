@@ -3,10 +3,12 @@
 FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 基于 Chrome DevTools Protocol (CDP) 将 dist/ 中的 HTML 页面渲染为 PDF：
-- 封面（队徽、队名、更新日期）
+- 封面（队徽、队名、版本日期）
+- 封二版权页（完整书名、版次、版本号、发布日期、编写人员、法律声明）
 - 页眉（"FTC 32477 Origin 快速入门指南" + 当前章回）
 - 页脚（居中"第X页，共X页"）
-- 封底（居中队徽 + 右下角更新日期）
+- 封三资源页（在线版本、历史版本、开源仓库、意见反馈链接）
+- 封底（居中队徽 + 右下角版本日期）
 - 全部内容随语言自动本地化
 
 用法:
@@ -16,9 +18,9 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
 输出:
-    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底），
+    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf  — 完整指南 PDF（封面 + 封二 + 正文 + 封三 + 封底），
         dist/pdf/ 不入库（.gitignore），仅供本地自查纠错；正式发布版上传为 GitHub Release 资产，
-        线上主页的下载按钮指向 Release 资产链接
+        线上各语言主页的下载按钮指向 Release 资产链接
 
 说明:
     - 单页 PDF（dist/pdf/{lang}/{page}.pdf，含页眉页脚）仅通过 --page 参数
@@ -47,7 +49,7 @@ PDF_DIR = os.path.join(DIST_DIR, "pdf")
 IMAGES_DIR = os.path.join(BASE_DIR, "images")
 
 sys.path.insert(0, BASE_DIR)
-import build as build_mod  # noqa: E402  复用 LANGUAGES / PAGE_KEYS / render_homepage
+import build as build_mod  # noqa: E402  复用 LANGUAGES / PAGE_KEYS / VERSIONS / LANG_HOME_TEXTS / format_release_date / RELEASE_TAG
 
 PAGE_KEYS = build_mod.PAGE_KEYS
 LANGUAGES = list(build_mod.LANGUAGES.keys())

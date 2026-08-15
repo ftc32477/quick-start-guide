@@ -95,7 +95,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 ### 链接行为约定
 
 - **站内导航（同一标签页）**：侧边栏/顶栏返回根门户、页面切换、语言切换、锚点跳转均为当前标签页内跳转；侧边栏首项"主页"指向该语言主页。
-- **PDF 下载（新标签页）**：主页的 PDF 按钮使用 `target="_blank"`，点击后在新标签页打开 PDF（浏览器内置预览器），从预览器下载。
+- **PDF 下载（新标签页）**：各语言主页的 PDF 按钮使用 `target="_blank"`，点击后在新标签页打开 GitHub Release 资产 PDF（浏览器内置预览器），从预览器下载。
 
 ## 三、PDF 结构（多语言自动本地化）
 
@@ -115,7 +115,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 单页 PDF（`pdf/{lang}/{page}.pdf`）仅由 `--page` 参数生成（同样含页眉页脚，页码按该 PDF 自身计），供内容调试使用；完整导出结束后自动删除。
 
-**页面布局参数：** A4 纸（210×297mm）；上下页边距各 2.54cm（1in）、左右各 3.18cm（1.25in）；页眉页脚字号均为 11pt（文字高度一致）；封面封底边距为 0。
+**页面布局参数：** A4 纸（210×297mm）；上下页边距各 2.54cm（1in）、左右各 3.18cm（1.25in）；页眉页脚字号均为 11pt（文字高度一致）；封面、封二与封底边距为 0（封二内容以内边距控制位置）。
 
 **中文排版规范（仅中文版生效）：** 正文每段首行缩进 2 字符（`text-indent:2em`，通过 `html[lang]` 区分）；一级标题前空约两行、二级标题前空约一行、三级标题前空约 0.7 行。英文版按英文书写规范排版。
 
@@ -125,10 +125,10 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 因此正文页渲染时**只带页眉不带页脚**，合并后由 reportlab 在每页**盖印页脚**（pypdf `merge_page` 叠加层）：
   - 前言/目录：罗马数字（I、II、III…），仅当前页码
   - 正文：阿拉伯数字 1…N，共 N 页
-  - 封面与封底不编号
+  - 封面、封二、封三与封底不编号
 - **目录页与各章起始页**：章节页码按各章 PDF 页数累计计算；h2 小项页码用**字号检测**定位（实测 h2 打印字号 Tf=24.0pt，检测 23–25pt 的行）——不依赖文本匹配，规避 PDF 字体子集产生的异体字形（如 ⻔/⼊）导致 NFKC 也无法归一的问题。
 - **超链接注入**：合并后从目录页**提取实际文本行位置**。注意 pypdf 的 `tm` 是未变换坐标，必须按 `x = cm[0]*tm[4] + cm[2]*tm[5] + cm[4]`、`y = cm[1]*tm[4] + cm[3]*tm[5] + cm[5]` 换算为页面坐标（Chrome 正文流 cm≈[0.75,0,0,-0.75,90,769.92]），并按上下边距过滤页眉/页脚/盖印层；逐行构造矩形；`/Dest` 用 `writer._add_object` 取得目标页的**间接引用**手工构造注解（pypdf 的 `Link` 注解会把页码以纯数字写入 /Dest，不符合 PDF 规范，多数阅读器无法正确跳转）。
-- **目录页页边距与宽度**：目录 HTML 中不得出现 `@page { margin: 0 }`（那是封面/封底专用的满版设置），否则目录内容会铺满整页、与页眉页脚重叠、跨页连续；标题用 `padding-top` 代替 `margin-top` 防止外边距折叠把标题顶到页边。目录容器水平 padding 为 **0.45in**——注意 CDP 页边距（1.25in）与容器 padding 会**叠加**，调整宽度时按"页面宽度 − 2×(页边距 + padding)"计算实际行宽。
+- **目录页页边距与宽度**：目录 HTML 中不得出现 `@page { margin: 0 }`（那是封面/封二/封底专用的满版设置），否则目录内容会铺满整页、与页眉页脚重叠、跨页连续；标题用 `padding-top` 代替 `margin-top` 防止外边距折叠把标题顶到页边。目录容器水平 padding 为 **0.45in**——注意 CDP 页边距（1.25in）与容器 padding 会**叠加**，调整宽度时按"页面宽度 − 2×(页边距 + padding)"计算实际行宽。
 - 中文字体使用 reportlab 内置 CID 字体：简体 STSong-Light（UniGB-UCS2-H）、繁体 MSung-Light（UniCNS-UCS2-H），无需字体文件。
 - **繁体页脚字形坑（重要）**：reportlab 默认把 MSung-Light（Adobe-CNS1 繁体字体）硬编码映射到简体 CMap `UniGB-UCS2-H`，繁体专用字形（如"頁"）在该 CMap 中无对应，页脚中会渲染为空白。`build_pdf.py` 的 `_stamp_engine()` 中已将映射修正为 `UniCNS-UCS2-H`，切勿删除该修正。
 
@@ -149,7 +149,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 1. **英雄区**：队徽 + 徽章 + 指南名（本地化）+ 标语（本地化）
 2. **项目概况**：队伍 / 学校 / 地址 / 最新版本（本地化）
-3. **下载**：本语言合并版 PDF 下载按钮 → GitHub Release 资产（自动取 `VERSIONS` 中最新已发布版本的本语言资产）
+3. **下载**：说明文字（离线版本、无需联网即可阅读、可打印）+ 本语言 PDF 下载按钮 → GitHub Release 资产（自动取 `VERSIONS` 中最新已发布版本的本语言资产）
 4. **内容结构**：7 章链接列表（本地化，链到各章页面）
 5. **历史版本入口**：说明文字 + 按钮 → 本语言 `versions.html`
 6. **法律声明**：本地化单语
@@ -208,7 +208,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 启动参数需含 `--remote-debugging-port={port}`、`--remote-allow-origins=*`、独立的 `--user-data-dir`
 - 新版 Chrome 拒绝未授权的 WebSocket 来源（403），`--remote-allow-origins=*` 为必填
 - 通过 `http://127.0.0.1:{port}/json` 获取页面目标的 WebSocket 地址
-- 打印参数：`printBackground:true`（保留深色封面）、`marginTop/Bottom:0.7in`、`marginLeft/Right:0.75in`（预留页眉页脚空间）、封面封底边距为 0
+- 打印参数：`printBackground:true`（保留深色封面）、`marginTop/Bottom:0.7in`、`marginLeft/Right:0.75in`（预留页眉页脚空间）、封面/封二/封底边距为 0
 - 打印前滚动页面触发 `loading="lazy"` 图片加载
 
 ### 移动端媒体查询泄漏坑（重要）
@@ -267,7 +267,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
                                     预览站点 https://ftc32477.github.io/docs/dev/
 ```
 
-- ① 本地构建：生成根门户 + 四语言"主页 + 7 页 + 历史版本页"共 33 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
+- ① 本地构建：生成根门户 + 四语言"主页 + 7 页 + 历史版本页"共 37 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
 - ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
@@ -291,7 +291,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 **发版流程（每次一版）：**
 
 1. 在 dev 定稿全部内容
-2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/文件名/name/changes 需四语言填写）并把 status 改为 `released`）与 `build_pdf.py`、README 中的版本描述；版权页日期按需更新
+2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需四语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`，无需另行修改
 3. 本地运行 `build_pdf.py` 生成 4 份 PDF（新文件名）并自查
 4. 创建新 Release（tag 如 `v1.1.0`）并上传 4 份 PDF 作为资产
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
@@ -374,7 +374,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 4. 不要直接编辑 `dist/` 下的 HTML 或 PDF——它们每次构建都会被覆盖。如需重新生成产物，请联系 HTML/PDF 维护组员运行构建脚本。
 5. 修改内容后由维护组员依次运行：
    ```bash
-   python3 build.py       # ②③ 生成四语言 HTML
+   python3 build.py       # ③ 生成四语言 HTML（含各语言主页与历史版本页）
    python3 build_pdf.py   # ④ 生成四语言 PDF
    ```
 

@@ -9,7 +9,7 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 目录结构:
     src/{zh-hans,zh-hant,en-us,fr}/   — 各语言 Markdown 源文件（在此编辑内容）
     images/                 — 图片资源（自动复制到 dist/images/）
-    dist/                   — 生成的 HTML 网站（含各语言子目录）
+    dist/                   — 生成的 HTML 网站（根门户 + 各语言子目录）
 """
 
 import os
