@@ -18,6 +18,7 @@ import sys
 import time
 import shutil
 import hashlib
+import subprocess
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.join(BASE_DIR, "src")
@@ -104,6 +105,57 @@ DEFAULT_LANG = "zh-hans"
 # PDF 下载链接指向的 GitHub Release（每次发版同步更新 TAG 与文件名中的日期）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
 RELEASE_TAG = "v2026.08.01"
+
+# 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
+VERSIONS = [
+    {
+        "tag": "v2026.08.01",
+        "name": "2026年8月第1版",
+        "date": "2026-08-01",
+        "status": "released",
+        "changes": [
+            "首次发布：七章完整内容（前言、队员须知、建模设计、结构建造、程序设计、外部联络、后记）",
+            "四语言版本：简体中文、繁體中文、English (US)、Français",
+            "合并版 PDF（封面 + 目录 + 正文 + 封底）与在线网站同步发布",
+            "主页语言选择落地页与响应式布局",
+        ],
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf",
+        },
+    },
+    {
+        "tag": "v2026.09.01-preview",
+        "name": "2026年9月第1版（开发中）",
+        "date": "",
+        "status": "preview",
+        "changes": [
+            "下一版本开发中：本条目仅用于演示开发预览（仅 dev 预览站显示），正式发布后替换为实际改动说明",
+        ],
+        "pdfs": {},
+    },
+]
+
+
+def _on_dev_branch():
+    """判断当前构建是否在 dev 分支（dev 构建时历史页显示 preview 版本）。"""
+    try:
+        out = subprocess.check_output(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            stderr=subprocess.DEVNULL, cwd=BASE_DIR,
+        )
+        return out.decode("utf-8", "ignore").strip() == "dev"
+    except Exception:
+        return False
+
+
+def visible_versions():
+    """历史页展示的版本：正式构建只显示已发布版本，dev 构建额外显示 preview。"""
+    if _on_dev_branch():
+        return VERSIONS
+    return [v for v in VERSIONS if v.get("status") != "preview"]
 
 
 # ============================================================
@@ -919,6 +971,11 @@ footer .legal{margin-top:20px;font-size:11px;color:#9a9a9a;line-height:1.8;paddi
 footer .legal p{margin:0 0 8px}
 footer .legal p:last-child{margin-bottom:0}
 
+/* 历史版本入口 */
+.version-entry{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.version-entry .btn{display:inline-block;padding:10px 26px;width:auto}
+.version-entry-en{color:var(--muted);font-size:13px;font-weight:600}
+
 @media(max-width:600px){
   .hero{padding:48px 20px 44px}
   .hero h1{font-size:24px}
@@ -1081,6 +1138,20 @@ def render_homepage():
     </ul>
   </section>
 
+  <section id="versions">
+    <h2>\u5386\u53f2\u7248\u672c <span class="en">Version History</span></h2>
+    <div class="about-simple">
+      <p class="about-line">
+        <span class="tag-label">\u7248\u672c\u8bb0\u5f55</span>
+        <span class="text">\u6309\u7248\u672c\u67e5\u770b\u4e3b\u8981\u6539\u52a8\u4e0e\u56db\u8bed\u8a00 PDF \u4e0b\u8f7d <span class="en">Browse the changelog and PDF downloads of each release</span></span>
+      </p>
+    </div>
+    <div class="version-entry">
+      <a class="btn primary" href="versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192</a>
+      <span class="version-entry-en">View Version History \u2192</span>
+    </div>
+  </section>
+
 </div>
 
 <footer>
@@ -1091,6 +1162,192 @@ def render_homepage():
   </div>
 </footer>
 
+</body>
+</html>"""
+
+
+# ============================================================
+#  历史版本页（单语言中文长页面，复用指南页外壳）
+# ============================================================
+
+VERSIONS_CSS = r"""
+/* ====== 历史版本页 ====== */
+.ver-page{max-width:760px;margin:0 auto}
+.ver-top{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ver-top h1{font-size:28px;color:#2c2c2c}
+.ver-sort{display:inline-flex;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;background:#fff}
+.ver-sort-btn{background:#fff;border:none;padding:6px 14px;font-size:13px;cursor:pointer;color:#666}
+.ver-sort-btn.active{background:#1a1a2e;color:#fff}
+.ver-intro{color:#666;margin:10px 0 22px;font-size:14px}
+.ver-list{display:flex;flex-direction:column;gap:16px}
+.ver-list.reversed{flex-direction:column-reverse}
+.ver-card{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:22px 24px;box-shadow:0 1px 4px rgba(0,0,0,.04);scroll-margin-top:24px}
+.ver-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.ver-tag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;font-size:16px;color:#1a1a2e}
+.ver-name{color:#666;font-size:14px}
+.ver-badge{font-size:11px;font-weight:600;padding:2px 10px;border-radius:12px}
+.ver-badge.latest{background:#d32f2f;color:#fff}
+.ver-badge.preview{background:#f9a825;color:#fff}
+.ver-date{color:#999;font-size:12.5px;margin-top:6px}
+.ver-changes{margin:12px 0 0;padding-left:20px;color:#2c2c2c;font-size:14px;line-height:1.8}
+.ver-changes li{margin:2px 0}
+.ver-pdfs{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ver-pdf-label{color:#999;font-size:13px}
+.ver-pdf-btn{background:#f0f0f0;color:#2c2c2c;border:1px solid #e0e0e0;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;text-decoration:none}
+.ver-pdf-btn:hover{background:#e4e4e4}
+.ver-pdf-note{color:#999;font-size:13px;margin-top:12px}
+#verNav{display:flex;flex-direction:column}
+#verNav.reversed{flex-direction:column-reverse}
+.sidebar-nav a.ver-link{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+@media print{.topbar,.sidebar,.overlay,.ver-sort{display:none!important}}
+"""
+
+
+def render_versions_page():
+    """生成历史版本页：倒序长列表 + 正序/倒序切换 + 侧边栏版本号锚点。"""
+    versions = visible_versions()
+    pdf_labels = {
+        "zh-hans": "\u7b80\u4f53\u4e2d\u6587 PDF",
+        "zh-hant": "\u7e41\u9ad4\u4e2d\u6587 PDF",
+        "en-us": "English (US) PDF",
+        "fr": "Fran\u00e7ais PDF",
+    }
+
+    cards = []
+    nav_items = []
+    for idx, v in enumerate(versions):
+        if v.get("status") == "preview":
+            badge = '<span class="ver-badge preview">\u9884\u89c8</span>'
+        elif idx == 0:
+            badge = '<span class="ver-badge latest">\u6700\u65b0\u7248\u672c</span>'
+        else:
+            badge = ""
+        changes = "".join(f"<li>{c}</li>" for c in v.get("changes", []))
+        if v.get("status") == "preview":
+            date_line = '<div class="ver-date">\u72b6\u6001\uff1a\u5f00\u53d1\u4e2d\uff08\u672a\u53d1\u5e03\uff09</div>'
+        else:
+            date_line = f'<div class="ver-date">\u53d1\u5e03\u65f6\u95f4\uff1a{v["date"]}</div>'
+        if v.get("status") == "preview":
+            pdf_row = (
+                '<p class="ver-pdf-note">PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002</p>'
+            )
+        else:
+            btns = []
+            for lk, label in pdf_labels.items():
+                fname = v.get("pdfs", {}).get(lk)
+                if fname:
+                    btns.append(
+                        f'<a class="ver-pdf-btn" href="{RELEASE_BASE}/{v["tag"]}/{fname}" '
+                        f'target="_blank" rel="noopener">{label}</a>'
+                    )
+            pdf_row = (
+                '<div class="ver-pdfs"><span class="ver-pdf-label">PDF \u4e0b\u8f7d\uff1a</span>'
+                + "".join(btns)
+                + "</div>"
+            )
+        cards.append(
+            f'<article class="ver-card" id="{v["tag"]}">'
+            f'<div class="ver-head"><span class="ver-tag">{v["tag"]}</span>'
+            f'<span class="ver-name">{v["name"]}</span>{badge}</div>'
+            f'{date_line}'
+            f'<ul class="ver-changes">{changes}</ul>'
+            f'{pdf_row}'
+            f'</article>'
+        )
+        nav_items.append(f'<a class="ver-link" href="#{v["tag"]}">{v["tag"]}</a>')
+
+    cards_html = "\n".join(cards)
+    nav_html = "\n".join(nav_items)
+
+    # 语言切换：历史页为单语言中文，选择后前往对应语言的指南首页
+    select_options = "".join(
+        f'<option value="{lk}/index.html">{lc["label"]}</option>'
+        for lk, lc in LANGUAGES.items()
+    )
+
+    return f"""<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>\u5386\u53f2\u7248\u672c\uff5cFTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357</title>
+<link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
+<style>{CSS}
+{VERSIONS_CSS}</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="topbar-logo" src="images/basic/team_logo.png" alt="32477 Origin">
+  <span class="brand"><a href="index.html" title="\u8fd4\u56de\u4e3b\u9875">FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357</a></span>
+  <select class="lang-select" id="langSelect" aria-label="Language">
+{select_options}
+  </select>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a class="home-link" href="index.html" title="\u8fd4\u56de\u4e3b\u9875">
+      <img class="side-logo" src="images/basic/team_logo.png" alt="32477 Origin Team Logo">
+      <div class="logo">FTC 32477<br>Origin</div>
+      <div class="sub">\u5386\u53f2\u7248\u672c</div>
+    </a>
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+{select_options}
+    </select>
+  </div>
+  <div class="sidebar-nav" id="verNav">
+{nav_html}
+  </div>
+  <div class="sidebar-footer">2026\u5e748\u6708\u7b2c1\u7248 &middot; \u7f16\u5199\u5c0f\u7ec4</div>
+</nav>
+
+<main>
+  <div class="ver-page">
+    <div class="ver-top">
+      <h1>\u5386\u53f2\u7248\u672c</h1>
+      <div class="ver-sort" role="group" aria-label="\u6392\u5e8f">
+        <button id="sortDesc" class="ver-sort-btn active" type="button">\u6700\u65b0\u5728\u524d</button>
+        <button id="sortAsc" class="ver-sort-btn" type="button">\u6700\u65e9\u5728\u524d</button>
+      </div>
+    </div>
+    <p class="ver-intro">\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u56db\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002</p>
+    <div class="ver-list" id="verList">
+{cards_html}
+    </div>
+  </div>
+</main>
+
+<script>
+(function(){{
+  var sb=document.getElementById("sidebar");
+  var ol=document.getElementById("overlay");
+  var btn=document.getElementById("menuBtn");
+  function open(){{sb.classList.add("open");ol.classList.add("show")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
+  ol.addEventListener("click",close);
+  var ls=document.getElementById("langSelect");
+  if(ls){{ls.addEventListener("change",function(){{window.location.href=ls.value}})}};
+  var lss=document.getElementById("langSelectSide");
+  if(lss){{lss.addEventListener("change",function(){{window.location.href=lss.value}})}};
+  var list=document.getElementById("verList");
+  var nav=document.getElementById("verNav");
+  var asc=document.getElementById("sortAsc");
+  var desc=document.getElementById("sortDesc");
+  function setOrder(ascending){{
+    list.classList.toggle("reversed",ascending);
+    nav.classList.toggle("reversed",ascending);
+    asc.classList.toggle("active",ascending);
+    desc.classList.toggle("active",!ascending);
+  }}
+  asc.addEventListener("click",function(){{setOrder(true)}});
+  desc.addEventListener("click",function(){{setOrder(false)}});
+}})();
+</script>
 </body>
 </html>"""
 
@@ -1141,6 +1398,12 @@ def build():
     with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(homepage_html)
     print("  [生成] index.html（语言选择主页，含 PDF 下载链接）")
+
+    # 生成历史版本页
+    versions_html = render_versions_page()
+    with open(os.path.join(DIST_DIR, "versions.html"), "w", encoding="utf-8") as f:
+        f.write(versions_html)
+    print("  [生成] versions.html（历史版本页）")
 
     # 复制图片目录
     dist_images = os.path.join(DIST_DIR, "images")
