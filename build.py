@@ -101,6 +101,10 @@ LANGUAGES = {
 
 DEFAULT_LANG = "zh-hans"
 
+# PDF 下载链接指向的 GitHub Release（每次发版同步更新 TAG 与文件名中的日期）
+RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
+RELEASE_TAG = "v2026.08.01"
+
 
 # ============================================================
 #  MARKDOWN → HTML 转换器
@@ -889,7 +893,6 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .btn.secondary{background:#f0f0f0;color:var(--text)}
 .btn.secondary:hover{background:#e4e4e4}
 .btn.disabled{background:#f5f5f5;color:#aaa;cursor:not-allowed;pointer-events:none}
-.lang-card .pdf-note{font-size:11px;color:#c62828;margin-top:8px;text-align:center}
 
 /* Chapters */
 .chapter-list{list-style:none}
@@ -948,17 +951,11 @@ def render_homepage():
     # 四种语言的卡片
     lang_cards = []
 
-    def pdf_link(lang_key, filename):
-        pdf_path = os.path.join(DIST_DIR, "pdf", filename)
-        if os.path.exists(pdf_path):
-            return (
-                f'<a class="btn secondary" href="pdf/{filename}" target="_blank" rel="noopener">'
-                f'\u2193 \u4e0b\u8f7d PDF</a>'
-            )
+    def pdf_link(filename):
+        # PDF 不入库，随 GitHub Release 发布；下载按钮直接指向 Release 资产
         return (
-            f'<a class="btn disabled" title="\u8bf7\u5148\u8fd0\u884c python3 build_pdf.py">'
-            f'\u2193 PDF \u5c1a\u672a\u751f\u6210</a>'
-            f'<div class="pdf-note">\u8fd0\u884c python3 build_pdf.py \u751f\u6210 PDF</div>'
+            f'<a class="btn secondary" href="{RELEASE_BASE}/{RELEASE_TAG}/{filename}" target="_blank" rel="noopener">'
+            f'\u2193 \u4e0b\u8f7d PDF</a>'
         )
 
     lang_cards.append(f"""
@@ -968,7 +965,7 @@ def render_homepage():
   <div class="desc">\u9762\u5411\u7b80\u4f53\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
   <div class="btn-row">
     <a class="btn primary" href="zh-hans/index.html">\u5728\u7ebf\u6d4f\u89c8 \u2192</a>
-    {pdf_link("zh-hans", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf")}
+    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf")}
   </div>
 </div>""")
 
@@ -979,7 +976,7 @@ def render_homepage():
   <div class="desc">\u9762\u5411\u7e41\u9ad4\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u7dda\u4e0a\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u500b\u7ae0\u7bc0\u3002</div>
   <div class="btn-row">
     <a class="btn primary" href="zh-hant/index.html">\u5728\u7dda\u700f\u89bd \u2192</a>
-    {pdf_link("zh-hant", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf")}
+    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf")}
   </div>
 </div>""")
 
@@ -990,7 +987,7 @@ def render_homepage():
   <div class="desc">The online edition in English (US), covering all 7 chapters.</div>
   <div class="btn-row">
     <a class="btn primary" href="en-us/index.html">Read Online \u2192</a>
-    {pdf_link("en-us", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf")}
+    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf")}
   </div>
 </div>""")
 
@@ -1001,7 +998,7 @@ def render_homepage():
   <div class="desc">\u00c9dition en ligne en fran\u00e7ais, couvrant l'ensemble des 7 chapitres.</div>
   <div class="btn-row">
     <a class="btn primary" href="fr/index.html">Consulter en ligne \u2192</a>
-    {pdf_link("fr", "FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf")}
+    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf")}
   </div>
 </div>""")
 

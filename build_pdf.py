@@ -16,8 +16,9 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
 输出:
-    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底）
-    导出完成后自动刷新主页的 PDF 大小
+    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf  — 完整指南 PDF（封面 + 正文 + 封底），
+        dist/pdf/ 不入库（.gitignore），仅供本地自查纠错；正式发布版上传为 GitHub Release 资产，
+        线上主页的下载按钮指向 Release 资产链接
 
 说明:
     - 单页 PDF（dist/pdf/{lang}/{page}.pdf，含页眉页脚）仅通过 --page 参数
@@ -882,20 +883,7 @@ def export(lang_filter=None, page_filter=None):
 
     print("-" * 56)
     print(f"  导出完成! 输出目录: {os.path.relpath(PDF_DIR, BASE_DIR)}")
-    refresh_homepage()
     print("=" * 56)
-
-
-def refresh_homepage():
-    """导出后重新生成主页，刷新 PDF 下载链接中的文件大小。"""
-    try:
-        homepage_html = build_mod.render_homepage()
-        homepage_path = os.path.join(DIST_DIR, "index.html")
-        with open(homepage_path, "w", encoding="utf-8") as f:
-            f.write(homepage_html)
-        print("  [刷新] index.html（已更新 PDF 大小）")
-    except Exception as e:
-        print(f"  [警告] 主页刷新失败: {e}")
 
 
 if __name__ == "__main__":

@@ -37,7 +37,7 @@ ftc_quick_start_guide/
 │   ├── en-us/                 # 英文（美式）网站（7 页）
 │   ├── fr/                    # 法语网站（7 页）
 │   ├── images/                # 图片（自动复制）
-│   └── pdf/                   # PDF 产物（仅保留四语言合并版指南）
+│   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf  # 繁体中文完整指南
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf  # 英文（美式）完整指南
@@ -90,6 +90,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 - 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留四语言合并版。
 - `--page` 用于内容调试：只生成指定页的单页 PDF（含页眉页脚），不删除。
+- `dist/pdf/` 已加入 `.gitignore` **不入库**，仅本地生成用于自查纠错；正式发布的 PDF 上传为 GitHub Release 资产（见"八、发布到 GitHub Pages"）。
 
 ### 链接行为约定
 
@@ -140,11 +141,9 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - **中英文平等**：主页所有内容的中英文字号、字重、颜色完全一致（仅字体不同），以示平等。
 - **语言选择**：四张卡片（简体中文 / 繁體中文 / English (US) / Français），最多两列排布（宽屏两列、窄屏 ≤600px 单列）；每张含：
   - 在线浏览按钮 → `{lang}/index.html`
-  - PDF 下载按钮 → `pdf/FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf`（新标签页打开）
+  - PDF 下载按钮 → GitHub Release 资产 URL（`https://github.com/ftc32477/quick-start-guide/releases/download/{RELEASE_TAG}/{文件名}.pdf`，新标签页打开）；`RELEASE_TAG` 与文件名日期在 `build.py` 顶部常量中维护，**每次发版同步更新**
   - 语言选择是主页中唯一保留四语言的区域；主页其余内容（英雄区、项目概况、内容结构、法律声明）只使用中英双语
 - **内容结构**：7 章节中英双语名称对照列表。
-- **PDF 智能检测**：构建时自动检测 `dist/pdf/` 下对应 PDF 是否存在——存在则显示下载按钮（不显示文件大小），不存在则显示灰色禁用按钮并提示运行 `python3 build_pdf.py`。
-- `build_pdf.py` 导出完成后会自动重新生成主页以刷新 PDF 存在状态（无需手动运行 `build.py`）。
 - **底部法律声明**：页脚下方居中展示中英双语法律声明（独立出版物、FIRST® 商标归属、非官方材料），字号字重一致，由 `render_homepage()` 生成；后记（afterword.md）末尾（合影之后、落款之前）亦包含同款声明，各语言版随语言本地化。
 
 ## 五、响应式布局策略
@@ -243,34 +242,50 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 ```
 本地工作区（src/*.md、images/）
         │
-        ▼ ① 构建（python3 build.py + python3 build_pdf.py）
-dist/（HTML 网站 + PDF 文档）
+        ▼ ① 构建（python3 build.py）
+dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
         │
         ▼ ② 提交 + 推送（git commit 本地自动；git push 人工确认后执行）
-主仓库 ftc32477/quick-start-guide（main 分支）
+主仓库 ftc32477/quick-start-guide
         │
-        ▼ ③ GitHub Actions 自动触发（.github/workflows/deploy.yml）
-        │   清空并整体复制 dist/ → docs/
-发布仓库 ftc32477/ftc32477.github.io
-        │
-        ▼ ④ GitHub Pages 自动部署
-线上站点 https://ftc32477.github.io/docs/
+        ├─ main 分支 ──────────────► ③ Actions 同步 dist/ → docs/（正式站点）
+        └─ dev 分支 ───────────────► ③ Actions 同步 dist/ → docs/dev/（开发预览站）
+                                          │
+                                          ▼ ④ GitHub Pages 自动部署
+                                    线上站点 https://ftc32477.github.io/docs/
+                                    预览站点 https://ftc32477.github.io/docs/dev/
 ```
 
-- ① 本地构建：生成 28 页 HTML 与四语言 PDF（需 Chrome 与 Python 依赖，见"一、使用的工具与依赖"）
-- ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，src 与 dist 一并进入主仓库，换机迁移只需 clone 主仓库
-- ③ 云端同步：Actions 把 dist 整体同步为发布仓库的 docs（先清空再复制，避免残留旧文件；无变化时自动跳过提交）
+- ① 本地构建：生成 28 页 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
+- ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
+- ③ 云端同步：Actions 把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
+
+**双分支分工：**
+
+| 分支 | 用途 | 线上位置 |
+|------|------|----------|
+| `main` | 稳定发布线：只在新版本发布时从 dev 合并，线上内容阶段性更新 | https://ftc32477.github.io/docs/ |
+| `dev` | 持续开发线：日常所有修改提交到这里，同事随时 clone/pull 同步 | https://ftc32477.github.io/docs/dev/（预览站） |
+
+**发版流程（每次一版）：**
+
+1. 在 dev 定稿全部内容
+2. 同步更新 `build.py`（`RELEASE_TAG` 常量 + 4 处下载文件名日期）与 `build_pdf.py`（合并输出文件名 2 处）、README 中的日期描述
+3. 本地运行 `build_pdf.py` 生成 4 份 PDF 并自查
+4. 创建新 Release（tag 如 `v2026.08.02`）并上传 4 份 PDF 作为资产
+5. dev 合并入 main 并推送 → 正式站点自动更新，主页下载链接指向新 Release
 
 ### 借助的工具
 
 | 环节 | 工具 |
 |------|------|
 | 本地构建 | Python 3 + `build.py` / `build_pdf.py`（Chrome 无头打印、websocket-client、pypdf、reportlab） |
-| 版本控制 | Git（主仓库为唯一编辑入口） |
+| 版本控制 | Git（主仓库为唯一编辑入口，main/dev 双分支） |
+| PDF 托管 | GitHub Releases（每版 PDF 作为 Release 资产，主页下载链接指向资产 URL） |
 | 云端同步 | GitHub Actions（`ubuntu-latest` 运行器，公共仓库免费） |
 | 跨仓库推送 | Fine-grained Personal Access Token（存为主仓库 Secret `PAGES_TOKEN`） |
-| 站点托管 | GitHub Pages（发布仓库根目录下的 docs/） |
+| 站点托管 | GitHub Pages（发布仓库 docs/ 与 docs/dev/） |
 
 ### 密钥信息（重要）
 
@@ -284,10 +299,10 @@ dist/（HTML 网站 + PDF 文档）
 
 | 场景 | 操作 |
 |------|------|
-| 修改指南内容 | 改 `src/` 下的 .md → 本地构建 → 自动提交 → 人工审查后推送（发布全自动） |
+| 修改指南内容 | 改 `src/` 下的 .md（在 dev 分支）→ 本地构建 → 自动提交 → 人工审查后推送 dev（开发预览站自动更新） |
 | 更换工作电脑 | `git clone https://github.com/ftc32477/quick-start-guide.git` 即可，无需其他配置 |
 | PAT 到期（2027-08-14 前） | 重新生成 PAT → 更新主仓库 `PAGES_TOKEN` Secret |
-| 发布新版本（如第 2 版） | 同步更新 `build.py`（主页下载链接 4 处）与 `build_pdf.py`（合并输出文件名 2 处）中的版本日期，并更新 README 中的日期描述 |
+| 发布新版本 | 按"发版流程"执行：更新版本日期与 Release 链接 → 生成 PDF → 创建 Release 上传资产 → dev 合并 main |
 | 自动发布失败排查 | 查看主仓库 Actions 页签运行日志；权限问题通常表现为推送被拒（403），检查 PAT 与 Secret |
 
 **注意：**
@@ -316,7 +331,7 @@ dist/（HTML 网站 + PDF 文档）
 ③ HTML 网站（dist/zh-hans/、dist/zh-hant/、dist/en-us/、dist/fr/）
         │
         ▼ 导出（python3 build_pdf.py）
-④ PDF 文档（dist/pdf/）
+④ PDF 文档（dist/pdf/，仅本地自查，不入库；正式版上传 GitHub Release）
         │
         ▼ 发布（见第一部分"八、发布到 GitHub Pages"）
 ⑤ GitHub Pages 网站（https://ftc32477.github.io/docs/）

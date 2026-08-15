@@ -2,7 +2,7 @@ name: Deploy docs to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   workflow_dispatch:
 
 jobs:
@@ -19,11 +19,20 @@ jobs:
           token: ${{ secrets.PAGES_TOKEN }}
           path: pages-repo
 
+      - name: Determine target directory
+        id: target
+        run: |
+          if [ "${{ github.ref_name }}" = "dev" ]; then
+            echo "target=docs/dev" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=docs" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Sync dist to docs
         run: |
-          rm -rf pages-repo/docs
-          mkdir -p pages-repo/docs
-          cp -R dist/. pages-repo/docs/
+          rm -rf "pages-repo/${{ steps.target.outputs.target }}"
+          mkdir -p "pages-repo/${{ steps.target.outputs.target }}"
+          cp -R dist/. "pages-repo/${{ steps.target.outputs.target }}/"
 
       - name: Commit and push
         run: |
