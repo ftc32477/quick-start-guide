@@ -25,9 +25,9 @@ SRC_DIR = os.path.join(BASE_DIR, "src")
 IMAGES_DIR = os.path.join(BASE_DIR, "images")
 DIST_DIR = os.path.join(BASE_DIR, "dist")
 
-# 页面清单（page_key 为所有语言共用）
+# 内容页清单（page_key 为所有语言共用；各语言主页 index.html 由 render_lang_homepage 生成，不在其中）
 PAGE_KEYS = [
-    "index",
+    "preface",
     "member",
     "modeling",
     "build",
@@ -44,7 +44,8 @@ LANGUAGES = {
         "footer": "2026年8月第1版 &middot; 编写小组",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
-            "index":       "前言",
+            "index":       "主页",
+            "preface":     "前言",
             "member":      "队员须知",
             "modeling":    "建模设计",
             "build":       "结构建造",
@@ -59,7 +60,8 @@ LANGUAGES = {
         "footer": "2026年8月第1版 &middot; 編寫小組",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
-            "index":       "前言",
+            "index":       "首頁",
+            "preface":     "前言",
             "member":      "隊員須知",
             "modeling":    "建模設計",
             "build":       "結構建造",
@@ -74,7 +76,8 @@ LANGUAGES = {
         "footer": "Aug 2026, 1st Ed. &middot; Editorial Team",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
-            "index":       "Preface",
+            "index":       "Home",
+            "preface":     "Preface",
             "member":      "Team Essentials",
             "modeling":    "Modeling &amp; Design",
             "build":       "Hardware &amp; Build",
@@ -89,7 +92,8 @@ LANGUAGES = {
         "footer": "Août 2026, 1re éd. &middot; Équipe éditoriale",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
-            "index":       "Préface",
+            "index":       "Accueil",
+            "preface":     "Préface",
             "member":      "Essentiels de l'équipe",
             "modeling":    "Modélisation &amp; Conception",
             "build":       "Matériel &amp; Construction",
@@ -793,8 +797,8 @@ def render_page(page_key, html_body, lang_key, headings=None):
     lang = LANGUAGES[lang_key]
     headings = headings or []
 
-    # 侧边栏导航（当前语言的页面标题 + 当前页的二级目录）
-    nav_items = []
+    # 侧边栏导航（主页 + 当前语言的页面标题 + 当前页的二级目录）
+    nav_items = [f'<a href="index.html">{lang["pages"]["index"]}</a>']
     for key in PAGE_KEYS:
         cls = ' class="active"' if key == page_key else ""
         title = lang["pages"][key]
@@ -894,7 +898,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
 #  主页（语言选择落地页）
 # ============================================================
 
-HOMEPAGE_CSS = r"""
+PORTAL_CSS = r"""
 :root {
   --red: #d32f2f;
   --dark: #1a1a2e;
@@ -966,7 +970,8 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .lang-card{
   background:var(--card);border-radius:var(--radius);padding:28px 24px;
   box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;flex-direction:column;
-  transition:transform .18s,box-shadow .18s;border-top:3px solid transparent
+  transition:transform .18s,box-shadow .18s;border-top:3px solid transparent;
+  text-decoration:none;color:inherit
 }
 .lang-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.09)}
 .lang-card.zh-hans{border-top-color:var(--red)}
@@ -1044,83 +1049,19 @@ footer .legal p:last-child{margin-bottom:0}
 """
 
 
-def render_homepage():
-    """生成主页（语言选择落地页）。"""
-    # 四种语言的卡片
-    lang_cards = []
-
-    def pdf_link(filename):
-        # PDF 不入库，随 GitHub Release 发布；下载按钮直接指向 Release 资产
-        return (
-            f'<a class="btn secondary" href="{RELEASE_BASE}/{RELEASE_TAG}/{filename}" target="_blank" rel="noopener">'
-            f'\u2193 \u4e0b\u8f7d PDF</a>'
-        )
-
-    lang_cards.append(f"""
-<div class="lang-card zh-hans">
-  <h3>\u7b80\u4f53\u4e2d\u6587</h3>
-  <div class="lang-name">Simplified Chinese</div>
-  <div class="desc">\u9762\u5411\u7b80\u4f53\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u5728\u7ebf\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u4e2a\u7ae0\u8282\u3002</div>
-  <div class="btn-row">
-    <a class="btn primary" href="zh-hans/index.html">\u5728\u7ebf\u6d4f\u89c8 \u2192</a>
-    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf")}
-  </div>
-</div>""")
-
-    lang_cards.append(f"""
-<div class="lang-card zh-hant">
-  <h3>\u7e41\u4f53\u4e2d\u6587</h3>
-  <div class="lang-name">Traditional Chinese</div>
-  <div class="desc">\u9762\u5411\u7e41\u9ad4\u4e2d\u6587\u4f7f\u7528\u8005\u7684\u7dda\u4e0a\u7248\u672c\uff0c\u542b\u5168\u90e8 7 \u500b\u7ae0\u7bc0\u3002</div>
-  <div class="btn-row">
-    <a class="btn primary" href="zh-hant/index.html">\u5728\u7dda\u700f\u89bd \u2192</a>
-    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hant.pdf")}
-  </div>
-</div>""")
-
-    lang_cards.append(f"""
-<div class="lang-card en-us">
-  <h3>English (US)</h3>
-  <div class="lang-name">English \u00b7 United States</div>
-  <div class="desc">The online edition in English (US), covering all 7 chapters.</div>
-  <div class="btn-row">
-    <a class="btn primary" href="en-us/index.html">Read Online \u2192</a>
-    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-en-us.pdf")}
-  </div>
-</div>""")
-
-    lang_cards.append(f"""
-<div class="lang-card fr">
-  <h3>Fran\u00e7ais</h3>
-  <div class="lang-name">French \u00b7 France</div>
-  <div class="desc">\u00c9dition en ligne en fran\u00e7ais, couvrant l'ensemble des 7 chapitres.</div>
-  <div class="btn-row">
-    <a class="btn primary" href="fr/index.html">Consulter en ligne \u2192</a>
-    {pdf_link("FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-fr.pdf")}
-  </div>
-</div>""")
-
-    cards_html = "\n".join(lang_cards)
-
-    # 章节列表（中英双语名称对照）
-    chapters = [
-        ("index", "前言", "Preface"),
-        ("member", "队员须知", "Team Essentials"),
-        ("modeling", "建模设计", "Modeling & Design"),
-        ("build", "结构建造", "Hardware & Build"),
-        ("programming", "程序设计", "Programming"),
-        ("outreach", "外部联络", "Outreach & PR"),
-        ("afterword", "后记", "Afterword"),
+def render_portal():
+    """生成根门户页（语言选择，仿 wikipedia.org 风格）。"""
+    portal_langs = [
+        ("zh-hans", "\u7b80\u4f53\u4e2d\u6587", "Simplified Chinese"),
+        ("zh-hant", "\u7e41\u9ad4\u4e2d\u6587", "Traditional Chinese"),
+        ("en-us", "English (US)", "English \u00b7 United States"),
+        ("fr", "Fran\u00e7ais", "French \u00b7 France"),
     ]
-
-    chapter_items = []
-    for num, (key, zh_cn, en) in enumerate(chapters, start=1):
-        chapter_items.append(
-            f'<li><span class="num">{num}</span>'
-            f'<span class="name">{zh_cn}</span>'
-            f'<span class="names">{en}</span></li>'
-        )
-    chapters_html = "\n".join(chapter_items)
+    cards_html = "\n".join(
+        f'<a class="lang-card {lk}" href="{lk}/index.html">'
+        f'<h3>{native}</h3><div class="lang-name">{sub}</div></a>'
+        for lk, native, sub in portal_langs
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="zh-Hans">
@@ -1130,7 +1071,7 @@ def render_homepage():
 <title>FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide</title>
 <link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
-<style>{HOMEPAGE_CSS}</style>
+<style>{PORTAL_CSS}</style>
 </head>
 <body>
 
@@ -1142,56 +1083,12 @@ def render_homepage():
 </div>
 
 <div class="container">
-
-  <section id="about">
-    <h2>\u9879\u76ee\u6982\u51b5 <span class="en">About Us</span></h2>
-    <div class="about-simple">
-      <p class="about-line">
-        <span class="tag-label">\u961f\u4f0d</span>
-        <span class="text">FTC Team 32477 Origin <span class="en">FIRST\u00ae Tech Challenge</span></span>
-      </p>
-      <p class="about-line">
-        <span class="tag-label">\u5b66\u6821</span>
-        <span class="text">\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66 <span class="en">Beijing National Day Experimental School, Haidian District, Beijing, China</span></span>
-      </p>
-      <p class="about-line">
-        <span class="tag-label">\u5730\u5740</span>
-        <span class="text">\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039 <span class="en">No. 8 Taiping Road, Haidian District, Beijing 100039, China</span></span>
-      </p>
-      <p class="about-line">
-        <span class="tag-label">\u6700\u65b0\u7248\u672c</span>
-        <span class="text">2026\u5e748\u6708\u7b2c1\u7248 <span class="en">1st Edition \u00b7 August 2026</span></span>
-      </p>
-    </div>
-  </section>
-
   <section id="languages">
     <h2>\u9009\u62e9\u8bed\u8a00 <span class="en">Choose Your Language</span></h2>
     <div class="lang-grid">
 {cards_html}
     </div>
   </section>
-
-  <section id="chapters">
-    <h2>\u5185\u5bb9\u7ed3\u6784 <span class="en">Table of Contents</span></h2>
-    <ul class="chapter-list">
-{chapters_html}
-    </ul>
-  </section>
-
-  <section id="versions">
-    <h2>\u5386\u53f2\u7248\u672c <span class="en">Version History</span></h2>
-    <div class="about-simple">
-      <p class="about-line">
-        <span class="tag-label">\u7248\u672c\u8bb0\u5f55</span>
-        <span class="text">\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u56db\u8bed\u8a00 PDF\u3002 <span class="en">See what changed in each release and download its PDFs in four languages.</span></span>
-      </p>
-    </div>
-    <div class="version-entry">
-      <a class="btn primary" href="zh-hans/versions.html">\u67e5\u770b\u5386\u53f2\u7248\u672c / View Version History \u2192</a>
-    </div>
-  </section>
-
 </div>
 
 <footer>
@@ -1202,6 +1099,242 @@ def render_homepage():
   </div>
 </footer>
 
+</body>
+</html>"""
+
+
+# 各语言主页文案
+LANG_HOME_TEXTS = {
+    "zh-hans": {
+        "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u95e8\u6307\u5357",
+        "slogan": "\u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50",
+        "about_title": "\u9879\u76ee\u6982\u51b5",
+        "about": [
+            ("\u961f\u4f0d", "FTC Team 32477 Origin"),
+            ("\u5b66\u6821", "\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
+            ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
+        ],
+        "download_title": "\u4e0b\u8f7d",
+        "download_btn": "\u2193 \u4e0b\u8f7d PDF\uff08\u672c\u8bed\u8a00\u5408\u5e76\u7248\uff09",
+        "chapters_title": "\u5185\u5bb9\u7ed3\u6784",
+        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u56db\u8bed\u8a00 PDF\u3002",
+        "versions_btn": "\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192",
+        "legal": "\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u51fa\u7248\u7269\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u6240\u6709\u961f\u4f0d\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u5747\u7531\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
+    },
+    "zh-hant": {
+        "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u9580\u6307\u5357",
+        "slogan": "\u62d2\u7d55\u91cd\u8907\u9020\u8f2a\u5b50",
+        "about_title": "\u5c08\u6848\u6982\u6cc1",
+        "about": [
+            ("\u968a\u4f0d", "FTC Team 32477 Origin"),
+            ("\u5b78\u6821", "\u4e2d\u570b\u5317\u4eac\u5e02\u6d77\u6dc0\u5340 \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
+            ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u905e\u5340\u865f 100039"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
+        ],
+        "download_title": "\u4e0b\u8f09",
+        "download_btn": "\u2193 \u4e0b\u8f09 PDF\uff08\u672c\u8a9e\u8a00\u5408\u4f75\u7248\uff09",
+        "chapters_title": "\u5167\u5bb9\u7d50\u69cb",
+        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u4e26\u4e0b\u8f09\u56db\u8a9e\u8a00 PDF\u3002",
+        "versions_btn": "\u67e5\u770b\u6b77\u53f2\u7248\u672c \u2192",
+        "legal": "\u6cd5\u5f8b\u8072\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u968a\u4f0d\u7684\u7368\u7acb\u51fa\u7248\u7269\u3002\u672c\u968a\u4f0d\u8207 FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u7121\u96b8\u5c6c\u3001\u80cc\u66f8\u6216\u8d0a\u52a9\u95dc\u4fc2\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u70ba FIRST \u7684\u8a3b\u518a\u5546\u6a19\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u6240\u6709\u968a\u4f0d\u8a2d\u8a08\u3001\u7a0b\u5f0f\u78bc\u8207\u8cc7\u6e90\u5747\u7531\u968a\u4f0d\u6210\u54e1\u63d0\u4f9b\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
+    },
+    "en-us": {
+        "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Quick Start Guide",
+        "slogan": "Refuse to Reinvent the Wheel",
+        "about_title": "About Us",
+        "about": [
+            ("Team", "FTC Team 32477 Origin"),
+            ("School", "Beijing National Day Experimental School, Haidian District, Beijing, China"),
+            ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
+            ("Latest Version", "1st Edition \u00b7 August 2026"),
+        ],
+        "download_title": "Download",
+        "download_btn": "\u2193 Download PDF (merged edition in this language)",
+        "chapters_title": "Table of Contents",
+        "versions_desc": "See what changed in each release and download its PDFs in four languages.",
+        "versions_btn": "View Version History \u2192",
+        "legal": "Legal Notice: This guide is an independent publication of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. All team designs, code, and resources shared in this guide are provided by our team members and do not represent official FIRST materials.",
+    },
+    "fr": {
+        "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Guide de d\u00e9marrage rapide",
+        "slogan": "Refuser de r\u00e9inventer la roue",
+        "about_title": "\u00c0 propos",
+        "about": [
+            ("\u00c9quipe", "FTC Team 32477 Origin"),
+            ("\u00c9cole", "Beijing National Day Experimental School, district de Haidian, P\u00e9kin, Chine"),
+            ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
+            ("Derni\u00e8re version", "1re \u00e9dition \u00b7 ao\u00fbt 2026"),
+        ],
+        "download_title": "T\u00e9l\u00e9charger",
+        "download_btn": "\u2193 T\u00e9l\u00e9charger le PDF (\u00e9dition fusionn\u00e9e dans cette langue)",
+        "chapters_title": "Table des mati\u00e8res",
+        "versions_desc": "Dates de publication et principaux changements de chaque version, avec t\u00e9l\u00e9chargement des PDF en quatre langues.",
+        "versions_btn": "Voir l'historique des versions \u2192",
+        "legal": "Mention l\u00e9gale : ce guide est une publication ind\u00e9pendante de la FTC Team 32477 Origin. Notre \u00e9quipe n'est ni affili\u00e9e \u00e0 FIRST\u00ae (For Inspiration and Recognition of Science and Technology), ni approuv\u00e9e ni sponsoris\u00e9e par celui-ci. FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge et FTC\u00ae sont des marques d\u00e9pos\u00e9es de FIRST. Tous les concepts, codes et ressources d'\u00e9quipe partag\u00e9s dans ce guide sont fournis par les membres de notre \u00e9quipe et ne repr\u00e9sentent pas des documents officiels FIRST.",
+    },
+}
+
+
+LANG_HOME_CSS = r"""
+/* ====== 语言主页 ====== */
+.lh-page{max-width:760px;margin:0 auto}
+.lh-hero{background:linear-gradient(135deg,var(--dark) 0%,var(--slate) 100%);color:#fff;text-align:center;padding:40px 24px 36px;border-radius:12px;margin-bottom:26px}
+.lh-logo{width:72px;height:72px;border-radius:16px;display:block;margin:0 auto 12px;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.lh-badge{display:inline-block;background:var(--red);padding:4px 14px;border-radius:16px;font-size:11px;font-weight:600;letter-spacing:1px;margin-bottom:12px}
+.lh-hero h1{font-size:24px;line-height:1.4;font-weight:700}
+.lh-slogan{font-size:13px;opacity:.85;margin-top:8px}
+.lh-page section{margin-bottom:30px}
+.lh-page section h2{font-size:19px;font-weight:700;margin-bottom:14px;color:#2c2c2c;padding-bottom:8px;border-bottom:2px solid var(--red)}
+.lh-about{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:6px 22px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.lh-line{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:14.5px;margin:0}
+.lh-line:last-child{border-bottom:none}
+.lh-tag{font-size:12px;color:#666;min-width:72px;flex-shrink:0;background:#f0f0f0;padding:2px 10px;border-radius:12px;text-align:center}
+.lh-text{font-weight:500}
+.lh-pdf{display:inline-block;background:var(--dark);color:#fff;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:600;text-decoration:none}
+.lh-pdf:hover{background:var(--slate)}
+.lh-note{color:#999;font-size:13px}
+.lh-chapters{margin:0;padding:0;list-style:none}
+.lh-chapters li{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:10px 16px;margin-bottom:8px;font-size:14px}
+.lh-chapters .num{width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.lh-chapters a{color:#2c2c2c;text-decoration:none;font-weight:600}
+.lh-chapters a:hover{color:var(--red)}
+.lh-versions-desc{color:#666;font-size:14px;margin-bottom:12px}
+.lh-btn{display:inline-block;background:var(--dark);color:#fff;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:600;text-decoration:none}
+.lh-btn:hover{background:var(--slate)}
+.lh-legal{color:#9a9a9a;font-size:11px;line-height:1.8;margin-top:8px}
+@media print{.topbar,.sidebar,.overlay{display:none!important}}
+"""
+
+
+def render_lang_homepage(lang_key):
+    """生成某语言的本地化主页（复用指南页外壳：侧边栏/顶栏/语言切换）。"""
+    lang = LANGUAGES[lang_key]
+    t = LANG_HOME_TEXTS[lang_key]
+
+    nav_items = [f'<a href="index.html" class="active">{lang["pages"]["index"]}</a>']
+    for key in PAGE_KEYS:
+        nav_items.append(f'<a href="{key}.html">{lang["pages"][key]}</a>')
+    nav_html = "\n".join(nav_items)
+
+    select_options = "".join(
+        f'<option value="../{lk}/index.html"{" selected" if lk == lang_key else ""}>'
+        f'{lc["label"]}</option>'
+        for lk, lc in LANGUAGES.items()
+    )
+
+    about_lines = "".join(
+        f'<p class="lh-line"><span class="lh-tag">{label}</span>'
+        f'<span class="lh-text">{value}</span></p>'
+        for label, value in t["about"]
+    )
+
+    chapter_items = "".join(
+        f'<li><span class="num">{i}</span><a href="{key}.html">{lang["pages"][key]}</a></li>'
+        for i, key in enumerate(PAGE_KEYS, start=1)
+    )
+
+    released = [v for v in VERSIONS if v.get("status") != "preview"]
+    if released:
+        pdf_filename = released[0].get("pdfs", {}).get(lang_key)
+        if pdf_filename:
+            pdf_block = (
+                f'<a class="lh-pdf" href="{RELEASE_BASE}/{released[0]["tag"]}/{pdf_filename}" '
+                f'target="_blank" rel="noopener">{t["download_btn"]}</a>'
+            )
+        else:
+            pdf_block = f'<p class="lh-note">{VERSIONS_TEXTS[lang_key]["pdf_note"]}</p>'
+    else:
+        pdf_block = f'<p class="lh-note">{VERSIONS_TEXTS[lang_key]["pdf_note"]}</p>'
+
+    return f"""<!DOCTYPE html>
+<html lang="{lang_key}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{lang["site_title"]}</title>
+<link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+<style>{CSS}
+{LANG_HOME_CSS}</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u95e8\u6237">{lang["site_title"]}</a></span>
+  <select class="lang-select" id="langSelect" aria-label="Language">
+{select_options}
+  </select>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a class="home-link" href="../index.html" title="\u8fd4\u56de\u95e8\u6237">
+      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+      <div class="logo">FTC 32477<br>Origin</div>
+      <div class="sub">{lang["brand"]}</div>
+    </a>
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+{select_options}
+    </select>
+  </div>
+  <div class="sidebar-nav">
+{nav_html}
+  </div>
+  <div class="sidebar-footer">{lang["footer"]}</div>
+</nav>
+
+<main>
+  <div class="lh-page">
+    <div class="lh-hero">
+      <img class="lh-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+      <div class="lh-badge">TEAM 32477 ORIGIN</div>
+      <h1>{t["hero_title"]}</h1>
+      <div class="lh-slogan">{t["slogan"]}</div>
+    </div>
+    <section id="about">
+      <h2>{t["about_title"]}</h2>
+      <div class="lh-about">
+{about_lines}
+      </div>
+    </section>
+    <section id="download">
+      <h2>{t["download_title"]}</h2>
+      {pdf_block}
+    </section>
+    <section id="chapters">
+      <h2>{t["chapters_title"]}</h2>
+      <ol class="lh-chapters">
+{chapter_items}
+      </ol>
+    </section>
+    <section id="versions">
+      <h2>{VERSIONS_TEXTS[lang_key]["page_title"]}</h2>
+      <p class="lh-versions-desc">{t["versions_desc"]}</p>
+      <a class="lh-btn" href="versions.html">{t["versions_btn"]}</a>
+    </section>
+    <p class="lh-legal">{t["legal"]}</p>
+  </div>
+</main>
+
+<script>
+(function(){{
+  var sb=document.getElementById("sidebar");
+  var ol=document.getElementById("overlay");
+  var btn=document.getElementById("menuBtn");
+  function open(){{sb.classList.add("open");ol.classList.add("show")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
+  ol.addEventListener("click",close);
+  var ls=document.getElementById("langSelect");
+  if(ls){{ls.addEventListener("change",function(){{window.location.href=ls.value}})}};
+  var lss=document.getElementById("langSelectSide");
+  if(lss){{lss.addEventListener("change",function(){{window.location.href=lss.value}})}};
+}})();
+</script>
 </body>
 </html>"""
 
@@ -1492,6 +1625,11 @@ def build():
         lang_dist = os.path.join(DIST_DIR, lang_key)
         ensure_dir(lang_dist)
 
+        # 该语言的主页
+        lang_home_html = render_lang_homepage(lang_key)
+        with open(os.path.join(lang_dist, "index.html"), "w", encoding="utf-8") as f:
+            f.write(lang_home_html)
+
         for page_key in PAGE_KEYS:
             md_path = os.path.join(lang_src, f"{page_key}.md")
             if not os.path.exists(md_path):
@@ -1514,13 +1652,13 @@ def build():
         with open(os.path.join(lang_dist, "versions.html"), "w", encoding="utf-8") as f:
             f.write(versions_html)
 
-        print(f"  [构建] {lang['label']} ({lang_key}) — {len(PAGE_KEYS)} 页 + 历史版本页")
+        print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(PAGE_KEYS)} 页 + 历史版本页")
 
-    # 生成主页（语言选择落地页）
-    homepage_html = render_homepage()
+    # 生成根门户（语言选择落地页）
+    portal_html = render_portal()
     with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
-        f.write(homepage_html)
-    print("  [生成] index.html（语言选择主页，含 PDF 下载链接）")
+        f.write(portal_html)
+    print("  [生成] index.html（语言门户）")
 
     # 复制图片目录
     dist_images = os.path.join(DIST_DIR, "images")

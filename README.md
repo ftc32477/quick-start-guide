@@ -15,7 +15,7 @@
 ftc_quick_start_guide/
 ├── src/                       # Markdown 源文件（内容组在此编辑）
 │   ├── zh-hans/                 # 简体中文源文件
-│   │   ├── index.md           # 前言
+│   │   ├── preface.md         # 前言
 │   │   ├── member.md          # 队员须知
 │   │   ├── modeling.md        # 建模设计
 │   │   ├── build.md           # 结构建造
@@ -31,11 +31,11 @@ ftc_quick_start_guide/
 │   │   └── team_logo.png      # 队徽（侧边栏/顶栏/主页英雄区）
 │   └── afterword/             # 后记专用图片（大合照等）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
-│   ├── index.html             # 主页（语言选择落地页，含 PDF 下载链接）
-│   ├── zh-hans/                 # 简体中文网站（7 页 + 历史版本页）
-│   ├── zh-hant/                 # 繁体中文网站（7 页 + 歷史版本頁）
-│   ├── en-us/                 # 英文（美式）网站（7 页 + Version History）
-│   ├── fr/                    # 法语网站（7 页 + Historique des versions）
+│   ├── index.html             # 根门户（语言选择落地页，仿 wikipedia.org）
+│   ├── zh-hans/                 # 简体中文网站（主页 + 7 页 + 历史版本页）
+│   ├── zh-hant/                 # 繁体中文网站（主页 + 7 页 + 歷史版本頁）
+│   ├── en-us/                 # 英文（美式）网站（Home + 7 pages + Version History）
+│   ├── fr/                    # 法语网站（Accueil + 7 pages + Historique des versions）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
@@ -94,7 +94,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ### 链接行为约定
 
-- **站内导航（同一标签页）**：侧边栏/顶栏返回主页、页面切换、语言切换、锚点跳转均为当前标签页内跳转。
+- **站内导航（同一标签页）**：侧边栏/顶栏返回根门户、页面切换、语言切换、锚点跳转均为当前标签页内跳转；侧边栏首项"主页"指向该语言主页。
 - **PDF 下载（新标签页）**：主页的 PDF 按钮使用 `target="_blank"`，点击后在新标签页打开 PDF（浏览器内置预览器），从预览器下载。
 
 ## 三、PDF 结构（多语言自动本地化）
@@ -128,24 +128,30 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 中文字体使用 reportlab 内置 CID 字体：简体 STSong-Light（UniGB-UCS2-H）、繁体 MSung-Light（UniCNS-UCS2-H），无需字体文件。
 - **繁体页脚字形坑（重要）**：reportlab 默认把 MSung-Light（Adobe-CNS1 繁体字体）硬编码映射到简体 CMap `UniGB-UCS2-H`，繁体专用字形（如"頁"）在该 CMap 中无对应，页脚中会渲染为空白。`build_pdf.py` 的 `_stamp_engine()` 中已将映射修正为 `UniCNS-UCS2-H`，切勿删除该修正。
 
-## 四、主页设计（dist/index.html）
+## 四、门户与语言主页设计
 
-主页是语言选择落地页，结构与逻辑如下：
+### 根门户（dist/index.html，由 `render_portal()` 生成）
 
-- **英雄区**：队徽 + 队伍徽章 + 指南标题 + 标语（拒绝重复造轮子）。
-- **项目概况**：纵向简单排列（不包装成卡片）：
-  1. 队伍——FTC Team 32477 Origin
-  2. 学校——中国北京市海淀区 · 北京十一实验中学
-  3. 地址——北京市海淀区太平路8号 · 邮政编码 100039
-  4. 最新版本——2026年8月第1版
-- **中英文平等**：主页所有内容的中英文字号、字重、颜色完全一致（仅字体不同），以示平等。
-- **语言选择**：四张卡片（简体中文 / 繁體中文 / English (US) / Français），最多两列排布（宽屏两列、窄屏 ≤600px 单列）；每张含：
-  - 在线浏览按钮 → `{lang}/index.html`
-  - PDF 下载按钮 → GitHub Release 资产 URL（`https://github.com/ftc32477/quick-start-guide/releases/download/{RELEASE_TAG}/{文件名}.pdf`，新标签页打开）；`RELEASE_TAG` 与文件名日期在 `build.py` 顶部常量中维护，**每次发版同步更新**
-  - 语言选择是主页中唯一保留四语言的区域；主页其余内容（英雄区、项目概况、内容结构、法律声明）只使用中英双语
-- **内容结构**：7 章节中英双语名称对照列表。
-- **历史版本入口**：中英双语小节位于内容结构之后，说明文字"查看各版本的发布时间与主要改动，并下载四语言 PDF。 / See what changed in each release and download its PDFs in four languages."；单个按钮（文案"查看历史版本 / View Version History →"）指向 `zh-hans/versions.html`。
-- **底部法律声明**：页脚下方居中展示中英双语法律声明（独立出版物、FIRST® 商标归属、非官方材料），字号字重一致，由 `render_homepage()` 生成；后记（afterword.md）末尾（合影之后、落款之前）亦包含同款声明，各语言版随语言本地化。
+仿 wikipedia.org 的语言选择落地页，结构极简：
+
+- **英雄区**：队徽 + 队伍徽章 + 指南标题 + 标语（拒绝重复造轮子 · Refuse to Reinvent the Wheel）。
+- **语言选择**：四张卡片（简体中文 / 繁體中文 / English (US) / Français），卡片整体为链接 → `{lang}/index.html`（各语言主页）；最多两列排布（宽屏两列、窄屏 ≤600px 单列）。
+- **页脚**：编辑组署名 + 中英双语法律声明。
+- 门户不含 PDF 下载与历史版本入口（都在各语言主页内）。
+
+### 各语言主页（dist/{lang}/index.html，由 `render_lang_homepage()` 生成）
+
+选择语言后进入的本地化落地页，复用指南页外壳（侧边栏/顶栏/语言切换），侧边栏导航为"主页 + 7 章"。内容分节：
+
+1. **英雄区**：队徽 + 徽章 + 指南名（本地化）+ 标语（本地化）
+2. **项目概况**：队伍 / 学校 / 地址 / 最新版本（本地化）
+3. **下载**：本语言合并版 PDF 下载按钮 → GitHub Release 资产（自动取 `VERSIONS` 中最新已发布版本的本语言资产）
+4. **内容结构**：7 章链接列表（本地化，链到各章页面）
+5. **历史版本入口**：说明文字 + 按钮 → 本语言 `versions.html`
+6. **法律声明**：本地化单语
+
+- 语言切换下拉：主页之间互相切换（`../{lk}/index.html`）；侧边栏"主页"项指向本语言主页；品牌点击返回根门户
+- 各语言主页文案在 `build.py` 的 `LANG_HOME_TEXTS` 中维护
 
 ## 五、响应式布局策略
 
@@ -188,7 +194,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ### 返回主页
 
-- 侧边栏标题区（队徽 + 队伍名 + 品牌名）与移动端顶栏品牌标题均为**可点击链接**，指向 `../index.html`（主页）。
+- 侧边栏标题区（队徽 + 队伍名 + 品牌名）与移动端顶栏品牌标题均为**可点击链接**，指向 `../index.html`（根门户）。
 - 悬停侧边栏标题有浅色背景反馈。
 
 ## 七、打印样式与踩坑记录
@@ -257,7 +263,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
                                     预览站点 https://ftc32477.github.io/docs/dev/
 ```
 
-- ① 本地构建：生成 28 页 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
+- ① 本地构建：生成根门户 + 四语言"主页 + 7 页 + 历史版本页"共 33 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
 - ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
@@ -338,13 +344,13 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
    Français .md（src/fr/）
         │
         ▼ 构建（python3 build.py）
-③ HTML 网站（dist/zh-hans/、dist/zh-hant/、dist/en-us/、dist/fr/）
+③ HTML 网站（dist/index.html 根门户 + dist/zh-hans/、dist/zh-hant/、dist/en-us/、dist/fr/ 各语言主页与页面）
         │
         ▼ 导出（python3 build_pdf.py）
 ④ PDF 文档（dist/pdf/，仅本地自查，不入库；正式版上传 GitHub Release）
         │
         ▼ 发布（见第一部分"八、发布到 GitHub Pages"）
-⑤ GitHub Pages 网站（https://ftc32477.github.io/docs/）
+⑤ GitHub Pages 网站（https://ftc32477.github.io/docs/ 根门户；各语言主页 /{lang}/index.html）
 ```
 
 **规则：**
@@ -383,7 +389,8 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 | 文件名 | 简体中文 | 繁體中文 | English (US) | Français |
 |--------|----------|----------|---------|---------|
-| index.md | 前言 | 前言 | Preface | Préface |
+| （index.html，由 `render_lang_homepage` 生成） | 主页 | 首頁 | Home | Accueil |
+| preface.md | 前言 | 前言 | Preface | Préface |
 | member.md | 队员须知 | 隊員須知 | Team Essentials | Essentiels de l'équipe |
 | modeling.md | 建模设计 | 建模設計 | Modeling & Design | Modélisation & Conception |
 | build.md | 结构建造 | 結構建造 | Hardware & Build | Matériel & Construction |

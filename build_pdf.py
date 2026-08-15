@@ -788,7 +788,7 @@ def export(lang_filter=None, page_filter=None):
 
                     # 计算正文各章起始页码（队员须知 = 第 1 页）
                     from pypdf import PdfReader as _R
-                    main_keys = [k for k in PAGE_KEYS if k != "index"]
+                    main_keys = [k for k in PAGE_KEYS if k != "preface"]
                     page_counts = {k: len(_R(rendered[k]).pages) for k in main_keys}
                     starts = {}
                     acc = 1
@@ -812,7 +812,7 @@ def export(lang_filter=None, page_filter=None):
                         return rows
 
                     # 目录行（标题, 级别, 页码标签）
-                    preface_title = build_mod.LANGUAGES[lang]["pages"]["index"]
+                    preface_title = build_mod.LANGUAGES[lang]["pages"]["preface"]
                     toc_rows = [(preface_title, 1, roman_num(1))]
                     for k in main_keys:
                         title = build_mod.LANGUAGES[lang]["pages"][k]
@@ -831,7 +831,7 @@ def export(lang_filter=None, page_filter=None):
                     )
 
                     # 目标页（全书 0 基）：封面=0，前言=1…
-                    preface_pages = len(_R(rendered["index"]).pages)
+                    preface_pages = len(_R(rendered["preface"]).pages)
                     toc_pages = len(_R(toc_pdf).pages)
                     base = 1 + preface_pages + toc_pages
 
@@ -855,7 +855,7 @@ def export(lang_filter=None, page_filter=None):
                         f"FTC-Team-32477-Origin-Quick-Start-Guide-2026-08-01-{lang}.pdf",
                     )
                     merge_guide(
-                        cover_pdf, rendered["index"], toc_pdf,
+                        cover_pdf, rendered["preface"], toc_pdf,
                         [rendered[k] for k in main_keys], back_pdf,
                         merged_path, lang, toc_entries,
                     )
