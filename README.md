@@ -40,11 +40,11 @@ ftc_quick_start_guide/
 │   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-fr.pdf     # 法语完整指南
-│       └── …（v1.1.0 起新增 FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-es.pdf 西班牙语完整指南，五语言齐全）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-fr.pdf     # 法语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-es.pdf     # 西班牙语完整指南
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -104,8 +104,8 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es）结构如下：
 
-1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 · 日期"（如"简体中文版 · 2026年8月第1版"，位置略上移）
-2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第1版）**、**版本号（v1.0.0）**、**发布日期（2026年8月14日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
+1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 · 日期"（如"简体中文版 · 2026年8月第2版"，位置略上移）
+2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第2版）**、**版本号（v1.1.0）**、**发布日期（2026年8月16日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
 3. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）
 4. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接，点击跳转到对应页；目录页脚沿用罗马数字
 5. **正文页**（队员须知起）：

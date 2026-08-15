@@ -41,7 +41,7 @@ LANGUAGES = {
     "zh-hans": {
         "label": "简体中文",
         "brand": "快速入门指南",
-        "footer": "2026年8月第1版 &middot; 编写小组",
+        "footer": "2026年8月第2版 &middot; 编写小组",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
             "index":       "主页",
@@ -57,7 +57,7 @@ LANGUAGES = {
     "zh-hant": {
         "label": "繁體中文",
         "brand": "快速入門指南",
-        "footer": "2026年8月第1版 &middot; 編寫小組",
+        "footer": "2026年8月第2版 &middot; 編寫小組",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
             "index":       "首頁",
@@ -73,7 +73,7 @@ LANGUAGES = {
     "en-us": {
         "label": "English (US)",
         "brand": "Quick Start Guide",
-        "footer": "Aug 2026, 1st Ed. &middot; Editorial Team",
+        "footer": "Aug 2026, 2nd Ed. &middot; Editorial Team",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
             "index":       "Home",
@@ -89,7 +89,7 @@ LANGUAGES = {
     "fr": {
         "label": "Français",
         "brand": "Guide de démarrage rapide",
-        "footer": "Août 2026, 1re éd. &middot; Équipe éditoriale",
+        "footer": "Août 2026, 2e éd. &middot; Équipe éditoriale",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
             "index":       "Accueil",
@@ -105,7 +105,7 @@ LANGUAGES = {
     "es": {
         "label": "Español",
         "brand": "Guía de inicio rápido",
-        "footer": "Ago. 2026, 1.ª ed. &middot; Equipo editorial",
+        "footer": "Ago. 2026, 2.ª ed. &middot; Equipo editorial",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
             "index":       "Inicio",
@@ -124,11 +124,57 @@ DEFAULT_LANG = "zh-hans"
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.0.0"
+RELEASE_TAG = "v1.1.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按五语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.1.0",
+        "date": "2026-08-16",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年8月第2版",
+            "zh-hant": "2026年8月第2版",
+            "en-us": "August 2026, 2nd Edition",
+            "fr": "Août 2026, 2e édition",
+            "es": "2.ª edición, agosto de 2026",
+        },
+        "changes": {
+            "zh-hans": [
+                "新增西班牙语（Español）版本：七章全文与网站页面（语言主页、历史版本页）同步提供西班牙语译本，并发布西班牙语 PDF。",
+                "门户语言选择卡片上沿配色更新：简体/繁體中文为 #a61615，English (US)/Français 为 #d85d23，新增的西班牙语卡片为 #ffb953。",
+                "本版为 2026年8月第2版，正式发布。",
+            ],
+            "zh-hant": [
+                "新增西班牙語（Español）版本：七章全文與網站頁面（語言首頁、歷史版本頁）同步提供西班牙語譯本，並發布西班牙語 PDF。",
+                "入口語言選擇卡片上沿配色更新：簡體/繁體中文為 #a61615，English (US)/Français 為 #d85d23，新增的西班牙語卡片為 #ffb953。",
+                "本版為 2026年8月第2版，正式發布。",
+            ],
+            "en-us": [
+                "Added a Spanish (Español) edition: full translations of all seven chapters and the website pages (language homepage, version history), with a Spanish PDF included.",
+                "Updated the portal language card accent colors: #a61615 for Simplified/Traditional Chinese, #d85d23 for English (US)/Français, and #ffb953 for the new Spanish card.",
+                "This release is the August 2026, 2nd Edition.",
+            ],
+            "fr": [
+                "Ajout d'une édition espagnole (Español) : traduction complète des sept chapitres et des pages du site (page d'accueil, historique des versions), avec un PDF espagnol inclus.",
+                "Mise à jour des couleurs d'accent des cartes de langue du portail : #a61615 pour le chinois simplifié/traditionnel, #d85d23 pour English (US)/Français et #ffb953 pour la nouvelle carte espagnole.",
+                "Cette version est la 2e édition d'août 2026.",
+            ],
+            "es": [
+                "Se ha añadido la edición en español (Español): traducción completa de los siete capítulos y de las páginas del sitio (página de inicio, historial de versiones), con un PDF en español incluido.",
+                "Se han actualizado los colores de acento de las tarjetas de idioma del portal: #a61615 para el chino simplificado/tradicional, #d85d23 para English (US)/Français y #ffb953 para la nueva tarjeta en español.",
+                "Esta versión es la 2.ª edición de agosto de 2026.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-es.pdf",
+        },
+    },
     {
         "tag": "v1.0.0",
         "date": "2026-08-14",
@@ -173,36 +219,6 @@ VERSIONS = [
             "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-en-us.pdf",
             "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.0.0-fr.pdf",
         },
-    },
-    {
-        "tag": "v1.1.0-preview",
-        "date": "",
-        "status": "preview",
-        "name": {
-            "zh-hans": "2026年9月第1版（开发中）",
-            "zh-hant": "2026年9月第1版（開發中）",
-            "en-us": "September 2026, 1st Edition (in development)",
-            "fr": "Septembre 2026, 1re édition (en développement)",
-            "es": "1.ª edición, septiembre de 2026 (en desarrollo)",
-        },
-        "changes": {
-            "zh-hans": [
-                "新增西班牙语（Español）版本：七章全文与网站页面（语言主页、历史版本页）同步提供西班牙语译本。",
-            ],
-            "zh-hant": [
-                "新增西班牙語（Español）版本：七章全文與網站頁面（語言首頁、歷史版本頁）同步提供西班牙語譯本。",
-            ],
-            "en-us": [
-                "Added a Spanish (Español) edition: full translations of all seven chapters and the website pages (language homepage, version history).",
-            ],
-            "fr": [
-                "Ajout d'une édition espagnole (Español) : traduction complète des sept chapitres et des pages du site (page d'accueil, historique des versions).",
-            ],
-            "es": [
-                "Se ha añadido la edición en español (Español): traducción completa de los siete capítulos y de las páginas del sitio (página de inicio, historial de versiones).",
-            ],
-        },
-        "pdfs": {},
     },
 ]
 
@@ -1149,7 +1165,7 @@ LANG_HOME_TEXTS = {
             ("\u961f\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b66\u6821", "\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c2\u7248"),
         ],
         "download_title": "\u4e0b\u8f7d",
         "download_desc": "\u4e0b\u8f7d\u7684\u662f\u79bb\u7ebf\u7248\u672c\uff1a\u65e0\u9700\u8054\u7f51\u5373\u53ef\u9605\u8bfb\uff0c\u4e5f\u53ef\u81ea\u884c\u6253\u5370\u6216\u5206\u4eab\u5b58\u6863\u3002",
@@ -1167,7 +1183,7 @@ LANG_HOME_TEXTS = {
             ("\u968a\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b78\u6821", "\u4e2d\u570b\u5317\u4eac\u5e02\u6d77\u6dc0\u5340 \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u905e\u5340\u865f 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c1\u7248"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c2\u7248"),
         ],
         "download_title": "\u4e0b\u8f09",
         "download_desc": "\u4e0b\u8f09\u7684\u662f\u96e2\u7dda\u7248\u672c\uff1a\u7121\u9700\u9023\u7dda\u5373\u53ef\u95b1\u8b80\uff0c\u4e5f\u53ef\u81ea\u884c\u5217\u5370\u6216\u5206\u4eab\u5b58\u6a94\u3002",
@@ -1185,7 +1201,7 @@ LANG_HOME_TEXTS = {
             ("Team", "FTC Team 32477 Origin"),
             ("School", "Beijing National Day Experimental School, Haidian District, Beijing, China"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
-            ("Latest Version", "1st Edition \u00b7 August 2026"),
+            ("Latest Version", "2nd Edition \u00b7 August 2026"),
         ],
         "download_title": "Download",
         "download_desc": "Download the offline edition: read it without an internet connection, print it, or share and archive it.",
@@ -1203,7 +1219,7 @@ LANG_HOME_TEXTS = {
             ("\u00c9quipe", "FTC Team 32477 Origin"),
             ("\u00c9cole", "Beijing National Day Experimental School, district de Haidian, P\u00e9kin, Chine"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
-            ("Derni\u00e8re version", "1re \u00e9dition \u00b7 ao\u00fbt 2026"),
+            ("Derni\u00e8re version", "2e \u00e9dition \u00b7 ao\u00fbt 2026"),
         ],
         "download_title": "T\u00e9l\u00e9charger",
         "download_desc": "T\u00e9l\u00e9chargez l'\u00e9dition hors ligne : lisez-la sans connexion Internet, imprimez-la ou partagez-la et archivez-la.",
@@ -1221,7 +1237,7 @@ LANG_HOME_TEXTS = {
             ("Equipo", "FTC Team 32477 Origin"),
             ("Escuela", "Beijing National Day Experimental School, distrito de Haidian, Pek\u00edn, China"),
             ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
-            ("\u00daltima versi\u00f3n", "1.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
+            ("\u00daltima versi\u00f3n", "2.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
         ],
         "download_title": "Descargar",
         "download_desc": "Descargue la edici\u00f3n sin conexi\u00f3n: l\u00e9ala sin conexi\u00f3n a Internet, impr\u00edmala o comp\u00e1rtala y arch\u00edvela.",
