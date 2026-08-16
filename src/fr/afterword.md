@@ -2,16 +2,16 @@
 
 Membres de l'équipe de rédaction de ce guide :
 
-- **Rédacteur en chef** : Fu Xiuqi
-- **Rédacteurs** : Du Xingzhou, Xie Jincan, et al.
+- **Rédacteur en chef** : Fu Xiuqi (付修齐)
+- **Rédacteurs** : Du Xingzhou (杜星洲), Xie Jincan (谢金灿), et al.
 
 La rédaction de ce guide a été rendue possible grâce à l'aide de nombreuses personnes.
 
-Nous remercions la Beijing National Day Experimental School pour son soutien important, le professeur Zou Shusen pour ses conseils techniques, et la professeure Dong Ying pour son soutien matériel.
+Nous remercions la Beijing National Day Experimental School pour son soutien important, le professeur Zou Shusen (邹书森) pour ses conseils techniques, et la professeure Dong Ying (董莹) pour son soutien matériel.
 
-Nous tenons également à remercier tout particulièrement Huang Tianlin pour ses conseils en photographie et Wang Jingyu pour ses conseils en retouche d'images.
+Nous tenons également à remercier tout particulièrement Huang Tianlin (黄天霖) pour ses conseils en photographie et Wang Jingyu (王景钰) pour ses conseils en retouche d'images.
 
-Référence : *Manuel de physique du secondaire (édition générale) — volume obligatoire 3*
+Référence : *Manuel de physique du secondaire (édition générale) — volume obligatoire 3 (普通高中教科书 物理 必修 第三册)*
 
 ---
 
@@ -25,10 +25,10 @@ Profitez de la compétition, profitez de la création, et atteignons de nouveaux
 
 ## Membres de l'équipe
 
-- **Président** : Du Xingzhou
-- **Structure** : Xie Jincan, Shi Yuguang, Jiang Yichen, Xue Chen, Du Fengyu
-- **Programmation** : Du Xingzhou, Fu Xiuqi, Zhang Xipeng, Liu Chuyi
-- **Relations extérieures** : Han Zixuan, Chen Xibei, Li Jiaoyang, Liu Yuxuan, Wang Yizhou
+- **Président** : Du Xingzhou (杜星洲)
+- **Structure** : Xie Jincan (谢金灿), Shi Yuguang (时宇光), Jiang Yichen (姜易辰), Xue Chen (薛晨), Du Fengyu (杜丰宇)
+- **Programmation** : Du Xingzhou (杜星洲), Fu Xiuqi (付修齐), Zhang Xipeng (张熙芃), Liu Chuyi (刘楚翌)
+- **Relations extérieures** : Han Zixuan (韩子萱), Chen Xibei (陈西贝), Li Jiaoyang (李骄洋), Liu Yuxuan (柳宇轩), Wang Yizhou (王一舟)
 
 ---
 
@@ -43,4 +43,4 @@ Profitez de la compétition, profitez de la création, et atteignons de nouveaux
 
 ---
 
-*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Août 2026, 1re édition*
+*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Août 2026, 3e édition*

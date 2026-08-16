@@ -12,10 +12,10 @@ The following are supplementary requirements for Outreach & Public Relations.
 ### Online Accounts
 
 - Email address (@gmail.com or @outlook.com recommended)
-- WeChat Official Account
-- Bilibili
-- Douyin
-- Xiaohongshu (RED)
+- WeChat Official Account (微信公众号)
+- Bilibili (哔哩哔哩)
+- Douyin (抖音)
+- Xiaohongshu (小红书, RED)
 - YouTube
 - TikTok
 - X (Twitter)
@@ -82,7 +82,7 @@ The notebook content is written by the Hardware and Programming teams; Outreach 
 
 - Better results mean more exposure, and more exposure makes sponsorships easier to win.
 - At this stage, start with small sponsorships: e.g., ask electronics factories to sponsor tools, screws, and other consumables.
-- How to reach out: email larger companies; call Taobao vendors directly.
+- How to reach out: email larger companies; call Taobao (淘宝) vendors directly.
 
 ### Business Plans
 
@@ -95,13 +95,13 @@ A sponsorship business plan should include:
 
 ### Case Study: FTC Team 27570's (BYNX) Commercial Development
 
-- **Light & sound module**: FTC Team 27570 developed an FTC-specific light and sound module called KIRIN with customizable effects. Their tiered pricing embeds team numbers — 1 unit for ¥180, 4 units for ¥570, 6 units for ¥787 — where 570 and 787 echo the numbers of FTC 27570 and FTC 25787, subtly engraving team numbers into buyers' minds.
+- **Light & sound module**: FTC Team 27570 developed an FTC-specific light and sound module called KIRIN (麒麟) with customizable effects. Their tiered pricing embeds team numbers — 1 unit for ¥180, 4 units for ¥570, 6 units for ¥787 — where 570 and 787 echo the numbers of FTC 27570 and FTC 25787, subtly engraving team numbers into buyers' minds.
 - **Custom servos**: They partnered with a servo factory to build custom servos under their own brand and developed companion tuning software, selling servos, power distribution boards, and accessories through their website — sales revenue funds the team.
 
 ### Case Study: FGC Team China
 
 - FGC (First Global Challenge) is like the Olympics of robotics. The 2026 event will be held in Incheon, South Korea, with teams from more than 190 countries.
-- FGC Team China's business plan includes the event introduction, team introduction, historical results, and tiered sponsorship benefits. It is understood that they have secured sponsorships from brands including Xiaomi and Huawei (via its affiliated brand Huakun Zhenyu).
+- FGC Team China's business plan includes the event introduction, team introduction, historical results, and tiered sponsorship benefits. It is understood that they have secured sponsorships from brands including Xiaomi and Huawei (via its affiliated brand Huakun Zhenyu (华鲲振宇)).
 
 ---
 
