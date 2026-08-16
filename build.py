@@ -140,11 +140,64 @@ DEFAULT_LANG = "zh-hans"
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.2.0"
+RELEASE_TAG = "v1.2.1"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.2.1",
+        "date": "2026-08-16",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年8月第3版·第1次修订",
+            "zh-hant": "2026年8月第3版·第1次修訂",
+            "en-us": "August 2026, 3rd Edition, 1st Revision",
+            "fr": "Août 2026, 3e édition, 1re révision",
+            "es": "3.ª edición, agosto de 2026, 1.ª revisión",
+            "ko": "2026년 8월 제3판 · 1차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "繁体中文版人名附注简体原名（如 付修齊（付修齐）），繁简同形者不加注。",
+                "简体/繁体中文版中外来译名附注来源语言原名（如 结构体（Part Studio）、构建（Build））；全语言标注规范写入 README。",
+                "门户韩语语言卡片上沿配色与西班牙语一致（#ffb953）。",
+            ],
+            "zh-hant": [
+                "繁體中文版人名附註簡體原名（如 付修齊（付修齐）），繁簡同形者不加註。",
+                "簡體/繁體中文版中外來譯名附註來源語言原名（如 结构体（Part Studio）、建置（Build））；全語言標註規範寫入 README。",
+                "入口韓語語言卡片上沿配色與西班牙語一致（#ffb953）。",
+            ],
+            "en-us": [
+                "Traditional Chinese edition: person names now carry their Simplified Chinese originals (e.g., 付修齊（付修齐）); names identical across both scripts are not annotated.",
+                "Simplified and Traditional Chinese editions: translated terms of foreign origin now carry their source-language names (e.g., 结构体（Part Studio）, 构建（Build）); the annotation convention for all languages is documented in the project README.",
+                "Portal: the Korean language card accent color now matches the Spanish card (#ffb953).",
+            ],
+            "fr": [
+                "Édition chinoise traditionnelle : les noms de personnes portent désormais leur version en chinois simplifié (ex. 付修齊（付修齐）) ; les noms identiques dans les deux écritures ne sont pas annotés.",
+                "Éditions chinoises simplifiée et traditionnelle : les termes traduits d'origine étrangère portent désormais leur nom dans la langue source (ex. 结构体（Part Studio）, 构建（Build）) ; la convention d'annotation pour toutes les langues est documentée dans le README du projet.",
+                "Portail : la couleur d'accent de la carte de langue coréenne correspond désormais à celle de la carte espagnole (#ffb953).",
+            ],
+            "es": [
+                "Edición en chino tradicional: los nombres de personas llevan ahora su versión en chino simplificado (p. ej., 付修齊（付修齐）); los nombres idénticos en ambas escrituras no se anotan.",
+                "Ediciones en chino simplificado y tradicional: los términos traducidos de origen extranjero llevan ahora su nombre en el idioma de origen (p. ej., 结构体（Part Studio）, 构建（Build）); la convención de anotación para todos los idiomas está documentada en el README del proyecto.",
+                "Portal: el color de acento de la tarjeta de idioma coreano coincide ahora con el de la tarjeta española (#ffb953).",
+            ],
+            "ko": [
+                "중국어 번체판: 인명에 간체 원명을 병기하고(예: 付修齊（付修齐）), 번간체 동형인 이름은 병기하지 않습니다.",
+                "중국어 간체/번체판: 외국어에서 번역된 용어에 출처 언어 원명을 병기합니다(예: 结构体（Part Studio）, 构建（Build）). 모든 언어의 표기 규칙을 README에 문서화했습니다.",
+                "포털: 한국어 언어 카드 상단 색상을 스페인어 카드와 동일하게 변경했습니다(#ffb953).",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-ko.pdf",
+        },
+    },
     {
         "tag": "v1.2.0",
         "date": "2026-08-16",
@@ -1110,6 +1163,7 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .lang-card.en-us{border-top-color:#d85d23}
 .lang-card.fr{border-top-color:#d85d23}
 .lang-card.es{border-top-color:#ffb953}
+.lang-card.ko{border-top-color:#ffb953}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .lang-card .lang-name{font-size:13px;color:var(--muted);margin-bottom:12px}
 .lang-card .desc{font-size:13px;color:var(--text);flex:1;margin-bottom:18px}
