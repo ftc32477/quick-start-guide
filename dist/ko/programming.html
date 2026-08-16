@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프로그래밍｜FTC 32477 Origin 빠른 시작 가이드</title>
+<link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+<link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+<style>
+:root {
+  --red: #d32f2f;
+  --dark: #1a1a2e;
+  --slate: #16213e;
+  --card: #ffffff;
+  --text: #2c2c2c;
+  --muted: #666;
+  --border: #e0e0e0;
+  --radius: 10px;
+  --sidebar-w: 260px;
+  --topbar-h: 52px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  color:var(--text);background:#f8f9fa;line-height:1.8;min-height:100vh
+}
+
+/* ====== TOP BAR (mobile) ====== */
+.topbar{
+  display:none;position:fixed;top:0;left:0;right:0;height:var(--topbar-h);
+  background:var(--dark);color:#fff;z-index:200;align-items:center;
+  padding:0 12px;gap:8px
+}
+.topbar .brand{
+  font-weight:700;font-size:14px;flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.topbar .brand a{
+  color:#fff;text-decoration:none;cursor:pointer
+}
+.topbar .brand a:hover{opacity:.85}
+.lang-select{
+  background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);
+  border-radius:6px;font-size:13px;padding:6px 26px 6px 10px;max-width:150px;
+  appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23aaa'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center
+}
+.lang-select option{color:#2c2c2c;background:#fff}
+.topbar .menu-btn{
+  background:none;border:none;color:#fff;font-size:24px;cursor:pointer;
+  width:40px;height:40px;flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;border-radius:6px;line-height:1
+}
+.topbar .menu-btn:hover{background:rgba(255,255,255,.1)}
+
+/* ====== SIDEBAR ====== */
+nav.sidebar{
+  position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);
+  background:var(--dark);color:#ccc;overflow-y:auto;z-index:100;
+  display:flex;flex-direction:column;transition:transform .28s ease;
+}
+nav.sidebar::-webkit-scrollbar{width:4px}
+nav.sidebar::-webkit-scrollbar-thumb{background:#444;border-radius:2px}
+.sidebar-header{padding:24px 20px 14px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+.sidebar-header .home-link{
+  display:block;text-decoration:none;border-radius:8px;
+  padding:4px 0;transition:background .18s
+}
+.sidebar-header .home-link:hover{background:rgba(255,255,255,.06)}
+.sidebar-header .home-link:hover .sub{color:#fff}
+.sidebar-header .logo{font-size:22px;font-weight:700;color:#fff;line-height:1.3}
+.sidebar-header .sub{font-size:12px;color:#f44336;margin-top:4px;letter-spacing:1px}
+/* 语言切换：侧边栏下拉选项栏（节省空间给目录） */
+.lang-select-sidebar{
+  margin:12px 14px 0;width:calc(100% - 28px);box-sizing:border-box;
+  background:rgba(255,255,255,.1);color:#fff;
+  border:1px solid rgba(255,255,255,.25);border-radius:8px;
+  font-size:13px;padding:7px 26px 7px 10px;
+  appearance:none;-webkit-appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23aaa'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 8px center
+}
+.lang-select-sidebar option{color:#2c2c2c;background:#fff}
+.sidebar-nav{flex:1;padding:12px 0}
+.sidebar-nav a{
+  display:block;padding:10px 22px;color:#aaa;text-decoration:none;
+  font-size:14px;border-left:3px solid transparent;transition:all .18s
+}
+.sidebar-nav a:hover{color:#fff;background:rgba(255,255,255,.04)}
+.sidebar-nav a.active{color:#fff;background:rgba(244,67,54,.15);border-left-color:#f44336}
+/* 二级目录：仅当前页面显示 */
+.sidebar-nav a.sub-link{
+  padding:5px 22px 5px 34px;font-size:12.5px;color:#8a8a8a;border-left-color:transparent
+}
+.sidebar-nav a.sub-link:hover{color:#fff}
+.sidebar-nav a.sub-link.sub-3{padding-left:46px;font-size:12px;color:#777}
+/* 侧边栏队徽 */
+.side-logo{
+  display:block;width:64px;height:64px;margin:0 auto 10px;
+  border-radius:14px;object-fit:cover
+}
+/* 顶栏队徽（移动端） */
+.topbar-logo{width:22px;height:22px;border-radius:5px;flex-shrink:0}
+.sidebar-footer{padding:16px 20px;font-size:11px;color:#555;border-top:1px solid rgba(255,255,255,.08);text-align:center}
+
+/* ====== OVERLAY (mobile) ====== */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:99}
+
+/* ====== MAIN CONTENT ====== */
+/*
+ * 响应式宽度策略：
+ *   宽屏：内容固定 900px 宽（含 padding），居中于侧边栏右侧
+ *   中屏：随宽度缩小，左右留白逐渐收窄直至消失
+ *   窄屏（<768px）：侧边栏折叠，内容全宽
+ *
+ * 兼容性说明：部分 Chrome 版本对嵌套在自定义属性中的
+ * min()/max()/clamp()（含 vw 单位）存在布局计算 bug（宽度会算成 0，
+ * 正文空白而侧边栏正常）。因此此处只用普通 calc + max-width 封顶，
+ * 并为 min()/max()/clamp() 提供级联回退声明。
+ */
+main{
+  box-sizing:content-box;
+  --pad: 40px;                                        /* 回退：clamp 不支持时 */
+  --pad: clamp(12px, 4vw, 48px);
+  padding: 40px var(--pad);
+  /* 宽度：随视口收缩，上限 900px（含 padding，即内容宽 900-2*pad） */
+  width: calc(100vw - var(--sidebar-w) - 2 * var(--pad));
+  max-width: calc(900px - 2 * var(--pad));
+  /* 左外边距：回退为紧贴侧边栏，支持 max() 时在宽屏居中 */
+  margin-left: var(--sidebar-w);
+  margin-left: calc(var(--sidebar-w) + max(0px, (100vw - var(--sidebar-w) - 900px) / 2));
+  margin-right: auto;
+}
+
+/* Hero */
+.hero{
+  background:linear-gradient(135deg,var(--dark) 0%,var(--slate) 100%);color:#fff;
+  border-radius:var(--radius);padding:44px 40px;margin-bottom:36px;
+  position:relative;overflow:hidden
+}
+.hero::after{
+  content:'';position:absolute;right:-40px;bottom:-40px;
+  width:200px;height:200px;background:var(--red);opacity:.18;border-radius:50%
+}
+.hero h1{font-size:28px;font-weight:700;position:relative;z-index:1}
+.hero .subtitle{font-size:14px;margin-top:10px;opacity:.8;position:relative;z-index:1}
+.hero .badge{
+  display:inline-block;background:var(--red);padding:4px 14px;
+  border-radius:20px;font-size:12px;font-weight:600;margin-bottom:12px;
+  position:relative;z-index:1
+}
+
+/* Sections */
+section{margin-bottom:40px}
+section h2{font-size:22px;font-weight:700;padding-bottom:10px;margin-bottom:20px;border-bottom:2px solid var(--red);color:var(--dark)}
+section h3{font-size:17px;font-weight:600;margin:28px 0 10px;color:var(--slate)}
+section h4,.card h4{font-size:15px;font-weight:600;margin:18px 0 8px}
+.card{background:var(--card);border-radius:var(--radius);padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,.04);margin-bottom:16px}
+p{margin-bottom:10px}
+a{color:#1565c0;text-decoration:none;overflow-wrap:anywhere}
+a:hover{text-decoration:underline}
+ul,ol{padding-left:22px;margin-bottom:12px}
+li{margin-bottom:4px}
+code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:13px;font-family:"SF Mono","Fira Code",monospace}
+pre{background:#1a1a2e;color:#e0e0e0;padding:16px 20px;border-radius:var(--radius);overflow-x:auto;margin-bottom:14px;font-size:13px;line-height:1.6}
+pre code{background:none;padding:0;color:inherit}
+blockquote{
+  border-left:4px solid var(--red);background:#fef5f5;padding:12px 18px;
+  margin:14px 0;border-radius:0 var(--radius) var(--radius) 0;font-size:14px;color:#8b0000
+}
+/* 类型化引用块：[!info] 蓝 / [!warning] 黄 / [!danger] 红（仅颜色区分，无标签） */
+blockquote.bq-info{border-left-color:#1565c0;background:#eaf3fb;color:#0d3c66}
+blockquote.bq-warning{border-left-color:#f9a825;background:#fff8e1;color:#6d4c00}
+blockquote.bq-danger{border-left-color:#d32f2f;background:#fef5f5;color:#8b0000}
+hr{border:none;border-top:1px solid var(--border);margin:24px 0}
+img{max-width:100%;border-radius:var(--radius);margin:12px 0}
+/* 锚点跳转留白（避免被固定顶栏遮挡） */
+h2,h3{scroll-margin-top:16px}
+
+/* 图片排布：多图横向，窄屏自动纵向 */
+.img-row{
+  display:flex;flex-wrap:wrap;gap:14px;margin:14px 0
+}
+.img-row .img-fig{
+  flex:1 1 40%;min-width:0;margin:0
+}
+.img-row .img-fig img{
+  width:100%;margin:0;border-radius:var(--radius)
+}
+.img-row figcaption{
+  text-align:center;font-size:12px;color:var(--muted);margin-top:6px
+}
+.img-row-single .img-fig{flex-basis:100%}
+@media(max-width:600px){
+  .img-row{flex-direction:column;gap:12px}
+  h2,h3{scroll-margin-top:64px}
+}
+
+/* Table */
+.table-wrap{overflow-x:auto;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border:1px solid var(--border);padding:10px 14px;text-align:left}
+th{background:var(--dark);color:#fff;font-weight:600}
+tr:nth-child(even){background:#fafafa}
+
+/* ====== RESPONSIVE ====== */
+
+/* Narrow: collapse sidebar */
+@media(max-width:768px){
+  .topbar{display:flex}
+  nav.sidebar{
+    transform:translateX(-100%);
+    top:var(--topbar-h);z-index:101;
+    width:280px;                        /* 回退：min() 不支持时 */
+    width:min(280px,84vw)
+  }
+  nav.sidebar.open{transform:translateX(0)}
+  .overlay.show{display:block}
+  main{
+    margin-left:0;margin-top:var(--topbar-h);
+    width: calc(100vw - 2 * var(--pad));
+    max-width: none;
+  }
+  .hero{padding:28px 20px}
+  .hero h1{font-size:22px}
+  .card{padding:16px 18px}
+  section h2{font-size:19px}
+  section h3{font-size:16px}
+  .table-wrap{margin-left:-18px;margin-right:-18px;width:calc(100% + 36px)}
+}
+
+/* Very narrow screens */
+@media(max-width:420px){
+  .topbar .brand{font-size:13px}
+  .lang-select{max-width:132px;font-size:12px;padding:5px 22px 5px 8px}
+  main{--pad: 12px}
+  .card{padding:14px 14px}
+  .hero{padding:22px 16px}
+  .hero h1{font-size:20px}
+}
+
+/* ====== PRINT (PDF 导出) ====== */
+/*
+ * 注意：Chrome 打印视口宽度可能低于 768px，导致移动端媒体查询规则
+ * 泄漏到打印渲染。因此必须在打印样式中显式覆盖所有相关属性。
+ */
+@media print{
+  html,body{display:block !important;width:100% !important;max-width:100% !important;overflow:visible !important}
+  nav.sidebar,.topbar,.overlay{display:none !important}
+  body{background:#fff}
+  main{
+    display:block !important;box-sizing:border-box !important;
+    margin:0 !important;padding:0 !important;
+    width:100% !important;max-width:100% !important;
+  }
+  .card{box-shadow:none;border:1px solid var(--border);padding:24px 28px}
+  .hero{background:#fff;color:var(--text);border:1px solid var(--border);padding:32px 28px}
+  .hero h1{color:var(--dark);font-size:28px}
+  section h2{font-size:22px}
+  section h3{font-size:17px}
+  .hero .badge{background:var(--red);color:#fff}
+  a{color:inherit;overflow-wrap:anywhere !important}
+  /* 表格打印适配：覆盖移动端负边距泄漏，强制约束在页面宽度内 */
+  .table-wrap{
+    overflow:visible !important;
+    margin:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+  }
+  table{
+    width:100% !important;max-width:100% !important;
+    table-layout:fixed;font-size:12px
+  }
+  th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
+  tr{page-break-inside:avoid}
+  .img-row{flex-wrap:nowrap}
+  .img-fig{page-break-inside:avoid}
+  .img-row .img-fig{flex:1 1 0}
+  /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
+  html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
+  .align-right{text-align:right}
+  /* 标题间距：一级标题前空约两行，二级标题前空约一行 */
+  h1{margin:3.2em 0 1em}
+  h2{margin:2em 0 .8em}
+  h3{margin:1.2em 0 .5em}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="返回主页">FTC 32477 Origin 빠른 시작 가이드</a></span>
+  <select class="lang-select" id="langSelect" aria-label="Language">
+<option value="../zh-hans/programming.html">简体中文</option><option value="../zh-hant/programming.html">繁體中文</option><option value="../en-us/programming.html">English (US)</option><option value="../fr/programming.html">Français</option><option value="../es/programming.html">Español</option><option value="../ko/programming.html" selected>한국어</option>
+  </select>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a class="home-link" href="../index.html" title="返回主页">
+      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+      <div class="logo">FTC 32477<br>Origin</div>
+      <div class="sub">빠른 시작 가이드</div>
+    </a>
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+<option value="../zh-hans/programming.html">简体中文</option><option value="../zh-hant/programming.html">繁體中文</option><option value="../en-us/programming.html">English (US)</option><option value="../fr/programming.html">Français</option><option value="../es/programming.html">Español</option><option value="../ko/programming.html" selected>한국어</option>
+    </select>
+  </div>
+  <div class="sidebar-nav">
+<a href="index.html">홈</a>
+<a href="preface.html">머리말</a>
+<a href="member.html">팀원 필수사항</a>
+<a href="modeling.html">모델링 및 설계</a>
+<a href="build.html">하드웨어 및 제작</a>
+<a href="programming.html" class="active">프로그래밍</a>
+<a class="sub-link" href="#1기본자료">1. 기본 자료</a>
+<a class="sub-link sub-3" href="#애플리케이션">애플리케이션</a>
+<a class="sub-link" href="#2환경설정">2. 환경 설정</a>
+<a class="sub-link sub-3" href="#웹브라우저">웹 브라우저</a>
+<a class="sub-link sub-3" href="#Git">Git</a>
+<a class="sub-link sub-3" href="#AndroidStudio">Android Studio</a>
+<a class="sub-link sub-3" href="#VisualStudioCode">Visual Studio Code</a>
+<a class="sub-link" href="#3도구소개">3. 도구 소개</a>
+<a class="sub-link sub-3" href="#AndroidStudio-1">Android Studio</a>
+<a class="sub-link sub-3" href="#VisualStudioCode-1">Visual Studio Code</a>
+<a class="sub-link sub-3" href="#RobotDashboard">Robot Dashboard</a>
+<a class="sub-link" href="#4작업흐름">4. 작업 흐름</a>
+<a class="sub-link sub-3" href="#디버깅이핵심">디버깅이 핵심</a>
+<a href="outreach.html">아웃리치 및 대외 홍보</a>
+<a href="afterword.html">후기</a>
+  </div>
+  <div class="sidebar-footer">2026년 8월 제3판 &middot; 편집팀</div>
+</nav>
+
+<main>
+<h1>프로그래밍</h1>
+<h2 id="1기본자료">1. 기본 자료</h2>
+<p>다음은 프로그래밍에서 추가로 필요한 자료입니다.</p>
+<h3 id="애플리케이션">애플리케이션</h3>
+<ul><li>Git</li><li>Visual Studio Code</li><li>Android Studio</li></ul>
+<hr>
+<h2 id="2환경설정">2. 환경 설정</h2>
+<p>다음은 본격적으로 시작하기 전에 설정해야 할 작업 환경입니다. 안내에 따라 진행하고, 궁금한 점은 관리자에게 문의하세요.</p>
+<h3 id="웹브라우저">웹 브라우저</h3>
+<p>북마크에 추가로 저장해야 할 웹사이트는 다음과 같습니다.</p>
+<div class="table-wrap"><table><thead><tr><th style="text-align:left">이름</th><th style="text-align:left">주소</th></tr></thead><tbody><tr><td style="text-align:left">Programming Resources</td><td style="text-align:left">https://www.firstinspires.org/resources/library/ftc/programming-resources</td></tr><tr><td style="text-align:left">REV Robotics Documentation</td><td style="text-align:left">https://docs.revrobotics.com/duo-control/hello-robot-java/welcome</td></tr><tr><td style="text-align:left">Pedro Pathing</td><td style="text-align:left">https://pedropathing.com/</td></tr><tr><td style="text-align:left">Robot Dashboard</td><td style="text-align:left">http://192.168.43.1:8080/</td></tr></tbody></table></div>
+<h3 id="Git">Git</h3>
+<p>Git은 우리 팀이 사용하는 프로그램 파일 버전 관리 도구입니다. Android Studio에는 Git이 내장되어 있지 않으므로 설치하고 설정해야 하며, 다음 두 가지 방법 중 하나를 선택하면 됩니다.</p>
+<p><strong>방법 1(Android Studio에서 Git 다운로드 및 설치):</strong></p>
+<ol><li>Android Studio를 열고 설정 페이지로 들어갑니다. Windows/Linux는 File → Settings, macOS는 Android Studio → Settings(또는 Preferences)</li><li>왼쪽 메뉴에서 Version Control을 펼치고 Git 클릭</li><li>Git이 감지되지 않으면 인터페이스에 다운로드 입구가 표시됩니다. 클릭해 다운로드하고 설치하면 됩니다</li><li>설치 완료 후 Path to Git executable에서 Git 프로그램 경로를 확인하고(Windows는 git.exe), Test를 클릭해 Successful이 표시되면 Apply와 OK를 눌러 저장합니다</li></ol>
+<p><strong>방법 2(Git을 먼저 별도 설치한 뒤 Android Studio에서 경로 설정):</strong></p>
+<ol><li>Git 공식 사이트 <a href="https://git-scm.com/downloads" target="_blank">https://git-scm.com/downloads</a>에 접속해 자신의 컴퓨터 시스템(Windows / macOS / Linux)에 맞는 설치 패키지를 다운로드합니다</li><li>설치 프로그램을 실행하고 기본 옵션으로 Next를 눌러 설치를 완료합니다</li><li>Android Studio를 열고 설정 → Version Control → Git으로 이동합니다</li><li>Path to Git executable에 Git 프로그램 경로를 입력하거나 선택합니다(환경 변수가 설정되어 있으면 자동으로 감지됨)</li><li>Test를 클릭해 Successful이 표시되면 Apply와 OK를 눌러 저장합니다</li></ol>
+<p>현재 프로젝트에서 버전 관리를 활성화하려면: 상단 메뉴 VCS → Enable Version Control Integration...을 클릭하고 Git을 선택한 뒤 OK를 누릅니다.</p>
+<h3 id="AndroidStudio">Android Studio</h3>
+<p>Android Studio는 우리 팀이 사용하는 프로그램 작성 도구입니다.</p>
+<p><strong>소프트웨어 설치 및 환경 설정 절차:</strong></p>
+<ol><li><a href="https://developer.android.com/studio" target="_blank">https://developer.android.com/studio</a> 열기</li><li>"Download Android Studio"를 클릭해 해당 버전을 다운로드하고 설치합니다.</li></ol>
+<p><strong>Windows에서 설치할 때 주의할 점:</strong></p>
+<ul><li>두 체크박스를 모두 체크해야 합니다</li><li>공간이 충분하고 변경되지 않을 경로를 선택하세요</li></ul>
+<p><strong>초기화:</strong></p>
+<ul><li>"Standard" 모드를 선택하세요</li><li>계약 동의 시 "Accept"를 체크하세요</li><li>나머지는 그대로 두고 "Next"를 선택하세요</li></ul>
+<p><strong>한글화:</strong></p>
+<ol><li><a href="https://github.com/sollyu/AndroidStudioChineseLanguagePack/releases" target="_blank">Android Studio Chinese Language Pack</a> 열기</li><li>최신 언어 확장 패키지(.jar 파일) 다운로드</li><li>메인 페이지 왼쪽 탭 목록에서 "Plugins"를 선택하고 "Install Plugin from Disk" 선택</li><li>다운로드한 .jar 파일을 선택해 열고, 플러그인이 로드되면 활성화 상태인지 확인</li><li>왼쪽 탭 목록에서 "Customize"를 선택하고 "Language and Region"에 들어가 "Language"를 "Chinese (Simplified) 简体中文"으로, "Region"을 "Americas"로 선택한 뒤 재시작</li></ol>
+<p><strong>저장소 클론:</strong></p>
+<ol><li>왼쪽 탭 목록에서 "GitHub" 클릭, "Log In via GitHub"로 인증합니다.</li><li>현재 시즌의 코드 저장소를 선택합니다(예: <code>ftc32477/FTC-32477-Decode-Program</code>)</li><li>경로가 바뀌지 않을 빈 폴더를 선택하고 "Clone" 클릭</li><li>파일 다운로드가 끝날 때까지 기다립니다. 왼쪽 사이드바의 "Build" 탭이나 창 오른쪽 아래의 진행 표시줄에서 진행 상황을 볼 수 있습니다</li></ol>
+<blockquote class="bq-warning">문제가 있으면 관리자에게 문의하세요.</blockquote>
+<h3 id="VisualStudioCode">Visual Studio Code</h3>
+<p>Visual Studio Code는 우리 팀이 사용하는 코드 편집 및 이력 확인 도구입니다.</p>
+<p><strong>소프트웨어 설치 및 환경 설정 절차:</strong></p>
+<ol><li><a href="https://code.visualstudio.com/Download" target="_blank">https://code.visualstudio.com/Download</a> 열기</li><li>해당 버전을 다운로드하고 설치하면 됩니다</li><li><a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans" target="_blank">한글화 플러그인</a>을 열어 설치하면 한글화됩니다.</li></ol>
+<hr>
+<h2 id="3도구소개">3. 도구 소개</h2>
+<h3 id="AndroidStudio-1">Android Studio</h3>
+<p>공식 문서: <a href="https://developer.android.com/studio/intro?hl=zh-cn" target="_blank">https://developer.android.com/studio/intro?hl=zh-cn</a></p>
+<p>이 프로젝트에서는 FTC 공식 제공 애플리케이션 프레임워크를 기반으로, <code>TeamCode</code> 폴더 아래에서 Java 언어로 로봇 제어 프로그램을 작성해 로봇 구동에 필요한 각종 의존성 라이브러리를 호출합니다.</p>
+<p>Android Studio에서 알아야 할 기본 지식은 공식 문서의 간단한 페이지 안내를 참고하세요.</p>
+<h3 id="VisualStudioCode-1">Visual Studio Code</h3>
+<p>공식 문서: <a href="https://code.visualstudio.com/docs" target="_blank">https://code.visualstudio.com/docs</a></p>
+<p>Visual Studio Code의 조작 로직은 Android Studio와 비슷하고, 이 프로젝트에서는 사용 빈도가 낮으므로 인터페이스 안내는 Android Studio 파트를 참고하세요. 여기서는 반복하지 않습니다.</p>
+<h3 id="RobotDashboard">Robot Dashboard</h3>
+<ul><li>Wi-Fi 네트워크 '<code>32477-RC</code>'에 연결합니다. Wi-Fi 비밀번호: 관리자에게 문의하거나 Driver Hub를 통해 확인합니다.</li><li>주소: <a href="http://192.168.43.1:8080/" target="_blank">http://192.168.43.1:8080/</a></li><li>Control Hub에 내장된 Wi-Fi 모듈의 웹 페이지(공식 명칭 Robot Controller Console, 즉 로봇 컨트롤러 콘솔)로, Control Hub를 관리하는 그래픽 백엔드를 제공합니다.</li></ul>
+<p>Robot Dashboard에서 알아야 할 기본 지식은 공식 문서의 간단한 페이지 안내를 참고하세요.</p>
+<hr>
+<h2 id="4작업흐름">4. 작업 흐름</h2>
+<p>프로그래밍 팀의 핵심 업무는 세 부분으로 나뉩니다.</p>
+<ul><li><strong>자율 프로그램</strong>: 시즌 자율 단계(Auto)의 제어 로직</li><li><strong>수동 프로그램</strong>: 원격 조종 단계(TeleOp)의 조작 로직</li><li><strong>센서 설정</strong>: 각종 센서와 비전 시스템의 설정</li></ul>
+<h3 id="디버깅이핵심">디버깅이 핵심</h3>
+<blockquote class="bq-info">프로그램 개발의 진짜 어려움은 디버깅에 있습니다. 자율 경로, 수동 조작, PID 매개변수, 비전 설정 — 대부분의 센서에는 바로 재사용할 수 있는 기성 패키지가 있습니다. 여러분이 진짜 해야 할 일은 '튜닝'입니다.</blockquote>
+<p>디버깅은 개발 프로세스 전반을 관통합니다.</p>
+<ol><li><strong>요구 분석</strong>: 현재 시즌의 규칙과 과제 요구를 명확히 합니다</li><li><strong>아키텍처 설계</strong>: 프로그램 전체 아키텍처와 모듈 분할을 설계합니다</li><li><strong>코드 작성</strong>: Android Studio에서 Java 코드를 작성합니다</li><li><strong>버전 관리</strong>: Git으로 코드 버전을 관리합니다</li><li><strong>디버깅</strong>: 자율 경로, 수동 조작, PID 매개변수, 비전 설정을 튜닝합니다</li><li><strong>테스트 검증</strong>: 로봇에서 프로그램 기능을 검증합니다</li><li><strong>코드 리뷰</strong>: GitHub로 코드 리뷰와 병합을 진행합니다</li><li><strong>배포 발표</strong>: 최종 버전을 Robot Controller에 배포합니다</li></ol>
+</main>
+
+<script>
+(function(){
+  var sb=document.getElementById("sidebar");
+  var ol=document.getElementById("overlay");
+  var btn=document.getElementById("menuBtn");
+  function open(){sb.classList.add("open");ol.classList.add("show")}
+  function close(){sb.classList.remove("open");ol.classList.remove("show")}
+  btn.addEventListener("click",function(){sb.classList.contains("open")?close():open()});
+  ol.addEventListener("click",close);
+  var ls=document.getElementById("langSelect");
+  if(ls){ls.addEventListener("change",function(){window.location.href=ls.value})};
+  var lss=document.getElementById("langSelectSide");
+  if(lss){lss.addEventListener("change",function(){window.location.href=lss.value})};
+})();
+</script>
+</body>
+</html>

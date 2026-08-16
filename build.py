@@ -41,7 +41,7 @@ LANGUAGES = {
     "zh-hans": {
         "label": "简体中文",
         "brand": "快速入门指南",
-        "footer": "2026年8月第2版 &middot; 编写小组",
+        "footer": "2026年8月第3版 &middot; 编写小组",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
             "index":       "主页",
@@ -57,7 +57,7 @@ LANGUAGES = {
     "zh-hant": {
         "label": "繁體中文",
         "brand": "快速入門指南",
-        "footer": "2026年8月第2版 &middot; 編寫小組",
+        "footer": "2026年8月第3版 &middot; 編寫小組",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
             "index":       "首頁",
@@ -73,7 +73,7 @@ LANGUAGES = {
     "en-us": {
         "label": "English (US)",
         "brand": "Quick Start Guide",
-        "footer": "Aug 2026, 2nd Ed. &middot; Editorial Team",
+        "footer": "Aug 2026, 3rd Ed. &middot; Editorial Team",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
             "index":       "Home",
@@ -89,7 +89,7 @@ LANGUAGES = {
     "fr": {
         "label": "Français",
         "brand": "Guide de démarrage rapide",
-        "footer": "Août 2026, 2e éd. &middot; Équipe éditoriale",
+        "footer": "Août 2026, 3e éd. &middot; Équipe éditoriale",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
             "index":       "Accueil",
@@ -105,7 +105,7 @@ LANGUAGES = {
     "es": {
         "label": "Español",
         "brand": "Guía de inicio rápido",
-        "footer": "Ago. 2026, 2.ª ed. &middot; Equipo editorial",
+        "footer": "Ago. 2026, 3.ª ed. &middot; Equipo editorial",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
             "index":       "Inicio",
@@ -118,17 +118,86 @@ LANGUAGES = {
             "afterword":   "Epílogo",
         },
     },
+    "ko": {
+        "label": "한국어",
+        "brand": "빠른 시작 가이드",
+        "footer": "2026년 8월 제3판 &middot; 편집팀",
+        "site_title": "FTC 32477 Origin 빠른 시작 가이드",
+        "pages": {
+            "index":       "홈",
+            "preface":     "머리말",
+            "member":      "팀원 필수사항",
+            "modeling":    "모델링 및 설계",
+            "build":       "하드웨어 및 제작",
+            "programming": "프로그래밍",
+            "outreach":    "아웃리치 및 대외 홍보",
+            "afterword":   "후기",
+        },
+    },
 }
 
 DEFAULT_LANG = "zh-hans"
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.1.0"
+RELEASE_TAG = "v1.2.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
-# name / changes 均按五语言提供；date 为 ISO 格式，页面按语言本地化展示
+# name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.2.0",
+        "date": "2026-08-16",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年8月第3版",
+            "zh-hant": "2026年8月第3版",
+            "en-us": "August 2026, 3rd Edition",
+            "fr": "Août 2026, 3e édition",
+            "es": "3.ª edición, agosto de 2026",
+            "ko": "2026년 8월 제3판",
+        },
+        "changes": {
+            "zh-hans": [
+                "新增韩语（한국어）版本：七章全文与网站页面（语言主页、历史版本页）同步提供韩语译本，并发布韩语 PDF。",
+                "全部语言版本统一人名与专有名词标注规范：真实人名附注汉字原名（如 Fu Xiuqi (付修齐)，韩语版用汉字读音加注，如 부수제(付修齐)），平台与专有物名附注来源语言原名（如 KIRIN (麒麟)、Bilibili (哔哩哔哩)）。",
+                "本版为 2026年8月第3版。",
+            ],
+            "zh-hant": [
+                "新增韓語（한국어）版本：七章全文與網站頁面（語言首頁、歷史版本頁）同步提供韓語譯本，並發布韓語 PDF。",
+                "全部語言版本統一人名與專有名詞標註規範：真實人名附註漢字原名（如 Fu Xiuqi (付修齊)，韓語版用漢字讀音加註，如 부수제(付修齊)），平台與專有物名附註來源語言原名（如 KIRIN (麒麟)、Bilibili (嗶哩嗶哩)）。",
+                "本版為 2026年8月第3版。",
+            ],
+            "en-us": [
+                "Added a Korean (한국어) edition: full translations of all seven chapters and the website pages (language homepage, version history), with a Korean PDF included.",
+                "Standardized name annotations across all language editions: real person names now carry their original Chinese characters (e.g., Fu Xiuqi (付修齐); in Korean, names are given in their Korean hanja readings, e.g., 부수제(付修齐)), and proper nouns such as platforms carry their source-language names (e.g., KIRIN (麒麟), Bilibili (哔哩哔哩)).",
+                "This release is the August 2026, 3rd Edition.",
+            ],
+            "fr": [
+                "Ajout d'une édition coréenne (한국어) : traduction complète des sept chapitres et des pages du site (page d'accueil, historique des versions), avec un PDF coréen inclus.",
+                "Harmonisation des annotations de noms dans toutes les éditions linguistiques : les noms de personnes portent désormais leurs caractères chinois d'origine (ex. Fu Xiuqi (付修齐) ; en coréen, les noms sont donnés dans leur lecture hanja, ex. 부수제(付修齐)), et les noms propres tels que les plateformes portent leur nom dans la langue source (ex. KIRIN (麒麟), Bilibili (哔哩哔哩)).",
+                "Cette version est la 3e édition d'août 2026.",
+            ],
+            "es": [
+                "Se ha añadido la edición en coreano (한국어): traducción completa de los siete capítulos y de las páginas del sitio (página de inicio, historial de versiones), con un PDF en coreano incluido.",
+                "Se han unificado las anotaciones de nombres en todas las ediciones lingüísticas: los nombres de personas reales llevan ahora sus caracteres chinos originales (p. ej., Fu Xiuqi (付修齐); en coreano se usa la lectura hanja, p. ej., 부수제(付修齐)), y los nombres propios como las plataformas llevan su nombre en el idioma de origen (p. ej., KIRIN (麒麟), Bilibili (哔哩哔哩)).",
+                "Esta versión es la 3.ª edición de agosto de 2026.",
+            ],
+            "ko": [
+                "한국어(한국어) 버전 추가: 7개 장 전체 번역과 웹사이트 페이지(언어 홈, 버전 기록)의 한국어 번역을 제공하며 한국어 PDF를 함께 발표합니다.",
+                "모든 언어 버전에서 인명 및 고유명사 표기 규칙 통일: 실존 인명에는 한자 원명을 병기하고(예: Fu Xiuqi (付修齐); 한국어판은 한자 독음으로 표기, 예: 부수제(付修齐)), 플랫폼 등 고유명사에는 출처 언어 원명을 병기합니다(예: KIRIN (麒麟), Bilibili (哔哩哔哩)).",
+                "이번 버전은 2026년 8월 제3판입니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-ko.pdf",
+        },
+    },
     {
         "tag": "v1.1.0",
         "date": "2026-08-16",
@@ -139,6 +208,7 @@ VERSIONS = [
             "en-us": "August 2026, 2nd Edition",
             "fr": "Août 2026, 2e édition",
             "es": "2.ª edición, agosto de 2026",
+            "ko": "2026년 8월 제2판",
         },
         "changes": {
             "zh-hans": [
@@ -166,6 +236,11 @@ VERSIONS = [
                 "Se han actualizado los colores de acento de las tarjetas de idioma del portal: #a61615 para el chino simplificado/tradicional, #d85d23 para English (US)/Français y #ffb953 para la nueva tarjeta en español.",
                 "Esta versión es la 2.ª edición de agosto de 2026.",
             ],
+            "ko": [
+                "스페인어(Español) 버전 추가: 7개 장 전체 번역과 웹사이트 페이지(언어 홈, 버전 기록)의 스페인어 번역을 제공하며 스페인어 PDF를 함께 발표합니다.",
+                "포털 언어 선택 카드 상단 색상 업데이트: 중국어 간체/번체는 #a61615, English (US)/Français는 #d85d23, 새 스페인어 카드는 #ffb953.",
+                "이번 버전은 2026년 8월 제2판입니다.",
+            ],
         },
         "pdfs": {
             "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hans.pdf",
@@ -185,6 +260,7 @@ VERSIONS = [
             "en-us": "August 2026, 1st Edition",
             "fr": "Août 2026, 1re édition",
             "es": "1.ª edición, agosto de 2026",
+            "ko": "2026년 8월 제1판",
         },
         "changes": {
             "zh-hans": [
@@ -211,6 +287,11 @@ VERSIONS = [
                 "Primera publicación, que incluye siete capítulos: Prefacio, Esenciales del equipo, Modelado y diseño, Hardware y construcción, Programación, Divulgación y relaciones públicas y Epílogo.",
                 "Disponible en cuatro ediciones lingüísticas: chino simplificado, chino tradicional, English (US) y Français.",
                 "El PDF combinado incluye cubierta, índice, texto principal y contraportada, con numeración de páginas continua e índice navegable.",
+            ],
+            "ko": [
+                "첫 출판. 머리말, 팀원 필수사항, 모델링 및 설계, 하드웨어 및 제작, 프로그래밍, 아웃리치 및 대외 홍보, 후기 총 7개 장을 수록했습니다.",
+                "중국어 간체, 중국어 번체, English (US), Français 4개 언어 버전을 제공합니다.",
+                "병합 PDF에는 표지, 목차, 본문과 뒷표지가 포함되며, 페이지 번호가 연속으로 매겨지고 목차에서 바로 이동할 수 있습니다.",
             ],
         },
         "pdfs": {
@@ -1108,6 +1189,7 @@ def render_portal():
         ("en-us", "English (US)", "English \u00b7 United States"),
         ("fr", "Fran\u00e7ais", "French \u00b7 France"),
         ("es", "Espa\u00f1ol", "Spanish \u00b7 Spain"),
+        ("ko", "\ud55c\uad6d\uc5b4", "Korean \u00b7 Korea"),
     ]
     cards_html = "\n".join(
         f'<a class="lang-card {lk}" href="{lk}/index.html">'
@@ -1165,13 +1247,13 @@ LANG_HOME_TEXTS = {
             ("\u961f\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b66\u6821", "\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c2\u7248"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
         ],
         "download_title": "\u4e0b\u8f7d",
         "download_desc": "\u4e0b\u8f7d\u7684\u662f\u79bb\u7ebf\u7248\u672c\uff1a\u65e0\u9700\u8054\u7f51\u5373\u53ef\u9605\u8bfb\uff0c\u4e5f\u53ef\u81ea\u884c\u6253\u5370\u6216\u5206\u4eab\u5b58\u6863\u3002",
         "download_btn": "\u2193 \u4e0b\u8f7d PDF",
         "chapters_title": "\u5185\u5bb9\u7ed3\u6784",
-        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u4e94\u8bed\u8a00 PDF\u3002",
+        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u5e76\u4e0b\u8f7d\u516d\u8bed\u8a00 PDF\u3002",
         "versions_btn": "\u67e5\u770b\u5386\u53f2\u7248\u672c \u2192",
         "legal": "\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u4ea7\u54c1\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u4ee5\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\u7684\u5185\u5bb9\u4e3a\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7ecf\u6574\u7406\u5408\u5e76\u7684\u5f00\u6e90\u6750\u6599\u4e0e\u5176\u4ed6\u8d21\u732e\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
     },
@@ -1183,13 +1265,13 @@ LANG_HOME_TEXTS = {
             ("\u968a\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b78\u6821", "\u4e2d\u570b\u5317\u4eac\u5e02\u6d77\u6dc0\u5340 \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u905e\u5340\u865f 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c2\u7248"),
+            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
         ],
         "download_title": "\u4e0b\u8f09",
         "download_desc": "\u4e0b\u8f09\u7684\u662f\u96e2\u7dda\u7248\u672c\uff1a\u7121\u9700\u9023\u7dda\u5373\u53ef\u95b1\u8b80\uff0c\u4e5f\u53ef\u81ea\u884c\u5217\u5370\u6216\u5206\u4eab\u5b58\u6a94\u3002",
         "download_btn": "\u2193 \u4e0b\u8f09 PDF",
         "chapters_title": "\u5167\u5bb9\u7d50\u69cb",
-        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u4e26\u4e0b\u8f09\u4e94\u8a9e\u8a00 PDF\u3002",
+        "versions_desc": "\u67e5\u770b\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u4e26\u4e0b\u8f09\u516d\u8a9e\u8a00 PDF\u3002",
         "versions_btn": "\u67e5\u770b\u6b77\u53f2\u7248\u672c \u2192",
         "legal": "\u6cd5\u5f8b\u8072\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u968a\u4f0d\u7684\u7368\u7acb\u7522\u54c1\u3002\u672c\u968a\u4f0d\u8207 FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u7121\u96b8\u5c6c\u3001\u80cc\u66f8\u6216\u8d0a\u52a9\u95dc\u4fc2\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u70ba FIRST \u7684\u8a3b\u518a\u5546\u6a19\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8a2d\u8a08\u3001\u7a0b\u5f0f\u78bc\u8207\u8cc7\u6e90\u4ee5\u968a\u4f0d\u6210\u54e1\u63d0\u4f9b\u7684\u5167\u5bb9\u70ba\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7d93\u6574\u7406\u5408\u4f75\u7684\u958b\u6e90\u6750\u6599\u8207\u5176\u4ed6\u8ca2\u737b\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002",
     },
@@ -1201,13 +1283,13 @@ LANG_HOME_TEXTS = {
             ("Team", "FTC Team 32477 Origin"),
             ("School", "Beijing National Day Experimental School, Haidian District, Beijing, China"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
-            ("Latest Version", "2nd Edition \u00b7 August 2026"),
+            ("Latest Version", "3rd Edition \u00b7 August 2026"),
         ],
         "download_title": "Download",
         "download_desc": "Download the offline edition: read it without an internet connection, print it, or share and archive it.",
         "download_btn": "\u2193 Download PDF",
         "chapters_title": "Table of Contents",
-        "versions_desc": "See what changed in each release and download its PDFs in five languages.",
+        "versions_desc": "See what changed in each release and download its PDFs in six languages.",
         "versions_btn": "View Version History \u2192",
         "legal": "Legal Notice: This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.",
     },
@@ -1219,7 +1301,7 @@ LANG_HOME_TEXTS = {
             ("\u00c9quipe", "FTC Team 32477 Origin"),
             ("\u00c9cole", "Beijing National Day Experimental School, district de Haidian, P\u00e9kin, Chine"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
-            ("Derni\u00e8re version", "2e \u00e9dition \u00b7 ao\u00fbt 2026"),
+            ("Derni\u00e8re version", "3e \u00e9dition \u00b7 ao\u00fbt 2026"),
         ],
         "download_title": "T\u00e9l\u00e9charger",
         "download_desc": "T\u00e9l\u00e9chargez l'\u00e9dition hors ligne : lisez-la sans connexion Internet, imprimez-la ou partagez-la et archivez-la.",
@@ -1237,15 +1319,33 @@ LANG_HOME_TEXTS = {
             ("Equipo", "FTC Team 32477 Origin"),
             ("Escuela", "Beijing National Day Experimental School, distrito de Haidian, Pek\u00edn, China"),
             ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
-            ("\u00daltima versi\u00f3n", "2.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
+            ("\u00daltima versi\u00f3n", "3.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
         ],
         "download_title": "Descargar",
         "download_desc": "Descargue la edici\u00f3n sin conexi\u00f3n: l\u00e9ala sin conexi\u00f3n a Internet, impr\u00edmala o comp\u00e1rtala y arch\u00edvela.",
         "download_btn": "\u2193 Descargar PDF",
         "chapters_title": "\u00cdndice de contenidos",
-        "versions_desc": "Consulte las fechas de publicaci\u00f3n y los principales cambios de cada versi\u00f3n, y descargue los PDF en cinco idiomas.",
+        "versions_desc": "Consulte las fechas de publicaci\u00f3n y los principales cambios de cada versi\u00f3n, y descargue los PDF en seis idiomas.",
         "versions_btn": "Ver historial de versiones \u2192",
         "legal": "Aviso legal: esta gu\u00eda es un producto independiente del equipo FTC 32477 Origin. Nuestro equipo no est\u00e1 afiliado a FIRST\u00ae (For Inspiration and Recognition of Science and Technology), ni cuenta con su respaldo ni su patrocinio. FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge y FTC\u00ae son marcas registradas de FIRST. Los dise\u00f1os, el c\u00f3digo y los recursos compartidos en esta gu\u00eda provienen principalmente de los miembros del equipo y pueden incluir tambi\u00e9n materiales de c\u00f3digo abierto y aportaciones de otras personas, debidamente organizados e integrados; no constituyen material oficial de FIRST.",
+    },
+    "ko": {
+        "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc",
+        "slogan": "\ubc14\ud034\ub97c \ub2e4\uc2dc \ubc1c\uba85\ud558\uc9c0 \uc54a\uae30",
+        "about_title": "\ud504\ub85c\uc81d\ud2b8 \uc18c\uac1c",
+        "about": [
+            ("\ud300", "FTC Team 32477 Origin"),
+            ("\ud559\uad50", "Beijing National Day Experimental School, \uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c"),
+            ("\uc8fc\uc18c", "\uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c \ud0c0\uc774\ud551\ub85c 8\ubc88\uc9c0, \uc6b0\ud3b8\ubc88\ud638 100039"),
+            ("\ucd5c\uc2e0 \ubc84\uc804", "2026\ub144 8\uc6d4 \uc81c3\ud310"),
+        ],
+        "download_title": "\ub2e4\uc6b4\ub85c\ub4dc",
+        "download_desc": "\uc624\ud504\ub77c\uc778 \ubc84\uc804\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud558\uc138\uc694. \uc778\ud130\ub137 \uc5c6\uc774 \uc77d\uace0, \uc778\uc1c4\ud558\uac70\ub098 \uacf5\uc720\u00b7\ubcf4\uad00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+        "download_btn": "\u2193 PDF \ub2e4\uc6b4\ub85c\ub4dc",
+        "chapters_title": "\ubaa9\ucc28",
+        "versions_desc": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc744 \ud655\uc778\ud558\uace0 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud558\uc138\uc694.",
+        "versions_btn": "\ubc84\uc804 \uae30\ub85d \ubcf4\uae30 \u2192",
+        "legal": "\ubc95\uc801 \uace0\uc9c0: \uc774 \uac00\uc774\ub4dc\ub294 FTC 32477 Origin \ud300\uc758 \ub3c5\ub9bd \uc81c\uc791\ubb3c\uc785\ub2c8\ub2e4. \ubcf8 \ud300\uc740 FIRST\u00ae(For Inspiration and Recognition of Science and Technology)\uc640 \uc18c\uc18d, \ud6c4\uc6d0 \ub610\ub294 \uc2a4\ud3f0\uc11c \uad00\uacc4\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge \ubc0f FTC\u00ae\ub294 FIRST\uc758 \ub4f1\ub85d \uc0c1\ud45c\uc785\ub2c8\ub2e4. \uc774 \uac00\uc774\ub4dc\uc5d0 \uacf5\uc720\ub41c \uc124\uacc4, \ucf54\ub4dc\uc640 \uc790\uc6d0\uc740 \ud300\uc6d0\uc774 \uc81c\uacf5\ud55c \ub0b4\uc6a9\uc744 \uc704\uc8fc\ub85c \ud558\uba70, \uc815\ub9ac\u00b7\ud1b5\ud569\ub41c \uc624\ud508\uc18c\uc2a4 \uc790\ub8cc\uc640 \ub2e4\ub978 \uae30\uc5ec\uc790\uc758 \uc131\uacfc\ub97c \ud3ec\ud568\ud560 \uc218 \uc788\uc73c\uba70, FIRST \uacf5\uc2dd \uc790\ub8cc\ub97c \ub300\ud45c\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
     },
 }
 
@@ -1472,6 +1572,8 @@ def format_release_date(lang_key, iso_date):
         months = ["enero", "febrero", "marzo", "abril", "mayo", "junio",
                   "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
         return f"{d} de {months[m - 1]} de {y}"
+    if lang_key == "ko":
+        return f"{y}년 {m}월 {d}일"
     return iso_date
 
 
@@ -1479,7 +1581,7 @@ def format_release_date(lang_key, iso_date):
 VERSIONS_TEXTS = {
     "zh-hans": {
         "page_title": "\u5386\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u4e94\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f7d\uff1a",
@@ -1488,11 +1590,11 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u6700\u65b0\u7248\u672c",
         "badge_preview": "\u9884\u89c8",
         "pdf_note": "PDF \u5f85\u6b63\u5f0f\u53d1\u5e03\u540e\u63d0\u4f9b\u4e0b\u8f7d\u3002",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
     },
     "zh-hant": {
         "page_title": "\u6b77\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u4e94\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f09\uff1a",
@@ -1501,11 +1603,11 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u6700\u65b0\u7248\u672c",
         "badge_preview": "\u9810\u89bd",
         "pdf_note": "PDF \u5f85\u6b63\u5f0f\u767c\u5e03\u5f8c\u63d0\u4f9b\u4e0b\u8f09\u3002",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
     },
     "en-us": {
         "page_title": "Version History",
-        "intro": "Release dates and key changes of each version. PDFs in five languages are provided for download; no web edition is kept for past versions.",
+        "intro": "Release dates and key changes of each version. PDFs in six languages are provided for download; no web edition is kept for past versions.",
         "sort_desc": "Newest first",
         "sort_asc": "Oldest first",
         "pdf_label": "Download:",
@@ -1514,11 +1616,11 @@ VERSIONS_TEXTS = {
         "badge_latest": "Latest",
         "badge_preview": "Preview",
         "pdf_note": "PDFs will be available after the official release.",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
     },
     "fr": {
         "page_title": "Historique des versions",
-        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en cinq langues sont disponibles en t\u00e9l\u00e9chargement ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
+        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en six langues sont disponibles en t\u00e9l\u00e9chargement ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
         "sort_desc": "Plus r\u00e9cents d'abord",
         "sort_asc": "Plus anciens d'abord",
         "pdf_label": "T\u00e9l\u00e9charger :",
@@ -1527,11 +1629,11 @@ VERSIONS_TEXTS = {
         "badge_latest": "Derni\u00e8re version",
         "badge_preview": "Aper\u00e7u",
         "pdf_note": "Les PDF seront disponibles apr\u00e8s la publication officielle.",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
     },
     "es": {
         "page_title": "Historial de versiones",
-        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en cinco idiomas para descargar; no se conservan ediciones web de versiones anteriores.",
+        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en seis idiomas para descargar; no se conservan ediciones web de versiones anteriores.",
         "sort_desc": "M\u00e1s recientes primero",
         "sort_asc": "M\u00e1s antiguos primero",
         "pdf_label": "Descargar:",
@@ -1540,7 +1642,20 @@ VERSIONS_TEXTS = {
         "badge_latest": "\u00daltima versi\u00f3n",
         "badge_preview": "Vista previa",
         "pdf_note": "Los PDF estar\u00e1n disponibles tras la publicaci\u00f3n oficial.",
-        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol"},
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
+    },
+    "ko": {
+        "page_title": "\ubc84\uc804 \uae30\ub85d",
+        "intro": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc785\ub2c8\ub2e4. 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc73c\uba70, \uacfc\uac70 \ubc84\uc804\uc758 \uc6f9 \ubc84\uc804\uc740 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+        "sort_desc": "\ucd5c\uc2e0\uc21c",
+        "sort_asc": "\uc624\ub798\ub41c \uc21c",
+        "pdf_label": "\ub2e4\uc6b4\ub85c\ub4dc:",
+        "status_dev": "\uc0c1\ud0dc: \uac1c\ubc1c \uc911 (\ubbf8\ucd9c\uc2dc)",
+        "date_prefix": "\ucd9c\uc2dc\uc77c: ",
+        "badge_latest": "\ucd5c\uc2e0 \ubc84\uc804",
+        "badge_preview": "\ubbf8\ub9ac\ubcf4\uae30",
+        "pdf_note": "PDF\ub294 \uc815\uc2dd \ucd9c\uc2dc \ud6c4 \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+        "pdf_langs": {"zh-hans": "\u7b80\u4f53\u4e2d\u6587", "zh-hant": "\u7e41\u9ad4\u4e2d\u6587", "en-us": "English (US)", "fr": "Fran\u00e7ais", "es": "Espa\u00f1ol", "ko": "\ud55c\uad6d\uc5b4"},
     },
 }
 

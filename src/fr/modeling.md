@@ -154,10 +154,10 @@ La résistance d'une pièce imprimée en 3D dépend du matériau et de la struct
 
 ### Ressources d'apprentissage Onshape
 
-Plateforme de modélisation professionnelle, Onshape propose des ressources d'apprentissage officielles complètes : [https://learn.onshape.com/](https://learn.onshape.com/) ; de nombreux tutoriels sont également disponibles sur des plateformes vidéo comme Bilibili et YouTube.
+Plateforme de modélisation professionnelle, Onshape propose des ressources d'apprentissage officielles complètes : [https://learn.onshape.com/](https://learn.onshape.com/) ; de nombreux tutoriels sont également disponibles sur des plateformes vidéo comme Bilibili (哔哩哔哩) et YouTube.
 
 - Les logiciels de CAO suivant des flux de travail similaires (esquisse, pièce, assemblage), les tutoriels d'autres logiciels comme SolidWorks ou Autodesk Fusion ont tout autant de valeur : ils aident à développer la perception des volumes des pièces et la familiarité avec les flux de travail de modélisation
-- Gardez à l'esprit que la pratique prime sur la théorie : trouvez des modèles à reproduire sur Bilibili, essayez d'abord de modéliser par vous-même et ne consultez le tutoriel qu'en cas de blocage. Dans la vie quotidienne, observez et réfléchissez à la façon dont les petites structures sont modélisées
+- Gardez à l'esprit que la pratique prime sur la théorie : trouvez des modèles à reproduire sur Bilibili (哔哩哔哩), essayez d'abord de modéliser par vous-même et ne consultez le tutoriel qu'en cas de blocage. Dans la vie quotidienne, observez et réfléchissez à la façon dont les petites structures sont modélisées
 - Pour la FTC, étudiez les excellentes solutions des autres équipes : la plupart des grandes équipes ont leur propre site web et publient leurs solutions en open source. Recherchez un numéro d'équipe FTC sur YouTube ou Google pour trouver leur site officiel, ou consultez les modèles d'autres équipes sur des sites comme CycleZLab
 
 > [!info] En cas de question, demandez conseil à un ancien de la modélisation ou recherchez directement sur Internet.

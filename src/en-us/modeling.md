@@ -154,10 +154,10 @@ The strength of 3D-printed parts depends on the material and the geometry. Here 
 
 ### Onshape Learning Resources
 
-As a professional modeling platform, Onshape offers complete official learning resources: [https://learn.onshape.com/](https://learn.onshape.com/). There are also many tutorials on video platforms such as Bilibili and YouTube.
+As a professional modeling platform, Onshape offers complete official learning resources: [https://learn.onshape.com/](https://learn.onshape.com/). There are also many tutorials on video platforms such as Bilibili (哔哩哔哩) and YouTube.
 
 - Because CAD software follows similar workflows (sketch, part, assembly), tutorials for other software such as SolidWorks and Autodesk Fusion are equally valuable—they help develop spatial awareness of parts and familiarity with modeling workflows
-- Remember that practice matters more than theory: find some models on Bilibili to model along with; try to model on your own first and only check the tutorial if you get stuck. In daily life, observe and think about how small structures are modeled
+- Remember that practice matters more than theory: find some models on Bilibili (哔哩哔哩) to model along with; try to model on your own first and only check the tutorial if you get stuck. In daily life, observe and think about how small structures are modeled
 - For FTC, study the excellent designs of other teams: most strong teams have their own websites and open-source their designs. Search for an FTC team number on YouTube or Google to find their official site, or browse other teams' models on sites such as CycleZLab
 
 > [!info] If you have questions, ask a modeling veteran or search online.

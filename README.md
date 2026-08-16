@@ -25,9 +25,10 @@ ftc_quick_start_guide/
 │   ├── zh-hant/                 # 繁体中文源文件（同 zh-hans 结构）
 │   ├── en-us/                 # 英文（美式）源文件（同 zh-hans 结构）
 │   ├── fr/                    # 法语源文件（同 zh-hans 结构）
-│   └── es/                    # 西班牙语源文件（同 zh-hans 结构）
+│   ├── es/                    # 西班牙语源文件（同 zh-hans 结构）
+│   └── ko/                    # 韩语源文件（同 zh-hans 结构）
 ├── images/                    # 图片资源（构建时自动复制到 dist/images/）
-│   ├── basic/                 # 通用资源（五语言共用）
+│   ├── basic/                 # 通用资源（六语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
 │   │   └── team_logo.png      # 队徽（侧边栏/顶栏/主页英雄区）
 │   └── afterword/             # 后记专用图片（大合照等）
@@ -38,13 +39,15 @@ ftc_quick_start_guide/
 │   ├── en-us/                 # 英文（美式）网站（Home + 7 pages + Version History）
 │   ├── fr/                    # 法语网站（Accueil + 7 pages + Historique des versions）
 │   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones）
+│   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-fr.pdf     # 法语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.1.0-es.pdf     # 西班牙语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-es.pdf     # 西班牙语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.0-ko.pdf     # 韩语完整指南
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -85,13 +88,13 @@ python3 build.py --watch      # 监听模式（文件变化自动重建）
 ### 导出 PDF
 
 ```bash
-python3 build_pdf.py                # 导出全部五种语言的 PDF
+python3 build_pdf.py                # 导出全部六种语言的 PDF
 python3 build_pdf.py --lang en-us   # 仅导出英文（美式）
 python3 build_pdf.py --page member  # 仅导出"队员须知"页面
 python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 ```
 
-- 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留五语言合并版。
+- 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留六语言合并版。
 - `--page` 用于内容调试：只生成指定页的单页 PDF（含页眉页脚），不删除。
 - `dist/pdf/` 已加入 `.gitignore` **不入库**，仅本地生成用于自查纠错；正式发布的 PDF 上传为 GitHub Release 资产（见"八、发布到 GitHub Pages"）。
 
@@ -102,10 +105,10 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 ## 三、PDF 结构（多语言自动本地化）
 
-每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es）结构如下：
+每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es / ko）结构如下：
 
-1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 · 日期"（如"简体中文版 · 2026年8月第2版"，位置略上移）
-2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第2版）**、**版本号（v1.1.0）**、**发布日期（2026年8月16日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
+1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 · 日期"（如"简体中文版 · 2026年8月第3版"，位置略上移）
+2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第3版）**、**版本号（v1.2.0）**、**发布日期（2026年8月16日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
 3. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）
 4. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接，点击跳转到对应页；目录页脚沿用罗马数字
 5. **正文页**（队员须知起）：
@@ -142,7 +145,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 仿 wikipedia.org 的语言选择落地页，结构极简：
 
 - **英雄区**：队徽 + 队伍徽章 + 指南标题 + 标语（拒绝重复造轮子 · Refuse to Reinvent the Wheel）。
-- **语言选择**：五张卡片（简体中文 / 繁體中文 / English (US) / Français / Español），卡片整体为链接 → `{lang}/index.html`（各语言主页）；最多两列排布（宽屏两列、窄屏 ≤600px 单列）。
+- **语言选择**：六张卡片（简体中文 / 繁體中文 / English (US) / Français / Español / 한국어），卡片整体为链接 → `{lang}/index.html`（各语言主页）；最多两列排布（宽屏两列、窄屏 ≤600px 单列）。
 - **页脚**：编辑组署名 + 中英双语法律声明。
 - 门户不含 PDF 下载与历史版本入口（都在各语言主页内）。
 
@@ -270,7 +273,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
                                     预览站点 https://ftc32477.github.io/docs/dev/
 ```
 
-- ① 本地构建：生成根门户 + 五语言"主页 + 7 页 + 历史版本页"共 46 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
+- ① 本地构建：生成根门户 + 六语言"主页 + 7 页 + 历史版本页"共 55 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
 - ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
@@ -286,24 +289,24 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 | 改动类型 | 示例 | SemVer | 版权页 |
 |---------|------|--------|--------|
-| 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 第3版 |
-| 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例） | 次版本 +1 → v1.2.0 | 第3版 |
-| 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录 | 次版本 +1 → v1.2.0 | 第2版（日期随新） |
-| 勘误：错别字/样式/小修正 | 编写人员名单、法律声明 | 修订 +1 → v1.2.1 | 第2版·第2次修订 |
-| 开发中 | — | v1.3.0-preview | （仅预览站） |
+| 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 第4版 |
+| 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例） | 次版本 +1 → v1.3.0 | 第4版 |
+| 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录 | 次版本 +1 → v1.3.0 | 第3版（日期随新） |
+| 勘误：错别字/样式/小修正 | 编写人员名单、法律声明 | 修订 +1 → v1.3.1 | 第3版·第1次修订 |
+| 开发中 | — | v1.4.0-preview | （仅预览站） |
 
 **发版流程（每次一版）：**
 
 1. 在 dev 定稿全部内容
-2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需五语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`，无需另行修改
-3. 本地运行 `build_pdf.py` 生成 5 份 PDF（新文件名）并自查
-4. 创建新 Release（tag 如 `v1.2.0`）并上传 5 份 PDF 作为资产
+2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`，无需另行修改
+3. 本地运行 `build_pdf.py` 生成 6 份 PDF（新文件名）并自查
+4. 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 
 ### 历史版本页（{lang}/versions.html）
 
-- **五语言各一份**（zh-hans / zh-hant / en-us / fr / es），复用指南页外壳（侧边栏/顶栏/抽屉）；语言下拉与指南页一致：切换到**历史版本页的对应语言版本**（`versions.html` → `../en-us/versions.html`）；主页入口默认进入 `zh-hans/versions.html`
-- 数据来源为 `build.py` 顶部 `VERSIONS` 列表：tag、发布日期（ISO 格式，页面按语言本地化展示）、`name`/`changes` 五语言字段、五语言 PDF 资产文件名；卡片 PDF 按钮指向 GitHub Release 资产，按钮只标注语言名（如"简体中文"），行首"下载："标签说明用途
+- **六语言各一份**（zh-hans / zh-hant / en-us / fr / es / ko），复用指南页外壳（侧边栏/顶栏/抽屉）；语言下拉与指南页一致：切换到**历史版本页的对应语言版本**（`versions.html` → `../en-us/versions.html`）；主页入口默认进入 `zh-hans/versions.html`
+- 数据来源为 `build.py` 顶部 `VERSIONS` 列表：tag、发布日期（ISO 格式，页面按语言本地化展示）、`name`/`changes` 六语言字段、六语言 PDF 资产文件名；卡片 PDF 按钮指向 GitHub Release 资产，按钮只标注语言名（如"简体中文"），行首"下载："标签说明用途
 - 默认倒序（最新在前），正文顶部可切换正序；左侧边栏为版本号锚点，点击平滑滚动跳转
 - 历史页不保留过去版本的网页版（在线正文只有现版），卡片仅提供 PDF 下载
 - `status: "preview"` 条目仅在 dev 分支构建时显示（带"预览"徽标、无 PDF 按钮），正式构建自动隐藏
@@ -360,9 +363,10 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
    English (US) .md（src/en-us/）
    Français .md（src/fr/）
    Español .md（src/es/）
+   한국어 .md（src/ko/）
         │
         ▼ 构建（python3 build.py）
-③ HTML 网站（dist/index.html 根门户 + dist/zh-hans/、dist/zh-hant/、dist/en-us/、dist/fr/、dist/es/ 各语言主页与页面）
+③ HTML 网站（dist/index.html 根门户 + dist/zh-hans/、dist/zh-hant/、dist/en-us/、dist/fr/、dist/es/、dist/ko/ 各语言主页与页面）
         │
         ▼ 导出（python3 build_pdf.py）
 ④ PDF 文档（dist/pdf/，仅本地自查，不入库；正式版上传 GitHub Release）
@@ -374,13 +378,13 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 **规则：**
 
 1. **一切内容修改必须从 `src/zh-hans/` 下的简体中文 .md 文件开始**。简体中文版是内容的事实标准（source of truth）。
-2. 简体中文版定稿后，再同步翻译到 `src/zh-hant/`（繁体中文）、`src/en-us/`（English (US)）、`src/fr/`（Français）和 `src/es/`（Español）。
+2. 简体中文版定稿后，再同步翻译到 `src/zh-hant/`（繁体中文）、`src/en-us/`（English (US)）、`src/fr/`（Français）、`src/es/`（Español）和 `src/ko/`（한국어）。
 3. 构建脚本只做**单向转换**（.md → .html → .pdf），**不支持**从 HTML 或 PDF 反向生成 .md。
 4. 不要直接编辑 `dist/` 下的 HTML 或 PDF——它们每次构建都会被覆盖。如需重新生成产物，请联系 HTML/PDF 维护组员运行构建脚本。
 5. 修改内容后由维护组员依次运行：
    ```bash
-   python3 build.py       # ③ 生成五语言 HTML（含各语言主页与历史版本页）
-   python3 build_pdf.py   # ④ 生成五语言 PDF
+   python3 build.py       # ③ 生成六语言 HTML（含各语言主页与历史版本页）
+   python3 build_pdf.py   # ④ 生成六语言 PDF
    ```
 
 **外部素材的整合方式：**
@@ -398,25 +402,26 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | en-us | English (US) | 美式英语，**目录名必须为 en-us**（与 `en` 区分，明确美式变体） |
 | fr | Français | 法语（法国），正式 vous 语体，遵循法语排版规范（« guillemets »、双标点前不换行空格等） |
 | es | Español | 西班牙语（西班牙），正式/无人称语体（usted 与无人称句式，避免 tú），遵循西语排版规范（« » 引号、¿ ¡ 疑问感叹号等） |
+| ko | 한국어 | 韩语（韩国），正式 합쇼체 语体（-합니다）；中国人名采用汉字读音并附注汉字原名（如 부수제(付修齐)） |
 
-- 语言代码统一采用 **BCP 47 脚本代码**：简体为 `zh-hans`、繁体为 `zh-hant`（不用区域代码 `zh-cn`/`zh-tw`），西班牙语为 `es`（不用 `es-es`），同时作用于目录名、语言键、HTML `lang`、PDF 文件名与线上网址路径。
+- 语言代码统一采用 **BCP 47 脚本代码**：简体为 `zh-hans`、繁体为 `zh-hant`（不用区域代码 `zh-cn`/`zh-tw`），西班牙语为 `es`（不用 `es-es`），韩语为 `ko`（不用 `ko-kr`），同时作用于目录名、语言键、HTML `lang`、PDF 文件名与线上网址路径。
 
 - 语言切换 UI **必须显示全称**：简体中文 / 繁體中文 / English (US) / Français，不使用简写。
 - 放不下时采用**下拉选项栏**（侧边栏与移动端顶栏均为下拉栏）。
 
-### 页面清单（page key 五语言对照）
+### 页面清单（page key 六语言对照）
 
-| 文件名 | 简体中文 | 繁體中文 | English (US) | Français | Español |
-|--------|----------|----------|---------|---------|---------|
-| （index.html，由 `render_lang_homepage` 生成） | 主页 | 首頁 | Home | Accueil | Inicio |
-| preface.md | 前言 | 前言 | Preface | Préface | Prefacio |
-| member.md | 队员须知 | 隊員須知 | Team Essentials | Essentiels de l'équipe | Esenciales del equipo |
-| modeling.md | 建模设计 | 建模設計 | Modeling & Design | Modélisation & Conception | Modelado y diseño |
-| build.md | 结构建造 | 結構建造 | Hardware & Build | Matériel & Construction | Hardware y construcción |
-| programming.md | 程序设计 | 程式設計 | Programming | Programmation | Programación |
-| outreach.md | 外部联络 | 外部聯絡 | Outreach & PR | Sensibilisation & Relations publiques | Divulgación y relaciones públicas |
-| afterword.md | 后记 | 後記 | Afterword | Postface | Epílogo |
-| versions.html | 历史版本 | 歷史版本 | Version History | Historique des versions | Historial de versiones |
+| 文件名 | 简体中文 | 繁體中文 | English (US) | Français | Español | 한국어 |
+|--------|----------|----------|---------|---------|---------|--------|
+| （index.html，由 `render_lang_homepage` 生成） | 主页 | 首頁 | Home | Accueil | Inicio | 홈 |
+| preface.md | 前言 | 前言 | Preface | Préface | Prefacio | 머리말 |
+| member.md | 队员须知 | 隊員須知 | Team Essentials | Essentiels de l'équipe | Esenciales del equipo | 팀원 필수사항 |
+| modeling.md | 建模设计 | 建模設計 | Modeling & Design | Modélisation & Conception | Modelado y diseño | 모델링 및 설계 |
+| build.md | 结构建造 | 結構建造 | Hardware & Build | Matériel & Construction | Hardware y construcción | 하드웨어 및 제작 |
+| programming.md | 程序设计 | 程式設計 | Programming | Programmation | Programación | 프로그래밍 |
+| outreach.md | 外部联络 | 外部聯絡 | Outreach & PR | Sensibilisation & Relations publiques | Divulgación y relaciones públicas | 아웃리치 및 대외 홍보 |
+| afterword.md | 后记 | 後記 | Afterword | Postface | Epílogo | 후기 |
+| versions.html | 历史版本 | 歷史版本 | Version History | Historique des versions | Historial de versiones | 버전 기록 |
 
 ## 三、Markdown 语法参考
 
@@ -510,7 +515,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 **效果：** 在页面中插入图片。
 
-**用途：** 在文档中插入照片、截图、示意图等。先将图片放入项目根目录的 `images/` 文件夹（建议按用途分子目录，如 `basic/`、`afterword/`），构建时会自动复制到 `dist/images/`，五语言页面共用。
+**用途：** 在文档中插入照片、截图、示意图等。先将图片放入项目根目录的 `images/` 文件夹（建议按用途分子目录，如 `basic/`、`afterword/`），构建时会自动复制到 `dist/images/`，六语言页面共用。
 
 **路径注意：** 语言页面位于 `dist/{lang}/` 子目录中，Markdown 中的相对路径需以 `../images/` 开头（如 `../images/afterword/photo.jpg`）。
 

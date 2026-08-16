@@ -154,10 +154,10 @@ La resistencia de las piezas impresas en 3D depende del material y de la estruct
 
 ### Recursos de aprendizaje de Onshape
 
-Como plataforma de modelado profesional, Onshape cuenta con recursos oficiales de aprendizaje completos: [https://learn.onshape.com/](https://learn.onshape.com/); también hay muchos tutoriales en plataformas de vídeo como Bilibili o YouTube.
+Como plataforma de modelado profesional, Onshape cuenta con recursos oficiales de aprendizaje completos: [https://learn.onshape.com/](https://learn.onshape.com/); también hay muchos tutoriales en plataformas de vídeo como Bilibili (哔哩哔哩) o YouTube.
 
 - Dada la similitud del flujo de trabajo entre programas CAD (boceto, pieza, ensamblaje), los tutoriales de SolidWorks, Autodesk Fusion y otros programas también tienen valor didáctico y ayudan a desarrollar la percepción espacial de las piezas y la familiaridad con el flujo de modelado
-- Recuerde siempre que la práctica es más importante que la teoría: busque modelos en Bilibili para practicar, intente primero modelarlos por su cuenta y consulte el tutorial solo si de verdad no le sale; en la vida cotidiana también puede observar y reflexionar sobre las ideas de modelado de estructuras pequeñas
+- Recuerde siempre que la práctica es más importante que la teoría: busque modelos en Bilibili (哔哩哔哩) para practicar, intente primero modelarlos por su cuenta y consulte el tutorial solo si de verdad no le sale; en la vida cotidiana también puede observar y reflexionar sobre las ideas de modelado de estructuras pequeñas
 - En la FTC conviene estudiar las buenas soluciones de otros equipos: la mayoría de los equipos punteros tienen su propio sitio web y publican sus soluciones en abierto; puede buscar el número del equipo FTC en YouTube o Google para encontrar su sitio oficial; también puede consultar los modelos de otros equipos en CycleZLab y sitios similares
 
 > [!info] Si tiene dudas, consulte a los veteranos del modelado o busque directamente en Internet.

@@ -12,10 +12,10 @@ Voici les éléments complémentaires requis pour la division Sensibilisation & 
 ### Comptes en ligne
 
 - Adresse e-mail (@gmail.com ou @outlook.com recommandés)
-- Compte officiel WeChat
-- Bilibili
-- Douyin
-- Xiaohongshu (RED)
+- Compte officiel WeChat (微信公众号)
+- Bilibili (哔哩哔哩)
+- Douyin (抖音)
+- Xiaohongshu (小红书, RED)
 - YouTube
 - TikTok
 - X (Twitter)
@@ -82,7 +82,7 @@ Le contenu du cahier d'ingénierie est rédigé par les équipes Mécanique et P
 
 - Meilleurs sont vos résultats, plus grande est votre visibilité, et plus il est facile d'obtenir des sponsors.
 - À ce stade, commencez par de petits sponsors : par exemple, sollicitez des usines d'électronique pour qu'elles fournissent des outils, des vis et d'autres consommables.
-- Comment les contacter : envoyez des e-mails aux grandes entreprises et appelez directement les vendeurs Taobao.
+- Comment les contacter : envoyez des e-mails aux grandes entreprises et appelez directement les vendeurs Taobao (淘宝).
 
 ### Plan commercial
 
@@ -95,13 +95,13 @@ Un plan commercial présenté à un sponsor doit inclure :
 
 ### Étude de cas : développement commercial de l'équipe FTC 27570 (BYNX)
 
-- **Module son et lumière** : l'équipe FTC 27570 a développé KIRIN, un module son et lumière conçu spécialement pour la FTC et prenant en charge des effets lumineux personnalisables. La tarification par paliers intègre les numéros d'équipe : 1 unité pour ¥180, 4 unités pour ¥570 et 6 unités pour ¥787, où 570 et 787 correspondent respectivement aux numéros des équipes FTC 27570 et FTC 25787, gravant ainsi subtilement les numéros d'équipe dans l'esprit des acheteurs.
+- **Module son et lumière** : l'équipe FTC 27570 a développé KIRIN (麒麟), un module son et lumière conçu spécialement pour la FTC et prenant en charge des effets lumineux personnalisables. La tarification par paliers intègre les numéros d'équipe : 1 unité pour ¥180, 4 unités pour ¥570 et 6 unités pour ¥787, où 570 et 787 correspondent respectivement aux numéros des équipes FTC 27570 et FTC 25787, gravant ainsi subtilement les numéros d'équipe dans l'esprit des acheteurs.
 - **Servomoteurs personnalisés** : l'équipe a collaboré avec une usine de servomoteurs pour produire des servomoteurs dédiés sous sa propre marque, puis a développé un logiciel d'étalonnage associé ; elle vend servomoteurs, cartes de distribution d'alimentation et autres accessoires via son site web, les revenus des ventes servant à financer l'équipe.
 
 ### Étude de cas : l'équipe nationale chinoise du FGC
 
 - FGC (First Global Challenge) est l'équivalent des Jeux olympiques de la robotique ; l'édition 2026 se tiendra à Incheon, en Corée du Sud, avec la participation de plus de 190 pays.
-- Le plan commercial de l'équipe nationale chinoise du FGC comprend la présentation de la compétition, la présentation de l'équipe, les résultats historiques et les avantages correspondant aux différents paliers de sponsoring. D'après nos informations, cette équipe a obtenu le sponsoring de marques telles que Xiaomi et Huawei (via la marque Huakun Zhenyu).
+- Le plan commercial de l'équipe nationale chinoise du FGC comprend la présentation de la compétition, la présentation de l'équipe, les résultats historiques et les avantages correspondant aux différents paliers de sponsoring. D'après nos informations, cette équipe a obtenu le sponsoring de marques telles que Xiaomi et Huawei (via la marque Huakun Zhenyu (华鲲振宇)).
 
 ---
 

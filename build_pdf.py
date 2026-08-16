@@ -13,7 +13,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 用法:
     python3 build_pdf.py            # 导出所有语言的单页 PDF + 合并 PDF
-    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr / es）
+    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr / es / ko）
     python3 build_pdf.py --page member  # 仅导出指定页面（仅单页，不含封面封底）
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
@@ -71,35 +71,42 @@ PDF_TEXTS = {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "name2": "Quick Start Guide",
         "school": "\u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66",
-        "date": "2026\u5e748\u6708\u7b2c2\u7248",
+        "date": "2026\u5e748\u6708\u7b2c3\u7248",
         "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
     "zh-hant": {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
-        "date": "2026\u5e748\u6708\u7b2c2\u7248",
+        "date": "2026\u5e748\u6708\u7b2c3\u7248",
         "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },
     "en-us": {
         "name": "32477 Origin Quick Start Guide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "August 2026 \u00b7 2nd Edition",
+        "date": "August 2026 \u00b7 3rd Edition",
         "lang": "English (US) Edition",
     },
     "fr": {
         "name": "32477 Origin Guide de d\u00e9marrage rapide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "Ao\u00fbt 2026 \u00b7 2e \u00e9dition",
+        "date": "Ao\u00fbt 2026 \u00b7 3e \u00e9dition",
         "lang": "\u00c9dition fran\u00e7aise",
     },
     "es": {
         "name": "Gu\u00eda de inicio r\u00e1pido de 32477 Origin",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "2.\u00aa edici\u00f3n \u00b7 agosto de 2026",
+        "date": "3.\u00aa edici\u00f3n \u00b7 agosto de 2026",
         "lang": "Edici\u00f3n en espa\u00f1ol",
+    },
+    "ko": {
+        "name": "32477 Origin \ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc",
+        "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
+        "school": "Beijing National Day Experimental School",
+        "date": "2026\ub144 8\uc6d4 \uc81c3\ud310",
+        "lang": "\ud55c\uad6d\uc5b4\ud310",
     },
 }
 
@@ -110,6 +117,7 @@ TOC_TITLES = {
     "en-us": "Table of Contents",
     "fr": "Table des mati\u00e8res",
     "es": "\u00cdndice",
+    "ko": "\ubaa9\ucc28",
 }
 
 # 页脚文案（reportlab 盖印，x=当前页）与字体（内置 CID 字体）
@@ -119,6 +127,7 @@ FOOTER_TEXTS = {
     "en-us": "\u2014 {x} \u2014",
     "fr": "\u2014 {x} \u2014",
     "es": "\u2014 {x} \u2014",
+    "ko": "\u2014 {x} \u2014",
 }
 FOOTER_FONTS = {
     "zh-hans": "STSong-Light",
@@ -126,6 +135,7 @@ FOOTER_FONTS = {
     "en-us": "Helvetica",
     "fr": "Helvetica",
     "es": "Helvetica",
+    "ko": "Helvetica",
 }
 
 # 纸张与页边距：A4（210×297mm），上下 2.54cm，左右 3.18cm
@@ -291,8 +301,8 @@ IMPRINT_TEXTS = {
             ("Version", "{tag}"),
             ("Release Date", "{date}"),
             ("Language Edition", "{lang_edition}"),
-            ("Chief Editor", "Fu Xiuqi"),
-            ("Writers", "Du Xingzhou, Xie Jincan, et al."),
+            ("Chief Editor", "Fu Xiuqi (\u4ed8\u4fee\u9f50)"),
+            ("Writers", "Du Xingzhou (\u675c\u661f\u6d32), Xie Jincan (\u8c22\u91d1\u707f), et al."),
             ("Produced by", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
         ],
@@ -304,8 +314,8 @@ IMPRINT_TEXTS = {
             ("Version", "{tag}"),
             ("Date de publication", "{date}"),
             ("\u00c9dition linguistique", "{lang_edition}"),
-            ("R\u00e9dacteur en chef", "Fu Xiuqi"),
-            ("R\u00e9dacteurs", "Du Xingzhou, Xie Jincan, et al."),
+            ("R\u00e9dacteur en chef", "Fu Xiuqi (\u4ed8\u4fee\u9f50)"),
+            ("R\u00e9dacteurs", "Du Xingzhou (\u675c\u661f\u6d32), Xie Jincan (\u8c22\u91d1\u707f), et al."),
             ("Produit par", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
         ],
@@ -317,10 +327,23 @@ IMPRINT_TEXTS = {
             ("Versi\u00f3n", "{tag}"),
             ("Fecha de publicaci\u00f3n", "{date}"),
             ("Edici\u00f3n ling\u00fc\u00edstica", "{lang_edition}"),
-            ("Redactor jefe", "Fu Xiuqi"),
-            ("Redactores", "Du Xingzhou, Xie Jincan, et al."),
+            ("Redactor jefe", "Fu Xiuqi (\u4ed8\u4fee\u9f50)"),
+            ("Redactores", "Du Xingzhou (\u675c\u661f\u6d32), Xie Jincan (\u8c22\u91d1\u707f), et al."),
             ("Producido por", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
             ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
+        ],
+    },
+    "ko": {
+        "title_label": "\uc81c\ubaa9",
+        "fields": [
+            ("\ud310\ubcf8", "{edition}"),
+            ("\ubc84\uc804", "{tag}"),
+            ("\ucd9c\uc2dc\uc77c", "{date}"),
+            ("\uc5b8\uc5b4\ud310", "{lang_edition}"),
+            ("\ud3b8\uc9d1\uc7a5", "\ubd80\uc218\uc81c(\u4ed8\u4fee\u9f50)"),
+            ("\uc9d1\ud544\uc9c4", "\ub450\uc131\uc8fc(\u675c\u661f\u6d32), \uc0ac\uae08\ucc2c(\u8c22\u91d1\u707f) \ub4f1"),
+            ("\uc81c\uc791", "FTC 32477 Origin \u00b7 Beijing National Day Experimental School"),
+            ("\uc8fc\uc18c", "\uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c \ud0c0\uc774\ud551\ub85c 8\ubc88\uc9c0, \uc6b0\ud3b8\ubc88\ud638 100039"),
         ],
     },
 }
@@ -374,6 +397,16 @@ RESOURCE_TEXTS = {
             ("Historial de versiones", "https://ftc32477.github.io/docs/{lang}/versions.html"),
             ("Repositorio de c\u00f3digo abierto", "https://github.com/ftc32477/quick-start-guide"),
             ("Comentarios", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+    },
+    "ko": {
+        "heading": "\uc790\ub8cc \ubc0f \uc5c5\ub370\uc774\ud2b8",
+        "intro": "\ubcf8 \uac00\uc774\ub4dc\ub294 \uc9c0\uc18d\uc801\uc73c\ub85c \uac1c\uc815\ub429\ub2c8\ub2e4. \ub2e4\uc74c \ucc44\ub110\uc744 \ud1b5\ud574 \ucd5c\uc2e0 \ub0b4\uc6a9\uc744 \ud655\uc778\ud558\uc138\uc694.",
+        "items": [
+            ("\uc628\ub77c\uc778 \ubc84\uc804", "https://ftc32477.github.io/docs/"),
+            ("\ubc84\uc804 \uae30\ub85d", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("\uc624\ud508\uc18c\uc2a4 \uc800\uc7a5\uc18c", "https://github.com/ftc32477/quick-start-guide"),
+            ("\uc758\uacac \ud53c\ub4dc\ubc31", "https://github.com/ftc32477/quick-start-guide/issues"),
         ],
     },
 }
