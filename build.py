@@ -166,11 +166,70 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.2.1"
+RELEASE_TAG = "v1.2.2"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.2.2",
+        "date": "2026-08-16",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年8月第3版·第2次修订",
+            "zh-hant": "2026年8月第3版·第2次修訂",
+            "en-us": "August 2026, 3rd Edition, 2nd Revision",
+            "fr": "Août 2026, 3e édition, 2e révision",
+            "es": "3.ª edición, agosto de 2026, 2.ª revisión",
+            "ko": "2026년 8월 제3판 · 2차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "繁体中文版「结构体/装配体」术语统一为繁体字形（結構體/裝配體）。",
+                "历史版本页说明补充：早期版本仅含发布时已有的语言。",
+                "PDF 封面/封底版本信息改为两行排版并加大行距，封底右对齐。",
+                "工程化更新：版次信息全面数据驱动（侧边栏页脚、主页最新版本、PDF 封面日期自动取自 VERSIONS）；新增 check-dist CI 校验与 release.sh 半自动发版脚本；Release 说明归档至 release-notes/；全站新增 SEO 社交分享 meta 与本地化无障碍标签；--watch 扩展监听 images/ 与 build.py。",
+            ],
+            "zh-hant": [
+                "繁體中文版「结构体/装配体」術語統一為繁體字形（結構體/裝配體）。",
+                "歷史版本頁說明補充：早期版本僅含發布時已有的語言。",
+                "PDF 封面/封底版本資訊改為兩行排版並加大行距，封底右對齊。",
+                "工程化更新：版次資訊全面資料驅動（側邊欄頁尾、首頁最新版本、PDF 封面日期自動取自 VERSIONS）；新增 check-dist CI 校驗與 release.sh 半自動發版腳本；Release 說明歸檔至 release-notes/；全站新增 SEO 社交分享 meta 與本地化無障礙標籤；--watch 擴展監聽 images/ 與 build.py。",
+            ],
+            "en-us": [
+                "Traditional Chinese edition: the Onshape terms 「结构体/装配体」 are now written in traditional characters (結構體/裝配體).",
+                "Version history page: clarified that earlier versions include only the languages available at their release.",
+                "PDF cover and back cover: version information is now set on two lines with increased line spacing, and the back cover lines are right-aligned.",
+                "Engineering updates: edition data is now fully data-driven from VERSIONS (sidebar footer, homepage latest version, PDF cover date); added a check-dist CI workflow and a semi-automated release script (release.sh); Release notes are archived in release-notes/; all pages now include SEO/social-sharing meta tags and localized accessibility labels; --watch now monitors images/ and build.py as well.",
+            ],
+            "fr": [
+                "Édition chinoise traditionnelle : les termes Onshape « 结构体/装配体 » sont désormais écrits en caractères traditionnels (結構體/裝配體).",
+                "Page d'historique des versions : précision que les versions antérieures ne contiennent que les langues disponibles à leur publication.",
+                "Couverture et quatrième de couverture du PDF : les informations de version sont désormais sur deux lignes avec un interligne accru, et les lignes de la quatrième de couverture sont alignées à droite.",
+                "Améliorations techniques : les informations d'édition sont désormais entièrement dérivées des VERSIONS (pied de page latéral, dernière version de la page d'accueil, date de couverture du PDF) ; ajout d'un workflow CI check-dist et d'un script de publication semi-automatisé (release.sh) ; les notes de version sont archivées dans release-notes/ ; toutes les pages incluent désormais des balises meta SEO/partage social et des étiquettes d'accessibilité localisées ; --watch surveille également images/ et build.py.",
+            ],
+            "es": [
+                "Edición en chino tradicional: los términos de Onshape «结构体/装配体» se escriben ahora en caracteres tradicionales (結構體/裝配體).",
+                "Página de historial de versiones: se aclara que las versiones anteriores incluyen solo los idiomas disponibles en su publicación.",
+                "Cubierta y contraportada del PDF: la información de versión se muestra ahora en dos líneas con mayor interlineado, y las líneas de la contraportada están alineadas a la derecha.",
+                "Mejoras de ingeniería: los datos de edición se derivan ahora por completo de VERSIONS (pie de página lateral, versión más reciente de la página de inicio, fecha de la cubierta del PDF); se añade un workflow CI check-dist y un script de publicación semiautomatizado (release.sh); las notas de versión se archivan en release-notes/; todas las páginas incluyen ahora metaetiquetas SEO/para compartir en redes y etiquetas de accesibilidad localizadas; --watch también supervisa images/ y build.py.",
+            ],
+            "ko": [
+                "중국어 번체판: Onshape 용어 「结构体/装配体」를 번체자(結構體/裝配體)로 통일했습니다.",
+                "버전 기록 페이지: 초기 버전에는 출시 당시 제공되던 언어만 포함된다는 설명을 추가했습니다.",
+                "PDF 표지/뒷표지: 버전 정보를 두 줄로 배치하고 줄 간격을 넓혔으며, 뒷표지는 오른쪽 정렬했습니다.",
+                "엔지니어링 개선: 판본 정보를 VERSIONS에서 완전히 데이터 구동(사이드바 푸터, 홈 최신 버전, PDF 표지 날짜)하고, check-dist CI 워크플로와 반자동 발매 스크립트(release.sh)를 추가했으며, Release 설명을 release-notes/에 보관합니다. 모든 페이지에 SEO/소셜 공유 meta 태그와 현지화된 접근성 라벨을 추가했고, --watch가 images/와 build.py도 감시합니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-ko.pdf",
+        },
+    },
     {
         "tag": "v1.2.1",
         "date": "2026-08-16",

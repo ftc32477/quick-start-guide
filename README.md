@@ -42,12 +42,12 @@ ftc_quick_start_guide/
 │   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-fr.pdf     # 法语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-es.pdf     # 西班牙语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.1-ko.pdf     # 韩语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-es.pdf     # 西班牙语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-ko.pdf     # 韩语完整指南
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -108,7 +108,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es / ko）结构如下：
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年8月第3版·第1次修订"，位置略上移）
-2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第3版·第1次修订）**、**版本号（v1.2.1）**、**发布日期（2026年8月16日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
+2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年8月第3版·第2次修订）**、**版本号（v1.2.2）**、**发布日期（2026年8月16日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
 3. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）
 4. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接，点击跳转到对应页；目录页脚沿用罗马数字
 5. **正文页**（队员须知起）：
@@ -297,7 +297,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 第4版 |
 | 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例） | 次版本 +1 → v1.3.0 | 第4版 |
 | 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录 | 次版本 +1 → v1.3.0 | 第3版（日期随新） |
-| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例） | 修订 +1 → v1.2.2 | 第3版·第2次修订 |
+| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例） | 修订 +1 → v1.2.3 | 第3版·第3次修订 |
 | 开发中 | — | v1.3.0-preview | （仅预览站） |
 
 **发版流程（每次一版）：**
@@ -305,7 +305,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 1. 在 dev 定稿全部内容
 2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`；**侧边栏页脚、语言主页"最新版本"、PDF 封面/封底日期均自动取自 `VERSIONS`，无需另行修改**；唯一需手工同步的是各语言 `afterword.md` 末行落款版次（六处）
 3. 本地运行 `build_pdf.py` 生成 6 份 PDF（新文件名）并自查
-4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
+4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.2.3`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 
 > 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认）。另有 `check-dist.yml` 工作流：每次推送自动重跑 `build.py` 校验 `dist/` 与源码同步，未构建即推送会导致 Actions 失败。
