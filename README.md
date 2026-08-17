@@ -298,10 +298,12 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 **发版流程（每次一版）：**
 
 1. 在 dev 定稿全部内容
-2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`，无需另行修改
+2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`；**侧边栏页脚、语言主页"最新版本"、PDF 封面/封底日期均自动取自 `VERSIONS`，无需另行修改**；唯一需手工同步的是各语言 `afterword.md` 末行落款版次（六处）
 3. 本地运行 `build_pdf.py` 生成 6 份 PDF（新文件名）并自查
-4. 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产
+4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
+
+> 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认）。另有 `check-dist.yml` 工作流：每次推送自动重跑 `build.py` 校验 `dist/` 与源码同步，未构建即推送会导致 Actions 失败。
 
 ### 历史版本页（{lang}/versions.html）
 

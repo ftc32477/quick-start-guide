@@ -41,7 +41,6 @@ LANGUAGES = {
     "zh-hans": {
         "label": "简体中文",
         "brand": "快速入门指南",
-        "footer": "2026年8月第3版 &middot; 编写小组",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
             "index":       "主页",
@@ -57,7 +56,6 @@ LANGUAGES = {
     "zh-hant": {
         "label": "繁體中文",
         "brand": "快速入門指南",
-        "footer": "2026年8月第3版 &middot; 編寫小組",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
             "index":       "首頁",
@@ -73,7 +71,6 @@ LANGUAGES = {
     "en-us": {
         "label": "English (US)",
         "brand": "Quick Start Guide",
-        "footer": "Aug 2026, 3rd Ed. &middot; Editorial Team",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
             "index":       "Home",
@@ -89,7 +86,6 @@ LANGUAGES = {
     "fr": {
         "label": "Français",
         "brand": "Guide de démarrage rapide",
-        "footer": "Août 2026, 3e éd. &middot; Équipe éditoriale",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
             "index":       "Accueil",
@@ -105,7 +101,6 @@ LANGUAGES = {
     "es": {
         "label": "Español",
         "brand": "Guía de inicio rápido",
-        "footer": "Ago. 2026, 3.ª ed. &middot; Equipo editorial",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
             "index":       "Inicio",
@@ -121,7 +116,6 @@ LANGUAGES = {
     "ko": {
         "label": "한국어",
         "brand": "빠른 시작 가이드",
-        "footer": "2026년 8월 제3판 &middot; 편집팀",
         "site_title": "FTC 32477 Origin 빠른 시작 가이드",
         "pages": {
             "index":       "홈",
@@ -355,6 +349,27 @@ VERSIONS = [
         },
     },
 ]
+
+
+def latest_edition(lang_key):
+    """最新已发布版本的版次名（取自 VERSIONS 顶部 released 条目，数据驱动）。"""
+    for v in VERSIONS:
+        if v.get("status") != "preview":
+            return v.get("name", {}).get(lang_key) or v.get("name", {}).get("zh-hans", "")
+    return ""
+
+
+# 侧边栏页脚："版次名 · 编辑组名"（版次随发版自动更新，仅编辑组名在此维护）
+TEAM_LABELS = {
+    "zh-hans": "编写小组",
+    "zh-hant": "編寫小組",
+    "en-us": "Editorial Team",
+    "fr": "Équipe éditoriale",
+    "es": "Equipo editorial",
+    "ko": "편집팀",
+}
+for _lk in LANGUAGES:
+    LANGUAGES[_lk]["footer"] = f"{latest_edition(_lk)} &middot; {TEAM_LABELS[_lk]}"
 
 
 def _on_dev_branch():
@@ -1301,7 +1316,7 @@ LANG_HOME_TEXTS = {
             ("\u961f\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b66\u6821", "\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
+            ("\u6700\u65b0\u7248\u672c", latest_edition("zh-hans")),
         ],
         "download_title": "\u4e0b\u8f7d",
         "download_desc": "\u4e0b\u8f7d\u7684\u662f\u79bb\u7ebf\u7248\u672c\uff1a\u65e0\u9700\u8054\u7f51\u5373\u53ef\u9605\u8bfb\uff0c\u4e5f\u53ef\u81ea\u884c\u6253\u5370\u6216\u5206\u4eab\u5b58\u6863\u3002",
@@ -1319,7 +1334,7 @@ LANG_HOME_TEXTS = {
             ("\u968a\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b78\u6821", "\u4e2d\u570b\u5317\u4eac\u5e02\u6d77\u6dc0\u5340 \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u905e\u5340\u865f 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
+            ("\u6700\u65b0\u7248\u672c", latest_edition("zh-hant")),
         ],
         "download_title": "\u4e0b\u8f09",
         "download_desc": "\u4e0b\u8f09\u7684\u662f\u96e2\u7dda\u7248\u672c\uff1a\u7121\u9700\u9023\u7dda\u5373\u53ef\u95b1\u8b80\uff0c\u4e5f\u53ef\u81ea\u884c\u5217\u5370\u6216\u5206\u4eab\u5b58\u6a94\u3002",
@@ -1337,7 +1352,7 @@ LANG_HOME_TEXTS = {
             ("Team", "FTC Team 32477 Origin"),
             ("School", "Beijing National Day Experimental School, Haidian District, Beijing, China"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
-            ("Latest Version", "3rd Edition \u00b7 August 2026"),
+            ("Latest Version", latest_edition("en-us")),
         ],
         "download_title": "Download",
         "download_desc": "Download the offline edition: read it without an internet connection, print it, or share and archive it.",
@@ -1355,7 +1370,7 @@ LANG_HOME_TEXTS = {
             ("\u00c9quipe", "FTC Team 32477 Origin"),
             ("\u00c9cole", "Beijing National Day Experimental School, district de Haidian, P\u00e9kin, Chine"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
-            ("Derni\u00e8re version", "3e \u00e9dition \u00b7 ao\u00fbt 2026"),
+            ("Derni\u00e8re version", latest_edition("fr")),
         ],
         "download_title": "T\u00e9l\u00e9charger",
         "download_desc": "T\u00e9l\u00e9chargez l'\u00e9dition hors ligne : lisez-la sans connexion Internet, imprimez-la ou partagez-la et archivez-la.",
@@ -1373,7 +1388,7 @@ LANG_HOME_TEXTS = {
             ("Equipo", "FTC Team 32477 Origin"),
             ("Escuela", "Beijing National Day Experimental School, distrito de Haidian, Pek\u00edn, China"),
             ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
-            ("\u00daltima versi\u00f3n", "3.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
+            ("\u00daltima versi\u00f3n", latest_edition("es")),
         ],
         "download_title": "Descargar",
         "download_desc": "Descargue la edici\u00f3n sin conexi\u00f3n: l\u00e9ala sin conexi\u00f3n a Internet, impr\u00edmala o comp\u00e1rtala y arch\u00edvela.",
@@ -1391,7 +1406,7 @@ LANG_HOME_TEXTS = {
             ("\ud300", "FTC Team 32477 Origin"),
             ("\ud559\uad50", "Beijing National Day Experimental School, \uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c"),
             ("\uc8fc\uc18c", "\uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c \ud0c0\uc774\ud551\ub85c 8\ubc88\uc9c0, \uc6b0\ud3b8\ubc88\ud638 100039"),
-            ("\ucd5c\uc2e0 \ubc84\uc804", "2026\ub144 8\uc6d4 \uc81c3\ud310"),
+            ("\ucd5c\uc2e0 \ubc84\uc804", latest_edition("ko")),
         ],
         "download_title": "\ub2e4\uc6b4\ub85c\ub4dc",
         "download_desc": "\uc624\ud504\ub77c\uc778 \ubc84\uc804\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud558\uc138\uc694. \uc778\ud130\ub137 \uc5c6\uc774 \uc77d\uace0, \uc778\uc1c4\ud558\uac70\ub098 \uacf5\uc720\u00b7\ubcf4\uad00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
@@ -1635,7 +1650,7 @@ def format_release_date(lang_key, iso_date):
 VERSIONS_TEXTS = {
     "zh-hans": {
         "page_title": "\u5386\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff08\u65e9\u671f\u7248\u672c\u4ec5\u542b\u53d1\u5e03\u65f6\u5df2\u6709\u7684\u8bed\u8a00\uff09\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f7d\uff1a",
@@ -1648,7 +1663,7 @@ VERSIONS_TEXTS = {
     },
     "zh-hant": {
         "page_title": "\u6b77\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff08\u65e9\u671f\u7248\u672c\u50c5\u542b\u767c\u5e03\u6642\u5df2\u6709\u7684\u8a9e\u8a00\uff09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f09\uff1a",
@@ -1661,7 +1676,7 @@ VERSIONS_TEXTS = {
     },
     "en-us": {
         "page_title": "Version History",
-        "intro": "Release dates and key changes of each version. PDFs in six languages are provided for download; no web edition is kept for past versions.",
+        "intro": "Release dates and key changes of each version. PDFs in six languages are provided for download (earlier versions include only the languages available at their release); no web edition is kept for past versions.",
         "sort_desc": "Newest first",
         "sort_asc": "Oldest first",
         "pdf_label": "Download:",
@@ -1674,7 +1689,7 @@ VERSIONS_TEXTS = {
     },
     "fr": {
         "page_title": "Historique des versions",
-        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en six langues sont disponibles en t\u00e9l\u00e9chargement ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
+        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en six langues sont disponibles en t\u00e9l\u00e9chargement (les versions ant\u00e9rieures ne contiennent que les langues disponibles \u00e0 leur publication) ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
         "sort_desc": "Plus r\u00e9cents d'abord",
         "sort_asc": "Plus anciens d'abord",
         "pdf_label": "T\u00e9l\u00e9charger :",
@@ -1687,7 +1702,7 @@ VERSIONS_TEXTS = {
     },
     "es": {
         "page_title": "Historial de versiones",
-        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en seis idiomas para descargar; no se conservan ediciones web de versiones anteriores.",
+        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en seis idiomas para descargar (las versiones anteriores incluyen solo los idiomas disponibles en su publicaci\u00f3n); no se conservan ediciones web de versiones anteriores.",
         "sort_desc": "M\u00e1s recientes primero",
         "sort_asc": "M\u00e1s antiguos primero",
         "pdf_label": "Descargar:",
@@ -1700,7 +1715,7 @@ VERSIONS_TEXTS = {
     },
     "ko": {
         "page_title": "\ubc84\uc804 \uae30\ub85d",
-        "intro": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc785\ub2c8\ub2e4. 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc73c\uba70, \uacfc\uac70 \ubc84\uc804\uc758 \uc6f9 \ubc84\uc804\uc740 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+        "intro": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc785\ub2c8\ub2e4. 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc73c\uba70(\ucd08\uae30 \ubc84\uc804\uc740 \ucd9c\uc2dc \ub2f9\uc2dc \uc81c\uacf5\ub418\ub358 \uc5b8\uc5b4\ub9cc \ud3ec\ud568), \uacfc\uac70 \ubc84\uc804\uc758 \uc6f9 \ubc84\uc804\uc740 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
         "sort_desc": "\ucd5c\uc2e0\uc21c",
         "sort_asc": "\uc624\ub798\ub41c \uc21c",
         "pdf_label": "\ub2e4\uc6b4\ub85c\ub4dc:",
@@ -1891,6 +1906,7 @@ def build():
         lang_home_html = render_lang_homepage(lang_key)
         with open(os.path.join(lang_dist, "index.html"), "w", encoding="utf-8") as f:
             f.write(lang_home_html)
+        total += 1
 
         for page_key in PAGE_KEYS:
             md_path = os.path.join(lang_src, f"{page_key}.md")
@@ -1913,6 +1929,7 @@ def build():
         versions_html = render_versions_page(lang_key)
         with open(os.path.join(lang_dist, "versions.html"), "w", encoding="utf-8") as f:
             f.write(versions_html)
+        total += 1
 
         print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(PAGE_KEYS)} 页 + 历史版本页")
 
@@ -1920,6 +1937,7 @@ def build():
     portal_html = render_portal()
     with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(portal_html)
+    total += 1
     print("  [生成] index.html（语言门户）")
 
     # 复制图片目录
@@ -1938,7 +1956,7 @@ def build():
         print("  [提示] images/ 目录为空，可放置图片后重新构建")
 
     print("-" * 56)
-    print(f"  构建完成! 共生成 {total} 个页面，输出目录: {shorten_path(DIST_DIR)}")
+    print(f"  构建完成! 共生成 {total} 个 HTML 文件（根门户 + 各语言主页 + 内容页 + 历史版本页），输出目录: {shorten_path(DIST_DIR)}")
     print("=" * 56)
 
 
