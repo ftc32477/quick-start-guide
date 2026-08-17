@@ -71,41 +71,35 @@ PDF_TEXTS = {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "name2": "Quick Start Guide",
         "school": "\u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66",
-        "date": "2026\u5e748\u6708\u7b2c3\u7248",
         "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
     "zh-hant": {
         "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
-        "date": "2026\u5e748\u6708\u7b2c3\u7248",
         "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },
     "en-us": {
         "name": "32477 Origin Quick Start Guide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "August 2026 \u00b7 3rd Edition",
         "lang": "English (US) Edition",
     },
     "fr": {
         "name": "32477 Origin Guide de d\u00e9marrage rapide",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "Ao\u00fbt 2026 \u00b7 3e \u00e9dition",
         "lang": "\u00c9dition fran\u00e7aise",
     },
     "es": {
         "name": "Gu\u00eda de inicio r\u00e1pido de 32477 Origin",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "3.\u00aa edici\u00f3n \u00b7 agosto de 2026",
         "lang": "Edici\u00f3n en espa\u00f1ol",
     },
     "ko": {
         "name": "32477 Origin \ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc",
         "name2": "\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "school": "Beijing National Day Experimental School",
-        "date": "2026\ub144 8\uc6d4 \uc81c3\ud310",
         "lang": "\ud55c\uad6d\uc5b4\ud310",
     },
 }
@@ -167,6 +161,7 @@ def free_port():
 def render_cover(lang_key):
     t = dict(PDF_TEXTS["zh-hans"])
     t.update(PDF_TEXTS[lang_key])
+    t["date"] = build_mod.latest_edition(lang_key)
     logo_path = "file://" + os.path.join(IMAGES_DIR, "basic", "team_logo.png")
     return f"""<!DOCTYPE html>
 <html lang="{lang_key}">
@@ -203,8 +198,8 @@ html,body{{margin:0;padding:0}}
 .cover .name2{{font-size:17px;opacity:.75;margin-top:16px;position:relative}}
 .cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
-  position:absolute;bottom:56px;left:0;right:0;
-  font-size:16px;opacity:.8;letter-spacing:2px
+  position:absolute;bottom:48px;left:0;right:0;
+  font-size:16px;opacity:.8;letter-spacing:2px;line-height:2
 }}
 </style>
 </head>
@@ -219,7 +214,7 @@ html,body{{margin:0;padding:0}}
     <div class="name2">{t["name2"]}</div>
     <div class="school">{t["school"]}</div>
   </div>
-  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
+  <div class="date">{t["lang"]}<br>{t["date"]}</div>
 </div>
 </body>
 </html>"""
@@ -228,6 +223,7 @@ html,body{{margin:0;padding:0}}
 def render_back(lang_key):
     t = dict(PDF_TEXTS["zh-hans"])
     t.update(PDF_TEXTS[lang_key])
+    t["date"] = build_mod.latest_edition(lang_key)
     logo_path = "file://" + os.path.join(IMAGES_DIR, "basic", "team_logo.png")
     return f"""<!DOCTYPE html>
 <html lang="{lang_key}">
@@ -252,7 +248,8 @@ html,body{{margin:0;padding:0}}
   box-shadow:0 8px 32px rgba(0,0,0,.4)
 }}
 .back .date{{
-  position:absolute;bottom:48px;right:56px;font-size:15px;color:#c9c9d4;letter-spacing:2px
+  position:absolute;bottom:48px;right:56px;font-size:15px;color:#c9c9d4;letter-spacing:2px;
+  text-align:right;line-height:2
 }}
 </style>
 </head>
@@ -260,7 +257,7 @@ html,body{{margin:0;padding:0}}
 <div class="back">
   <div class="glow"></div>
   <img class="logo" src="{logo_path}">
-  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
+  <div class="date">{t["lang"]}<br>{t["date"]}</div>
 </div>
 </body>
 </html>"""

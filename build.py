@@ -40,8 +40,9 @@ PAGE_KEYS = [
 LANGUAGES = {
     "zh-hans": {
         "label": "简体中文",
+        "lang_label": "语言",
+        "menu_label": "菜单",
         "brand": "快速入门指南",
-        "footer": "2026年8月第3版 &middot; 编写小组",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
             "index":       "主页",
@@ -56,8 +57,9 @@ LANGUAGES = {
     },
     "zh-hant": {
         "label": "繁體中文",
+        "lang_label": "語言",
+        "menu_label": "選單",
         "brand": "快速入門指南",
-        "footer": "2026年8月第3版 &middot; 編寫小組",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
             "index":       "首頁",
@@ -72,8 +74,9 @@ LANGUAGES = {
     },
     "en-us": {
         "label": "English (US)",
+        "lang_label": "Language",
+        "menu_label": "Menu",
         "brand": "Quick Start Guide",
-        "footer": "Aug 2026, 3rd Ed. &middot; Editorial Team",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
             "index":       "Home",
@@ -88,8 +91,9 @@ LANGUAGES = {
     },
     "fr": {
         "label": "Français",
+        "lang_label": "Langue",
+        "menu_label": "Menu",
         "brand": "Guide de démarrage rapide",
-        "footer": "Août 2026, 3e éd. &middot; Équipe éditoriale",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
             "index":       "Accueil",
@@ -104,8 +108,9 @@ LANGUAGES = {
     },
     "es": {
         "label": "Español",
+        "lang_label": "Idioma",
+        "menu_label": "Menú",
         "brand": "Guía de inicio rápido",
-        "footer": "Ago. 2026, 3.ª ed. &middot; Equipo editorial",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
             "index":       "Inicio",
@@ -120,8 +125,9 @@ LANGUAGES = {
     },
     "ko": {
         "label": "한국어",
+        "lang_label": "언어",
+        "menu_label": "메뉴",
         "brand": "빠른 시작 가이드",
-        "footer": "2026년 8월 제3판 &middot; 편집팀",
         "site_title": "FTC 32477 Origin 빠른 시작 가이드",
         "pages": {
             "index":       "홈",
@@ -138,13 +144,92 @@ LANGUAGES = {
 
 DEFAULT_LANG = "zh-hans"
 
+# 社交分享 og:image 使用线上绝对地址（GitHub Pages 部署路径）
+OG_IMAGE = "https://ftc32477.github.io/docs/images/basic/team_logo.png"
+
+
+def meta_tags(title, description):
+    """SEO 描述与社交分享 meta（og:/twitter:，含绝对地址 og:image）。"""
+    t = title.replace('"', "&quot;")
+    d = description.replace('"', "&quot;")
+    return (
+        f'<meta name="description" content="{d}">\n'
+        f'<meta property="og:type" content="website">\n'
+        f'<meta property="og:title" content="{t}">\n'
+        f'<meta property="og:description" content="{d}">\n'
+        f'<meta property="og:image" content="{OG_IMAGE}">\n'
+        f'<meta name="twitter:card" content="summary">\n'
+        f'<meta name="twitter:title" content="{t}">\n'
+        f'<meta name="twitter:description" content="{d}">\n'
+        f'<meta name="twitter:image" content="{OG_IMAGE}">'
+    )
+
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.2.1"
+RELEASE_TAG = "v1.2.2"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.2.2",
+        "date": "2026-08-16",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年8月第3版·第2次修订",
+            "zh-hant": "2026年8月第3版·第2次修訂",
+            "en-us": "August 2026, 3rd Edition, 2nd Revision",
+            "fr": "Août 2026, 3e édition, 2e révision",
+            "es": "3.ª edición, agosto de 2026, 2.ª revisión",
+            "ko": "2026년 8월 제3판 · 2차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "繁体中文版「结构体/装配体」术语统一为繁体字形（結構體/裝配體）。",
+                "历史版本页说明补充：早期版本仅含发布时已有的语言。",
+                "PDF 封面/封底版本信息改为两行排版并加大行距，封底右对齐。",
+                "工程化更新：版次信息全面数据驱动（侧边栏页脚、主页最新版本、PDF 封面日期自动取自 VERSIONS）；新增 check-dist CI 校验与 release.sh 半自动发版脚本；Release 说明归档至 release-notes/；全站新增 SEO 社交分享 meta 与本地化无障碍标签；--watch 扩展监听 images/ 与 build.py。",
+            ],
+            "zh-hant": [
+                "繁體中文版「结构体/装配体」術語統一為繁體字形（結構體/裝配體）。",
+                "歷史版本頁說明補充：早期版本僅含發布時已有的語言。",
+                "PDF 封面/封底版本資訊改為兩行排版並加大行距，封底右對齊。",
+                "工程化更新：版次資訊全面資料驅動（側邊欄頁尾、首頁最新版本、PDF 封面日期自動取自 VERSIONS）；新增 check-dist CI 校驗與 release.sh 半自動發版腳本；Release 說明歸檔至 release-notes/；全站新增 SEO 社交分享 meta 與本地化無障礙標籤；--watch 擴展監聽 images/ 與 build.py。",
+            ],
+            "en-us": [
+                "Traditional Chinese edition: the Onshape terms 「结构体/装配体」 are now written in traditional characters (結構體/裝配體).",
+                "Version history page: clarified that earlier versions include only the languages available at their release.",
+                "PDF cover and back cover: version information is now set on two lines with increased line spacing, and the back cover lines are right-aligned.",
+                "Engineering updates: edition data is now fully data-driven from VERSIONS (sidebar footer, homepage latest version, PDF cover date); added a check-dist CI workflow and a semi-automated release script (release.sh); Release notes are archived in release-notes/; all pages now include SEO/social-sharing meta tags and localized accessibility labels; --watch now monitors images/ and build.py as well.",
+            ],
+            "fr": [
+                "Édition chinoise traditionnelle : les termes Onshape « 结构体/装配体 » sont désormais écrits en caractères traditionnels (結構體/裝配體).",
+                "Page d'historique des versions : précision que les versions antérieures ne contiennent que les langues disponibles à leur publication.",
+                "Couverture et quatrième de couverture du PDF : les informations de version sont désormais sur deux lignes avec un interligne accru, et les lignes de la quatrième de couverture sont alignées à droite.",
+                "Améliorations techniques : les informations d'édition sont désormais entièrement dérivées des VERSIONS (pied de page latéral, dernière version de la page d'accueil, date de couverture du PDF) ; ajout d'un workflow CI check-dist et d'un script de publication semi-automatisé (release.sh) ; les notes de version sont archivées dans release-notes/ ; toutes les pages incluent désormais des balises meta SEO/partage social et des étiquettes d'accessibilité localisées ; --watch surveille également images/ et build.py.",
+            ],
+            "es": [
+                "Edición en chino tradicional: los términos de Onshape «结构体/装配体» se escriben ahora en caracteres tradicionales (結構體/裝配體).",
+                "Página de historial de versiones: se aclara que las versiones anteriores incluyen solo los idiomas disponibles en su publicación.",
+                "Cubierta y contraportada del PDF: la información de versión se muestra ahora en dos líneas con mayor interlineado, y las líneas de la contraportada están alineadas a la derecha.",
+                "Mejoras de ingeniería: los datos de edición se derivan ahora por completo de VERSIONS (pie de página lateral, versión más reciente de la página de inicio, fecha de la cubierta del PDF); se añade un workflow CI check-dist y un script de publicación semiautomatizado (release.sh); las notas de versión se archivan en release-notes/; todas las páginas incluyen ahora metaetiquetas SEO/para compartir en redes y etiquetas de accesibilidad localizadas; --watch también supervisa images/ y build.py.",
+            ],
+            "ko": [
+                "중국어 번체판: Onshape 용어 「结构体/装配体」를 번체자(結構體/裝配體)로 통일했습니다.",
+                "버전 기록 페이지: 초기 버전에는 출시 당시 제공되던 언어만 포함된다는 설명을 추가했습니다.",
+                "PDF 표지/뒷표지: 버전 정보를 두 줄로 배치하고 줄 간격을 넓혔으며, 뒷표지는 오른쪽 정렬했습니다.",
+                "엔지니어링 개선: 판본 정보를 VERSIONS에서 완전히 데이터 구동(사이드바 푸터, 홈 최신 버전, PDF 표지 날짜)하고, check-dist CI 워크플로와 반자동 발매 스크립트(release.sh)를 추가했으며, Release 설명을 release-notes/에 보관합니다. 모든 페이지에 SEO/소셜 공유 meta 태그와 현지화된 접근성 라벨을 추가했고, --watch가 images/와 build.py도 감시합니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.2.2-ko.pdf",
+        },
+    },
     {
         "tag": "v1.2.1",
         "date": "2026-08-16",
@@ -355,6 +440,27 @@ VERSIONS = [
         },
     },
 ]
+
+
+def latest_edition(lang_key):
+    """最新已发布版本的版次名（取自 VERSIONS 顶部 released 条目，数据驱动）。"""
+    for v in VERSIONS:
+        if v.get("status") != "preview":
+            return v.get("name", {}).get(lang_key) or v.get("name", {}).get("zh-hans", "")
+    return ""
+
+
+# 侧边栏页脚："版次名 · 编辑组名"（版次随发版自动更新，仅编辑组名在此维护）
+TEAM_LABELS = {
+    "zh-hans": "编写小组",
+    "zh-hant": "編寫小組",
+    "en-us": "Editorial Team",
+    "fr": "Équipe éditoriale",
+    "es": "Equipo editorial",
+    "ko": "편집팀",
+}
+for _lk in LANGUAGES:
+    LANGUAGES[_lk]["footer"] = f"{latest_edition(_lk)} &middot; {TEAM_LABELS[_lk]}"
 
 
 def _on_dev_branch():
@@ -980,6 +1086,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
     """将 HTML 正文包装进完整页面模板。"""
     lang = LANGUAGES[lang_key]
     headings = headings or []
+    desc = LANG_HOME_TEXTS[lang_key].get("meta_desc", lang["site_title"])
 
     # 侧边栏导航（主页 + 当前语言的页面标题 + 当前页的二级目录）
     nav_items = [f'<a href="index.html">{lang["pages"]["index"]}</a>']
@@ -1022,6 +1129,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{page_title}\uff5c{site_title}</title>
+{meta_tags(page_title + "｜" + site_title, desc)}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}</style>
@@ -1031,10 +1139,10 @@ def render_page(page_key, html_body, lang_key, headings=None):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{site_title}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_html}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1045,7 +1153,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {sidebar_select_html}
     </select>
   </div>
@@ -1064,8 +1172,8 @@ def render_page(page_key, html_body, lang_key, headings=None):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1237,6 +1345,7 @@ footer .legal p:last-child{margin-bottom:0}
 
 def render_portal():
     """生成根门户页（语言选择，仿 wikipedia.org 风格）。"""
+    portal_desc = ("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u591a\u8bed\u8a00\u95e8\u6237\uff1a\u7b80\u4f53\u4e2d\u6587 / \u7e41\u9ad4\u4e2d\u6587 / English (US) / Fran\u00e7ais / Espa\u00f1ol / \ud55c\uad6d\uc5b4\u3002Multilingual portal of the FTC 32477 Origin Quick Start Guide.")
     portal_langs = [
         ("zh-hans", "\u7b80\u4f53\u4e2d\u6587", "Simplified Chinese"),
         ("zh-hant", "\u7e41\u9ad4\u4e2d\u6587", "Traditional Chinese"),
@@ -1257,6 +1366,7 @@ def render_portal():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide</title>
+{meta_tags("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide", portal_desc)}
 <link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{PORTAL_CSS}</style>
@@ -1296,12 +1406,13 @@ LANG_HOME_TEXTS = {
     "zh-hans": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "slogan": "\u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50",
+        "meta_desc": "FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u2014\u2014\u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50\u3002\u9762\u5411\u65b0\u8001\u961f\u5458\u7684\u4e03\u7ae0\u5b8c\u6574\u6307\u5357\uff1a\u961f\u5458\u987b\u77e5\u3001\u5efa\u6a21\u8bbe\u8ba1\u3001\u7ed3\u6784\u5efa\u9020\u3001\u7a0b\u5e8f\u8bbe\u8ba1\u3001\u5916\u90e8\u8054\u7edc\u4e0e\u540e\u8bb0\uff0c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7248\u672c\u4e0e\u53ef\u6253\u5370 PDF\u3002",
         "about_title": "\u9879\u76ee\u6982\u51b5",
         "about": [
             ("\u961f\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b66\u6821", "\u4e2d\u56fd\u5317\u4eac\u5e02\u6d77\u6dc0\u533a \u00b7 \u5317\u4eac\u5341\u4e00\u5b9e\u9a8c\u4e2d\u5b66"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u533a\u592a\u5e73\u8def8\u53f7 \u00b7 \u90ae\u653f\u7f16\u7801 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
+            ("\u6700\u65b0\u7248\u672c", latest_edition("zh-hans")),
         ],
         "download_title": "\u4e0b\u8f7d",
         "download_desc": "\u4e0b\u8f7d\u7684\u662f\u79bb\u7ebf\u7248\u672c\uff1a\u65e0\u9700\u8054\u7f51\u5373\u53ef\u9605\u8bfb\uff0c\u4e5f\u53ef\u81ea\u884c\u6253\u5370\u6216\u5206\u4eab\u5b58\u6863\u3002",
@@ -1314,12 +1425,13 @@ LANG_HOME_TEXTS = {
     "zh-hant": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u9580\u6307\u5357",
         "slogan": "\u62d2\u7d55\u91cd\u8907\u9020\u8f2a\u5b50",
+        "meta_desc": "FTC 32477 Origin \u5feb\u901f\u5165\u9580\u6307\u5357\u2014\u2014\u62d2\u7d55\u91cd\u8907\u9020\u8f2a\u5b50\u3002\u9762\u5411\u65b0\u8001\u968a\u54e1\u7684\u4e03\u7ae0\u5b8c\u6574\u6307\u5357\uff1a\u968a\u54e1\u9808\u77e5\u3001\u5efa\u6a21\u8a2d\u8a08\u3001\u7d50\u69cb\u5efa\u9020\u3001\u7a0b\u5f0f\u8a2d\u8a08\u3001\u5916\u90e8\u806f\u7d61\u8207\u5f8c\u8a18\uff0c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7248\u672c\u8207\u53ef\u5217\u5370 PDF\u3002",
         "about_title": "\u5c08\u6848\u6982\u6cc1",
         "about": [
             ("\u968a\u4f0d", "FTC Team 32477 Origin"),
             ("\u5b78\u6821", "\u4e2d\u570b\u5317\u4eac\u5e02\u6d77\u6dc0\u5340 \u00b7 \u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78"),
             ("\u5730\u5740", "\u5317\u4eac\u5e02\u6d77\u6dc0\u5340\u592a\u5e73\u8def8\u865f \u00b7 \u90f5\u905e\u5340\u865f 100039"),
-            ("\u6700\u65b0\u7248\u672c", "2026\u5e748\u6708\u7b2c3\u7248"),
+            ("\u6700\u65b0\u7248\u672c", latest_edition("zh-hant")),
         ],
         "download_title": "\u4e0b\u8f09",
         "download_desc": "\u4e0b\u8f09\u7684\u662f\u96e2\u7dda\u7248\u672c\uff1a\u7121\u9700\u9023\u7dda\u5373\u53ef\u95b1\u8b80\uff0c\u4e5f\u53ef\u81ea\u884c\u5217\u5370\u6216\u5206\u4eab\u5b58\u6a94\u3002",
@@ -1332,12 +1444,13 @@ LANG_HOME_TEXTS = {
     "en-us": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Quick Start Guide",
         "slogan": "Refuse to Reinvent the Wheel",
+        "meta_desc": "The FTC 32477 Origin Quick Start Guide \u2014 Refuse to Reinvent the Wheel. A complete seven-chapter guide for new and returning team members, available in six languages with printable PDFs.",
         "about_title": "About Us",
         "about": [
             ("Team", "FTC Team 32477 Origin"),
             ("School", "Beijing National Day Experimental School, Haidian District, Beijing, China"),
             ("Address", "No. 8 Taiping Road, Haidian District, Beijing 100039, China"),
-            ("Latest Version", "3rd Edition \u00b7 August 2026"),
+            ("Latest Version", latest_edition("en-us")),
         ],
         "download_title": "Download",
         "download_desc": "Download the offline edition: read it without an internet connection, print it, or share and archive it.",
@@ -1350,12 +1463,13 @@ LANG_HOME_TEXTS = {
     "fr": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Guide de d\u00e9marrage rapide",
         "slogan": "Refuser de r\u00e9inventer la roue",
+        "meta_desc": "Le Guide de d\u00e9marrage rapide FTC 32477 Origin \u2014 Refuser de r\u00e9inventer la roue. Un guide complet en sept chapitres pour les membres de l'\u00e9quipe, disponible en six langues avec des PDF imprimables.",
         "about_title": "\u00c0 propos",
         "about": [
             ("\u00c9quipe", "FTC Team 32477 Origin"),
             ("\u00c9cole", "Beijing National Day Experimental School, district de Haidian, P\u00e9kin, Chine"),
             ("Adresse", "N\u00b0 8 Taiping Road, district de Haidian, P\u00e9kin 100039, Chine"),
-            ("Derni\u00e8re version", "3e \u00e9dition \u00b7 ao\u00fbt 2026"),
+            ("Derni\u00e8re version", latest_edition("fr")),
         ],
         "download_title": "T\u00e9l\u00e9charger",
         "download_desc": "T\u00e9l\u00e9chargez l'\u00e9dition hors ligne : lisez-la sans connexion Internet, imprimez-la ou partagez-la et archivez-la.",
@@ -1368,12 +1482,13 @@ LANG_HOME_TEXTS = {
     "es": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Gu\u00eda de inicio r\u00e1pido",
         "slogan": "Negarse a reinventar la rueda",
+        "meta_desc": "La Gu\u00eda de inicio r\u00e1pido de FTC 32477 Origin \u2014 Negarse a reinventar la rueda. Una gu\u00eda completa de siete cap\u00edtulos para los miembros del equipo, disponible en seis idiomas con PDF imprimibles.",
         "about_title": "Acerca de",
         "about": [
             ("Equipo", "FTC Team 32477 Origin"),
             ("Escuela", "Beijing National Day Experimental School, distrito de Haidian, Pek\u00edn, China"),
             ("Direcci\u00f3n", "N.\u00ba 8 Taiping Road, distrito de Haidian, Pek\u00edn 100039, China"),
-            ("\u00daltima versi\u00f3n", "3.\u00aa edici\u00f3n \u00b7 agosto de 2026"),
+            ("\u00daltima versi\u00f3n", latest_edition("es")),
         ],
         "download_title": "Descargar",
         "download_desc": "Descargue la edici\u00f3n sin conexi\u00f3n: l\u00e9ala sin conexi\u00f3n a Internet, impr\u00edmala o comp\u00e1rtala y arch\u00edvela.",
@@ -1386,12 +1501,13 @@ LANG_HOME_TEXTS = {
     "ko": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc",
         "slogan": "\ubc14\ud034\ub97c \ub2e4\uc2dc \ubc1c\uba85\ud558\uc9c0 \uc54a\uae30",
+        "meta_desc": "FTC 32477 Origin \ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc \u2014 \ubc14\ud034\ub97c \ub2e4\uc2dc \ubc1c\uba85\ud558\uc9c0 \uc54a\uae30. \uc2e0\uc785\uacfc \ubca0\ud14c\ub791\uc744 \uc704\ud55c 7\uac1c \uc7a5\uc73c\ub85c \uad6c\uc131\ub41c \uc644\uc804\ud55c \uac00\uc774\ub4dc\ub85c, 6\uac1c \uc5b8\uc5b4 \ubc84\uc804\uacfc \uc778\uc1c4 \uac00\ub2a5\ud55c PDF\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4.",
         "about_title": "\ud504\ub85c\uc81d\ud2b8 \uc18c\uac1c",
         "about": [
             ("\ud300", "FTC Team 32477 Origin"),
             ("\ud559\uad50", "Beijing National Day Experimental School, \uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c"),
             ("\uc8fc\uc18c", "\uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c \ud0c0\uc774\ud551\ub85c 8\ubc88\uc9c0, \uc6b0\ud3b8\ubc88\ud638 100039"),
-            ("\ucd5c\uc2e0 \ubc84\uc804", "2026\ub144 8\uc6d4 \uc81c3\ud310"),
+            ("\ucd5c\uc2e0 \ubc84\uc804", latest_edition("ko")),
         ],
         "download_title": "\ub2e4\uc6b4\ub85c\ub4dc",
         "download_desc": "\uc624\ud504\ub77c\uc778 \ubc84\uc804\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud558\uc138\uc694. \uc778\ud130\ub137 \uc5c6\uc774 \uc77d\uace0, \uc778\uc1c4\ud558\uac70\ub098 \uacf5\uc720\u00b7\ubcf4\uad00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
@@ -1482,6 +1598,7 @@ def render_lang_homepage(lang_key):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{lang["site_title"]}</title>
+{meta_tags(lang["site_title"], t["meta_desc"])}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}
@@ -1492,10 +1609,10 @@ def render_lang_homepage(lang_key):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u95e8\u6237">{lang["site_title"]}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1506,7 +1623,7 @@ def render_lang_homepage(lang_key):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {select_options}
     </select>
   </div>
@@ -1555,8 +1672,8 @@ def render_lang_homepage(lang_key):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1635,7 +1752,7 @@ def format_release_date(lang_key, iso_date):
 VERSIONS_TEXTS = {
     "zh-hans": {
         "page_title": "\u5386\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u53d1\u5e03\u65f6\u95f4\u4e0e\u4e3b\u8981\u6539\u52a8\uff0c\u6bcf\u4e2a\u7248\u672c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7684 PDF \u4e0b\u8f7d\uff08\u65e9\u671f\u7248\u672c\u4ec5\u542b\u53d1\u5e03\u65f6\u5df2\u6709\u7684\u8bed\u8a00\uff09\uff0c\u4e0d\u63d0\u4f9b\u7f51\u9875\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f7d\uff1a",
@@ -1648,7 +1765,7 @@ VERSIONS_TEXTS = {
     },
     "zh-hant": {
         "page_title": "\u6b77\u53f2\u7248\u672c",
-        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
+        "intro": "\u4ee5\u4e0b\u5217\u51fa\u5404\u7248\u672c\u7684\u767c\u5e03\u6642\u9593\u8207\u4e3b\u8981\u6539\u52d5\uff0c\u6bcf\u500b\u7248\u672c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7684 PDF \u4e0b\u8f09\uff08\u65e9\u671f\u7248\u672c\u50c5\u542b\u767c\u5e03\u6642\u5df2\u6709\u7684\u8a9e\u8a00\uff09\uff0c\u4e0d\u63d0\u4f9b\u7db2\u9801\u7248\u3002",
         "sort_desc": "\u6700\u65b0\u5728\u524d",
         "sort_asc": "\u6700\u65e9\u5728\u524d",
         "pdf_label": "\u4e0b\u8f09\uff1a",
@@ -1661,7 +1778,7 @@ VERSIONS_TEXTS = {
     },
     "en-us": {
         "page_title": "Version History",
-        "intro": "Release dates and key changes of each version. PDFs in six languages are provided for download; no web edition is kept for past versions.",
+        "intro": "Release dates and key changes of each version. PDFs in six languages are provided for download (earlier versions include only the languages available at their release); no web edition is kept for past versions.",
         "sort_desc": "Newest first",
         "sort_asc": "Oldest first",
         "pdf_label": "Download:",
@@ -1674,7 +1791,7 @@ VERSIONS_TEXTS = {
     },
     "fr": {
         "page_title": "Historique des versions",
-        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en six langues sont disponibles en t\u00e9l\u00e9chargement ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
+        "intro": "Dates de publication et principaux changements de chaque version. Les PDF en six langues sont disponibles en t\u00e9l\u00e9chargement (les versions ant\u00e9rieures ne contiennent que les langues disponibles \u00e0 leur publication) ; aucune version web des versions pass\u00e9es n'est conserv\u00e9e.",
         "sort_desc": "Plus r\u00e9cents d'abord",
         "sort_asc": "Plus anciens d'abord",
         "pdf_label": "T\u00e9l\u00e9charger :",
@@ -1687,7 +1804,7 @@ VERSIONS_TEXTS = {
     },
     "es": {
         "page_title": "Historial de versiones",
-        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en seis idiomas para descargar; no se conservan ediciones web de versiones anteriores.",
+        "intro": "Fechas de publicaci\u00f3n y cambios principales de cada versi\u00f3n. Se ofrecen PDF en seis idiomas para descargar (las versiones anteriores incluyen solo los idiomas disponibles en su publicaci\u00f3n); no se conservan ediciones web de versiones anteriores.",
         "sort_desc": "M\u00e1s recientes primero",
         "sort_asc": "M\u00e1s antiguos primero",
         "pdf_label": "Descargar:",
@@ -1700,7 +1817,7 @@ VERSIONS_TEXTS = {
     },
     "ko": {
         "page_title": "\ubc84\uc804 \uae30\ub85d",
-        "intro": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc785\ub2c8\ub2e4. 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc73c\uba70, \uacfc\uac70 \ubc84\uc804\uc758 \uc6f9 \ubc84\uc804\uc740 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+        "intro": "\uac01 \ubc84\uc804\uc758 \ucd9c\uc2dc \ub0a0\uc9dc\uc640 \uc8fc\uc694 \ubcc0\uacbd \uc0ac\ud56d\uc785\ub2c8\ub2e4. 6\uac1c \uc5b8\uc5b4 PDF\ub97c \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc788\uc73c\uba70(\ucd08\uae30 \ubc84\uc804\uc740 \ucd9c\uc2dc \ub2f9\uc2dc \uc81c\uacf5\ub418\ub358 \uc5b8\uc5b4\ub9cc \ud3ec\ud568), \uacfc\uac70 \ubc84\uc804\uc758 \uc6f9 \ubc84\uc804\uc740 \uc81c\uacf5\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
         "sort_desc": "\ucd5c\uc2e0\uc21c",
         "sort_asc": "\uc624\ub798\ub41c \uc21c",
         "pdf_label": "\ub2e4\uc6b4\ub85c\ub4dc:",
@@ -1784,6 +1901,7 @@ def render_versions_page(lang_key):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{t["page_title"]}\uff5c{lang["site_title"]}</title>
+{meta_tags(t["page_title"] + "｜" + lang["site_title"], LANG_HOME_TEXTS[lang_key]["meta_desc"])}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}
@@ -1794,10 +1912,10 @@ def render_versions_page(lang_key):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{lang["site_title"]}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1808,7 +1926,7 @@ def render_versions_page(lang_key):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{t["page_title"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {select_options}
     </select>
   </div>
@@ -1839,8 +1957,8 @@ def render_versions_page(lang_key):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1891,6 +2009,7 @@ def build():
         lang_home_html = render_lang_homepage(lang_key)
         with open(os.path.join(lang_dist, "index.html"), "w", encoding="utf-8") as f:
             f.write(lang_home_html)
+        total += 1
 
         for page_key in PAGE_KEYS:
             md_path = os.path.join(lang_src, f"{page_key}.md")
@@ -1913,6 +2032,7 @@ def build():
         versions_html = render_versions_page(lang_key)
         with open(os.path.join(lang_dist, "versions.html"), "w", encoding="utf-8") as f:
             f.write(versions_html)
+        total += 1
 
         print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(PAGE_KEYS)} 页 + 历史版本页")
 
@@ -1920,6 +2040,7 @@ def build():
     portal_html = render_portal()
     with open(os.path.join(DIST_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(portal_html)
+    total += 1
     print("  [生成] index.html（语言门户）")
 
     # 复制图片目录
@@ -1938,7 +2059,7 @@ def build():
         print("  [提示] images/ 目录为空，可放置图片后重新构建")
 
     print("-" * 56)
-    print(f"  构建完成! 共生成 {total} 个页面，输出目录: {shorten_path(DIST_DIR)}")
+    print(f"  构建完成! 共生成 {total} 个 HTML 文件（根门户 + 各语言主页 + 内容页 + 历史版本页），输出目录: {shorten_path(DIST_DIR)}")
     print("=" * 56)
 
 
@@ -1950,7 +2071,7 @@ def shorten_path(path):
 
 
 def watch():
-    """监听文件变化并自动重新构建。"""
+    """监听文件变化并自动重新构建（src/*.md、images/ 与 build.py 自身）。"""
     file_hashes = {}
 
     def hash_file(path):
@@ -1960,24 +2081,35 @@ def watch():
         except FileNotFoundError:
             return None
 
-    def scan():
-        changed = set()
+    def watched_paths():
+        """(路径, 展示名) 列表：源文件、图片目录全部文件、build.py 自身。"""
+        paths = []
         for lang_key in LANGUAGES:
             for page_key in PAGE_KEYS:
-                path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
-                h = hash_file(path)
-                if h != file_hashes.get(path):
-                    file_hashes[path] = h
-                    changed.add(f"{lang_key}/{page_key}")
+                p = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
+                paths.append((p, f"{lang_key}/{page_key}"))
+        if os.path.isdir(IMAGES_DIR):
+            for root, _, files in os.walk(IMAGES_DIR):
+                for fn in files:
+                    p = os.path.join(root, fn)
+                    paths.append((p, os.path.relpath(p, BASE_DIR)))
+        paths.append((os.path.join(BASE_DIR, "build.py"), "build.py"))
+        return paths
+
+    def scan():
+        changed = set()
+        for path, label in watched_paths():
+            h = hash_file(path)
+            if h != file_hashes.get(path):
+                file_hashes[path] = h
+                changed.add(label)
         return changed
 
-    for lang_key in LANGUAGES:
-        for page_key in PAGE_KEYS:
-            path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
-            file_hashes[path] = hash_file(path)
+    for path, _ in watched_paths():
+        file_hashes[path] = hash_file(path)
 
     build()
-    print("\n  [监听] 正在监听 src/ 目录变化，按 Ctrl+C 退出...\n")
+    print("\n  [监听] 正在监听 src/、images/ 与 build.py 的变化，按 Ctrl+C 退出...\n")
 
     try:
         while True:
@@ -1985,6 +2117,9 @@ def watch():
             changed = scan()
             if changed:
                 print(f"\n  检测到变化: {', '.join(sorted(changed))}")
+                if "build.py" in changed:
+                    print("  [提示] build.py 已变更，自动重启监听以加载新代码...\n")
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
                 build()
                 print("\n  [监听] 继续监听...\n")
     except KeyboardInterrupt:
