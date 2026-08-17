@@ -20,6 +20,10 @@ NOTES="${2:-}"
 [ -n "$NOTES" ] || { echo "用法: $0 <TAG> <NOTES_FILE>（Release 说明文件，参考既往英文风格）"; exit 1; }
 [ -f "$NOTES" ] || { echo "说明文件不存在: $NOTES"; exit 1; }
 
+mkdir -p release-notes
+cp "$NOTES" "release-notes/${TAG}.md"
+echo "（Release 说明已归档到 release-notes/${TAG}.md）"
+
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 [ "$BRANCH" = "dev" ] || { echo "请在 dev 分支执行发版。"; exit 1; }
 command -v gh >/dev/null || { echo "缺少 gh CLI（brew install gh）。"; exit 1; }

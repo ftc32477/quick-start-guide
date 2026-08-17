@@ -82,7 +82,7 @@ pip3 install websocket-client pypdf reportlab
 
 ```bash
 python3 build.py              # 一次性构建
-python3 build.py --watch      # 监听模式（文件变化自动重建）
+python3 build.py --watch      # 监听模式（src/*.md、images/ 与 build.py 变化自动重建；build.py 变更时自动重启监听）
 ```
 
 ### 导出 PDF
@@ -207,6 +207,11 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 侧边栏标题区（队徽 + 队伍名 + 品牌名）与移动端顶栏品牌标题均为**可点击链接**，指向 `../index.html`（根门户）。
 - 悬停侧边栏标题有浅色背景反馈。
 
+### SEO 与无障碍
+
+- 所有页面（含门户）均含 `<meta name="description">` 与 og:/twitter: 社交分享 meta（og:image 为线上队徽绝对地址），描述文案在 `build.py` 的 `LANG_HOME_TEXTS[lang]["meta_desc"]` 维护。
+- 语言下拉与移动端菜单按钮的 `aria-label` 随语言本地化（`LANGUAGES[lang]["lang_label"]` / `"menu_label"`）；菜单按钮带 `aria-controls` 与 `aria-expanded`（开合时由 JS 同步更新）。
+
 ## 七、打印样式与踩坑记录
 
 ### Chrome CDP 连接要点
@@ -300,7 +305,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 1. 在 dev 定稿全部内容
 2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`；**侧边栏页脚、语言主页"最新版本"、PDF 封面/封底日期均自动取自 `VERSIONS`，无需另行修改**；唯一需手工同步的是各语言 `afterword.md` 末行落款版次（六处）
 3. 本地运行 `build_pdf.py` 生成 6 份 PDF（新文件名）并自查
-4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）
+4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.3.0`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 
 > 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认）。另有 `check-dist.yml` 工作流：每次推送自动重跑 `build.py` 校验 `dist/` 与源码同步，未构建即推送会导致 Actions 失败。
@@ -696,3 +701,13 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 3. **嵌套列表：** 支持嵌套列表（列表内再套列表），有序与无序列表可以互相嵌套。
 4. **HTML 标签：** 除换行标签 `<br>`（用于标题或段落内的显式换行，如三行排版的前言标题）外，不要在 Markdown 中混入其他原始 HTML 标签，可能会破坏渲染结果。
 5. **文件编码：** 所有 `.md` 文件必须使用 UTF-8 编码。
+
+---
+
+# 第三部分：待办事项（内容缺口）
+
+以下为已知待办内容，完成前不阻塞现有发布流程：
+
+1. **《工具清单》附录**：结构建造章「三、用品简介」承诺将不常用工具整理为附录，目前未写（需结构组提供清单，完成后同步六语言）
+2. **激光切割工艺参数附录**：同章「激光切割耗材」注明功率、速度等工艺参数放附录持续更新，目前未写（需实验室实测数据）
+3. **开源许可**：版权页（封二）预留的许可位置留空待定，正式发布前建议明确许可（如 CC BY-NC-SA 4.0 或团队内部限定）

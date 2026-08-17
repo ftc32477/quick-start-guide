@@ -40,6 +40,8 @@ PAGE_KEYS = [
 LANGUAGES = {
     "zh-hans": {
         "label": "简体中文",
+        "lang_label": "语言",
+        "menu_label": "菜单",
         "brand": "快速入门指南",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
@@ -55,6 +57,8 @@ LANGUAGES = {
     },
     "zh-hant": {
         "label": "繁體中文",
+        "lang_label": "語言",
+        "menu_label": "選單",
         "brand": "快速入門指南",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
@@ -70,6 +74,8 @@ LANGUAGES = {
     },
     "en-us": {
         "label": "English (US)",
+        "lang_label": "Language",
+        "menu_label": "Menu",
         "brand": "Quick Start Guide",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
@@ -85,6 +91,8 @@ LANGUAGES = {
     },
     "fr": {
         "label": "Français",
+        "lang_label": "Langue",
+        "menu_label": "Menu",
         "brand": "Guide de démarrage rapide",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
@@ -100,6 +108,8 @@ LANGUAGES = {
     },
     "es": {
         "label": "Español",
+        "lang_label": "Idioma",
+        "menu_label": "Menú",
         "brand": "Guía de inicio rápido",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
@@ -115,6 +125,8 @@ LANGUAGES = {
     },
     "ko": {
         "label": "한국어",
+        "lang_label": "언어",
+        "menu_label": "메뉴",
         "brand": "빠른 시작 가이드",
         "site_title": "FTC 32477 Origin 빠른 시작 가이드",
         "pages": {
@@ -131,6 +143,26 @@ LANGUAGES = {
 }
 
 DEFAULT_LANG = "zh-hans"
+
+# 社交分享 og:image 使用线上绝对地址（GitHub Pages 部署路径）
+OG_IMAGE = "https://ftc32477.github.io/docs/images/basic/team_logo.png"
+
+
+def meta_tags(title, description):
+    """SEO 描述与社交分享 meta（og:/twitter:，含绝对地址 og:image）。"""
+    t = title.replace('"', "&quot;")
+    d = description.replace('"', "&quot;")
+    return (
+        f'<meta name="description" content="{d}">\n'
+        f'<meta property="og:type" content="website">\n'
+        f'<meta property="og:title" content="{t}">\n'
+        f'<meta property="og:description" content="{d}">\n'
+        f'<meta property="og:image" content="{OG_IMAGE}">\n'
+        f'<meta name="twitter:card" content="summary">\n'
+        f'<meta name="twitter:title" content="{t}">\n'
+        f'<meta name="twitter:description" content="{d}">\n'
+        f'<meta name="twitter:image" content="{OG_IMAGE}">'
+    )
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
@@ -995,6 +1027,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
     """将 HTML 正文包装进完整页面模板。"""
     lang = LANGUAGES[lang_key]
     headings = headings or []
+    desc = LANG_HOME_TEXTS[lang_key].get("meta_desc", lang["site_title"])
 
     # 侧边栏导航（主页 + 当前语言的页面标题 + 当前页的二级目录）
     nav_items = [f'<a href="index.html">{lang["pages"]["index"]}</a>']
@@ -1037,6 +1070,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{page_title}\uff5c{site_title}</title>
+{meta_tags(page_title + "｜" + site_title, desc)}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}</style>
@@ -1046,10 +1080,10 @@ def render_page(page_key, html_body, lang_key, headings=None):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{site_title}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_html}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1060,7 +1094,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {sidebar_select_html}
     </select>
   </div>
@@ -1079,8 +1113,8 @@ def render_page(page_key, html_body, lang_key, headings=None):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1252,6 +1286,7 @@ footer .legal p:last-child{margin-bottom:0}
 
 def render_portal():
     """生成根门户页（语言选择，仿 wikipedia.org 风格）。"""
+    portal_desc = ("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u591a\u8bed\u8a00\u95e8\u6237\uff1a\u7b80\u4f53\u4e2d\u6587 / \u7e41\u9ad4\u4e2d\u6587 / English (US) / Fran\u00e7ais / Espa\u00f1ol / \ud55c\uad6d\uc5b4\u3002Multilingual portal of the FTC 32477 Origin Quick Start Guide.")
     portal_langs = [
         ("zh-hans", "\u7b80\u4f53\u4e2d\u6587", "Simplified Chinese"),
         ("zh-hant", "\u7e41\u9ad4\u4e2d\u6587", "Traditional Chinese"),
@@ -1272,6 +1307,7 @@ def render_portal():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide</title>
+{meta_tags("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide", portal_desc)}
 <link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{PORTAL_CSS}</style>
@@ -1311,6 +1347,7 @@ LANG_HOME_TEXTS = {
     "zh-hans": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u95e8\u6307\u5357",
         "slogan": "\u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50",
+        "meta_desc": "FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u2014\u2014\u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50\u3002\u9762\u5411\u65b0\u8001\u961f\u5458\u7684\u4e03\u7ae0\u5b8c\u6574\u6307\u5357\uff1a\u961f\u5458\u987b\u77e5\u3001\u5efa\u6a21\u8bbe\u8ba1\u3001\u7ed3\u6784\u5efa\u9020\u3001\u7a0b\u5e8f\u8bbe\u8ba1\u3001\u5916\u90e8\u8054\u7edc\u4e0e\u540e\u8bb0\uff0c\u63d0\u4f9b\u516d\u79cd\u8bed\u8a00\u7248\u672c\u4e0e\u53ef\u6253\u5370 PDF\u3002",
         "about_title": "\u9879\u76ee\u6982\u51b5",
         "about": [
             ("\u961f\u4f0d", "FTC Team 32477 Origin"),
@@ -1329,6 +1366,7 @@ LANG_HOME_TEXTS = {
     "zh-hant": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\u5feb\u901f\u5165\u9580\u6307\u5357",
         "slogan": "\u62d2\u7d55\u91cd\u8907\u9020\u8f2a\u5b50",
+        "meta_desc": "FTC 32477 Origin \u5feb\u901f\u5165\u9580\u6307\u5357\u2014\u2014\u62d2\u7d55\u91cd\u8907\u9020\u8f2a\u5b50\u3002\u9762\u5411\u65b0\u8001\u968a\u54e1\u7684\u4e03\u7ae0\u5b8c\u6574\u6307\u5357\uff1a\u968a\u54e1\u9808\u77e5\u3001\u5efa\u6a21\u8a2d\u8a08\u3001\u7d50\u69cb\u5efa\u9020\u3001\u7a0b\u5f0f\u8a2d\u8a08\u3001\u5916\u90e8\u806f\u7d61\u8207\u5f8c\u8a18\uff0c\u63d0\u4f9b\u516d\u7a2e\u8a9e\u8a00\u7248\u672c\u8207\u53ef\u5217\u5370 PDF\u3002",
         "about_title": "\u5c08\u6848\u6982\u6cc1",
         "about": [
             ("\u968a\u4f0d", "FTC Team 32477 Origin"),
@@ -1347,6 +1385,7 @@ LANG_HOME_TEXTS = {
     "en-us": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Quick Start Guide",
         "slogan": "Refuse to Reinvent the Wheel",
+        "meta_desc": "The FTC 32477 Origin Quick Start Guide \u2014 Refuse to Reinvent the Wheel. A complete seven-chapter guide for new and returning team members, available in six languages with printable PDFs.",
         "about_title": "About Us",
         "about": [
             ("Team", "FTC Team 32477 Origin"),
@@ -1365,6 +1404,7 @@ LANG_HOME_TEXTS = {
     "fr": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Guide de d\u00e9marrage rapide",
         "slogan": "Refuser de r\u00e9inventer la roue",
+        "meta_desc": "Le Guide de d\u00e9marrage rapide FTC 32477 Origin \u2014 Refuser de r\u00e9inventer la roue. Un guide complet en sept chapitres pour les membres de l'\u00e9quipe, disponible en six langues avec des PDF imprimables.",
         "about_title": "\u00c0 propos",
         "about": [
             ("\u00c9quipe", "FTC Team 32477 Origin"),
@@ -1383,6 +1423,7 @@ LANG_HOME_TEXTS = {
     "es": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>Gu\u00eda de inicio r\u00e1pido",
         "slogan": "Negarse a reinventar la rueda",
+        "meta_desc": "La Gu\u00eda de inicio r\u00e1pido de FTC 32477 Origin \u2014 Negarse a reinventar la rueda. Una gu\u00eda completa de siete cap\u00edtulos para los miembros del equipo, disponible en seis idiomas con PDF imprimibles.",
         "about_title": "Acerca de",
         "about": [
             ("Equipo", "FTC Team 32477 Origin"),
@@ -1401,6 +1442,7 @@ LANG_HOME_TEXTS = {
     "ko": {
         "hero_title": "FIRST\u00ae Tech Challenge<br>32477 Origin<br>\ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc",
         "slogan": "\ubc14\ud034\ub97c \ub2e4\uc2dc \ubc1c\uba85\ud558\uc9c0 \uc54a\uae30",
+        "meta_desc": "FTC 32477 Origin \ube60\ub978 \uc2dc\uc791 \uac00\uc774\ub4dc \u2014 \ubc14\ud034\ub97c \ub2e4\uc2dc \ubc1c\uba85\ud558\uc9c0 \uc54a\uae30. \uc2e0\uc785\uacfc \ubca0\ud14c\ub791\uc744 \uc704\ud55c 7\uac1c \uc7a5\uc73c\ub85c \uad6c\uc131\ub41c \uc644\uc804\ud55c \uac00\uc774\ub4dc\ub85c, 6\uac1c \uc5b8\uc5b4 \ubc84\uc804\uacfc \uc778\uc1c4 \uac00\ub2a5\ud55c PDF\ub97c \uc81c\uacf5\ud569\ub2c8\ub2e4.",
         "about_title": "\ud504\ub85c\uc81d\ud2b8 \uc18c\uac1c",
         "about": [
             ("\ud300", "FTC Team 32477 Origin"),
@@ -1497,6 +1539,7 @@ def render_lang_homepage(lang_key):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{lang["site_title"]}</title>
+{meta_tags(lang["site_title"], t["meta_desc"])}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}
@@ -1507,10 +1550,10 @@ def render_lang_homepage(lang_key):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u95e8\u6237">{lang["site_title"]}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1521,7 +1564,7 @@ def render_lang_homepage(lang_key):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {select_options}
     </select>
   </div>
@@ -1570,8 +1613,8 @@ def render_lang_homepage(lang_key):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1799,6 +1842,7 @@ def render_versions_page(lang_key):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{t["page_title"]}\uff5c{lang["site_title"]}</title>
+{meta_tags(t["page_title"] + "｜" + lang["site_title"], LANG_HOME_TEXTS[lang_key]["meta_desc"])}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <style>{CSS}
@@ -1809,10 +1853,10 @@ def render_versions_page(lang_key):
 <div class="topbar">
   <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
   <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{lang["site_title"]}</a></span>
-  <select class="lang-select" id="langSelect" aria-label="Language">
+  <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
-  <button class="menu-btn" id="menuBtn" aria-label="Menu">\u2630</button>
+  <button class="menu-btn" id="menuBtn" aria-label="{lang['menu_label']}" aria-controls="sidebar" aria-expanded="false">\u2630</button>
 </div>
 <div class="overlay" id="overlay"></div>
 
@@ -1823,7 +1867,7 @@ def render_versions_page(lang_key):
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{t["page_title"]}</div>
     </a>
-    <select class="lang-select-sidebar" id="langSelectSide" aria-label="Language">
+    <select class="lang-select-sidebar" id="langSelectSide" aria-label="{lang['lang_label']}">
 {select_options}
     </select>
   </div>
@@ -1854,8 +1898,8 @@ def render_versions_page(lang_key):
   var sb=document.getElementById("sidebar");
   var ol=document.getElementById("overlay");
   var btn=document.getElementById("menuBtn");
-  function open(){{sb.classList.add("open");ol.classList.add("show")}}
-  function close(){{sb.classList.remove("open");ol.classList.remove("show")}}
+  function open(){{sb.classList.add("open");ol.classList.add("show");btn.setAttribute("aria-expanded","true")}}
+  function close(){{sb.classList.remove("open");ol.classList.remove("show");btn.setAttribute("aria-expanded","false")}}
   btn.addEventListener("click",function(){{sb.classList.contains("open")?close():open()}});
   ol.addEventListener("click",close);
   var ls=document.getElementById("langSelect");
@@ -1968,7 +2012,7 @@ def shorten_path(path):
 
 
 def watch():
-    """监听文件变化并自动重新构建。"""
+    """监听文件变化并自动重新构建（src/*.md、images/ 与 build.py 自身）。"""
     file_hashes = {}
 
     def hash_file(path):
@@ -1978,24 +2022,35 @@ def watch():
         except FileNotFoundError:
             return None
 
-    def scan():
-        changed = set()
+    def watched_paths():
+        """(路径, 展示名) 列表：源文件、图片目录全部文件、build.py 自身。"""
+        paths = []
         for lang_key in LANGUAGES:
             for page_key in PAGE_KEYS:
-                path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
-                h = hash_file(path)
-                if h != file_hashes.get(path):
-                    file_hashes[path] = h
-                    changed.add(f"{lang_key}/{page_key}")
+                p = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
+                paths.append((p, f"{lang_key}/{page_key}"))
+        if os.path.isdir(IMAGES_DIR):
+            for root, _, files in os.walk(IMAGES_DIR):
+                for fn in files:
+                    p = os.path.join(root, fn)
+                    paths.append((p, os.path.relpath(p, BASE_DIR)))
+        paths.append((os.path.join(BASE_DIR, "build.py"), "build.py"))
+        return paths
+
+    def scan():
+        changed = set()
+        for path, label in watched_paths():
+            h = hash_file(path)
+            if h != file_hashes.get(path):
+                file_hashes[path] = h
+                changed.add(label)
         return changed
 
-    for lang_key in LANGUAGES:
-        for page_key in PAGE_KEYS:
-            path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
-            file_hashes[path] = hash_file(path)
+    for path, _ in watched_paths():
+        file_hashes[path] = hash_file(path)
 
     build()
-    print("\n  [监听] 正在监听 src/ 目录变化，按 Ctrl+C 退出...\n")
+    print("\n  [监听] 正在监听 src/、images/ 与 build.py 的变化，按 Ctrl+C 退出...\n")
 
     try:
         while True:
@@ -2003,6 +2058,9 @@ def watch():
             changed = scan()
             if changed:
                 print(f"\n  检测到变化: {', '.join(sorted(changed))}")
+                if "build.py" in changed:
+                    print("  [提示] build.py 已变更，自动重启监听以加载新代码...\n")
+                    os.execv(sys.executable, [sys.executable] + sys.argv)
                 build()
                 print("\n  [监听] 继续监听...\n")
     except KeyboardInterrupt:
