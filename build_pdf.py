@@ -198,8 +198,8 @@ html,body{{margin:0;padding:0}}
 .cover .name2{{font-size:17px;opacity:.75;margin-top:16px;position:relative}}
 .cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
-  position:absolute;bottom:56px;left:0;right:0;
-  font-size:16px;opacity:.8;letter-spacing:2px
+  position:absolute;bottom:48px;left:0;right:0;
+  font-size:16px;opacity:.8;letter-spacing:2px;line-height:1.5
 }}
 </style>
 </head>
@@ -214,7 +214,7 @@ html,body{{margin:0;padding:0}}
     <div class="name2">{t["name2"]}</div>
     <div class="school">{t["school"]}</div>
   </div>
-  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
+  <div class="date">{t["lang"]}<br>{t["date"]}</div>
 </div>
 </body>
 </html>"""
@@ -256,7 +256,7 @@ html,body{{margin:0;padding:0}}
 <div class="back">
   <div class="glow"></div>
   <img class="logo" src="{logo_path}">
-  <div class="date">{t["lang"]} \u00b7 {t["date"]}</div>
+  <div class="date">{t["lang"]}<br>{t["date"]}</div>
 </div>
 </body>
 </html>"""
