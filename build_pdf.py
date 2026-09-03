@@ -826,7 +826,8 @@ def chapter_h2_pages(tmp_pdf, h2_count):
 
 
 def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
-                resources_pdf, back_pdf, out_path, lang_key, toc_entries):
+                resources_pdf, back_pdf, out_path, lang_key, toc_entries,
+                front_blank=False):
     """
     合并完整指南并盖印页脚：
     - 封面/封二（版权页）/封三（资源页）/封底不编号
@@ -834,6 +835,8 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
     - 正文（队员须知起）用阿拉伯数字连续编号并标注总页数
     - toc_entries: [{title, level, dest}]，dest 为全书 0 基目标页；
       按实际渲染的文本行位置注入 PDF 内部超链接
+    - 成册规则：front_blank=True 时在目录后插入白页（正文从右页/奇数页开始）；
+      全书总页数为奇数时在封三前插入白页
     """
     from pypdf import PdfReader, PdfWriter
     from pypdf.generic import RectangleObject
@@ -876,6 +879,12 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
     toc_reader = PdfReader(toc_pdf)
     toc_start_index = len(writer.pages)
     stamp(toc_reader, roman_text)
+
+    # 成册：前言+目录为奇数页时，在目录后插入白页（不编页码），
+    # 保证正文第 1 页位于右页（物理奇数页）
+    if front_blank:
+        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
+        print("  [成册] 前言+目录为奇数页，已在目录后插入白页（正文从右页开始）")
 
     # 正文：阿拉伯数字连续编号 + 总页数
     total_main = sum(len(PdfReader(p).pages) for p in main_pdfs)
@@ -1108,7 +1117,9 @@ def export(lang_filter=None, page_filter=None):
                     # 目标页（全书 0 基）：封面=0，封二=1，前言=2…
                     preface_pages = len(_R(rendered["preface"]).pages)
                     toc_pages = len(_R(toc_pdf).pages)
-                    base = 2 + preface_pages + toc_pages
+                    # 成册：前言+目录为奇数页时目录后插白页，正文目标页整体 +1
+                    front_blank = (preface_pages + toc_pages) % 2 == 1
+                    base = 2 + preface_pages + toc_pages + (1 if front_blank else 0)
 
                     toc_entries = [
                         {"title": preface_title, "level": 1, "dest": 2}
@@ -1132,7 +1143,7 @@ def export(lang_filter=None, page_filter=None):
                     merge_guide(
                         cover_pdf, imprint_pdf, rendered["preface"], toc_pdf,
                         [rendered[k] for k in main_keys], resources_pdf, back_pdf,
-                        merged_path, lang, toc_entries,
+                        merged_path, lang, toc_entries, front_blank=front_blank,
                     )
                     merged_ok = True
                     size_kb = os.path.getsize(merged_path) / 1024
