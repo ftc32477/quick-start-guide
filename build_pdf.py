@@ -892,6 +892,10 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
         stamp(PdfReader(p), arabic_text)
 
     # 封三（资源与更新页，不编号）
+    # 印刷成册：全书总页数为奇数时，在封三前插入一白页（不编页码），保证装订正确
+    if len(writer.pages) % 2 == 1:
+        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
+        print("  [成册] 总页数为奇数，已在封三前插入一白页")
     writer.append(resources_pdf)
 
     # 封底（不编号）
