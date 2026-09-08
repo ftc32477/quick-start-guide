@@ -1047,12 +1047,13 @@ tr:nth-child(even){background:#fafafa}
   }
   .card{box-shadow:none;border:1px solid var(--border);padding:20px 24px}
   .hero{background:#fff;color:var(--text);border:1px solid var(--border);padding:28px 24px}
-  .hero h1{color:var(--dark);font-size:21px}
+  .hero h1{color:var(--dark);font-size:24px}
   .hero .badge{background:var(--red);color:#fff}
-  h1{font-size:21px;margin:1.8em 0 .8em}
-  section h2{font-size:16px;padding-bottom:6px;margin-bottom:12px}
-  section h3{font-size:13px;margin:16px 0 6px}
-  section h4{font-size:11px;margin:12px 0 6px}
+  /* 正文标题为裸 h1/h2/h3/h4（无 section 包裹），须用裸元素选择器 */
+  h1{font-size:24px;margin:1.8em 0 .8em}
+  h2{font-size:19px;margin:1.2em 0 .5em}
+  h3{font-size:15px;margin:.8em 0 .3em}
+  h4{font-size:13px;margin:.6em 0 .3em}
   p{margin-bottom:6px}
   ul,ol{margin-bottom:8px}
   li{margin-bottom:2px}
@@ -1082,9 +1083,6 @@ tr:nth-child(even){background:#fafafa}
   /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
   html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
   .align-right{text-align:right}
-  /* 标题间距（行距收窄后同步收紧） */
-  h2{margin:1.2em 0 .5em}
-  h3{margin:.8em 0 .3em}
 }
 """
 
