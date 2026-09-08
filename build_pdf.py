@@ -795,7 +795,7 @@ def chapter_h2_pages(tmp_pdf, h2_count):
     """
     按字号检测各章 h2 标题所在页（不依赖文本匹配，
     规避 PDF 字体子集产生的异体字形问题）。
-    实测 h2 打印字号 Tf = 24.0pt，检测范围 23.0–25.0pt。
+    实测 h2 打印字号 Tf = 18.0pt（CSS 16px），检测范围 17.0–19.0pt。
     """
     from pypdf import PdfReader
     reader = PdfReader(tmp_pdf)
@@ -815,7 +815,7 @@ def chapter_h2_pages(tmp_pdf, h2_count):
         n_h2 = 0
         for key in groups:
             sizes = groups[key]
-            if any(23.0 < s < 25.0 for s in sizes):
+            if any(17.0 < s < 19.0 for s in sizes):
                 n_h2 += 1
         lines_per_page.append(n_h2)
     # 第 i 个 h2 所在页
