@@ -131,6 +131,8 @@ The Programming team's core work consists of three parts:
 - **TeleOp programs**: operation logic for the driver-controlled period
 - **Sensor configuration**: configuration of sensors and vision systems
 
+> [!info] Driver operation: the robot is driven with an Xbox controller; officially only the Xbox 360 model is permitted. Drivers are picked from the team on merit ("whoever can do it, does it"); being good at controller-based games is a natural advantage.
+
 ### Debugging Is the Core
 
 > [!info] The real difficulty in program development lies in debugging. Autonomous paths, driver controls, PID parameters, vision configuration — most sensors come with ready-made packages you can reuse. What you really do is *tune*.
@@ -145,3 +147,10 @@ Debugging runs through the entire development workflow:
 6. **Testing & verification**: verify program functionality on the robot
 7. **Code review**: review and merge code via GitHub
 8. **Deployment**: deploy the final build to the Robot Controller
+
+
+### AI-Assisted Programming
+
+> [!info] Writing code is no longer the hard part: the team uses Google Gemma as a programming assistant, with shared access within the group and customizable personas. The real core skill is being able to **read AI-generated code, know what to change, and debug it** — you don't need to write everything from scratch.
+
+- Core programming logic (e.g., for loops, while loops) is universal across languages; only the syntax differs. Students with C++ experience can adapt to Java quickly

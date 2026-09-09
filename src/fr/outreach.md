@@ -28,7 +28,7 @@ La division Sensibilisation & Relations publiques est le porte-voix et le corps 
 
 ### Cahier d'ingénierie
 
-Le contenu du cahier d'ingénierie est rédigé par les équipes Mécanique et Programmation ; la division Relations publiques se charge de :
+Le cahier d'ingénierie documente toute la saison : le processus de construction du robot, les activités de relations extérieures et la manière dont les problèmes ont été résolus. C'est un support essentiel pour la soutenance et l'un des principaux matériaux d'évaluation. Son contenu est rédigé par les équipes Mécanique et Programmation ; la division Relations publiques se charge de :
 
 - **Mise en page** : la conception graphique et la mise en page du cahier d'ingénierie
 - **Collecte de supports** : accumuler activement les supports de communication
@@ -53,6 +53,8 @@ Le contenu du cahier d'ingénierie est rédigé par les équipes Mécanique et P
 - Rédiger les dossiers de demande de sponsoring et les plans commerciaux
 - Entretenir les relations avec les sponsors
 - Gérer le budget et les finances de l'équipe
+
+> [!info] Le financement de l'école est limité : un robot de compétition complet coûte environ 10 000 ¥, et la différence doit être comblée par le sponsoring. Si l'équipe se qualifie pour la finale internationale de Houston, l'école remboursera intégralement les frais liés.
 
 ### Promotion des STEM
 
@@ -102,9 +104,17 @@ Un plan commercial présenté à un sponsor doit inclure :
 
 - FGC (First Global Challenge) est l'équivalent des Jeux olympiques de la robotique ; l'édition 2026 se tiendra à Incheon, en Corée du Sud, avec la participation de plus de 190 pays.
 - Le plan commercial de l'équipe nationale chinoise du FGC comprend la présentation de la compétition, la présentation de l'équipe, les résultats historiques et les avantages correspondant aux différents paliers de sponsoring. D'après nos informations, cette équipe a obtenu le sponsoring de marques telles que Xiaomi et Huawei (via la marque Huakun Zhenyu (华鲲振宇)).
+- Certaines équipes puissantes ayant obtenu de grands sponsors construisent leur robot presque sans pièces officielles, avec des matériaux entièrement personnalisés comme la fibre de carbone, bien au-delà du matériel des équipes ordinaires.
 
 ---
 
 ## 4. Autres points
 
 (voir les documents et manuels correspondants)
+
+
+### Prix Inspire et notation
+
+> [!info] La première place en classement compétitif ne rapporte que 40 points, alors que la première place du prix Inspire en rapporte 60. Le prix Inspire est principalement évalué sur l'influence de l'équipe dans la communauté FTC et sur son historique d'aide aux autres équipes.
+
+- Le matériel promotionnel accumulé, les échanges inter-équipes et le service communautaire déterminent directement la compétitivité pour le prix Inspire — leur valeur peut dépasser celle du classement compétitif lui-même.

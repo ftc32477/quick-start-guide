@@ -223,6 +223,7 @@ Compre filamento oficial de Bambu Lab o de SUNLU, de calidad relativamente estab
 ## 4. Flujo de trabajo
 
 1. **Compra de piezas**
+   - Los proveedores oficiales de material FTC están en el extranjero: las compras oficiales tardan y cuestan más; para materiales no críticos, busca sustitutos en plataformas nacionales para equilibrar coste y plazo de entrega
 2. **Fabricación de piezas propias**
    - Fabricación de piezas de impresión 3D
    - Mecanizado de planchas por corte láser

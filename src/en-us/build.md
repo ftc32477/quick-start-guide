@@ -223,6 +223,7 @@ Purchase official Bambu Lab or SUNLU filaments for consistent quality.
 ## 4. Workflow
 
 1. **Parts procurement**
+   - FTC official equipment suppliers are overseas, so official purchases take long and cost more; for non-critical materials, look for domestic substitutes to balance cost and delivery speed
 2. **Custom part fabrication**
    - 3D-printed parts
    - Laser-cut sheet processing

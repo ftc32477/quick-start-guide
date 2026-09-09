@@ -222,6 +222,7 @@ Achetez des filaments officiels Bambu Lab ou SUNLU : leur qualité est relative
 ## 4. Flux de travail
 
 1. **Achat des pièces**
+   - Les fournisseurs officiels de matériel FTC sont à l'étranger : les achats officiels prennent du temps et coûtent cher ; pour les matériaux non essentiels, cherchez des substituts sur des plateformes nationales pour équilibrer coût et délai de livraison
 2. **Fabrication des pièces sur mesure**
    - Fabrication de pièces imprimées en 3D
    - Découpe laser de plaques

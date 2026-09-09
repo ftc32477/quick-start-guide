@@ -151,6 +151,7 @@ The strength of 3D-printed parts depends on the material and the geometry. Here 
 
 - On the schedule: the first design iteration can be rough, but it must be finished and built as soon as possible to leave time for software debugging and Driver practice, and to test the structure physically for iterative optimization. Before qualifiers, a competition-ready robot should go through at least 3 iterations (reference)
 - Keep an eye on teams abroad. The FTC community has events like "Robot in 30 Hours Reveal | FTC" where teams may share their new season designs at any time. You can also reference designs from FRC and VEX teams
+- Most other teams' CAD files are shared publicly; asking a team directly for its models is normally not refused. Study good designs to improve your own — teams like Beijing National Day School (main campus) are especially worth learning from
 
 ### Onshape Learning Resources
 

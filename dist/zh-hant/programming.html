@@ -349,6 +349,7 @@ tr:nth-child(even){background:#fafafa}
 <a class="sub-link sub-3" href="#RobotDashboard">Robot Dashboard</a>
 <a class="sub-link" href="#四工作流程">四、工作流程</a>
 <a class="sub-link sub-3" href="#除錯是核心">除錯是核心</a>
+<a class="sub-link sub-3" href="#AI輔助程式設計">AI 輔助程式設計</a>
 <a href="outreach.html">外部聯絡</a>
 <a href="afterword.html">後記</a>
   </div>
@@ -407,10 +408,14 @@ tr:nth-child(even){background:#fafafa}
 <h2 id="四工作流程">四、工作流程</h2>
 <p>程式設計組的核心工作分為三部分：</p>
 <ul><li><strong>自動程式</strong>：賽季自動階段（Auto）的控制邏輯</li><li><strong>手動程式</strong>：遙控階段（TeleOp）的操作邏輯</li><li><strong>感測器配置</strong>：各類感測器、視覺系統的配置</li></ul>
+<blockquote class="bq-info">手把操作（Driver）：參賽車輛使用 Xbox 手把操控，官方僅允許 Xbox 360 型號；Driver 由隊內選拔「誰行誰上」，擅長手把遊戲的同學有天然優勢。</blockquote>
 <h3 id="除錯是核心">除錯是核心</h3>
 <blockquote class="bq-info">程式開發的真正難點在於除錯。自動路徑、手動操作、PID 參數、視覺配置——大部分感測器都有現成的程式套件可以直接複用，你真正要做的是「調」。</blockquote>
 <p>除錯工作貫穿整個開發流程：</p>
 <ol><li><strong>需求分析</strong>：明確當前賽季的規則和任務需求</li><li><strong>架構設計</strong>：設計程式整體架構和模組劃分</li><li><strong>程式碼編寫</strong>：在 Android Studio 中編寫 Java 程式碼</li><li><strong>版本控制</strong>：使用 Git 進行程式碼版本管理</li><li><strong>除錯</strong>：調自動路徑、調手動操作、調 PID 參數、調視覺配置</li><li><strong>測試驗證</strong>：在機器人上驗證程式功能</li><li><strong>程式碼審查</strong>：透過 GitHub 進行程式碼審查和合併</li><li><strong>部署發布</strong>：將最終版本部署到 Robot Controller</li></ol>
+<h3 id="AI輔助程式設計">AI 輔助程式設計</h3>
+<blockquote class="bq-info">現在寫程式並不困難：隊伍使用谷歌 Gemma 輔助程式設計，支援群組內共享使用與自訂人格提示詞。真正的核心能力是<strong>讀懂 AI 生成的程式碼、明確修改方向並掌握 debug 能力</strong>，無需從零手寫全部程式碼。</blockquote>
+<ul><li>各類程式語言的核心邏輯（如 for 迴圈、while 迴圈）是通用的，僅語法存在差異；有 C++ 基礎的同學可以快速適應 Java 開發</li></ul>
 </main>
 
 <script>
