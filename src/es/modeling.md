@@ -151,6 +151,7 @@ La resistencia de las piezas impresas en 3D depende del material y de la estruct
 
 - En cuanto a los plazos, el primer diseño puede ser tosco, pero debe terminarse y fabricarse cuanto antes para dejar tiempo a la depuración del programa y a los entrenamientos del Driver, y para probar la estructura real e iterar; antes de la fase de clasificación, un robot completo apto para competir debe haber pasado al menos 3 iteraciones (referencia)
 - Siga de cerca la actividad de los equipos extranjeros: la comunidad FTC organiza actividades como «Robot in 30 Hours Reveal | FTC», en las que los equipos participantes pueden compartir sus soluciones de la nueva temporada en cualquier momento; también puede consultar las soluciones de los equipos de FRC, VEX y otras competiciones
+- Los archivos CAD de la mayoría de los equipos se comparten públicamente; pedir directamente los modelos a un equipo no suele ser rechazado. Estudia buenos diseños para mejorar el tuyo — equipos como Beijing National Day School (sede principal) merecen especialmente ser estudiados
 
 ### Recursos de aprendizaje de Onshape
 

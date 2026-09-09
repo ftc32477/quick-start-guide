@@ -28,7 +28,7 @@ El grupo de Divulgación y relaciones públicas es el altavoz y la diplomacia de
 
 ### Cuaderno de ingeniería
 
-El contenido del cuaderno de ingeniería lo redactan los grupos de Construcción y Programación; el grupo de Divulgación se encarga de:
+El cuaderno de ingeniería documenta toda la temporada: el proceso de construcción del robot, las actividades de divulgación y cómo se resolvieron los problemas. Es un material de apoyo clave para las presentaciones y uno de los principales materiales de puntuación. Su contenido lo redactan los grupos de Construcción y Programación; el grupo de Divulgación se encarga de:
 
 - **Maquetación**: el diseño y la maquetación del cuaderno de ingeniería
 - **Acumulación de material**: acumular de forma proactiva material de promoción
@@ -53,6 +53,8 @@ El contenido del cuaderno de ingeniería lo redactan los grupos de Construcción
 - Redactar materiales de solicitud de patrocinio y planes de negocio
 - Mantener las relaciones con los patrocinadores
 - Gestionar el presupuesto y las finanzas del equipo
+
+> [!info] La financiación de la escuela es limitada: un robot de competición completo cuesta unos 10 000 ¥, y la diferencia debe cubrirse mediante patrocinios. Si el equipo se clasifica para la final internacional de Houston, la escuela reembolsará íntegramente los gastos correspondientes.
 
 ### Promoción de STEM
 
@@ -102,9 +104,17 @@ Al presentar un plan de negocio al patrocinador, debe incluir:
 
 - FGC (First Global Challenge) equivale a las Olimpiadas de la robótica; la edición de 2026 se celebrará en Incheon (Corea del Sur), con más de 190 países participantes.
 - El plan de negocio de la selección nacional china de FGC incluye la presentación de la competición, la presentación del equipo, el historial de resultados y los derechos correspondientes a cada nivel de patrocinio. Según se sabe, el equipo ha conseguido patrocinios de marcas como Xiaomi y Huawei (a través de su marca afiliada Huakun Zhenyu (华鲲振宇)).
+- Algunos equipos fuertes que han conseguido grandes patrocinadores construyen su robot casi sin piezas oficiales, con materiales totalmente personalizados como la fibra de carbono, muy por encima del hardware de los equipos normales.
 
 ---
 
 ## 4. Otros asuntos
 
 (Véanse los documentos y manuales correspondientes)
+
+
+### Premio Inspire y puntuación
+
+> [!info] El primer puesto en la clasificación competitiva solo vale 40 puntos, mientras que el primer puesto del Premio Inspire vale 60. El Premio Inspire se evalúa principalmente por la influencia del equipo en la comunidad FTC y su historial de ayuda a otros equipos.
+
+- El material promocional acumulado, el intercambio entre equipos y el servicio comunitario determinan directamente la competitividad para el Premio Inspire: su valor puede superar al del propio puesto competitivo.

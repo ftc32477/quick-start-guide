@@ -719,15 +719,15 @@ html,body{{margin:0;padding:0}}
   padding:0 0.45in;font-family:{FONT_FAMILY}
 }}
 .toc h1{{
-  font-size:22pt;text-align:center;margin:0 0 30pt;padding-top:28pt;
+  font-size:18pt;text-align:center;margin:0 0 20pt;padding-top:20pt;
   font-weight:700;color:#1a1a2e;line-height:1.4
 }}
 .toc .row{{
-  display:flex;align-items:baseline;font-size:12.5pt;
+  display:flex;align-items:baseline;font-size:11pt;
   border-bottom:1px dotted #ccc;page-break-inside:avoid
 }}
-.toc .row.lvl1{{height:38pt;line-height:38pt;font-weight:600;color:#2c2c2c}}
-.toc .row.lvl2{{height:34pt;line-height:34pt;padding-left:24pt;color:#444}}
+.toc .row.lvl1{{height:30pt;line-height:30pt;font-weight:600;color:#2c2c2c}}
+.toc .row.lvl2{{height:26pt;line-height:26pt;padding-left:20pt;color:#444}}
 .toc .row .pg{{margin-left:auto;color:#666;font-variant-numeric:tabular-nums}}
 </style>
 </head>
@@ -776,6 +776,8 @@ def extract_row_lines(page):
     page_h = float(page.mediabox.height)
 
     def visitor(text, cm, tm, font_dict, font_size):
+        if not text:
+            return
         x, y = _text_position(cm, tm)
         if y < MARGIN_BOTTOM * 72 or y > page_h - MARGIN_TOP * 72:
             return
@@ -795,7 +797,7 @@ def chapter_h2_pages(tmp_pdf, h2_count):
     """
     按字号检测各章 h2 标题所在页（不依赖文本匹配，
     规避 PDF 字体子集产生的异体字形问题）。
-    实测 h2 打印字号 Tf = 24.0pt，检测范围 23.0–25.0pt。
+    实测 h2 打印字号 Tf = 19.0pt（CSS 19px），检测范围 18.0–20.0pt。
     """
     from pypdf import PdfReader
     reader = PdfReader(tmp_pdf)
@@ -815,7 +817,7 @@ def chapter_h2_pages(tmp_pdf, h2_count):
         n_h2 = 0
         for key in groups:
             sizes = groups[key]
-            if any(23.0 < s < 25.0 for s in sizes):
+            if any(18.0 < s < 20.0 for s in sizes):
                 n_h2 += 1
         lines_per_page.append(n_h2)
     # 第 i 个 h2 所在页
@@ -936,7 +938,7 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
         if entry["dest"] is None or idx >= len(rows_global):
             continue
         pi, y = rows_global[idx]
-        row_h = 38.0 if entry["level"] == 1 else 34.0
+        row_h = 30.0 if entry["level"] == 1 else 26.0
         rect = RectangleObject([x1, y - 4.0, x2, y + row_h - 10.0])
         # 构造规范 /Dest（页面间接引用），pypdf 的 Link 注解在此场景
         # 会把 target_page_index 以纯数字写入，故手动构造

@@ -166,11 +166,70 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.2.2"
+RELEASE_TAG = "v1.3.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.3.0",
+        "date": "2026-09-09",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年9月第3版",
+            "zh-hant": "2026年9月第3版",
+            "en-us": "September 2026, 3rd Edition",
+            "fr": "Septembre 2026, 3e édition",
+            "es": "3.ª edición, septiembre de 2026",
+            "ko": "2026년 9월 제3판",
+        },
+        "changes": {
+            "zh-hans": [
+                "队员须知新增「赛季与活动安排」章节：赛季时间线与赛事规则须知（仅限 Xbox 360 手柄、磁悬浮禁令、参赛年龄 12–18 岁），并细化队伍局域网说明。",
+                "程序设计新增「AI 辅助编程」小节（配合 AI Agent 等工具）与 Driver 手柄操作说明。",
+                "外部联络补充工程笔记定位、经费说明与「启发奖与赛事得分」（竞技第一 40 分、启发奖第一 60 分），并补充强队定制车案例。",
+                "结构建造补充官方器材采购平替策略；建模设计补充建模文件共享经验。",
+            ],
+            "zh-hant": [
+                "隊員須知新增「賽季與活動安排」章節：賽季時間線與賽事規則須知（僅限 Xbox 360 手把、磁浮禁令、參賽年齡 12–18 歲），並細化隊伍區域網路說明。",
+                "程式設計新增「AI 輔助程式設計」小節（配合 AI Agent 等工具）與 Driver 手把操作說明。",
+                "外部聯絡補充工程筆記定位、經費說明與「啟發獎與賽事得分」（競技第一 40 分、啟發獎第一 60 分），並補充強隊訂製車案例。",
+                "結構建造補充官方器材採購平替策略；建模設計補充建模檔案共享經驗。",
+            ],
+            "en-us": [
+                "Team Essentials: added a \"Season & Schedule\" section (season timeline and rules notes — Xbox 360 controller only, magnetic levitation ban, age range 12–18) and refined the team LAN description.",
+                "Programming: added an \"AI-Assisted Programming\" section (using AI Agent tools) and a Driver/controller note.",
+                "Outreach & PR: clarified the engineering notebook's role, added funding notes and an \"Inspire Award & Scoring\" section (40 points for competition first place vs 60 for the Inspire Award), and added a case of strong teams with fully custom vehicles.",
+                "Hardware & Build: added the procurement substitution strategy for official parts; Modeling & Design: added experience on sharing CAD files between teams.",
+            ],
+            "fr": [
+                "Essentiels de l'équipe : ajout d'une section « Saison et emploi du temps » (calendrier de la saison et règles — manette Xbox 360 uniquement, interdiction de la sustentation magnétique, tranche d'âge 12–18 ans) et précisions sur le réseau local de l'équipe.",
+                "Programmation : ajout d'une section « Programmation assistée par IA » (avec des outils d'agent IA) et d'une note sur le pilotage (Driver).",
+                "Sensibilisation & Relations publiques : clarification du rôle du cahier d'ingénierie, ajout de notes sur le financement et d'une section « Prix Inspire et notation » (40 points pour la première place compétitive contre 60 pour le prix Inspire), et ajout d'un cas d'équipes fortes aux robots entièrement personnalisés.",
+                "Matériel & Construction : ajout de la stratégie de substitution pour l'achat de pièces officielles ; Modélisation & Conception : ajout d'une expérience sur le partage des fichiers CAO entre équipes.",
+            ],
+            "es": [
+                "Esenciales del equipo: añadida la sección «Temporada y horarios» (calendario de la temporada y notas sobre las reglas — solo mando Xbox 360, prohibición de la levitación magnética, rango de edad 12–18) y precisada la descripción de la LAN del equipo.",
+                "Programación: añadida la sección «Programación asistida por IA» (con herramientas de agente de IA) y una nota sobre el pilotaje (Driver).",
+                "Divulgación y relaciones públicas: aclarado el papel del cuaderno de ingeniería, añadidas notas de financiación y la sección «Premio Inspire y puntuación» (40 puntos para el primer puesto competitivo frente a 60 del Premio Inspire), y añadido un caso de equipos fuertes con robots totalmente personalizados.",
+                "Hardware y construcción: añadida la estrategia de sustitución para la compra de piezas oficiales; Modelado y diseño: añadida una experiencia sobre el intercambio de archivos CAD entre equipos.",
+            ],
+            "ko": [
+                "팀원 필수사항: 「시즌과 활동 일정」 장 추가(시즌 일정과 규칙 — Xbox 360 컨트롤러만 허용, 자기 부상 금지, 참가 연령 12~18세) 및 팀 LAN 설명 보강.",
+                "프로그래밍: 「AI 활용 프로그래밍」 절 추가(AI Agent 등 도구 활용) 및 Driver 컨트롤러 조종 안내 추가.",
+                "아웃리치 및 대외 홍보: 엔지니어링 노트의 역할 명확화, 경비 안내와 「Inspire 어워드와 점수」 절 추가(경기 1위 40점 대 Inspire 어워드 1위 60점), 완전 맞춤형 로봇을 만드는 강팀 사례 추가.",
+                "하드웨어 및 제작: 공식 부품 구매 대체 전략 추가; 모델링 및 설계: 팀 간 CAD 파일 공유 경험 추가.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-ko.pdf",
+        },
+    },
     {
         "tag": "v1.2.2",
         "date": "2026-08-17",
@@ -1038,18 +1097,31 @@ tr:nth-child(even){background:#fafafa}
 @media print{
   html,body{display:block !important;width:100% !important;max-width:100% !important;overflow:visible !important}
   nav.sidebar,.topbar,.overlay{display:none !important}
-  body{background:#fff}
+  /* 正文字号与封三正文一致（12px），行距收窄 */
+  body{background:#fff;font-size:12px;line-height:1.6}
   main{
     display:block !important;box-sizing:border-box !important;
     margin:0 !important;padding:0 !important;
     width:100% !important;max-width:100% !important;
   }
-  .card{box-shadow:none;border:1px solid var(--border);padding:24px 28px}
-  .hero{background:#fff;color:var(--text);border:1px solid var(--border);padding:32px 28px}
-  .hero h1{color:var(--dark);font-size:28px}
-  section h2{font-size:22px}
-  section h3{font-size:17px}
+  .card{box-shadow:none;border:1px solid var(--border);padding:20px 24px}
+  .hero{background:#fff;color:var(--text);border:1px solid var(--border);padding:28px 24px}
+  .hero h1{color:var(--dark);font-size:24px}
   .hero .badge{background:var(--red);color:#fff}
+  /* 正文标题为裸 h1/h2/h3/h4（无 section 包裹），须用裸元素选择器 */
+  h1{font-size:24px;margin:1.8em 0 .8em}
+  h2{font-size:19px;margin:1.2em 0 .5em}
+  h3{font-size:15px;margin:.8em 0 .3em}
+  h4{font-size:13px;margin:.6em 0 .3em}
+  p{margin-bottom:6px}
+  ul,ol{margin-bottom:8px}
+  li{margin-bottom:2px}
+  blockquote{font-size:11px;padding:10px 14px;margin:8px 0}
+  code{font-size:11px}
+  pre{font-size:11px;line-height:1.4;padding:12px 16px;margin-bottom:10px}
+  hr{margin:12px 0}
+  img{margin:8px 0}
+  .img-row figcaption{font-size:10px}
   a{color:inherit;overflow-wrap:anywhere !important}
   /* 表格打印适配：覆盖移动端负边距泄漏，强制约束在页面宽度内 */
   .table-wrap{
@@ -1062,7 +1134,7 @@ tr:nth-child(even){background:#fafafa}
     width:100% !important;max-width:100% !important;
     table-layout:fixed;font-size:12px
   }
-  th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
+  th,td{padding:4px 6px;word-break:normal;overflow-wrap:break-word}
   tr{page-break-inside:avoid}
   .img-row{flex-wrap:nowrap}
   .img-fig{page-break-inside:avoid}
@@ -1070,10 +1142,6 @@ tr:nth-child(even){background:#fafafa}
   /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
   html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
   .align-right{text-align:right}
-  /* 标题间距：一级标题前空约两行，二级标题前空约一行 */
-  h1{margin:3.2em 0 1em}
-  h2{margin:2em 0 .8em}
-  h3{margin:1.2em 0 .5em}
 }
 """
 

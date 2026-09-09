@@ -131,6 +131,8 @@ El trabajo central del grupo de Programación se divide en tres partes:
 - **Programa manual**: la lógica de manejo de la fase de control por mando (TeleOp)
 - **Configuración de sensores**: la configuración de los distintos sensores y del sistema de visión
 
+> [!info] Pilotaje (Driver): el robot se pilota con un mando Xbox; oficialmente solo se permite el modelo Xbox 360. Los pilotos se eligen dentro del equipo según su habilidad («quien puede, lo hace»); ser bueno en juegos de mando es una ventaja natural.
+
 ### La depuración es el núcleo
 
 > [!info] La verdadera dificultad del desarrollo de programas está en la depuración. Rutas autónomas, manejo manual, parámetros PID, configuración de visión: la mayoría de los sensores disponen de paquetes ya hechos que pueden reutilizarse directamente; lo que de verdad hay que hacer es «ajustar».
@@ -145,3 +147,10 @@ La depuración atraviesa todo el proceso de desarrollo:
 6. **Pruebas y verificación**: verificar el funcionamiento del programa en el robot
 7. **Revisión de código**: revisar y fusionar el código mediante GitHub
 8. **Despliegue y publicación**: desplegar la versión final en el Robot Controller
+
+
+### Programación asistida por IA
+
+> [!info] Escribir código ya no es la parte difícil: puedes apoyarte en herramientas de agente de IA (AI Agent) para programar. La verdadera habilidad clave es **leer el código generado por IA, saber qué cambiar y depurarlo** — no hace falta escribirlo todo a mano.
+
+- La lógica básica de la programación (bucles for, bucles while, etc.) es universal entre lenguajes; solo cambia la sintaxis. Quienes tienen base en C++ se adaptan rápidamente a Java.

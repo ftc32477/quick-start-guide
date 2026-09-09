@@ -151,6 +151,7 @@ La résistance d'une pièce imprimée en 3D dépend du matériau et de la struct
 
 - Sur le planning : la première conception peut être sommaire, mais elle doit être terminée et construite le plus vite possible afin de laisser du temps au débogage des programmes et à l'entraînement des Drivers, et de tester la structure pour l'optimiser par itérations ; avant les matchs de qualification, un robot qualifiable doit subir au moins 3 itérations (référence)
 - Suivez l'actualité des équipes étrangères : la communauté FTC organise des événements comme « Robot in 30 Hours Reveal | FTC » au cours desquels les équipes peuvent partager à tout moment leurs nouveaux projets de saison ; vous pouvez aussi vous inspirer des projets des équipes FRC et VEX
+- Les fichiers CAO de la plupart des autres équipes sont partagés publiquement ; demander directement les modèles d'une équipe n'est généralement pas refusé. Étudiez les bonnes conceptions pour améliorer la vôtre — les équipes comme Beijing National Day School (campus principal) méritent particulièrement d'être étudiées
 
 ### Ressources d'apprentissage Onshape
 

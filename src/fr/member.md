@@ -17,6 +17,8 @@ Un environnement réseau permettant d'accéder à l'assistance Android est requi
 
 - Assistance Android : [https://support.google.com/android](https://support.google.com/android)
 
+> [!info] Le réseau local de l'équipe passe par une passerelle dédiée du campus : il est plus stable que le réseau ordinaire du campus, mais conserve les restrictions d'accès de celui-ci. Le poste Programmation nécessite un accès aux ressources réseau à l'étranger pour l'assistance Android ; l'équipe peut fournir un moyen d'accès, mais si vous prévoyez un usage intensif, il est conseillé d'acheter votre propre service.
+
 ### Applications
 
 - Navigateur web (Chrome, Edge ou Safari)
@@ -132,3 +134,18 @@ Tous les comptes Onshape de l'équipe utilisent le plan Éducation (Education Pl
 Références :
 
 - [Présentation des plans Éducation Onshape](https://www.onshape.com/en/education/plans)
+---
+
+## 3. Saison et emploi du temps
+
+### Calendrier de la saison
+
+- Une saison FTC complète s'étend de septembre à juin de l'année suivante ; le thème du jeu de la nouvelle saison est publié à la mi-septembre, laissant environ sept à huit semaines pour la conception et la mise au point du robot
+- Les qualifications ont lieu dans plusieurs villes du pays ; les équipes qualifiées disputent la compétition nationale pendant les vacances d'hiver, puis peuvent se rendre à Houston (États-Unis) pour la finale internationale (à ce jour, seules environ 4 équipes de Chine continentale ont atteint la finale de Houston)
+- Les matériaux de base du terrain de la nouvelle saison sont livrés officiellement après la rentrée ; le terrain peut être monté dès leur arrivée
+
+### Règles à connaître
+
+- Le robot est piloté manuellement avec une manette Xbox ; officiellement, seul le modèle Xbox 360 est autorisé
+- La sustentation magnétique est interdite par le règlement ; les aimants ordinaires et les électroaimants sont autorisés
+- La tranche d'âge officielle de la FTC est de 12 à 18 ans ; les collégiens peuvent participer

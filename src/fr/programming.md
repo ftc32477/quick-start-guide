@@ -131,6 +131,8 @@ Le travail principal de l'équipe Programmation se divise en trois volets :
 - **Programmes de téléopération (TeleOp)** : la logique de commande de la phase télécommandée (TeleOp)
 - **Configuration des capteurs** : la configuration des différents capteurs et systèmes de vision
 
+> [!info] Pilotage (Driver) : le robot est piloté à la manette Xbox ; officiellement, seul le modèle Xbox 360 est autorisé. Les pilotes sont sélectionnés au sein de l'équipe selon leurs capacités (« qui sait faire, fait ») ; être bon aux jeux à la manette est un avantage naturel.
+
 ### Le débogage est au cœur du travail
 
 > [!info] La véritable difficulté du développement de programmes réside dans le débogage. Trajectoires autonomes, commandes manuelles, paramètres PID, configuration de la vision : la plupart des capteurs disposent de packages prêts à l'emploi que vous pouvez réutiliser directement ; votre véritable travail consiste à « régler ».
@@ -145,3 +147,10 @@ Le débogage traverse l'ensemble du flux de développement :
 6. **Tests et validation** : vérifier le fonctionnement du programme sur le robot
 7. **Revue de code** : effectuer la revue et la fusion du code via GitHub
 8. **Déploiement** : déployer la version finale sur le Robot Controller
+
+
+### Programmation assistée par IA
+
+> [!info] Écrire du code n'est plus la partie difficile : vous pouvez vous appuyer sur des outils d'agent IA pour vous assister. La véritable compétence clé est de savoir **lire le code généré par l'IA, savoir quoi modifier et savoir déboguer** — inutile de tout écrire à la main.
+
+- La logique de base de la programmation (boucles for, boucles while, etc.) est universelle d'un langage à l'autre ; seule la syntaxe diffère. Les élèves ayant des bases en C++ s'adaptent rapidement à Java.

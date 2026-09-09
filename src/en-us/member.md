@@ -17,6 +17,8 @@ You need a network environment that can access Android support resources.
 
 - Android support: [https://support.google.com/android](https://support.google.com/android)
 
+> [!info] The team maintains its own LAN connected to a dedicated campus gateway: it is more stable than the regular campus network but keeps the campus network's access restrictions. Programming requires access to overseas network resources for Android support; the team can provide an access route, but if you expect heavy usage, purchasing your own service is recommended.
+
 ### Applications
 
 - Web browser (Chrome, Edge, or Safari)
@@ -132,3 +134,18 @@ All team Onshape accounts use the free education plan.
 References:
 
 - [Onshape education plans](https://www.onshape.com/en/education/plans)
+---
+
+## 3. Season & Schedule
+
+### Season Timeline
+
+- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for vehicle design and debugging
+- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (so far only about 4 teams from mainland China have reached the Houston Championship)
+- The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
+
+### Competition Rules Notes
+
+- The robot is manually driven with an Xbox controller; officially only the Xbox 360 model is permitted
+- Magnetic levitation technology is prohibited by the rules; ordinary magnets and electromagnets are allowed
+- The official FTC age range is 12–18; middle school students may join
