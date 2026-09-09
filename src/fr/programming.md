@@ -151,6 +151,6 @@ Le débogage traverse l'ensemble du flux de développement :
 
 ### Programmation assistée par IA
 
-> [!info] Écrire du code n'est plus la partie difficile : l'équipe utilise Google Gemma comme assistant de programmation, avec un accès partagé au sein du groupe et des personnalités personnalisables. La véritable compétence clé est de savoir **lire le code généré par l'IA, savoir quoi modifier et savoir déboguer** — inutile de tout écrire à la main.
+> [!info] Écrire du code n'est plus la partie difficile : vous pouvez vous appuyer sur des outils d'agent IA pour vous assister. La véritable compétence clé est de savoir **lire le code généré par l'IA, savoir quoi modifier et savoir déboguer** — inutile de tout écrire à la main.
 
 - La logique de base de la programmation (boucles for, boucles while, etc.) est universelle d'un langage à l'autre ; seule la syntaxe diffère. Les élèves ayant des bases en C++ s'adaptent rapidement à Java.

@@ -151,6 +151,6 @@ Debugging runs through the entire development workflow:
 
 ### AI-Assisted Programming
 
-> [!info] Writing code is no longer the hard part: the team uses Google Gemma as a programming assistant, with shared access within the group and customizable personas. The real core skill is being able to **read AI-generated code, know what to change, and debug it** — you don't need to write everything from scratch.
+> [!info] Writing code is no longer the hard part: you can work with AI Agent tools to assist programming. The real core skill is being able to **read AI-generated code, know what to change, and debug it** — you don't need to write everything from scratch.
 
 - Core programming logic (e.g., for loops, while loops) is universal across languages; only the syntax differs. Students with C++ experience can adapt to Java quickly

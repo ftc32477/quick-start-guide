@@ -142,14 +142,6 @@ Referencias:
 - Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta ahora solo unos 4 equipos de la China continental han llegado a la final de Houston)
 - Los materiales básicos del campo de la nueva temporada se entregan oficialmente tras el inicio del curso; el campo puede montarse en cuanto lleguen
 
-### Horario de actividades
-
-- Las sesiones regulares son después de la cuarta clase los martes y viernes, con una duración que se ajusta al calendario de construcción; antes de las competiciones se añaden sesiones extra, y ya se han producido jornadas de trabajo nocturnas
-
-### Resultados anteriores
-
-- La temporada pasada participamos en la clasificatoria de Pekín y en la Caolu Cup de Shanghái, produciendo dos generaciones de chasis; en la primera clasificatoria de Pekín quedamos en el puesto 13 (los 12 primeros avanzaban), quedándonos a las puertas de la clasificación
-
 ### Reglas a conocer
 
 - El robot se pilota manualmente con un mando Xbox; oficialmente solo se permite el modelo Xbox 360

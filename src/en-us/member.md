@@ -144,14 +144,6 @@ References:
 - Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (so far only about 4 teams from mainland China have reached the Houston Championship)
 - The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
 
-### Weekly Schedule
-
-- Regular team sessions are after the fourth class on Tuesdays and Fridays, with the length adjusted to the build schedule; during crunch periods before competitions, extra sessions are added, and all-night work has happened
-
-### Past Results
-
-- Last season we competed in the Beijing Qualifier and the Shanghai Caolu Cup, producing two generations of chassis; our first Beijing qualifier ended in 13th place (the top 12 advanced), narrowly missing qualification
-
 ### Competition Rules Notes
 
 - The robot is manually driven with an Xbox controller; officially only the Xbox 360 model is permitted

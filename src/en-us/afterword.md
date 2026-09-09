@@ -43,4 +43,4 @@ Enjoy the competition, enjoy creating, and let us reach new heights!
 
 ---
 
-*Compiled by the 32477 Origin Quick Start Guide Editorial Team · August 2026, 3rd Edition*
+*Compiled by the 32477 Origin Quick Start Guide Editorial Team · September 2026, 3rd Edition*

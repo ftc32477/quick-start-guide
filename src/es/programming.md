@@ -151,6 +151,6 @@ La depuración atraviesa todo el proceso de desarrollo:
 
 ### Programación asistida por IA
 
-> [!info] Escribir código ya no es la parte difícil: el equipo usa Google Gemma como asistente de programación, con acceso compartido dentro del grupo y personalidades personalizables. La verdadera habilidad clave es **leer el código generado por IA, saber qué cambiar y depurarlo** — no hace falta escribirlo todo a mano.
+> [!info] Escribir código ya no es la parte difícil: puedes apoyarte en herramientas de agente de IA (AI Agent) para programar. La verdadera habilidad clave es **leer el código generado por IA, saber qué cambiar y depurarlo** — no hace falta escribirlo todo a mano.
 
 - La lógica básica de la programación (bucles for, bucles while, etc.) es universal entre lenguajes; solo cambia la sintaxis. Quienes tienen base en C++ se adaptan rápidamente a Java.

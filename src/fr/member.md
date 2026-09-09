@@ -144,14 +144,6 @@ Références :
 - Les qualifications ont lieu dans plusieurs villes du pays ; les équipes qualifiées disputent la compétition nationale pendant les vacances d'hiver, puis peuvent se rendre à Houston (États-Unis) pour la finale internationale (à ce jour, seules environ 4 équipes de Chine continentale ont atteint la finale de Houston)
 - Les matériaux de base du terrain de la nouvelle saison sont livrés officiellement après la rentrée ; le terrain peut être monté dès leur arrivée
 
-### Horaires des activités
-
-- Les séances régulières ont lieu après le quatrième cours les mardis et vendredis, la durée s'adaptant au planning ; avant les compétitions, des séances supplémentaires sont organisées, et le travail de nuit s'est déjà produit
-
-### Résultats passés
-
-- La saison dernière, l'équipe a participé à la qualification de Pékin et à la Caolu Cup de Shanghai, produisant deux générations de châssis ; la première qualification de Pékin s'est soldée par une 13e place (les 12 premiers se qualifiaient), manquant de peu la qualification
-
 ### Règles à connaître
 
 - Le robot est piloté manuellement avec une manette Xbox ; officiellement, seul le modèle Xbox 360 est autorisé
