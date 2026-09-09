@@ -176,12 +176,12 @@ VERSIONS = [
         "date": "2026-09-09",
         "status": "released",
         "name": {
-            "zh-hans": "2026年9月第3版",
-            "zh-hant": "2026年9月第3版",
-            "en-us": "September 2026, 3rd Edition",
-            "fr": "Septembre 2026, 3e édition",
-            "es": "3.ª edición, septiembre de 2026",
-            "ko": "2026년 9월 제3판",
+            "zh-hans": "2026年9月第1版",
+            "zh-hant": "2026年9月第1版",
+            "en-us": "September 2026, 1st Edition",
+            "fr": "Septembre 2026, 1re édition",
+            "es": "1.ª edición, septiembre de 2026",
+            "ko": "2026년 9월 제1판",
         },
         "changes": {
             "zh-hans": [
