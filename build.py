@@ -166,11 +166,70 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.3.0"
+RELEASE_TAG = "v1.3.1"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.3.1",
+        "date": "2026-09-30",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年9月第1版·第1次修订",
+            "zh-hant": "2026年9月第1版·第1次修訂",
+            "en-us": "September 2026, 1st Edition · Revision 1",
+            "fr": "Septembre 2026, 1re édition · révision 1",
+            "es": "1.ª edición, septiembre de 2026 · revisión 1",
+            "ko": "2026년 9월 제1판 · 1차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "PDF 排版字体全面升级：正文改用思源宋体、标题改用思源黑体、引文/图注/前言改用霞鹜文楷，西文与数字优先使用 Times New Roman（缺失时 Tinos）。",
+                "页眉与页脚改由构建脚本统一盖印字体子集，跨平台字形一致。",
+                "字体按实际用字裁成子集随仓库提供（约 10MB），离线构建、无需安装字体；构建时自动校验用字覆盖。",
+                "中文排版由大量 Type3 碎片字体改为规范 Type0 嵌入子集：文字可搜索复制，PDF 体积约减半。网页版不受影响。",
+            ],
+            "zh-hant": [
+                "PDF 排版字體全面升級：正文改用思源宋體、標題改用思源黑體、引文/圖註/前言改用霞鶩文楷，西文與數字優先使用 Times New Roman（缺失時 Tinos）。",
+                "頁眉與頁腳改由建置腳本統一蓋印字體子集，跨平台字形一致。",
+                "字體按實際用字裁成子集隨倉庫提供（約 10MB），離線建置、無需安裝字體；建置時自動校驗用字覆蓋。",
+                "中文排版由大量 Type3 碎片字體改為規範 Type0 嵌入子集：文字可搜尋複製，PDF 體積約減半。網頁版不受影響。",
+            ],
+            "en-us": [
+                "PDF typography overhaul: body text in Source Han Serif, headings in Source Han Sans, quotations/captions/preface in LXGW WenKai (Kai), and Latin text and figures in Times New Roman (Tinos as fallback).",
+                "Headers and footers are now stamped by the build script using embedded font subsets, for consistent glyphs across platforms.",
+                "Fonts are subset to the characters actually used and shipped with the repository (about 10 MB): offline builds with no font installation, plus automatic character-coverage checks at build time.",
+                "CJK text now uses proper embedded Type0 subsets instead of many fragmented Type3 fonts: text is searchable and copyable, and PDF size is roughly halved. The website is unaffected.",
+            ],
+            "fr": [
+                "Refonte typographique des PDF : texte courant en Source Han Serif, titres en Source Han Sans, citations/légendes/préface en LXGW WenKai (kai), et texte latin et chiffres en Times New Roman (Tinos en secours).",
+                "Les en-têtes et pieds de page sont désormais imprimés par le script de build à partir de sous-ensembles de polices embarqués, pour des glyphes identiques sur toutes les plateformes.",
+                "Les polices sont réduites aux caractères réellement utilisés et fournies avec le dépôt (environ 10 Mo) : builds hors ligne sans installation de polices, avec contrôle automatique de la couverture des caractères.",
+                "Les textes CJK utilisent désormais de véritables sous-ensembles Type0 embarqués au lieu de nombreux fragments Type3 : texte recherchable et copiable, taille des PDF environ divisée par deux. Le site web n'est pas affecté.",
+            ],
+            "es": [
+                "Renovación tipográfica de los PDF: cuerpo en Source Han Serif, títulos en Source Han Sans, citas/pies de foto/prefacio en LXGW WenKai (kai) y texto latino y cifras en Times New Roman (Tinos como reserva).",
+                "Los encabezados y pies de página ahora los estampa el script de compilación con subconjuntos de fuentes incrustados, para obtener glifos idénticos en todas las plataformas.",
+                "Las fuentes se recortan a los caracteres realmente usados y se incluyen en el repositorio (unos 10 MB): compilación sin conexión y sin instalar fuentes, con verificación automática de cobertura de caracteres.",
+                "El texto CJK ahora usa subconjuntos Type0 incrustados en lugar de numerosos fragmentos Type3: el texto se puede buscar y copiar, y el tamaño de los PDF se reduce a la mitad. El sitio web no se ve afectado.",
+            ],
+            "ko": [
+                "PDF 타이포그래피 전면 개편: 본문은 본명조(思源宋體), 제목은 본고딕(思源黑體), 인용/그림 설명/머리말은 샤오우웬카이(霞鶩文楷), 라틴 문자와 숫자는 Times New Roman(없으면 Tinos)을 사용합니다.",
+                "머리글과 바닥글을 빌드 스크립트가 내장 글꼴 서브셋으로 통일하여 인쇄하며, 플랫폼에 관계없이 동일한 글리프를 보장합니다.",
+                "글꼴은 실제 사용된 글자만 잘라 서브셋으로 저장소에 포함(약 10MB)되므로 오프라인 빌드가 가능하고 글꼴 설치가 필요 없으며, 빌드 시 글자 커버리지를 자동 검증합니다.",
+                "한중일 텍스트는 수많은 Type3 조각 글꼴 대신 규격 Type0 내장 서브셋을 사용하여 검색·복사가 가능하고 PDF 용량이 약 절반으로 줄었습니다. 웹 버전은 영향을 받지 않습니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-ko.pdf",
+        },
+    },
     {
         "tag": "v1.3.0",
         "date": "2026-09-09",

@@ -42,12 +42,17 @@ ftc_quick_start_guide/
 │   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-fr.pdf     # 法语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-es.pdf     # 西班牙语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.0-ko.pdf     # 韩语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hans.pdf  # 简体中文完整指南（封面+正文+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-es.pdf     # 西班牙语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-ko.pdf     # 韩语完整指南
+├── fonts/                     # PDF 字体（开源字体按用字裁成的子集，入库；网页版不使用）
+│   ├── subsets/               # 构建 PDF 实际加载的静态子集（含 coverage.json 用字覆盖清单）
+│   ├── licenses/              # 各字体 OFL 1.1 许可证文本
+│   ├── source/                # 全量源字体（不入库，.gitignore；仅重建子集时下载）
+│   └── build_subsets.py       # 字体子集生成工具（维护者用，需要 fonttools）
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 └── README.md                  # 本文档
@@ -68,12 +73,14 @@ ftc_quick_start_guide/
 | Python 3 | 运行构建脚本（`build.py`、`build_pdf.py`） |
 | Google Chrome / Microsoft Edge | 无头模式渲染 HTML 页面为 PDF（PDF 导出核心） |
 | pip3 | 安装以下 Python 依赖 |
-| websocket-client | 与 Chrome 调试端口（CDP）通信，实现页眉页脚模板、封面渲染 |
-| pypdf | PDF 合并、读取页面、页脚覆盖层盖印、目录内部超链接注解（Link） |
-| reportlab | 在 PDF 上绘制页脚文字（内置 STSong-Light/MSung-Light 中文字体，无需字体文件） |
+| websocket-client | 与 Chrome 调试端口（CDP）通信，渲染封面/目录/封三等页面 |
+| pypdf | PDF 合并、读取页面、页眉页脚覆盖层盖印、目录内部超链接注解（Link） |
+| reportlab | 盖印页眉/页脚，直接嵌入 `fonts/subsets/` 的字体子集 |
+| fonttools | **仅维护者需要**：内容新增用字后重建字体子集（见下文「PDF 字体」）。队员无需安装，子集已入库 |
 
 ```bash
 pip3 install websocket-client pypdf reportlab
+pip3 install fonttools   # 仅维护者重建字体子集时需要
 ```
 
 ## 二、快速开始
@@ -107,12 +114,12 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es / ko）结构如下：
 
-1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年9月第1版"，位置略上移）
-2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（2026年9月第1版）**、**版本号（v1.3.0）**、**发布日期（2026年9月9日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据取自 `VERSIONS` 最新已发布条目，随发版自动更新
-3. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）
+1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年9月第1版·第1次修订"，位置略上移）
+2. **封二（版权页）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年9月第1版·第1次修订）**、**版本号（v1.3.1）**、**发布日期（2026年9月30日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新
+3. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）；中文版正文用楷体（霞鹜文楷）
 4. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接（目录标题 18pt、条目 11pt、行高 30/26pt，较正文更紧凑），点击跳转到对应页；目录页脚沿用罗马数字；**若前言+目录总页数为奇数，自动在目录与正文之间插入一白页（不编页码），保证正文第 1 页位于右页（物理奇数页）**
 5. **正文页**（队员须知起）：
-   - 页眉：左侧"FTC 32477 Origin 快速入门指南"（随语言本地化），右侧当前章回标题
+   - 页眉：左侧"FTC 32477 Origin 快速入门指南"（随语言本地化），右侧当前章回标题；页眉与页脚均由构建脚本用嵌入字体子集盖印（reportlab），跨平台字形一致
    - 页脚：居中"— X —"式页码（仅当前页码），**从队员须知第一页重新从 1 计数**
 6. **封三（资源与更新页）**：在线版本、历史版本、开源仓库、意见反馈四个渠道链接；**若全书总页数为奇数，构建时自动在封三前插入一白页（不编页码）**，保证直接打印成册时装订正确
 7. **封底**：与封面**镜像对称**（渐变方向翻转 135°→45°、光斑位置镜像），居中队徽（宽度为纸面宽度的 0.618 倍）+ 右下角"语言版本 / 版次日期"**两行**（位置略偏左上）
@@ -125,18 +132,42 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 **中文排版规范（仅中文版生效）：** 正文每段首行缩进 2 字符（`text-indent:2em`，通过 `html[lang]` 区分）；一级标题前空约 1.8 行、二级标题前空约 1.2 行、三级标题前空约 0.8 行。英文版按英文书写规范排版。
 
+### PDF 字体（开源子集）
+
+PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后随仓库提供（`fonts/subsets/`，共约 10MB），队员 clone 后**无需安装字体、无需联网**即可构建：
+
+| 角色 | 简体中文 | 繁體中文 | 韩语 | 西文/数字 |
+|------|----------|----------|------|-----------|
+| 正文（宋体/明体） | 思源宋体 Noto Serif SC | Noto Serif TC | Noto Serif KR | Times New Roman（缺失时 Tinos） |
+| 标题（黑体） | 思源黑体 Noto Sans SC | Noto Sans TC | Noto Sans KR | Noto Sans |
+| 引文/图注/前言（楷体） | 霞鹜文楷 Origin Kai SC | Origin Kai TC | 随正文 | Times/Tinos |
+
+- **网页版不受影响**（继续使用系统字体）；字体子集仅用于 PDF 导出。
+- 西文与数字优先使用系统 Times New Roman，缺失时回退 Tinos（度量兼容的开源替代）；代码块等宽字体沿用系统等宽字体。
+- 繁体/韩语字体不含全部简体专用字（如「谢」「简」），字体栈尾部追加思源宋体/黑体简体兜底。
+- 霞鹜文楷（OFL 保留字体名附加许可）子集改名 `Origin Kai` 分发；其余字体保留原名。
+- 字体来源（均为 OFL 1.1，许可证文本在 `fonts/licenses/`）：思源宋体/黑体（Google Fonts，SC/TC/KR）、霞鹜文楷 v1.522（lxgw/LxgwWenKai、lxgw/LxgwWenkaiTC）、Tinos（googlefonts/tinos，Times New Roman 度量兼容）、Noto Sans（拉丁）。
+- **新增用字流程**：内容或版本数据新增了子集外的字符时，构建开始会校验并列出缺字清单；维护者运行以下命令重建子集（`fonts/source/` 全量源字体不入库）：
+
+  ```bash
+  pip3 install fonttools
+  python3 fonts/build_subsets.py --fetch
+  ```
+
+  生成结果 `fonts/subsets/`（含 `coverage.json` 用字覆盖清单）随变更一起提交；`build_pdf.py` 每次构建前用 `coverage.json` 校验各语言 PDF 全部用字。
+
 ### 页脚连续编号与目录超链接的实现
 
 - Chrome CDP 的 `footerTemplate` 只能统计**单次打印任务内**的页码，分章渲染再合并会导致"共 X 页"错误。
-- 因此正文页渲染时**只带页眉不带页脚**，合并后由 reportlab 在每页**盖印页脚**（pypdf `merge_page` 叠加层）：
+- 因此所有正文页渲染时**均不带页眉页脚**，合并后由 reportlab 在每页**盖印页眉（左站点名 / 右章回）与页脚**（pypdf `merge_page` 叠加层）：
   - 前言/目录：罗马数字（I、II、III…），仅当前页码
   - 正文：阿拉伯数字"— 1 —"式（仅当前页码）
   - 封面、封二、封三与封底不编号
 - **目录页与各章起始页**：章节页码按各章 PDF 页数累计计算；h2 小项页码用**字号检测**定位（实测 h2 打印字号 Tf=19.0pt（CSS 19px），检测 18–20pt 的行）——不依赖文本匹配，规避 PDF 字体子集产生的异体字形（如 ⻔/⼊）导致 NFKC 也无法归一的问题。**调整打印字号后必须实测 Tf 并同步此检测范围**。
 - **超链接注入**：合并后从目录页**提取实际文本行位置**。注意 pypdf 的 `tm` 是未变换坐标，必须按 `x = cm[0]*tm[4] + cm[2]*tm[5] + cm[4]`、`y = cm[1]*tm[4] + cm[3]*tm[5] + cm[5]` 换算为页面坐标（Chrome 正文流 cm≈[0.75,0,0,-0.75,90,769.92]），并按上下边距过滤页眉/页脚/盖印层；逐行构造矩形；`/Dest` 用 `writer._add_object` 取得目标页的**间接引用**手工构造注解（pypdf 的 `Link` 注解会把页码以纯数字写入 /Dest，不符合 PDF 规范，多数阅读器无法正确跳转）。
 - **目录页页边距与宽度**：目录 HTML 中不得出现 `@page { margin: 0 }`（那是封面/封二/封底专用的满版设置），否则目录内容会铺满整页、与页眉页脚重叠、跨页连续；标题用 `padding-top` 代替 `margin-top` 防止外边距折叠把标题顶到页边。目录容器水平 padding 为 **0.45in**——注意 CDP 页边距（1.25in）与容器 padding 会**叠加**，调整宽度时按"页面宽度 − 2×(页边距 + padding)"计算实际行宽。
-- 中文字体使用 reportlab 内置 CID 字体：简体 STSong-Light（UniGB-UCS2-H）、繁体 MSung-Light（UniCNS-UCS2-H），无需字体文件。
-- **繁体页脚字形坑（重要）**：reportlab 默认把 MSung-Light（Adobe-CNS1 繁体字体）硬编码映射到简体 CMap `UniGB-UCS2-H`，繁体专用字形（如"頁"）在该 CMap 中无对应，页脚中会渲染为空白。`build_pdf.py` 的 `_stamp_engine()` 中已将映射修正为 `UniCNS-UCS2-H`，切勿删除该修正。
+- 页眉页脚由 `build_pdf.py` 的 `make_overlay()` 用 reportlab 绘制，字体直接嵌入 `fonts/subsets/` 的 TTF 子集（简体/繁体/韩语用思源宋体、西文用 Tinos），PDF 自包含、不依赖阅读器内置字体；`_stamp_engine()` 负责注册这些子集字体（切勿改回已废弃的 STSong-Light/MSung-Light CID 方案，该方案在繁体 CMap 上存在缺字坑）。
+- 页眉基线距页顶 27pt、页脚页码基线距页底 0.42in，字号均为 11pt，与正文页边距（上下 1in）内的位置一致。
 
 ## 四、门户与语言主页设计
 
@@ -297,7 +328,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 当月新一版 |
 | 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例） | 次版本 +1 → v1.4.0 | 当月新一版 |
 | 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录；招新内容并入（v1.3.0 先例，9月第1版） | 次版本 +1 → v1.4.0 | 当月新一版 |
-| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例） | 修订 +1 → v1.3.1 | 当月版次·第N次修订 |
+| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例）、PDF 字体与排版升级（v1.3.1 先例） | 修订 +1 → v1.3.2 | 当月版次·第N次修订 |
 | 开发中 | — | v1.4.0-preview | （仅预览站） |
 
 **发版流程（每次一版）：**
