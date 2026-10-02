@@ -2,12 +2,14 @@
 """
 FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
-基于 Chrome DevTools Protocol (CDP) 将 dist/ 中的 HTML 页面渲染为 PDF：
+基于 Chrome DevTools Protocol (CDP) 将 dist/ 中的 HTML 页面渲染为 PDF。
+按教科书装订方式（封面/封底单独印刷，不印封二封三），页面顺序：
 - 封面（队徽、队名、版本日期）
-- 封二版权页（完整书名、版次、版本号、发布日期、编写人员、法律声明）
+- 扉页（内页第 1 页，白底黑字复述封面信息）
+- 版权页（扉页背面：完整书名、版次、版本号、发布日期、编写人员、法律声明）
 - 页眉（"FTC 32477 Origin 快速入门指南" + 当前章回，reportlab 盖印）
 - 页脚（居中"— X —"式页码，reportlab 盖印）
-- 封三资源页（在线版本、历史版本、开源仓库、意见反馈链接）
+- 资源页（内页最后一页：在线版本、历史版本、开源仓库、意见反馈链接）
 - 封底（居中队徽 + 右下角版本日期）
 - 全部内容随语言自动本地化
 
@@ -18,7 +20,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 
 输出:
-    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf  — 完整指南 PDF（封面 + 封二 + 正文 + 封三 + 封底），
+    dist/pdf/FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf  — 完整指南 PDF（封面 + 扉页 + 版权页 + 正文 + 资源页 + 封底），
         dist/pdf/ 不入库（.gitignore），仅供本地自查纠错；正式发布版上传为 GitHub Release 资产，
         线上各语言主页的下载按钮指向 Release 资产链接
 
@@ -444,6 +446,58 @@ html,body{{margin:0;padding:0}}
 </html>"""
 
 
+def render_title_page(lang_key):
+    """扉页（内页第 1 页，白底黑字）：按教科书方式复述封面信息。"""
+    t = dict(PDF_TEXTS["zh-hans"])
+    t.update(PDF_TEXTS[lang_key])
+    t["date"] = build_mod.latest_edition(lang_key)
+    logo_path = "file://" + os.path.join(IMAGES_DIR, "basic", "team_logo.png")
+    head = HEAD_FONTS[lang_key]
+    body = BODY_FONTS[lang_key]
+    font_css = font_faces_css()
+    return f"""<!DOCTYPE html>
+<html lang="{lang_key}">
+<head>
+<meta charset="UTF-8">
+<style>
+{font_css}
+@page {{ size: A4; margin: 0; }}
+html,body{{margin:0;padding:0}}
+.wrap{{
+  width:100vw;height:100vh;box-sizing:border-box;padding:1in 1.25in;
+  font-family:{body};color:#1a1a2e;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative
+}}
+.wrap img.logo{{width:110px;height:110px;border-radius:24px;margin-bottom:28px}}
+.badge{{
+  font-family:{head};font-size:13px;font-weight:600;letter-spacing:3px;
+  border:1.5px solid #1a1a2e;border-radius:18px;padding:4px 18px;margin-bottom:30px
+}}
+h1{{font-family:{head};font-size:26px;font-weight:700;margin:0 0 16px}}
+.name{{font-family:{head};font-size:30px;font-weight:700;margin-bottom:14px}}
+.name2{{font-size:16px;color:#444;margin-bottom:36px}}
+.school{{font-size:15px;color:#444}}
+.date{{
+  position:absolute;bottom:1in;left:0;right:0;
+  font-size:14px;color:#444;line-height:2
+}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="{logo_path}">
+  <div class="badge">{t["badge"]}</div>
+  <h1>{t["title"]}</h1>
+  <div class="name">{t["name"]}</div>
+  <div class="name2">{t["name2"]}</div>
+  <div class="school">{t["school"]}</div>
+  <div class="date">{t["lang"]}<br>{t["date"]}</div>
+</div>
+</body>
+</html>"""
+
+
 def render_back(lang_key):
     t = dict(PDF_TEXTS["zh-hans"])
     t.update(PDF_TEXTS[lang_key])
@@ -490,7 +544,7 @@ html,body{{margin:0;padding:0}}
 </html>"""
 
 
-# 版权页（封二）与资源更新页（封三）文案
+# 版权页（扉页背面）与资源更新页（内页最后一页）文案
 IMPRINT_TEXTS = {
     "zh-hans": {
         "title_label": "\u4e66\u540d",
@@ -637,7 +691,7 @@ RESOURCE_TEXTS = {
 
 
 def render_imprint(lang_key):
-    """版权页（封二）：完整书名 / 版本号 / 版次 / 发布日期 / 编者 / 出品 / 法律声明，内容置于页面下部。"""
+    """版权页（扉页背面）：完整书名 / 版本号 / 版次 / 发布日期 / 编者 / 出品 / 法律声明，内容置于页面下部。"""
     t = dict(IMPRINT_TEXTS["zh-hans"])
     t.update(IMPRINT_TEXTS[lang_key])
     released = [v for v in build_mod.VERSIONS if v.get("status") != "preview"]
@@ -692,7 +746,7 @@ a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
 
 
 def render_resources(lang_key):
-    """资源与更新页（封三）：获取渠道链接。"""
+    """资源与更新页（内页最后一页）：获取渠道链接。"""
     t = dict(RESOURCE_TEXTS["zh-hans"])
     t.update(RESOURCE_TEXTS[lang_key])
     items = "".join(
@@ -1073,19 +1127,23 @@ def chapter_h2_pages(tmp_pdf, h2_count):
     return result[:h2_count]
 
 
-def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
+def merge_guide(cover_pdf, title_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
                 resources_pdf, back_pdf, out_path, lang_key, toc_entries,
                 front_blank=False, main_headers=None):
     """
-    合并完整指南并盖印页眉页脚（reportlab，嵌入字体子集）：
-    - 封面/封二（版权页）/封三（资源页）/封底不编号、无页眉
+    合并完整指南并盖印页眉页脚（reportlab，嵌入字体子集）。
+    按教科书装订方式，封面/封底单独印刷，不印封二封三：
+    - 顺序：封面 → 扉页（白底黑字）→ 版权页（扉页背面）→ 前言 → 目录
+      → 正文 → 资源页 → 封底
+    - 封面/扉页/版权页/资源页/封底不编号、无页眉页脚
     - 页眉：左站点名，右当前章回（前言/目录/各章标题）
-    - 前言与目录用罗马数字（仅当前页码，无总页码），前言从 I 连续
-    - 正文（队员须知起）用阿拉伯数字连续编号
+    - 前言与目录用罗马数字（仅当前页码，无总页码），前言从 I 连续；
+      正文（队员须知起）用阿拉伯数字连续编号
     - toc_entries: [{title, level, dest}]，dest 为全书 0 基目标页；
       按实际渲染的文本行位置注入 PDF 内部超链接
-    - 成册规则：front_blank=True 时在目录后插入白页（正文从右页/奇数页开始）；
-      全书总页数为奇数时在封三前插入白页
+    - 成册规则：front_blank=True 时在目录后插入白页（正文第 1 页位于
+      右页/奇数页）；资源页后若页数为偶数，在封底前插入白页，
+      保证成册总页数为偶数（内页块页数为偶数）
     """
     from pypdf import PdfReader, PdfWriter
     from pypdf.generic import RectangleObject
@@ -1112,7 +1170,10 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
     # 封面（不编号）
     writer.append(cover_pdf)
 
-    # 封二（版权页，不编号）
+    # 扉页（内页第 1 页，白底黑字封面信息，不编号）
+    writer.append(title_pdf)
+
+    # 版权页（扉页背面，不编号）
     writer.append(imprint_pdf)
 
     # 前言：罗马数字，仅当前页码
@@ -1152,12 +1213,14 @@ def merge_guide(cover_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pdfs,
     for p, header in zip(main_pdfs, headers):
         stamp(PdfReader(p), arabic_text, header_right=header)
 
-    # 封三（资源与更新页，不编号）
-    # 印刷成册：全书总页数为奇数时，在封三前插入一白页（不编页码），保证装订正确
-    if len(writer.pages) % 2 == 1:
-        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
-        print("  [成册] 总页数为奇数，已在封三前插入一白页")
+    # 资源与更新页（内页最后一页，不编号、无页眉页脚）
     writer.append(resources_pdf)
+
+    # 印刷成册：资源页后若页数为偶数，则在封底前插入一白页（不编页码），
+    # 保证成册总页数为偶数（内页块页数为偶数，便于印刷装订）
+    if len(writer.pages) % 2 == 0:
+        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
+        print("  [成册] 资源页后页数为偶数，已在封底前插入白页")
 
     # 封底（不编号）
     writer.append(back_pdf)
@@ -1290,21 +1353,27 @@ def export(lang_filter=None, page_filter=None):
                 except Exception as e:
                     print(f"  [失败] {page_key}: {e}")
 
-            # 完整指南：封面 + 封二(版权页) + 前言(罗马) + 目录(罗马) + 正文(阿拉伯) + 封三(资源页) + 封底
+            # 完整指南（教科书式装订，封面/封底单独印刷，不印封二封三）：
+            # 封面 + 扉页(白底黑字封面信息) + 版权页(扉页背面) + 前言(罗马)
+            # + 目录(罗马) + 正文(阿拉伯) + 资源页(内页最后一页) + 封底
             merged_ok = False
             if set(PAGE_KEYS).issubset(rendered) and not page_filter:
                 cover_html = os.path.join(tmp_dir, f"cover-{lang}.html")
+                title_html = os.path.join(tmp_dir, f"titlepage-{lang}.html")
                 back_html = os.path.join(tmp_dir, f"back-{lang}.html")
                 imprint_html = os.path.join(tmp_dir, f"imprint-{lang}.html")
                 resources_html = os.path.join(tmp_dir, f"resources-{lang}.html")
                 toc_html = os.path.join(tmp_dir, f"toc-{lang}.html")
                 cover_pdf = os.path.join(tmp_dir, f"cover-{lang}.pdf")
+                title_pdf = os.path.join(tmp_dir, f"titlepage-{lang}.pdf")
                 back_pdf = os.path.join(tmp_dir, f"back-{lang}.pdf")
                 imprint_pdf = os.path.join(tmp_dir, f"imprint-{lang}.pdf")
                 resources_pdf = os.path.join(tmp_dir, f"resources-{lang}.pdf")
                 toc_pdf = os.path.join(tmp_dir, f"toc-{lang}.pdf")
                 with open(cover_html, "w", encoding="utf-8") as f:
                     f.write(render_cover(lang))
+                with open(title_html, "w", encoding="utf-8") as f:
+                    f.write(render_title_page(lang))
                 with open(back_html, "w", encoding="utf-8") as f:
                     f.write(render_back(lang))
                 with open(imprint_html, "w", encoding="utf-8") as f:
@@ -1315,6 +1384,10 @@ def export(lang_filter=None, page_filter=None):
                     client.navigate("file://" + cover_html)
                     wait_fonts(client)
                     client.print_to_pdf(cover_pdf, margin_top=0, margin_bottom=0,
+                                        margin_left=0, margin_right=0)
+                    client.navigate("file://" + title_html)
+                    wait_fonts(client)
+                    client.print_to_pdf(title_pdf, margin_top=0, margin_bottom=0,
                                         margin_left=0, margin_right=0)
                     client.navigate("file://" + back_html)
                     wait_fonts(client)
@@ -1370,15 +1443,15 @@ def export(lang_filter=None, page_filter=None):
                     wait_fonts(client)
                     client.print_to_pdf(toc_pdf)
 
-                    # 目标页（全书 0 基）：封面=0，封二=1，前言=2…
+                    # 目标页（全书 0 基）：封面=0，扉页=1，版权页=2，前言从 3 起
                     preface_pages = len(_R(rendered["preface"]).pages)
                     toc_pages = len(_R(toc_pdf).pages)
                     # 成册：前言+目录为奇数页时目录后插白页，正文目标页整体 +1
                     front_blank = (preface_pages + toc_pages) % 2 == 1
-                    base = 2 + preface_pages + toc_pages + (1 if front_blank else 0)
+                    base = 3 + preface_pages + toc_pages + (1 if front_blank else 0)
 
                     toc_entries = [
-                        {"title": preface_title, "level": 1, "dest": 2}
+                        {"title": preface_title, "level": 1, "dest": 3}
                     ]
                     for k in main_keys:
                         title = build_mod.LANGUAGES[lang]["pages"][k]
@@ -1397,7 +1470,7 @@ def export(lang_filter=None, page_filter=None):
                         f"FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf",
                     )
                     merge_guide(
-                        cover_pdf, imprint_pdf, rendered["preface"], toc_pdf,
+                        cover_pdf, title_pdf, imprint_pdf, rendered["preface"], toc_pdf,
                         [rendered[k] for k in main_keys], resources_pdf, back_pdf,
                         merged_path, lang, toc_entries, front_blank=front_blank,
                         main_headers=[build_mod.LANGUAGES[lang]["pages"][k]
@@ -1406,8 +1479,8 @@ def export(lang_filter=None, page_filter=None):
                     merged_ok = True
                     size_kb = os.path.getsize(merged_path) / 1024
                     print(f"  [合并] FTC-Team-32477-Origin-Quick-Start-Guide-{build_mod.RELEASE_TAG}-{lang}.pdf "
-                          f"（封面 + 封二 + 前言 + 目录（{len(toc_entries)} 行）"
-                          f" + {len(main_keys)} 章 + 封三 + 封底，{size_kb:.0f} KB）")
+                          f"（封面 + 扉页 + 版权页 + 前言 + 目录（{len(toc_entries)} 行）"
+                          f" + {len(main_keys)} 章 + 资源页 + 封底，{size_kb:.0f} KB）")
                 except Exception as e:
                     print(f"  [失败] 封面/目录/封底: {e}")
 
