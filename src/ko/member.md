@@ -17,6 +17,8 @@ Android 지원 자료에 접근할 수 있는 네트워크 환경이 필요합�
 
 - Android 지원: [https://support.google.com/android](https://support.google.com/android)
 
+> [!info] 팀 자체 구축 LAN은 학교 독립 게이트웨이에 연결되어 일반 학교 네트워크보다 안정적이지만, 학교 네트워크의 접속 제한은 그대로 유지됩니다. 프로그래밍 담당은 Android 지원 해외 네트워크 자원에 접속해야 하며, 팀에서 관련 경로를 제공할 수 있습니다. 대용량 사용이 필요하면 별도 서비스를 구매하는 것을 권장합니다.
+
 ### 애플리케이션
 
 - 웹 브라우저(Chrome 또는 Edge 또는 Safari)
@@ -76,7 +78,7 @@ LocalSend는 우리 팀이 사용하는 LAN 파일 전송 도구입니다.
 
 > [!warning] **iOS**의 경우: [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229)를 열어 설치하면 됩니다.
 
-1. [https://localsend.org/zh-CN/download](https://localsend.org/zh-CN/download) 열기
+1. [https://localsend.org/ko/download](https://localsend.org/ko/download) 열기
 2. 또는 GitHub 저장소 접속: [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
 3. 페이지를 아래로 내려 최신 버전 창의 Assets 목록에서 "Show all assets"를 클릭해 모든 사용 가능한 버전 표시
 4. 해당 버전을 다운로드하여 설치
@@ -116,7 +118,7 @@ GitHub는 우리 팀이 사용하는 오픈소스 자료 저장소입니다.
 
 **참고 자료:**
 
-- [GitHub 계정 만들기 문서](https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github)
+- [GitHub 계정 만들기 문서](https://docs.github.com/ko/get-started/start-your-journey/creating-an-account-on-github)
 
 ### Onshape
 

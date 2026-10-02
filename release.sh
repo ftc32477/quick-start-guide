@@ -2,10 +2,11 @@
 # FTC 32477 Origin 快速入门指南 — 发版脚本（半自动）
 #
 # 用法: ./release.sh <TAG> <NOTES_FILE>
-#   例: ./release.sh v1.3.0 /path/to/release-notes.md
+#   例: ./release.sh v1.3.2 release-notes/v1.3.2.md
 #
 # 流程（与 README「八、发版流程」一致）:
-#   构建 HTML + 六语言 PDF → 本地自动提交 → [确认] 推 dev → 打 tag → gh 建 Release 上传 PDF
+#   构建 HTML + 六语言 PDF → 本地提交 → [确认] 打 tag 并推送
+#   → 创建 Release 上传 PDF（随后才推送 dev，避免主页下载按钮暂时 404）
 #   → 清理本地旧版 PDF → [确认] 合并 main 重建推送
 # 推送类步骤会逐项询问确认（保持"推送必须人工确认"的原则）。
 set -euo pipefail
@@ -29,6 +30,24 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 command -v gh >/dev/null || { echo "缺少 gh CLI（brew install gh）。"; exit 1; }
 gh auth status >/dev/null 2>&1 || { echo "gh 未登录（gh auth login）。"; exit 1; }
 [ -z "$(git status --porcelain)" ] || { echo "工作区不干净，请先提交或清理。"; exit 1; }
+git rev-parse "$TAG" >/dev/null 2>&1 && { echo "本地已存在 tag $TAG。"; exit 1; }
+
+# 一致性校验：TAG 必须与 build.py 的 RELEASE_TAG / VERSIONS 顶部条目一致
+python3 - "$TAG" <<'PY'
+import re, sys
+tag = sys.argv[1]
+src = open("build.py", encoding="utf-8").read()
+m = re.search(r'^RELEASE_TAG = "([^"]+)"', src, re.M)
+release_tag = m.group(1) if m else ""
+sys.path.insert(0, ".")
+import build  # noqa: E402
+top_tag = build.VERSIONS[0]["tag"] if build.VERSIONS else ""
+if not (tag == release_tag == top_tag):
+    raise SystemExit(
+        f"[错误] 版本号不一致：参数 {tag} / RELEASE_TAG {release_tag} / VERSIONS[0] {top_tag}"
+    )
+print(f"[校验] 版本号一致：{tag}")
+PY
 
 confirm() {
     read -r -p "$1 [y/N] " ans
@@ -47,20 +66,20 @@ else
     git commit -m "发版 $TAG：构建产物与发版数据更新"
 fi
 
-echo "==> [3/7] 推送 dev"
+echo "==> [3/7] 打 tag 并推送（tag 携带提交，源码压缩包即为当前代码）"
+git tag "$TAG"
+git push origin "$TAG"
+
+echo "==> [4/7] 创建 GitHub Release 并上传六语言 PDF"
+gh release create "$TAG" --title "$TAG" --notes-file "$NOTES" \
+    "dist/pdf"/FTC-Team-32477-Origin-Quick-Start-Guide-"${TAG}"-*.pdf
+
+echo "==> [5/7] 推送 dev（Release 资产已就绪，主页下载按钮不会 404）"
 if confirm "推送到 origin/dev？"; then
     git push origin dev
 else
     echo "已跳过推送 dev。"; exit 1
 fi
-
-echo "==> [4/7] 打 tag 并推送（先推 dev 再 tag，保证 Release 源码压缩包为最新代码）"
-git tag "$TAG"
-git push origin "$TAG"
-
-echo "==> [5/7] 创建 GitHub Release 并上传六语言 PDF"
-gh release create "$TAG" --title "$TAG" --notes-file "$NOTES" \
-    "dist/pdf"/FTC-Team-32477-Origin-Quick-Start-Guide-"${TAG}"-*.pdf
 
 echo "==> [6/7] 清理本地旧版本 PDF（仅保留当前 $TAG）"
 find dist/pdf -maxdepth 1 -name 'FTC-Team-32477-Origin-Quick-Start-Guide-*.pdf' \
@@ -70,8 +89,8 @@ echo "==> [7/7] 合并 main 并重建推送"
 if confirm "合并 dev → main、重建并推送 origin/main？"; then
     git checkout main
     if ! git merge dev -m "Merge dev into main for $TAG release"; then
-        echo "合并冲突：dist 为生成产物，取 dev 版本后重建。"
-        git checkout --theirs -- dist
+        echo "合并冲突：dist 为生成产物，优先取 dev 版本后重建。"
+        git checkout --theirs -- dist 2>/dev/null || git checkout HEAD -- dist
         git add -A
         git commit -m "Merge dev into main for $TAG release"
     fi

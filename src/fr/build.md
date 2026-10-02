@@ -42,7 +42,7 @@ Bambu Studio est la solution d'impression 3D adoptée par notre équipe.
 
 **Installation du logiciel et configuration de l'environnement :**
 
-1. Ouvrez [https://bambulab.cn/zh-cn/download/studio](https://bambulab.cn/zh-cn/download/studio)
+1. Ouvrez [https://bambulab.com/en/download/studio](https://bambulab.com/en/download/studio)
 2. Téléchargez et installez la version adaptée à votre système.
 
 **Points d'attention :**

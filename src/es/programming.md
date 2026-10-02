@@ -101,7 +101,7 @@ Visual Studio Code es la herramienta de edición de código y consulta del histo
 
 ### Android Studio
 
-Documentación oficial: [https://developer.android.com/studio/intro?hl=zh-cn](https://developer.android.com/studio/intro?hl=zh-cn)
+Documentación oficial: [https://developer.android.com/studio/intro?hl=es](https://developer.android.com/studio/intro?hl=es)
 
 En este proyecto, partimos del marco de aplicaciones oficial de FTC y escribimos el programa de control del robot en Java dentro de la carpeta `TeamCode`, para invocar las distintas bibliotecas de dependencias que el robot necesita para funcionar.
 
@@ -116,7 +116,7 @@ Dado que la lógica de manejo de Visual Studio Code es similar a la de Android S
 ### Robot Dashboard
 
 - Conéctese a la red wifi «`32477-RC`». Contraseña wifi: pregunte al administrador u obténgala a través del Driver Hub.
-- La dirección es: [http://192.168.43.1:8080/](http://192.168.43.1:8080/)
+- La dirección es: [http://192.168.43.1:8080/](http://192.168.43.1:8080/) (solo accesible desde la red local del robot)
 - Es la página web del módulo wifi integrado del Control Hub (nombre oficial: Robot Controller Console, es decir, la consola del controlador del robot), que ofrece un panel gráfico de administración del Control Hub.
 
 Sobre los conocimientos básicos de Robot Dashboard, consulte las páginas sencillas de la documentación oficial.

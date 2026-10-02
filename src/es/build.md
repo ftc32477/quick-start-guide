@@ -42,7 +42,7 @@ Bambu Studio es la solución de piezas de impresión 3D que utiliza nuestro equi
 
 **Proceso de instalación y configuración del entorno:**
 
-1. Abra [https://bambulab.cn/zh-cn/download/studio](https://bambulab.cn/zh-cn/download/studio)
+1. Abra [https://bambulab.com/en/download/studio](https://bambulab.com/en/download/studio)
 2. Elija la versión adecuada, descárguela e instálela.
 
 **A tener en cuenta:**

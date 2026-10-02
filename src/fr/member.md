@@ -78,7 +78,7 @@ LocalSend est l'outil de transfert de fichiers en réseau local adopté par notr
 
 > [!warning] Pour **iOS** : ouvrez [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) puis installez l'application.
 
-1. Ouvrez [https://localsend.org/zh-CN/download](https://localsend.org/zh-CN/download)
+1. Ouvrez [https://localsend.org/fr/download](https://localsend.org/fr/download)
 2. Ou accédez au dépôt GitHub : [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
 3. Faites défiler la page vers le bas, puis cliquez sur « Show all assets » dans la liste Assets de la dernière version pour afficher toutes les versions disponibles
 4. Téléchargez la version correspondante et installez-la
@@ -118,7 +118,7 @@ Vous pourrez ensuite consulter et modifier les dépôts sur [https://github.com/
 
 **Références :**
 
-- [Documentation de création de compte GitHub](https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github)
+- [Documentation de création de compte GitHub](https://docs.github.com/fr/get-started/start-your-journey/creating-an-account-on-github)
 
 ### Onshape
 

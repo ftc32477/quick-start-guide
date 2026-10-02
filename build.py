@@ -3,12 +3,17 @@
 FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 
 用法:
-    python3 build.py          # 构建所有语言版本
-    python3 build.py --watch  # 监听文件变化并自动构建
+    python3 build.py                      # 构建所有语言版本
+    python3 build.py --watch              # 监听文件变化并自动构建
+    python3 build.py --channel dev        # 显式指定构建通道（dev 显示 preview 版本并加 noindex）
+    python3 build.py --channel release    # release 通道（默认非 dev 分支）
+
+构建通道判定：--channel 参数 > GITHUB_REF_NAME（CI 检出为 detached HEAD）> 本地 git 分支。
 
 目录结构:
-    src/{zh-hans,zh-hant,en-us,fr}/   — 各语言 Markdown 源文件（在此编辑内容）
+    src/{zh-hans,zh-hant,en-us,fr,es,ko}/  — 各语言 Markdown 源文件（在此编辑内容）
     images/                 — 图片资源（自动复制到 dist/images/）
+    fonts/                  — PDF 字体子集（网页版不使用）
     dist/                   — 生成的 HTML 网站（根门户 + 各语言子目录）
 """
 
@@ -42,6 +47,9 @@ LANGUAGES = {
         "label": "简体中文",
         "lang_label": "语言",
         "menu_label": "菜单",
+        "back_home_label": "返回主页",
+        "back_portal_label": "返回门户",
+        "sort_label": "排序",
         "brand": "快速入门指南",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
@@ -59,6 +67,9 @@ LANGUAGES = {
         "label": "繁體中文",
         "lang_label": "語言",
         "menu_label": "選單",
+        "back_home_label": "返回首頁",
+        "back_portal_label": "返回入口",
+        "sort_label": "排序",
         "brand": "快速入門指南",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
@@ -76,6 +87,9 @@ LANGUAGES = {
         "label": "English (US)",
         "lang_label": "Language",
         "menu_label": "Menu",
+        "back_home_label": "Back to home",
+        "back_portal_label": "Back to portal",
+        "sort_label": "Sort",
         "brand": "Quick Start Guide",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
@@ -93,6 +107,9 @@ LANGUAGES = {
         "label": "Français",
         "lang_label": "Langue",
         "menu_label": "Menu",
+        "back_home_label": "Retour à l'accueil",
+        "back_portal_label": "Retour au portail",
+        "sort_label": "Trier",
         "brand": "Guide de démarrage rapide",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
@@ -110,6 +127,9 @@ LANGUAGES = {
         "label": "Español",
         "lang_label": "Idioma",
         "menu_label": "Menú",
+        "back_home_label": "Volver al inicio",
+        "back_portal_label": "Volver al portal",
+        "sort_label": "Ordenar",
         "brand": "Guía de inicio rápido",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
@@ -127,6 +147,9 @@ LANGUAGES = {
         "label": "한국어",
         "lang_label": "언어",
         "menu_label": "메뉴",
+        "back_home_label": "홈으로 돌아가기",
+        "back_portal_label": "포털로 돌아가기",
+        "sort_label": "정렬",
         "brand": "빠른 시작 가이드",
         "site_title": "FTC 32477 Origin 빠른 시작 가이드",
         "pages": {
@@ -166,11 +189,70 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.3.1"
+RELEASE_TAG = "v1.3.2"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.3.2",
+        "date": "2026-10-03",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年9月第1版·第2次修订",
+            "zh-hant": "2026年9月第1版·第2次修訂",
+            "en-us": "September 2026, 1st Edition · Revision 2",
+            "fr": "Septembre 2026, 1re édition · révision 2",
+            "es": "1.ª edición, septiembre de 2026 · revisión 2",
+            "ko": "2026년 9월 제1판 · 2차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "修正英文版 LocalSend 下载链接（原 /en/download 失效），并为西班牙语、韩语版补回遗漏的「队伍自建局域网」信息框。",
+                "法语、西班牙语、韩语版外部文档链接改用对应语言页面（LocalSend、Bambu Studio、GitHub Docs、Android Studio）；统一简中版案例顺序与西/韩语术语标注。",
+                "工程与站点：CI 部署前先构建校验并加并发保护；修复 dev 通道在 CI 中的判定；dev 站 noindex、正式站 canonical/hreflang；发布仓库清理历史 PDF 并新增根入口、robots、404 与 sitemap。",
+                "PDF：新增章/节书签大纲与文档元数据；统一全书页面尺寸；提升版权页法律声明对比度；局域网地址补充访问范围说明。",
+            ],
+            "zh-hant": [
+                "修正英文版 LocalSend 下載連結（原 /en/download 失效），並為西班牙語、韓語版補回遺漏的「隊伍自建區域網路」資訊框。",
+                "法語、西班牙語、韓語版外部文件連結改用對應語言頁面（LocalSend、Bambu Studio、GitHub Docs、Android Studio）；統一簡中版案例順序與西/韓語術語標註。",
+                "工程與站點：CI 部署前先建置校驗並加並行保護；修復 dev 通道在 CI 中的判定；dev 站 noindex、正式站 canonical/hreflang；發布倉庫清理歷史 PDF 並新增根入口、robots、404 與 sitemap。",
+                "PDF：新增章/節書籤大綱與文件中介資料；統一全書頁面尺寸；提升版權頁法律聲明對比度；區域網址補充存取範圍說明。",
+            ],
+            "en-us": [
+                "Fixed the English LocalSend download link (the old /en/download path is dead) and restored the missing \"team LAN / campus gateway\" info box in the Spanish and Korean editions.",
+                "French, Spanish and Korean editions now link to the matching language pages for LocalSend, Bambu Studio, GitHub Docs and Android Studio; aligned case ordering and terminology annotations.",
+                "Engineering & site: CI now rebuilds and verifies before deploying, with concurrency protection; fixed dev-channel detection in CI; the dev site is noindex while production gains canonical/hreflang; cleaned historical PDFs from the pages repository and added a root entry, robots, 404 and sitemap.",
+                "PDF: added chapter/section outlines and document metadata, unified page sizes, improved copyright-page legal contrast, and clarified the LAN-only address.",
+            ],
+            "fr": [
+                "Correction du lien de téléchargement LocalSend en anglais (l'ancien chemin /en/download est mort) et rétablissement de l'encadré « réseau local de l'équipe » manquant dans les éditions espagnole et coréenne.",
+                "Les éditions française, espagnole et coréenne renvoient désormais vers les pages en langue correspondante pour LocalSend, Bambu Studio, GitHub Docs et Android Studio ; ordre des cas et annotations terminologiques harmonisés.",
+                "Ingénierie et site : la CI reconstruit et vérifie avant de déployer, avec protection contre les exécutions concurrentes ; détection du canal dev corrigée ; site dev en noindex, site de production avec canonical/hreflang ; nettoyage des PDF historiques du dépôt de publication et ajout d'une entrée racine, robots, 404 et sitemap.",
+                "PDF : ajout des signets de chapitres/sections et des métadonnées, unification des formats de page, amélioration du contraste de la mention légale et précision sur l'accès au réseau local.",
+            ],
+            "es": [
+                "Corregido el enlace de descarga de LocalSend en la edición inglesa (la antigua ruta /en/download no funciona) y restaurado el cuadro informativo «LAN del equipo» que faltaba en las ediciones española y coreana.",
+                "Las ediciones francesa, española y coreana ahora enlazan a las páginas en su idioma para LocalSend, Bambu Studio, GitHub Docs y Android Studio; se alinearon el orden de los casos y las anotaciones terminológicas.",
+                "Ingeniería y sitio: la CI ahora recompila y verifica antes de desplegar, con protección de concurrencia; corregida la detección del canal dev; sitio dev con noindex y producción con canonical/hreflang; limpieza de los PDF históricos del repositorio de publicación y añadidos entrada raíz, robots, 404 y sitemap.",
+                "PDF: añadidos marcadores de capítulo/sección y metadatos del documento, tamaños de página unificados, mejor contraste de la mención legal y aclaración sobre el acceso a la red local.",
+            ],
+            "ko": [
+                "영어판 LocalSend 다운로드 링크를 수정하고(기존 /en/download 경로 만료), 스페인어·한국어판에서 누락된 「팀 자체 구축 LAN」 안내 상자를 복원했습니다.",
+                "프랑스어·스페인어·한국어판의 외부 문서 링크를 해당 언어 페이지로 변경했으며(LocalSend, Bambu Studio, GitHub Docs, Android Studio), 사례 순서와 용어 표기를 통일했습니다.",
+                "엔지니어링·사이트: CI가 배포 전에 재빌드·검증하고 동시 실행을 방지하도록 했으며, CI의 dev 채널 판정을 수정했습니다. dev 사이트는 noindex, 정식 사이트는 canonical/hreflang을 적용했고, 배포 저장소의 과거 PDF를 정리하고 루트 진입 페이지·robots·404·sitemap을 추가했습니다.",
+                "PDF: 장/절 북마크와 문서 메타데이터를 추가하고 페이지 크기를 통일했으며, 판권면 법적 고지의 대비를 개선하고 LAN 주소의 접속 범위를 명시했습니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-ko.pdf",
+        },
+    },
     {
         "tag": "v1.3.1",
         "date": "2026-10-03",
@@ -581,8 +663,30 @@ for _lk in LANGUAGES:
     LANGUAGES[_lk]["footer"] = f"{latest_edition(_lk)} &middot; {TEAM_LABELS[_lk]}"
 
 
+# 站点基础地址（release 通道）；dev 通道页面加 noindex 不参与收录
+SITE_BASE_URL = "https://ftc32477.github.io/docs"
+
+_CHANNEL = None
+
+
+def set_channel(value):
+    """显式指定构建通道（dev / release），优先于环境变量与 git 分支。"""
+    global _CHANNEL
+    _CHANNEL = value
+
+
 def _on_dev_branch():
-    """判断当前构建是否在 dev 分支（dev 构建时历史页显示 preview 版本）。"""
+    """当前构建是否为 dev 通道。
+
+    优先级：--channel 参数 > GITHUB_REF_NAME（CI 检出为 detached HEAD，
+    git 分支名不可用）> 本地 git 分支。dev 构建时历史页显示 preview 版本，
+    且所有页面注入 noindex。
+    """
+    if _CHANNEL in ("dev", "release"):
+        return _CHANNEL == "dev"
+    ref = os.environ.get("GITHUB_REF_NAME", "").strip()
+    if ref:
+        return ref == "dev"
     try:
         out = subprocess.check_output(
             ["git", "rev-parse", "--abbrev-ref", "HEAD"],
@@ -591,6 +695,55 @@ def _on_dev_branch():
         return out.decode("utf-8", "ignore").strip() == "dev"
     except Exception:
         return False
+
+
+def _release_month_label():
+    """门户页脚用：最新版本的发布年月（如 2026年10月）。"""
+    m = re.match(r"(\d{4})-(\d{2})", VERSIONS[0].get("date", ""))
+    return f"{m.group(1)}年{int(m.group(2))}月" if m else ""
+
+
+_BARE_AMP_RE = re.compile(
+    r"&(?![a-zA-Z][a-zA-Z0-9]{1,31};|#\d+;|#x[0-9a-fA-F]+;)"
+)
+
+
+def escape_bare_amp(html):
+    """转义非实体的裸 &（保留 &amp; / &#...; 等既有实体）。"""
+    return _BARE_AMP_RE.sub("&amp;", html)
+
+
+def seo_links(lang_key=None, page_key=None):
+    """canonical 与 hreflang 链接；dev 通道改为 noindex 不收录。"""
+    if _on_dev_branch():
+        return '<meta name="robots" content="noindex,nofollow">'
+    if lang_key is None:
+        url = f"{SITE_BASE_URL}/index.html"
+        links = [
+            f'<link rel="alternate" hreflang="{lk}" href="{SITE_BASE_URL}/{lk}/index.html">'
+            for lk in LANGUAGES
+        ]
+    else:
+        page = f"{page_key}.html" if page_key else "index.html"
+        url = f"{SITE_BASE_URL}/{lang_key}/{page}"
+        links = [
+            f'<link rel="alternate" hreflang="{lk}" href="{SITE_BASE_URL}/{lk}/{page}">'
+            for lk in LANGUAGES
+        ]
+        links.append(
+            f'<link rel="alternate" hreflang="x-default" href="{SITE_BASE_URL}/en-us/{page}">'
+        )
+    return f'<link rel="canonical" href="{url}">\n' + "\n".join(links)
+
+
+def favicon_links(prefix="../images/basic/"):
+    """补充 32px 与 apple-touch-icon PNG 变体。"""
+    return (
+        f'<link rel="icon" type="image/png" sizes="32x32" '
+        f'href="{prefix}icon_team_logo_32.png">\n'
+        f'<link rel="apple-touch-icon" sizes="180x180" '
+        f'href="{prefix}apple-touch-icon.png">'
+    )
 
 
 def visible_versions():
@@ -787,7 +940,7 @@ def parse_markdown(text):
         i += 1
 
     flush_paragraph(para_buf)
-    return "\n".join(out), headings
+    return escape_bare_amp("\n".join(out)), headings
 
 
 def plain_text(md_text):
@@ -852,7 +1005,7 @@ def inline_parse(text):
     # 图片（行内）
     text = re.sub(r"!\[(.*?)\]\((.*?)\)", r'<img src="\2" alt="\1" loading="lazy">', text)
     # 链接
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', text)
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
     # 粗斜体
     text = re.sub(r"\*\*\*(.+?)\*\*\*", r"<strong><em>\1</em></strong>", text)
     # 粗体
@@ -1205,6 +1358,11 @@ def render_page(page_key, html_body, lang_key, headings=None):
     lang = LANGUAGES[lang_key]
     headings = headings or []
     desc = LANG_HOME_TEXTS[lang_key].get("meta_desc", lang["site_title"])
+    first_para = re.search(r"<p>(.*?)</p>", html_body, re.S)
+    if first_para:
+        plain = re.sub(r"<[^>]+>", "", first_para.group(1)).strip()
+        if plain:
+            desc = plain[:120]
 
     # 侧边栏导航（主页 + 当前语言的页面标题 + 当前页的二级目录）
     nav_items = [f'<a href="index.html">{lang["pages"]["index"]}</a>']
@@ -1248,15 +1406,17 @@ def render_page(page_key, html_body, lang_key, headings=None):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{page_title}\uff5c{site_title}</title>
 {meta_tags(page_title + "｜" + site_title, desc)}
+{seo_links(lang_key, page_key)}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+{favicon_links()}
 <style>{CSS}</style>
 </head>
 <body>
 
 <div class="topbar">
-  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
-  <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{site_title}</a></span>
+  <img class="topbar-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="{lang['back_home_label']}">{site_title}</a></span>
   <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_html}
   </select>
@@ -1266,8 +1426,8 @@ def render_page(page_key, html_body, lang_key, headings=None):
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <a class="home-link" href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">
-      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+    <a class="home-link" href="../index.html" title="{lang['back_home_label']}">
+      <img class="side-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin Team Logo">
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
@@ -1361,20 +1521,6 @@ section>h2{
 /* 中英文内容同字号同深度，以示平等 */
 section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:10px}
 
-/* About：简洁纵向列表 */
-.about-simple{background:var(--card);border-radius:var(--radius);padding:6px 24px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.about-line{
-  display:flex;align-items:baseline;gap:14px;padding:14px 0;
-  border-bottom:1px solid var(--border);font-size:15px;margin:0
-}
-.about-line:last-child{border-bottom:none}
-.about-line .tag-label{
-  font-size:12px;color:var(--muted);min-width:70px;flex-shrink:0;
-  background:#f0f0f0;padding:3px 10px;border-radius:12px;text-align:center
-}
-.about-line .text{font-weight:500}
-.about-line .text .en{color:inherit;font-weight:inherit;font-size:inherit;margin-left:8px}
-
 /* Language cards */
 .lang-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .lang-card{
@@ -1392,33 +1538,6 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .lang-card.ko{border-top-color:#ffb953}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .lang-card .lang-name{font-size:13px;color:var(--muted);margin-bottom:12px}
-.lang-card .desc{font-size:13px;color:var(--text);flex:1;margin-bottom:18px}
-.lang-card .btn-row{display:flex;flex-direction:column;gap:8px}
-.btn{
-  display:block;text-align:center;padding:10px 0;border-radius:8px;
-  font-size:14px;font-weight:600;text-decoration:none;transition:all .18s
-}
-.btn:hover{text-decoration:none}
-.btn.primary{background:var(--dark);color:#fff}
-.btn.primary:hover{background:var(--slate)}
-.btn.secondary{background:#f0f0f0;color:var(--text)}
-.btn.secondary:hover{background:#e4e4e4}
-.btn.disabled{background:#f5f5f5;color:#aaa;cursor:not-allowed;pointer-events:none}
-
-/* Chapters */
-.chapter-list{list-style:none}
-.chapter-list li{
-  display:flex;align-items:center;gap:14px;padding:11px 16px;
-  background:var(--card);border-radius:8px;margin-bottom:8px;
-  box-shadow:0 1px 4px rgba(0,0,0,.04);font-size:14px
-}
-.chapter-list .num{
-  width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-size:12px;
-  font-weight:700;flex-shrink:0
-}
-.chapter-list .name{font-weight:600;min-width:120px}
-.chapter-list .names{font-size:13px;color:var(--muted)}
 
 /* Footer */
 footer{
@@ -1426,13 +1545,9 @@ footer{
   border-top:1px solid var(--border)
 }
 /* 底部法律声明：中英文同字号同深度，以示平等 */
-footer .legal{margin-top:20px;font-size:11px;color:#9a9a9a;line-height:1.8;padding:0 12px}
+footer .legal{margin-top:20px;font-size:11px;color:#666;line-height:1.8;padding:0 12px}
 footer .legal p{margin:0 0 8px}
 footer .legal p:last-child{margin-bottom:0}
-
-/* 历史版本入口 */
-.version-entry{margin-top:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.version-entry .btn{display:inline-block;padding:10px 26px;width:auto}
 
 @media(max-width:600px){
   .hero{padding:48px 20px 44px}
@@ -1441,12 +1556,6 @@ footer .legal p:last-child{margin-bottom:0}
   .container{padding:28px 16px 48px}
   section>h2{font-size:19px}
   .lang-grid{grid-template-columns:1fr}
-  .chapter-list .names{display:none}
-  .chapter-list li{gap:10px;padding:10px 12px}
-  .chapter-list .name{min-width:0;font-size:14px}
-  .about-simple{padding:4px 16px}
-  .about-line{flex-direction:column;gap:6px;padding:12px 0;font-size:14px}
-  .about-line .tag-label{align-self:flex-start}
 }
 
 /* Very narrow screens */
@@ -1456,7 +1565,6 @@ footer .legal p:last-child{margin-bottom:0}
   .hero .badge{font-size:11px}
   .container{padding:22px 12px 40px}
   .lang-card{padding:20px 16px}
-  .btn{font-size:13px;padding:9px 0}
 }
 """
 
@@ -1478,21 +1586,24 @@ def render_portal():
         for lk, native, sub in portal_langs
     )
 
+    portal_date = _release_month_label()
     return f"""<!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-hans">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide</title>
 {meta_tags("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357 | Quick Start Guide", portal_desc)}
+{seo_links()}
 <link rel="icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/basic/icon_team_logo.ico" type="image/x-icon">
+{favicon_links(prefix="images/basic/")}
 <style>{PORTAL_CSS}</style>
 </head>
 <body>
 
 <div class="hero">
-  <img class="hero-logo" src="images/basic/team_logo.png" alt="32477 Origin Team Logo">
+  <img class="hero-logo" src="images/basic/team_logo_small.png" alt="32477 Origin Team Logo">
   <div class="badge">TEAM 32477 ORIGIN</div>
   <h1>FIRST\u00ae Tech Challenge<br>\u5feb\u901f\u5165\u95e8\u6307\u5357</h1>
   <div class="subtitle">Quick Start Guide \u00b7 \u62d2\u7edd\u91cd\u590d\u9020\u8f6e\u5b50 \u00b7 Refuse to Reinvent the Wheel</div>
@@ -1508,7 +1619,7 @@ def render_portal():
 </div>
 
 <footer>
-  32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u7f16\u5199\u5c0f\u7ec4 \u00b7 Editorial Team \u00b7 2026\u5e748\u6708
+  32477 Origin 快速入门指南编写小组 · Editorial Team · {portal_date}
   <div class="legal">
     <p>Legal Notice: This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST\u00ae (For Inspiration and Recognition of Science and Technology). FIRST\u00ae, FIRST\u00ae Robotics Competition, FRC\u00ae, FIRST\u00ae Tech Challenge, and FTC\u00ae are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.</p>
     <p>\u6cd5\u5f8b\u58f0\u660e\uff1a\u672c\u6307\u5357\u662f FTC 32477 Origin \u961f\u4f0d\u7684\u72ec\u7acb\u4ea7\u54c1\u3002\u672c\u961f\u4f0d\u4e0e FIRST\u00ae\uff08For Inspiration and Recognition of Science and Technology\uff09\u65e0\u96b6\u5c5e\u3001\u80cc\u4e66\u6216\u8d5e\u52a9\u5173\u7cfb\u3002FIRST\u00ae\u3001FIRST\u00ae Robotics Competition\u3001FRC\u00ae\u3001FIRST\u00ae Tech Challenge \u53ca FTC\u00ae \u5747\u4e3a FIRST \u7684\u6ce8\u518c\u5546\u6807\u3002\u672c\u6307\u5357\u4e2d\u5206\u4eab\u7684\u8bbe\u8ba1\u3001\u4ee3\u7801\u4e0e\u8d44\u6e90\u4ee5\u961f\u4f0d\u6210\u5458\u63d0\u4f9b\u7684\u5185\u5bb9\u4e3a\u4e3b\uff0c\u4ea6\u53ef\u80fd\u5305\u542b\u7ecf\u6574\u7406\u5408\u5e76\u7684\u5f00\u6e90\u6750\u6599\u4e0e\u5176\u4ed6\u8d21\u732e\u8005\u7684\u6210\u679c\uff0c\u4e0d\u4ee3\u8868 FIRST \u5b98\u65b9\u6750\u6599\u3002</p>
@@ -1665,7 +1776,7 @@ LANG_HOME_CSS = r"""
 .lh-versions-desc{color:#666;font-size:14px;margin-bottom:12px}
 .lh-btn{display:inline-block;background:var(--dark);color:#fff;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:600;text-decoration:none}
 .lh-btn:hover{background:var(--slate)}
-.lh-legal{color:#9a9a9a;font-size:11px;line-height:1.8;margin-top:8px}
+.lh-legal{color:#666;font-size:11px;line-height:1.8;margin-top:8px}
 @media print{.topbar,.sidebar,.overlay{display:none!important}}
 """
 
@@ -1717,16 +1828,18 @@ def render_lang_homepage(lang_key):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{lang["site_title"]}</title>
 {meta_tags(lang["site_title"], t["meta_desc"])}
+{seo_links(lang_key)}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+{favicon_links()}
 <style>{CSS}
 {LANG_HOME_CSS}</style>
 </head>
 <body>
 
 <div class="topbar">
-  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
-  <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u95e8\u6237">{lang["site_title"]}</a></span>
+  <img class="topbar-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="{lang['back_portal_label']}">{lang["site_title"]}</a></span>
   <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
@@ -1736,8 +1849,8 @@ def render_lang_homepage(lang_key):
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <a class="home-link" href="../index.html" title="\u8fd4\u56de\u95e8\u6237">
-      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+    <a class="home-link" href="../index.html" title="{lang['back_portal_label']}">
+      <img class="side-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin Team Logo">
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{lang["brand"]}</div>
     </a>
@@ -1754,7 +1867,7 @@ def render_lang_homepage(lang_key):
 <main>
   <div class="lh-page">
     <div class="lh-hero">
-      <img class="lh-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+      <img class="lh-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin Team Logo">
       <div class="lh-badge">TEAM 32477 ORIGIN</div>
       <h1>{t["hero_title"]}</h1>
       <div class="lh-slogan">{t["slogan"]}</div>
@@ -1966,7 +2079,8 @@ def render_versions_page(lang_key):
         else:
             badge = ""
         changes = "".join(
-            f"<li>{c}</li>" for c in v.get("changes", {}).get(lang_key) or []
+            f"<li>{escape_bare_amp(c)}</li>"
+            for c in v.get("changes", {}).get(lang_key) or []
         )
         if is_preview:
             date_line = f'<div class="ver-date">{t["status_dev"]}</div>'
@@ -2020,16 +2134,18 @@ def render_versions_page(lang_key):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{t["page_title"]}\uff5c{lang["site_title"]}</title>
 {meta_tags(t["page_title"] + "｜" + lang["site_title"], LANG_HOME_TEXTS[lang_key]["meta_desc"])}
+{seo_links(lang_key, "versions")}
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
+{favicon_links()}
 <style>{CSS}
 {VERSIONS_CSS}</style>
 </head>
 <body>
 
 <div class="topbar">
-  <img class="topbar-logo" src="../images/basic/team_logo.png" alt="32477 Origin">
-  <span class="brand"><a href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">{lang["site_title"]}</a></span>
+  <img class="topbar-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin">
+  <span class="brand"><a href="../index.html" title="{lang['back_home_label']}">{lang["site_title"]}</a></span>
   <select class="lang-select" id="langSelect" aria-label="{lang['lang_label']}">
 {select_options}
   </select>
@@ -2039,8 +2155,8 @@ def render_versions_page(lang_key):
 
 <nav class="sidebar" id="sidebar">
   <div class="sidebar-header">
-    <a class="home-link" href="../index.html" title="\u8fd4\u56de\u4e3b\u9875">
-      <img class="side-logo" src="../images/basic/team_logo.png" alt="32477 Origin Team Logo">
+    <a class="home-link" href="../index.html" title="{lang['back_home_label']}">
+      <img class="side-logo" src="../images/basic/team_logo_small.png" alt="32477 Origin Team Logo">
       <div class="logo">FTC 32477<br>Origin</div>
       <div class="sub">{t["page_title"]}</div>
     </a>
@@ -2058,7 +2174,7 @@ def render_versions_page(lang_key):
   <div class="ver-page">
     <div class="ver-top">
       <h1>{t["page_title"]}</h1>
-      <div class="ver-sort" role="group" aria-label="Sort">
+      <div class="ver-sort" role="group" aria-label="{lang['sort_label']}">
         <button id="sortDesc" class="ver-sort-btn active" type="button">{t["sort_desc"]}</button>
         <button id="sortAsc" class="ver-sort-btn" type="button">{t["sort_asc"]}</button>
       </div>
@@ -2245,6 +2361,11 @@ def watch():
 
 
 if __name__ == "__main__":
+    for _i, _a in enumerate(sys.argv):
+        if _a == "--channel" and _i + 1 < len(sys.argv):
+            set_channel(sys.argv[_i + 1])
+        elif _a.startswith("--channel="):
+            set_channel(_a.split("=", 1)[1])
     if "--watch" in sys.argv:
         watch()
     else:

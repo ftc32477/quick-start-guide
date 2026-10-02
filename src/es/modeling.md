@@ -62,7 +62,7 @@ Onshape es la plataforma de modelado en la nube que utiliza nuestro equipo. Fren
 ### Configuración del entorno de Onshape
 
 1. Entre en el espacio de trabajo, pulse el icono de la cuenta en la esquina superior derecha y elija la primera opción del menú desplegable, «Mi cuenta»
-2. Elija la tercera opción del menú de la derecha, «Preferencias»; cambie la primera opción de idioma a «简体中文» y pulse Guardar
+2. Elija la tercera opción del menú de la derecha, «Preferencias»; cambie la primera opción de idioma a «chino simplificado (简体中文)» y pulse Guardar
 3. En el mismo menú, cambie la opción de unidades inferior a sistema métrico (en el entorno de trabajo del equipo la longitud se usa en milímetros por defecto)
 
 > [!info] Los cambios anteriores solo se aplican a los documentos creados después del cambio; las unidades de los documentos antiguos no se ven afectadas.

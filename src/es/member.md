@@ -17,6 +17,8 @@ Es necesario disponer de un entorno de red con acceso al soporte de Android.
 
 - Soporte de Android: [https://support.google.com/android](https://support.google.com/android)
 
+> [!info] La LAN propia del equipo se conecta a una pasarela independiente del campus: es más estable que la red habitual del campus, pero conserva las restricciones de acceso de esta. El puesto de Programación necesita acceder a recursos de red en el extranjero compatibles con Android; el equipo puede facilitar una vía de acceso. Si prevé un uso intensivo, se recomienda contratar su propio servicio.
+
 ### Aplicaciones
 
 - Navegador web (Chrome, Edge o Safari)
@@ -76,7 +78,7 @@ LocalSend es la herramienta de transferencia de archivos en la red local que uti
 
 > [!warning] En **iOS**: abra [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) e instálela.
 
-1. Abra [https://localsend.org/zh-CN/download](https://localsend.org/zh-CN/download)
+1. Abra [https://localsend.org/es/download](https://localsend.org/es/download)
 2. O acceda al repositorio de GitHub: [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
 3. Desplace la página hacia abajo y, en la lista Assets de la última versión, pulse "Show all assets" para mostrar todas las versiones disponibles
 4. Descargue la versión correspondiente e instálela
@@ -116,7 +118,7 @@ A continuación, ya puede consultar y modificar los repositorios en [https://git
 
 **Referencias:**
 
-- [Documentación de GitHub sobre cómo crear una cuenta](https://docs.github.com/zh/get-started/start-your-journey/creating-an-account-on-github)
+- [Documentación de GitHub sobre cómo crear una cuenta](https://docs.github.com/es/get-started/start-your-journey/creating-an-account-on-github)
 
 ### Onshape
 
