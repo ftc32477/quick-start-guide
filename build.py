@@ -173,7 +173,7 @@ RELEASE_TAG = "v1.3.1"
 VERSIONS = [
     {
         "tag": "v1.3.1",
-        "date": "2026-09-30",
+        "date": "2026-10-03",
         "status": "released",
         "name": {
             "zh-hans": "2026年9月第1版·第1次修订",
