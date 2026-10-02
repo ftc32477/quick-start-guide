@@ -469,6 +469,11 @@ html,body{{margin:0;padding:0}}
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;position:relative
 }}
+/* 与封面一致：内容整体上移，集群中心位于黄金分割点（38.2vh） */
+.wrap .inner{{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  transform:translateY(-11.8vh)
+}}
 .wrap img.logo{{width:110px;height:110px;border-radius:24px;margin-bottom:28px}}
 .badge{{
   font-family:{head};font-size:13px;font-weight:600;letter-spacing:3px;
@@ -486,12 +491,14 @@ h1{{font-family:{head};font-size:26px;font-weight:700;margin:0 0 16px}}
 </head>
 <body>
 <div class="wrap">
-  <img class="logo" src="{logo_path}">
-  <div class="badge">{t["badge"]}</div>
-  <h1>{t["title"]}</h1>
-  <div class="name">{t["name"]}</div>
-  <div class="name2">{t["name2"]}</div>
-  <div class="school">{t["school"]}</div>
+  <div class="inner">
+    <img class="logo" src="{logo_path}">
+    <div class="badge">{t["badge"]}</div>
+    <h1>{t["title"]}</h1>
+    <div class="name">{t["name"]}</div>
+    <div class="name2">{t["name2"]}</div>
+    <div class="school">{t["school"]}</div>
+  </div>
   <div class="date">{t["lang"]}<br>{t["date"]}</div>
 </div>
 </body>
