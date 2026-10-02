@@ -40,6 +40,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 import os
 import re
 import sys
+import html
 import time
 import json
 import base64
@@ -737,7 +738,7 @@ html,body{{margin:0;padding:0}}
 table{{width:100%;border-collapse:collapse;font-size:12.5px}}
 td{{padding:9px 0;vertical-align:top;border-bottom:1px solid #eee;line-height:1.7}}
 td.k{{width:150px;color:#666;padding-right:16px}}
-.legal{{margin-top:36px;font-size:10px;color:#9a9a9a;line-height:1.7}}
+.legal{{margin-top:36px;font-size:10px;color:#666;line-height:1.7}}
 a{{overflow-wrap:anywhere;color:#2c2c2c;text-decoration:none}}
 </style>
 </head>
@@ -1200,10 +1201,16 @@ def merge_guide(cover_pdf, title_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pd
     toc_start_index = len(writer.pages)
     stamp(toc_reader, roman_text, header_right=TOC_TITLES[lang_key])
 
+    # 补白页尺寸与正文页一致（避免同一文件内 MediaBox 不一致）
+    blank_w, blank_h = PAPER_W_IN * 72, PAPER_H_IN * 72
+    if main_pdfs:
+        _sample = PdfReader(main_pdfs[0]).pages[0].mediabox
+        blank_w, blank_h = float(_sample.width), float(_sample.height)
+
     # 成册：前言+目录为奇数页时，在目录后插入白页（不编页码），
     # 保证正文第 1 页位于右页（物理奇数页）
     if front_blank:
-        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
+        writer.add_blank_page(width=blank_w, height=blank_h)
         print("  [成册] 前言+目录为奇数页，已在目录后插入白页（正文从右页开始）")
 
     # 正文：阿拉伯数字连续编号 + 总页数
@@ -1226,7 +1233,7 @@ def merge_guide(cover_pdf, title_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pd
     # 印刷成册：资源页后若页数为偶数，则在封底前插入一白页（不编页码），
     # 保证成册总页数为偶数（内页块页数为偶数，便于印刷装订）
     if len(writer.pages) % 2 == 0:
-        writer.add_blank_page(width=PAPER_W_IN * 72, height=PAPER_H_IN * 72)
+        writer.add_blank_page(width=blank_w, height=blank_h)
         print("  [成册] 资源页后页数为偶数，已在封底前插入白页")
 
     # 封底（不编号）
@@ -1277,6 +1284,28 @@ def merge_guide(cover_pdf, title_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pd
         if target_page.annotations is None:
             target_page[NameObject("/Annots")] = ArrayObject()
         target_page.annotations.append(annot)
+
+    # 书签大纲（章 / 节两级，页码与目录一致；标题解 HTML 实体）
+    outline_parent = None
+    for entry in toc_entries:
+        if entry.get("dest") is None or entry["dest"] >= len(writer.pages):
+            continue
+        title = html.unescape(entry["title"])
+        if entry["level"] == 1:
+            outline_parent = writer.add_outline_item(title, entry["dest"])
+        elif outline_parent is not None:
+            writer.add_outline_item(title, entry["dest"], parent=outline_parent)
+
+    # 文档元数据（阅读器标签与文献管理）
+    label = build_mod.LANGUAGES[lang_key]["label"]
+    edition = build_mod.latest_edition(lang_key)
+    writer.add_metadata({
+        "/Title": f"{build_mod.LANGUAGES[lang_key]['site_title']} · {edition}",
+        "/Author": "FTC 32477 Origin",
+        "/Subject": f"FTC 32477 Origin Quick Start Guide ({label}) · {edition}",
+        "/Keywords": f"FTC, FIRST Tech Challenge, 32477 Origin, Quick Start Guide, {label}",
+        "/Creator": "FTC 32477 Origin (build_pdf.py)",
+    })
 
     with open(out_path, "wb") as f:
         writer.write(f)

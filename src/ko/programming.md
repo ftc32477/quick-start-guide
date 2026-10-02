@@ -101,7 +101,7 @@ Visual Studio Code는 우리 팀이 사용하는 코드 편집 및 이력 확인
 
 ### Android Studio
 
-공식 문서: [https://developer.android.com/studio/intro?hl=zh-cn](https://developer.android.com/studio/intro?hl=zh-cn)
+공식 문서: [https://developer.android.com/studio/intro?hl=ko](https://developer.android.com/studio/intro?hl=ko)
 
 이 프로젝트에서는 FTC 공식 제공 애플리케이션 프레임워크를 기반으로, `TeamCode` 폴더 아래에서 Java 언어로 로봇 제어 프로그램을 작성해 로봇 구동에 필요한 각종 의존성 라이브러리를 호출합니다.
 
@@ -116,7 +116,7 @@ Visual Studio Code의 조작 로직은 Android Studio와 비슷하고, 이 프�
 ### Robot Dashboard
 
 - Wi-Fi 네트워크 '`32477-RC`'에 연결합니다. Wi-Fi 비밀번호: 관리자에게 문의하거나 Driver Hub를 통해 확인합니다.
-- 주소: [http://192.168.43.1:8080/](http://192.168.43.1:8080/)
+- 주소: [http://192.168.43.1:8080/](http://192.168.43.1:8080/) (로봇 로컬 네트워크에서만 접속 가능)
 - Control Hub에 내장된 Wi-Fi 모듈의 웹 페이지(공식 명칭 Robot Controller Console, 즉 로봇 컨트롤러 콘솔)로, Control Hub를 관리하는 그래픽 백엔드를 제공합니다.
 
 Robot Dashboard에서 알아야 할 기본 지식은 공식 문서의 간단한 페이지 안내를 참고하세요.

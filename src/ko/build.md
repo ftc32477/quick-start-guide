@@ -42,7 +42,7 @@ Bambu Studio는 우리 팀이 사용하는 3D 프린팅 부품 솔루션입니�
 
 **소프트웨어 설치 및 환경 설정 절차:**
 
-1. [https://bambulab.cn/zh-cn/download/studio](https://bambulab.cn/zh-cn/download/studio) 열기
+1. [https://bambulab.com/en/download/studio](https://bambulab.com/en/download/studio) 열기
 2. 적절한 버전을 선택해 다운로드하고 설치하면 됩니다.
 
 **주의할 점:**

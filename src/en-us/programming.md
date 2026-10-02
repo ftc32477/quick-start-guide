@@ -116,7 +116,7 @@ Since Visual Studio Code follows similar operating logic to Android Studio and i
 ### Robot Dashboard
 
 - Connect to the Wi-Fi network "`32477-RC`". Wi-Fi password: ask an administrator or obtain it via the Driver Hub.
-- URL: [http://192.168.43.1:8080/](http://192.168.43.1:8080/)
+- URL: [http://192.168.43.1:8080/](http://192.168.43.1:8080/) (accessible only within the robot's local network)
 - This is the web page of the Wi-Fi module built into the Control Hub (officially called the Robot Controller Console), providing a graphical management console for the Control Hub.
 
 For the essentials you need to know about the Robot Dashboard, refer to the quick UI walkthrough in the official documentation.

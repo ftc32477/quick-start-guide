@@ -42,12 +42,12 @@ ftc_quick_start_guide/
 │   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-fr.pdf     # 法语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-es.pdf     # 西班牙语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.1-ko.pdf     # 韩语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-es.pdf     # 西班牙语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.2-ko.pdf     # 韩语完整指南
 ├── fonts/                     # PDF 字体（开源字体按用字裁成的子集，入库；网页版不使用）
 │   ├── subsets/               # 构建 PDF 实际加载的静态子集（含 coverage.json 用字覆盖清单）
 │   ├── licenses/              # 各字体 OFL 1.1 许可证文本
@@ -116,7 +116,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年9月第1版·第1次修订"，位置略上移）
 2. **扉页（内页第 1 页）**：白底黑字复述封面信息（队徽、徽章、"FIRST® Tech Challenge"、指南名、副题、学校；内容集群与封面一样上移至黄金分割点（中心 ≈ 38.2vh）；底部居中"语言版本 / 版次日期"两行），位于右页
-3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年9月第1版·第1次修订）**、**版本号（v1.3.1）**、**发布日期（2026年10月3日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
+3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年9月第1版·第2次修订）**、**版本号（v1.3.2）**、**发布日期（2026年10月3日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
 4. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）；中文版正文用楷体（霞鹜文楷）
 5. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接（目录标题 22pt、条目 12.5pt、行高 38/34pt），点击跳转到对应页；目录页脚沿用罗马数字；**若前言+目录总页数为奇数，自动在目录与正文之间插入一白页（不编页码），保证正文第 1 页位于右页（物理奇数页）**
 6. **正文页**（队员须知起）：
@@ -127,7 +127,9 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 封面、扉页、版权页、资源页与封底均不编页码、不进目录。上述排布使页码符合**左偶右奇**：扉页为内页第 1 页（右页），前言首页（罗马 I）与正文第 1 页均落在右页，扉页背面（版权页）为左页。
 
-单页 PDF（`pdf/{lang}/{page}.pdf`）仅由 `--page` 参数生成（同样含页眉页脚，页码按该 PDF 自身计），供内容调试使用；完整导出结束后自动删除。
+PDF 另含**两级书签大纲**（章 / 节，页码与目录一致）与**文档元数据**（Title/Author/Subject/Keywords，阅读器与文献管理器可识别）；自动插入的补白页与正文页尺寸一致，同一文件内 MediaBox 统一。
+
+单页 PDF（`pdf/{lang}/{page}.pdf`）仅由 `--page` 参数生成（同样含页眉页脚，页码按该 PDF 自身计），供内容调试使用；完整导出结束后自动删除。`dist/pdf/` 仅本地存在（不入库），线上站点没有该路径，本地预览出现它属正常。
 
 **页面布局参数：** A4 纸（210×297mm）；上下页边距各 2.54cm（1in）、左右各 3.18cm（1.25in）；页眉页脚字号均为 11pt（文字高度一致）；封面与封底边距为 0，扉页与版权页为满版渲染、内边距与正文页边距一致（上下 1in、左右 1.25in）。正文排版沿用网页样式（正文 16px、行距 1.8；正文标题为裸 h1–h4，按浏览器默认比例：h1 32px、h2 24px、h3 18.7px、h4 16px），打印时仅收窄标题外边距、表格内边距并将表格字号固定为 12px。
 
@@ -241,8 +243,9 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 
 ### SEO 与无障碍
 
-- 所有页面（含门户）均含 `<meta name="description">` 与 og:/twitter: 社交分享 meta（og:image 为线上队徽绝对地址），描述文案在 `build.py` 的 `LANG_HOME_TEXTS[lang]["meta_desc"]` 维护。
-- 语言下拉与移动端菜单按钮的 `aria-label` 随语言本地化（`LANGUAGES[lang]["lang_label"]` / `"menu_label"`）；菜单按钮带 `aria-controls` 与 `aria-expanded`（开合时由 JS 同步更新）。
+- 所有页面（含门户）均含 `<meta name="description">` 与 og:/twitter: 社交分享 meta（og:image 为线上队徽绝对地址）；内容页描述由该页首段自动生成，主页/历史页用 `LANG_HOME_TEXTS[lang]["meta_desc"]`。
+- 正式（release）页面带 `rel="canonical"` 指向自身，并为六语言输出 `hreflang` 备用链接（含 `x-default` 指向英文版）；**dev 通道页面输出 `<meta name="robots" content="noindex,nofollow">`，不参与搜索引擎收录**。
+- 语言下拉与移动端菜单按钮的 `aria-label` 随语言本地化（`LANGUAGES[lang]["lang_label"]` / `"menu_label"`）；菜单按钮带 `aria-controls` 与 `aria-expanded`（开合时由 JS 同步更新）。返回主页/门户提示与历史页排序按钮的 `aria-label` 同样本地化（`back_home_label` / `back_portal_label` / `sort_label`）。
 
 ## 七、打印样式与踩坑记录
 
@@ -312,7 +315,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 - ① 本地构建：生成根门户 + 六语言"主页 + 7 页 + 历史版本页"共 55 个 HTML（需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
 - ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
-- ③ 云端同步：Actions 把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
+- ③ 云端同步：Actions 在同步前先重跑 `build.py` 并校验 `dist/` 与源码一致、且 `dist/pdf/` 未入库，通过后才把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交；同一时刻只允许一次同步）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
 
 **双分支分工：**
@@ -329,7 +332,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 当月新一版 |
 | 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例） | 次版本 +1 → v1.4.0 | 当月新一版 |
 | 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录；招新内容并入（v1.3.0 先例，9月第1版） | 次版本 +1 → v1.4.0 | 当月新一版 |
-| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例）、PDF 字体与排版升级（v1.3.1 先例） | 修订 +1 → v1.3.2 | 当月版次·第N次修订 |
+| 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例）、PDF 字体与排版升级（v1.3.1 先例）、外部审查修缮（v1.3.2 先例） | 修订 +1 → v1.3.3 | 当月版次·第N次修订 |
 | 开发中 | — | v1.4.0-preview | （仅预览站） |
 
 **发版流程（每次一版）：**
@@ -337,11 +340,11 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 1. 在 dev 定稿全部内容
 2. 按版本号规则确定新版本号，同步更新 `build.py`（`RELEASE_TAG` 常量、`VERSIONS` 列表顶部追加该版本条目（tag/PDF 文件名/name/changes 需六语言填写）并把 status 改为 `released`、**`date` 填当日实际发布日期（YYYY-MM-DD）**）与 README 中的版本描述；合并 PDF 文件名由 `RELEASE_TAG` 自动生成，版权页数据取自 `VERSIONS`；**侧边栏页脚、语言主页"最新版本"、PDF 封面/封底日期均自动取自 `VERSIONS`，无需另行修改**；唯一需手工同步的是各语言 `afterword.md` 末行落款版次（六处）
 3. 本地运行 `build_pdf.py` 生成 6 份 PDF（新文件名）并自查
-4. 推送 dev → 打 tag → 创建新 Release（tag 如 `v1.4.0`）并上传 6 份 PDF 作为资产（**先推 dev 再打 tag**，保证 Release 源码压缩包为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
+4. 打 tag 并推送 → 创建新 Release（tag 如 `v1.4.0`）并上传 6 份 PDF 作为资产 → **最后再推送 dev**（先建 Release 再推 dev，避免主页下载按钮短暂 404；tag 本身携带提交，Release 源码压缩包即为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
 6. **发布后核对发布日期**：GitHub Release 页面显示的发布时间应与 `VERSIONS` 中该版本 `date` 一致（历史版本页展示该日期、版权页取自该日期）；如不一致，立即修正 `VERSIONS` 日期、重新运行 `build.py` 与 `build_pdf.py`，并用 `gh release upload <TAG> <PDF...> --clobber` 原地替换 Release 资产
 
-> 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认）。另有 `check-dist.yml` 工作流：每次推送自动重跑 `build.py` 校验 `dist/` 与源码同步，未构建即推送会导致 Actions 失败。
+> 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认；脚本开头会断言 TAG 与 `build.py` 的 `RELEASE_TAG`、`VERSIONS[0].tag` 一致）。`check-dist.yml` 与 `deploy.yml` 都会重跑 `build.py` 校验 `dist/` 与源码同步；**`deploy.yml` 在同步前校验**，构建或校验失败即中止本次部署，因此"未构建就推送"不会把旧内容发上线。构建通道由 `GITHUB_REF_NAME` 判定（CI 检出为 detached HEAD，无法用 git 分支名判断），本地也可用 `python3 build.py --channel dev|release` 显式指定；dev 通道页面对搜索引擎加 `noindex`，历史页显示 preview 条目。
 
 ### 历史版本页（{lang}/versions.html）
 

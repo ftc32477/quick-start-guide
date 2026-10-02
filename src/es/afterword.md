@@ -43,4 +43,4 @@ Que en la nueva temporada mantengamos el espíritu profesional, experimentemos c
 
 ---
 
-*Equipo de redacción de la Guía de inicio rápido de 32477 Origin · 1.ª edición, septiembre de 2026 · revisión 1*
+*Equipo de redacción de la Guía de inicio rápido de 32477 Origin · 1.ª edición, septiembre de 2026 · revisión 2*

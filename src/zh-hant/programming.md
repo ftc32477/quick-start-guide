@@ -116,7 +116,7 @@ Visual Studio Code 是我隊採用的程式碼編輯與歷史檢視工具。
 ### Robot Dashboard
 
 - 連接 Wi-Fi 網路「`32477-RC`」。Wi-Fi 密碼：詢問管理員或透過 Driver Hub 取得。
-- 網址是：[http://192.168.43.1:8080/](http://192.168.43.1:8080/)
+- 網址是：[http://192.168.43.1:8080/](http://192.168.43.1:8080/)（僅在機器人區域網路內可存取）
 - 這是 Control Hub 內建的 Wi-Fi 模組的 Web 頁面（官方名稱為 Robot Controller Console，即機器人控制器控制台），提供了管理 Control Hub 的圖形化後台。
 
 關於 Robot Dashboard 所需掌握的基本知識，請參考官方文件中的簡易頁面指引。

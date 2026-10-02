@@ -78,7 +78,7 @@ LocalSend is the LAN file transfer tool adopted by our team.
 
 > [!warning] For **iOS**: open [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) and install directly.
 
-1. Open [https://localsend.org/en/download](https://localsend.org/en/download)
+1. Open [https://localsend.org/download](https://localsend.org/download)
 2. Or go to the GitHub repository: [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
 3. Scroll down and click "Show all assets" in the Assets list of the latest release to display all available builds
 4. Download the build matching your platform and install it
