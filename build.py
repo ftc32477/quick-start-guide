@@ -216,11 +216,64 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.3.3"
+RELEASE_TAG = "v1.4.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按各语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.4.0",
+        "date": "2026-10-03",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年10月第1版",
+            "zh-hant": "2026年10月第1版",
+            "en-us": "October 2026, 1st Edition",
+            "fr": "Octobre 2026, 1re édition",
+            "es": "1.ª edición, octubre de 2026",
+            "ko": "2026년 10월 제1판",
+            "pt-br": "Outubro de 2026, 1.ª edição",
+        },
+        "changes": {
+            "zh-hans": [
+                "新增巴西葡萄牙语（Português (BR)）版本：七章正文、网站页面与 PDF 完整翻译。",
+                "门户新增葡语语言卡片；历史版本页为全部历史版本回填葡语版次名与改动说明，不再回退英文。",
+            ],
+            "zh-hant": [
+                "新增巴西葡萄牙語（Português (BR)）版本：七章正文、網站頁面與 PDF 完整翻譯。",
+                "入口新增葡語語言卡片；歷史版本頁為全部歷史版本回填葡語版次名與改動說明，不再回退英文。",
+            ],
+            "en-us": [
+                "Added a Brazilian Portuguese (Português (BR)) edition: full translations of all seven chapters, the website pages, and a Portuguese PDF.",
+                "The portal now includes a Portuguese language card, and the version history page carries Portuguese edition names and change notes for every past release instead of falling back to English.",
+            ],
+            "fr": [
+                "Ajout d'une édition en portugais du Brésil (Português (BR)) : traduction complète des sept chapitres, des pages du site et d'un PDF en portugais.",
+                "Le portail inclut désormais une carte de langue portugaise, et l'historique des versions présente, pour toutes les versions passées, les noms d'édition et les notes de changement en portugais, sans repli sur l'anglais.",
+            ],
+            "es": [
+                "Añadida una edición en portugués de Brasil (Português (BR)): traducción completa de los siete capítulos, las páginas del sitio y un PDF en portugués.",
+                "El portal ahora incluye una tarjeta de idioma portugués, y el historial de versiones muestra, para todas las versiones anteriores, nombres de edición y notas de cambios en portugués, sin recurrir al inglés.",
+            ],
+            "ko": [
+                "브라질 포르투갈어(Português (BR)) 버전을 추가했습니다. 7개 장 본문, 웹사이트 페이지와 PDF를 모두 번역했습니다.",
+                "포털에 포르투갈어 카드를 추가했고, 버전 기록 페이지는 과거 모든 버전의 이름과 변경 사항을 포르투갈어로 제공하며 영어로 대체하지 않습니다.",
+            ],
+            "pt-br": [
+                "Adicionada a edição em português do Brasil (Português (BR)): tradução completa dos sete capítulos, das páginas do site e do PDF.",
+                "O portal agora inclui o cartão de idioma português, e a página de histórico de versões traz nomes de edição e notas de mudança em português para todas as versões anteriores, sem recair no inglês.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-ko.pdf",
+            "pt-br": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.4.0-pt-br.pdf",
+        },
+    },
     {
         "tag": "v1.3.3",
         "date": "2026-10-03",

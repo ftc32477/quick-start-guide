@@ -47,4 +47,4 @@ Aproveite a competição, aproveite criar — e vamos alcançar novos resultados
 
 ---
 
-*Equipe editorial do Guia de início rápido do 32477 Origin · setembro de 2026, 1.ª edição · revisão 3*
+*Equipe editorial do Guia de início rápido do 32477 Origin · outubro de 2026, 1.ª edição*
