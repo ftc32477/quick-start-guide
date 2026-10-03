@@ -1,34 +1,34 @@
-# FIRST® Tech Challenge<br>32477 Origin<br>Quick Start Guide
+# FIRST® Tech Challenge<br>32477 Origin<br>Guia de início rápido
 
-Welcome aboard, and welcome to the world of FTC!
+Bem-vindo a bordo — e bem-vindo ao mundo do FTC!
 
-Whether you are a newcomer who has just stepped into the robotics lab full of curiosity, or a veteran who has been through the rigors of competition and is ready to lead the team to new heights, this guide is written for you.
+Quer você seja um novato que acaba de entrar no laboratório de robótica, cheio de curiosidade, quer seja um veterano que já passou pela experiência das competições e está pronto para liderar a equipe rumo a novos resultados, este guia foi feito para você.
 
-Building a competitive robot is never simply bolting metal and code together — it is an adventure that blends engineering logic, teamwork, and the spirit of innovation. We compiled this guide to give that adventure clear navigation.
+Construir um robô de competição nunca é apenas juntar metal e código — é uma aventura que combina lógica de engenharia, trabalho em equipe e espírito de inovação. Para dar a essa aventura uma navegação clara, decidimos compilar este guia.
 
-Over past seasons we have accumulated valuable experience — and stepped on our fair share of pitfalls. We realized that a team's strength cannot rely on a few "lone heroes"; it requires unified workflows and efficient collaboration mechanisms.
+Nas temporadas passadas, acumulamos experiências valiosas e também cometemos muitos erros. Percebemos que a força de uma equipe não pode depender do "esforço individual" de poucos; ela exige fluxos de trabalho unificados e mecanismos de colaboração eficientes.
 
-> [!info] **The purpose of this guide is simple: refuse to reinvent the wheel.**
+> [!info] **O propósito deste guia é simples: recusar reinventar a roda.**
 
-We hope it helps newcomers skip the wandering period of confusion and quickly build a holistic understanding of FTC. At the same time, it serves as a "handbook" and "cheat sheet" for veterans — standardizing operating procedures so that every brainstorm, every part assembly, and every code commit connects seamlessly. Only with a solid foundation can the team's growth be truly sustainable, freeing our energy for real innovation.
+Esperamos que ele ajude os novatos a pular a fase de exploração confusa e construir rapidamente uma visão geral do FTC; ao mesmo tempo, que sirva como "manual de consulta" e "lembrete" para os veteranos, ajudando todos a padronizar procedimentos para que cada tempestade de ideias, cada montagem de peça e cada commit de código se conectem sem atritos. Só com uma base sólida o desenvolvimento da equipe terá sustentabilidade real, e poderemos dedicar mais energia à verdadeira inovação.
 
-On the FTC field, everyone can find their own shining moment. Around the life cycle of a single robot, we have organized four closely connected tracks. Through this guide, you can explore your interests and identify your future direction:
+No campo do FTC, cada pessoa pode encontrar seu momento de brilho. Em torno do ciclo de vida de um robô, organizamos quatro áreas intimamente ligadas. Por meio deste guia, você pode explorar seus interesses e definir sua direção futura:
 
-- **3D Modeling & Design**: The bridge between imagination and reality. Before parts are physically manufactured, you will conduct precise conceptualization, assembly, and mechanical analysis in virtual space to ensure design feasibility.
-- **Hardware & Build**: Turning blueprints into reality. You are the creators of the robot's skeleton and muscles — assembling gears, extrusions, and motors into a stable, powerful steel warrior on the field.
-- **Programming**: Giving the robot its soul. From low-level logic to application-level algorithms, to standardized version control of team code, you are the creators who grant cold metal a smart brain.
-- **Outreach & Public Relations**: The team's megaphone and diplomats. Securing sponsorship, writing engineering notebooks, promoting STEM education, and connecting with other teams. You extend this team's influence far beyond the field itself.
+- **Modelagem e design (3D Modeling & Design)**: a ponte entre a imaginação e a realidade. Antes de as peças serem realmente fabricadas, vocês precisam fazer no espaço virtual uma concepção precisa, a montagem e a análise mecânica para garantir a viabilidade do projeto.
+- **Hardware e construção (Hardware & Build)**: transformar os desenhos em realidade. Vocês são os criadores do esqueleto e dos músculos do robô, responsáveis por montar engrenagens, perfis estruturais e motores em um guerreiro de aço estável e forte para a arena.
+- **Programação (Programming)**: dar alma ao robô. Da lógica de baixo nível aos algoritmos da fase de aplicação, passando pela gestão padronizada das versões do código da equipe, vocês são os criadores que dão um cérebro inteligente ao metal frio.
+- **Divulgação e relações públicas (Outreach & PR)**: o megafone e os diplomatas da equipe. Conseguir patrocínios, escrever o caderno de engenharia, promover a educação STEM e trocar experiências com outras equipes. Vocês fazem a influência desta equipe ir muito além da arena.
 
-If you are a newcomer: do not treat this as a dry textbook — treat it as a "career roadmap." Read the whole guide first to understand what each division does, then dive deep into the area that interests you most. If you encounter unfamiliar terminology, ask a veteran anytime — this guide is your passport into the team.
+Se você é um novo membro: não o trate como um livro didático árido — trate-o como um "mapa de carreira". Leia o guia inteiro primeiro para entender o que cada área faz e depois aprofunde-se no campo que mais lhe interessa. Se encontrar termos técnicos desconhecidos, pergunte a qualquer momento aos veteranos — este guia é sua porta de entrada na equipe.
 
-If you are a veteran: use it as your "baseline." When working or mentoring newcomers, follow the standard procedures in the guide to ensure our technical knowledge is passed down accurately.
+Se você é um veterano: use-o como sua "linha de base". Ao trabalhar e orientar os novatos, siga os processos padrão do guia para garantir que nosso acervo técnico seja transmitido com precisão.
 
-FTC is a hardcore tech competition, but it is also a story about growth and companionship. Here you will experience the frustration of mismatched parts and the desperation of buggy code — but even more, the euphoria of solving a problem and the deep bonds forged fighting side by side with teammates.
+O FTC é uma competição de tecnologia exigente, mas é também uma história sobre crescimento e convivência. Aqui você vai passar pela frustração de peças que não encaixam e pela irritação de um código com erro, mas também sentirá a euforia do momento em que resolve um problema e a amizade profunda de lutar lado a lado com os companheiros de equipe.
 
-We hope this guide becomes a reliable companion on your FTC journey. In the new season, let us uphold professionalism, experiment boldly, and verify carefully.
+Esperamos que este guia seja um companheiro confiável na sua jornada no FTC. Que na nova temporada mantenhamos o profissionalismo, ousemos experimentar e verifiquemos com cuidado.
 
-Enjoy the competition, enjoy creating, and let us reach new heights!
+Aproveite a competição, aproveite criar — e vamos alcançar novos resultados!
 
 ---
 
---> Compiled by the 32477 Origin Quick Start Guide Editorial Team · August 2026
+--> Equipe editorial do Guia de início rápido do 32477 Origin · agosto de 2026
