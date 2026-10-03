@@ -29,7 +29,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
       Tinos；build 前自动校验用字覆盖，缺字报错并提示重建子集）
     - 单页 PDF（dist/pdf/{lang}/{page}.pdf，含页眉页脚）仅通过 --page 参数
       生成，用于内容调试；完整导出（不带 --page）在合并成功后会自动删除
-      单页 PDF 目录，dist/pdf/ 下只保留六语言合并版指南。
+      单页 PDF 目录，dist/pdf/ 下只保留各语言合并版指南。
 
 依赖:
     - Google Chrome / Edge（无头模式 + 远程调试端口）
@@ -107,6 +107,12 @@ PDF_TEXTS = {
         "school": "Beijing National Day Experimental School",
         "lang": "\ud55c\uad6d\uc5b4\ud310",
     },
+    "pt-br": {
+        "name": "Guia de início rápido do 32477 Origin",
+        "name2": "快速入门指南",
+        "school": "Beijing National Day Experimental School",
+        "lang": "Edição em português (Brasil)",
+    },
 }
 
 # 目录标题本地化
@@ -117,6 +123,7 @@ TOC_TITLES = {
     "fr": "Table des mati\u00e8res",
     "es": "\u00cdndice",
     "ko": "\ubaa9\ucc28",
+    "pt-br": "Sumário",
 }
 
 # 页脚文案（reportlab 盖印，x=当前页）与字体（内置 CID 字体）
@@ -127,6 +134,7 @@ FOOTER_TEXTS = {
     "fr": "\u2014 {x} \u2014",
     "es": "\u2014 {x} \u2014",
     "ko": "\u2014 {x} \u2014",
+    "pt-br": "\u2014 {x} \u2014",
 }
 # ============================================================
 #  字体（PDF 专用；网页版仍用系统字体）
@@ -175,6 +183,7 @@ BODY_FONTS = {
     "fr": "'Times New Roman','Tinos','Noto Serif SC',serif",
     "es": "'Times New Roman','Tinos','Noto Serif SC',serif",
     "ko": "'Times New Roman','Tinos','Noto Serif KR','Noto Serif SC',serif",
+    "pt-br": "'Times New Roman','Tinos','Noto Serif SC',serif",
 }
 HEAD_FONTS = {
     "zh-hans": "'Noto Sans SC','Noto Sans',sans-serif",
@@ -183,6 +192,7 @@ HEAD_FONTS = {
     "fr": "'Noto Sans','Noto Sans SC',sans-serif",
     "es": "'Noto Sans','Noto Sans SC',sans-serif",
     "ko": "'Noto Sans KR','Noto Sans','Noto Sans SC',sans-serif",
+    "pt-br": "'Noto Sans','Noto Sans SC',sans-serif",
 }
 KAI_FONTS = {
     "zh-hans": "'Origin Kai SC','Noto Serif SC',serif",
@@ -191,6 +201,7 @@ KAI_FONTS = {
     "fr": BODY_FONTS["fr"],
     "es": BODY_FONTS["es"],
     "ko": BODY_FONTS["ko"],
+    "pt-br": BODY_FONTS["pt-br"],
 }
 MONO_FONT = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
 
@@ -202,6 +213,7 @@ STAMP_FONTS = {
     "fr": ("Tinos", "Tinos-Regular.ttf"),
     "es": ("Tinos", "Tinos-Regular.ttf"),
     "ko": ("NotoSerifKR", "NotoSerifKR-Regular.ttf"),
+    "pt-br": ("Tinos", "Tinos-Regular.ttf"),
 }
 
 # 纸张与页边距：A4（210×297mm），上下 2.54cm，左右 3.18cm
@@ -632,6 +644,19 @@ IMPRINT_TEXTS = {
             ("\uc8fc\uc18c", "\uc911\uad6d \ubca0\uc774\uc9d5\uc2dc \ud558\uc774\ub518\uad6c \ud0c0\uc774\ud551\ub85c 8\ubc88\uc9c0, \uc6b0\ud3b8\ubc88\ud638 100039"),
         ],
     },
+    "pt-br": {
+        "title_label": "Título",
+        "fields": [
+            ("Edição", "{edition}"),
+            ("Versão", "{tag}"),
+            ("Data de publicação", "{date}"),
+            ("Edição linguística", "{lang_edition}"),
+            ("Editor-chefe", "Fu Xiuqi (付修齐)"),
+            ("Redatores", "Du Xingzhou (杜星洲), Xie Jincan (谢金灿), et al."),
+            ("Produzido por", "FTC 32477 Origin · Beijing National Day Experimental School"),
+            ("Endereço", "N.º 8 Taiping Road, Distrito de Haidian, Pequim 100039, China"),
+        ],
+    },
 }
 
 RESOURCE_TEXTS = {
@@ -695,6 +720,16 @@ RESOURCE_TEXTS = {
             ("\uc758\uacac \ud53c\ub4dc\ubc31", "https://github.com/ftc32477/quick-start-guide/issues"),
         ],
     },
+    "pt-br": {
+        "heading": "Recursos e atualizações",
+        "intro": "Este guia é revisado continuamente. Obtenha o conteúdo mais recente pelos seguintes canais:",
+        "items": [
+            ("Edição on-line", "https://ftc32477.github.io/docs/"),
+            ("Histórico de versões", "https://ftc32477.github.io/docs/{lang}/versions.html"),
+            ("Repositório de código aberto", "https://github.com/ftc32477/quick-start-guide"),
+            ("Feedback", "https://github.com/ftc32477/quick-start-guide/issues"),
+        ],
+    },
 }
 
 
@@ -705,6 +740,7 @@ def render_imprint(lang_key):
     released = [v for v in build_mod.VERSIONS if v.get("status") != "preview"]
     latest = released[0] if released else {}
     edition = (latest.get("name", {}).get(lang_key)
+               or latest.get("name", {}).get("en-us", "")
                or latest.get("name", {}).get("zh-hans", ""))
     release_date = build_mod.format_release_date(lang_key, latest.get("date", ""))
     lang_edition = PDF_TEXTS[lang_key].get("lang", PDF_TEXTS["zh-hans"]["lang"])
