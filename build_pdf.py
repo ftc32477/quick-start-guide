@@ -1307,6 +1307,12 @@ def merge_guide(cover_pdf, title_pdf, imprint_pdf, preface_pdf, toc_pdf, main_pd
         "/Creator": "FTC 32477 Origin (build_pdf.py)",
     })
 
+    # 统一页面尺寸为精确 A4（210×297mm = 595.276×841.89pt），不缩放内容
+    _A4 = RectangleObject([0, 0, 595.276, 841.890])
+    for page in writer.pages:
+        page.mediabox = _A4
+        page.cropbox = _A4
+
     with open(out_path, "wb") as f:
         writer.write(f)
 

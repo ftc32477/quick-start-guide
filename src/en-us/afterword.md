@@ -37,10 +37,14 @@ Enjoy the competition, enjoy creating, and let us reach new heights!
 ![Team group photo (December 19, 2025)](../images/afterword/group_photo_20251219.jpg)
 ![Team group photo (May 28, 2026)](../images/afterword/group_photo_20260528.jpg)
 
+**Photo roster (December 19, 2025)**: Top row, left to right: Shi Yuguang (时宇光), Wang Yizhou (王一舟), Jiang Yichen (姜易辰), Fu Xiuqi (付修齐), Du Xingzhou (杜星洲), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃); bottom row, left to right: Du Fengyu (杜丰宇), Liu Chuyi (刘楚翌), Yu Zichen (于紫晨), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).
+
+**Photo roster (May 28, 2026)**: Top row, left to right: Wang Yizhou (王一舟), Shi Yuguang (时宇光), Du Xingzhou (杜星洲), Fu Xiuqi (付修齐), Xue Chen (薛晨), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃), Liu Chuyi (刘楚翌); bottom row, left to right: Liu Yuxuan (柳宇轩), Du Fengyu (杜丰宇), Han Zixuan (韩子萱), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).
+
 ---
 
 **Legal Notice:** This guide is an independent product of FTC Team 32477 Origin. Our team is not affiliated with, endorsed by, or sponsored by FIRST® (For Inspiration and Recognition of Science and Technology). FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge, and FTC® are registered trademarks of FIRST. The designs, code, and resources shared in this guide are primarily provided by our team members and may also incorporate open-source materials and contributions from others; they do not represent official FIRST materials.
 
 ---
 
-*Compiled by the 32477 Origin Quick Start Guide Editorial Team · September 2026, 1st Edition · Revision 2*
+*Compiled by the 32477 Origin Quick Start Guide Editorial Team · September 2026, 1st Edition · Revision 3*

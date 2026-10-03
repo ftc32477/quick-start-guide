@@ -13,14 +13,7 @@
 <meta name="twitter:title" content="Divulgación y relaciones públicas｜Guía de inicio rápido de FTC 32477 Origin">
 <meta name="twitter:description" content="A continuación se indican los materiales adicionales que requiere Divulgación y relaciones públicas.">
 <meta name="twitter:image" content="https://ftc32477.github.io/docs/images/basic/team_logo.png">
-<link rel="canonical" href="https://ftc32477.github.io/docs/es/outreach.html">
-<link rel="alternate" hreflang="zh-hans" href="https://ftc32477.github.io/docs/zh-hans/outreach.html">
-<link rel="alternate" hreflang="zh-hant" href="https://ftc32477.github.io/docs/zh-hant/outreach.html">
-<link rel="alternate" hreflang="en-us" href="https://ftc32477.github.io/docs/en-us/outreach.html">
-<link rel="alternate" hreflang="fr" href="https://ftc32477.github.io/docs/fr/outreach.html">
-<link rel="alternate" hreflang="es" href="https://ftc32477.github.io/docs/es/outreach.html">
-<link rel="alternate" hreflang="ko" href="https://ftc32477.github.io/docs/ko/outreach.html">
-<link rel="alternate" hreflang="x-default" href="https://ftc32477.github.io/docs/en-us/outreach.html">
+<meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../images/basic/icon_team_logo.ico" type="image/x-icon">
 <link rel="icon" type="image/png" sizes="32x32" href="../images/basic/icon_team_logo_32.png">
@@ -260,6 +253,13 @@ tr:nth-child(even){background:#fafafa}
   .hero h1{font-size:20px}
 }
 
+/* dev 预览标识（仅 dev 通道构建时输出；打印隐藏） */
+.dev-badge{
+  position:fixed;right:14px;bottom:14px;z-index:400;
+  background:#d32f2f;color:#fff;padding:6px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.92
+}
+@media print{.dev-badge{display:none!important}}
 /* ====== PRINT (PDF 导出) ====== */
 /*
  * 注意：Chrome 打印视口宽度可能低于 768px，导致移动端媒体查询规则
@@ -358,7 +358,7 @@ tr:nth-child(even){background:#fafafa}
 <a class="sub-link sub-3" href="#PremioInspireypuntuación">Premio Inspire y puntuación</a>
 <a href="afterword.html">Epílogo</a>
   </div>
-  <div class="sidebar-footer">1.ª edición, septiembre de 2026 · revisión 2 &middot; Equipo editorial</div>
+  <div class="sidebar-footer">1.ª edición, septiembre de 2026 · revisión 3 &middot; Equipo editorial</div>
 </nav>
 
 <main>
@@ -423,5 +423,6 @@ tr:nth-child(even){background:#fafafa}
   if(lss){lss.addEventListener("change",function(){window.location.href=lss.value})};
 })();
 </script>
+<div class="dev-badge" role="note">Vista previa de desarrollo</div>
 </body>
 </html>

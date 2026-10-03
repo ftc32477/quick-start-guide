@@ -37,10 +37,14 @@ Profitez de la compétition, profitez de la création, et atteignons de nouveaux
 ![Photo de groupe (19 décembre 2025)](../images/afterword/group_photo_20251219.jpg)
 ![Photo de groupe (28 mai 2026)](../images/afterword/group_photo_20260528.jpg)
 
+**Liste de la photo (19 décembre 2025)** : Rangée supérieure, de gauche à droite : Shi Yuguang (时宇光), Wang Yizhou (王一舟), Jiang Yichen (姜易辰), Fu Xiuqi (付修齐), Du Xingzhou (杜星洲), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃) ; rangée inférieure, de gauche à droite : Du Fengyu (杜丰宇), Liu Chuyi (刘楚翌), Yu Zichen (于紫晨), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).
+
+**Liste de la photo (28 mai 2026)** : Rangée supérieure, de gauche à droite : Wang Yizhou (王一舟), Shi Yuguang (时宇光), Du Xingzhou (杜星洲), Fu Xiuqi (付修齐), Xue Chen (薛晨), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃), Liu Chuyi (刘楚翌) ; rangée inférieure, de gauche à droite : Liu Yuxuan (柳宇轩), Du Fengyu (杜丰宇), Han Zixuan (韩子萱), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).
+
 ---
 
 **Avis juridique :** Ce guide est un produit indépendant de l'équipe FTC 32477 Origin. Notre équipe n'est ni affiliée à FIRST® (For Inspiration and Recognition of Science and Technology), ni approuvée ni parrainée par cette organisation. FIRST®, FIRST® Robotics Competition, FRC®, FIRST® Tech Challenge et FTC® sont des marques déposées de FIRST. Les designs, le code et les ressources partagés dans ce guide sont principalement fournis par les membres de notre équipe et peuvent également intégrer des matériaux open source et les contributions d'autres personnes ; ils ne constituent pas des documents officiels de FIRST.
 
 ---
 
-*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Septembre 2026, 1re édition · révision 2*
+*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Septembre 2026, 1re édition · révision 3*

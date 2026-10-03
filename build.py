@@ -50,6 +50,7 @@ LANGUAGES = {
         "back_home_label": "返回主页",
         "back_portal_label": "返回门户",
         "sort_label": "排序",
+        "dev_badge_label": "开发预览版",
         "brand": "快速入门指南",
         "site_title": "FTC 32477 Origin 快速入门指南",
         "pages": {
@@ -70,6 +71,7 @@ LANGUAGES = {
         "back_home_label": "返回首頁",
         "back_portal_label": "返回入口",
         "sort_label": "排序",
+        "dev_badge_label": "開發預覽版",
         "brand": "快速入門指南",
         "site_title": "FTC 32477 Origin 快速入門指南",
         "pages": {
@@ -90,6 +92,7 @@ LANGUAGES = {
         "back_home_label": "Back to home",
         "back_portal_label": "Back to portal",
         "sort_label": "Sort",
+        "dev_badge_label": "Dev Preview",
         "brand": "Quick Start Guide",
         "site_title": "FTC 32477 Origin Quick Start Guide",
         "pages": {
@@ -110,6 +113,7 @@ LANGUAGES = {
         "back_home_label": "Retour à l'accueil",
         "back_portal_label": "Retour au portail",
         "sort_label": "Trier",
+        "dev_badge_label": "Aperçu développement",
         "brand": "Guide de démarrage rapide",
         "site_title": "Guide de démarrage rapide FTC 32477 Origin",
         "pages": {
@@ -130,6 +134,7 @@ LANGUAGES = {
         "back_home_label": "Volver al inicio",
         "back_portal_label": "Volver al portal",
         "sort_label": "Ordenar",
+        "dev_badge_label": "Vista previa de desarrollo",
         "brand": "Guía de inicio rápido",
         "site_title": "Guía de inicio rápido de FTC 32477 Origin",
         "pages": {
@@ -150,6 +155,7 @@ LANGUAGES = {
         "back_home_label": "홈으로 돌아가기",
         "back_portal_label": "포털로 돌아가기",
         "sort_label": "정렬",
+        "dev_badge_label": "개발 미리보기",
         "brand": "빠른 시작 가이드",
         "site_title": "FTC 32477 Origin 빠른 시작 가이드",
         "pages": {
@@ -189,11 +195,70 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.3.2"
+RELEASE_TAG = "v1.3.3"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按六语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.3.3",
+        "date": "2026-10-03",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年9月第1版·第3次修订",
+            "zh-hant": "2026年9月第1版·第3次修訂",
+            "en-us": "September 2026, 1st Edition · Revision 3",
+            "fr": "Septembre 2026, 1re édition · révision 3",
+            "es": "1.ª edición, septiembre de 2026 · revisión 3",
+            "ko": "2026년 9월 제1판 · 3차 개정",
+        },
+        "changes": {
+            "zh-hans": [
+                "后记两张合照下新增合影名单（按上排/下排从左至右标注姓名），六语言同步。",
+                "README 重构：文首新增阅读导航与按任务直达表，并新增「配图规范」章节（尺寸、去 EXIF、截图去敏、图片组、合照规范）。",
+                "dev 预览站新增可见「开发预览版」标识（打印时自动隐藏）。",
+                "PDF 页面尺寸统一为精确 A4（595.276×841.89pt），构建时自动归一化，不缩放内容。",
+            ],
+            "zh-hant": [
+                "後記兩張合照下新增合影名單（按上排/下排由左至右標註姓名），六語言同步。",
+                "README 重構：文首新增閱讀導覽與按任務直達表，並新增「配圖規範」章節（尺寸、去除 EXIF、截圖去敏、圖片組、合照規範）。",
+                "dev 預覽站新增可見「開發預覽版」標識（列印時自動隱藏）。",
+                "PDF 頁面尺寸統一為精確 A4（595.276×841.89pt），建置時自動歸一化，不縮放內容。",
+            ],
+            "en-us": [
+                "Added photo rosters under both group photos in the afterword (top/bottom rows, left to right), synchronized across all six languages.",
+                "README restructured: added a top-of-file reading guide with task-based links, plus an \"Image Guidelines\" section (sizes, EXIF removal, screenshot hygiene, image rows, group-photo rules).",
+                "The dev preview site now shows a visible \"Dev Preview\" badge (hidden automatically when printing).",
+                "Unified all PDF page sizes to exact A4 (595.276×841.89 pt) during build, without scaling content.",
+            ],
+            "fr": [
+                "Ajout de la liste nominative sous les deux photos de groupe de la postface (rangées supérieure/inférieure, de gauche à droite), synchronisée dans les six langues.",
+                "README restructuré : guide de lecture en tête avec liens par tâche, et nouvelle section « Règles pour les images » (dimensions, suppression des EXIF, hygiène des captures d'écran, groupes d'images, photos de groupe).",
+                "Le site de prévisualisation dev affiche désormais un badge « Aperçu développement » (masqué automatiquement à l'impression).",
+                "Toutes les pages PDF sont désormais au format A4 exact (595,276 × 841,89 pt) lors du build, sans mise à l'échelle du contenu.",
+            ],
+            "es": [
+                "Añadidas las listas de nombres bajo las dos fotos de grupo del epílogo (filas superior/inferior, de izquierda a derecha), sincronizadas en los seis idiomas.",
+                "README reestructurado: guía de lectura al inicio con enlaces por tarea y nueva sección «Reglas para las imágenes» (tamaños, eliminación de EXIF, higiene de capturas, grupos de imágenes, fotos de grupo).",
+                "El sitio de vista previa dev ahora muestra una etiqueta visible «Vista previa de desarrollo» (se oculta al imprimir).",
+                "Todas las páginas del PDF se unifican al A4 exacto (595,276 × 841,89 pt) durante la compilación, sin escalar el contenido.",
+            ],
+            "ko": [
+                "후기의 단체 사진 두 장 아래에 촬영 명단(윗줄/아랫줄 왼쪽부터)을 추가하고 6개 언어에 동기화했습니다.",
+                "README 개편: 문서 상단에 읽기 안내와 작업별 바로가기를 추가하고, 「이미지 규칙」 절(크기, EXIF 제거, 스크린샷 위생, 이미지 그룹, 단체 사진 규칙)을 신설했습니다.",
+                "dev 미리보기 사이트에 눈에 보이는 「개발 미리보기」 배지를 추가했습니다(인쇄 시 자동 숨김).",
+                "PDF 모든 페이지 크기를 정확한 A4(595.276×841.89pt)로 통일했으며 내용은 축소하지 않습니다.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.3.3-ko.pdf",
+        },
+    },
     {
         "tag": "v1.3.2",
         "date": "2026-10-03",
@@ -744,6 +809,18 @@ def favicon_links(prefix="../images/basic/"):
         f'<link rel="apple-touch-icon" sizes="180x180" '
         f'href="{prefix}apple-touch-icon.png">'
     )
+
+
+def dev_badge(lang_key=None):
+    """dev 通道的可见预览标识（仅 dev 构建输出；打印时隐藏）。"""
+    if not _on_dev_branch():
+        return ""
+    if lang_key:
+        label = LANGUAGES[lang_key].get("dev_badge_label", "开发预览版")
+    else:
+        label = LANGUAGES["zh-hans"]["dev_badge_label"]
+    return f'<div class="dev-badge" role="note">{label}</div>'
+
 
 
 def visible_versions():
@@ -1301,6 +1378,13 @@ tr:nth-child(even){background:#fafafa}
   .hero h1{font-size:20px}
 }
 
+/* dev 预览标识（仅 dev 通道构建时输出；打印隐藏） */
+.dev-badge{
+  position:fixed;right:14px;bottom:14px;z-index:400;
+  background:#d32f2f;color:#fff;padding:6px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.92
+}
+@media print{.dev-badge{display:none!important}}
 /* ====== PRINT (PDF 导出) ====== */
 /*
  * 注意：Chrome 打印视口宽度可能低于 768px，导致移动端媒体查询规则
@@ -1460,6 +1544,7 @@ def render_page(page_key, html_body, lang_key, headings=None):
   if(lss){{lss.addEventListener("change",function(){{window.location.href=lss.value}})}};
 }})();
 </script>
+{dev_badge(lang_key)}
 </body>
 </html>"""
 
@@ -1535,6 +1620,13 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 .lang-card.en-us{border-top-color:#d85d23}
 .lang-card.fr{border-top-color:#d85d23}
 .lang-card.es{border-top-color:#ffb953}
+/* dev 预览标识（仅 dev 通道构建时输出；打印隐藏） */
+.dev-badge{
+  position:fixed;right:14px;bottom:14px;z-index:400;
+  background:#d32f2f;color:#fff;padding:6px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.92
+}
+@media print{.dev-badge{display:none!important}}
 .lang-card.ko{border-top-color:#ffb953}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .lang-card .lang-name{font-size:13px;color:var(--muted);margin-bottom:12px}
@@ -1626,6 +1718,7 @@ def render_portal():
   </div>
 </footer>
 
+{dev_badge()}
 </body>
 </html>"""
 
@@ -1777,6 +1870,13 @@ LANG_HOME_CSS = r"""
 .lh-btn{display:inline-block;background:var(--dark);color:#fff;border-radius:8px;padding:10px 22px;font-size:14px;font-weight:600;text-decoration:none}
 .lh-btn:hover{background:var(--slate)}
 .lh-legal{color:#666;font-size:11px;line-height:1.8;margin-top:8px}
+/* dev 预览标识（仅 dev 通道构建时输出；打印隐藏） */
+.dev-badge{
+  position:fixed;right:14px;bottom:14px;z-index:400;
+  background:#d32f2f;color:#fff;padding:6px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.92
+}
+@media print{.dev-badge{display:none!important}}
 @media print{.topbar,.sidebar,.overlay{display:none!important}}
 """
 
@@ -1913,6 +2013,7 @@ def render_lang_homepage(lang_key):
   if(lss){{lss.addEventListener("change",function(){{window.location.href=lss.value}})}};
 }})();
 </script>
+{dev_badge(lang_key)}
 </body>
 </html>"""
 
@@ -1950,6 +2051,13 @@ VERSIONS_CSS = r"""
 #verNav{display:flex;flex-direction:column}
 #verNav.reversed{flex-direction:column-reverse}
 .sidebar-nav a.ver-link{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+/* dev 预览标识（仅 dev 通道构建时输出；打印隐藏） */
+.dev-badge{
+  position:fixed;right:14px;bottom:14px;z-index:400;
+  background:#d32f2f;color:#fff;padding:6px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,.25);opacity:.92
+}
+@media print{.dev-badge{display:none!important}}
 @media print{.topbar,.sidebar,.overlay,.ver-sort{display:none!important}}
 """
 
@@ -2213,6 +2321,7 @@ def render_versions_page(lang_key):
   desc.addEventListener("click",function(){{setOrder(false)}});
 }})();
 </script>
+{dev_badge(lang_key)}
 </body>
 </html>"""
 
@@ -2288,6 +2397,21 @@ def build():
             for _, _, files in os.walk(IMAGES_DIR)
         )
         print(f"  [复制] images/ → dist/images/ ({img_count} 个文件)")
+        exif_files = []
+        for root, _, files in os.walk(IMAGES_DIR):
+            for name in files:
+                if name.lower().endswith((".jpg", ".jpeg")):
+                    path = os.path.join(root, name)
+                    try:
+                        with open(path, "rb") as f:
+                            if b"Exif\x00\x00" in f.read(65536):
+                                exif_files.append(os.path.relpath(path, BASE_DIR))
+                    except Exception:
+                        pass
+        if exif_files:
+            print("  [提示] 以下图片含 EXIF 元数据（可能含 GPS/设备信息），建议清除后重新构建：")
+            for rel in exif_files:
+                print(f"         {rel}")
     else:
         ensure_dir(dist_images)
         print("  [提示] images/ 目录为空，可放置图片后重新构建")
