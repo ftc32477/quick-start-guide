@@ -1,10 +1,10 @@
-# Programming
+# Programação
 
-## 1. Basic Requirements
+## 1. Requisitos básicos
 
-The following are supplementary requirements for Programming.
+Os itens a seguir são requisitos complementares de Programação.
 
-### Applications
+### Aplicativos
 
 - Git
 - Visual Studio Code
@@ -12,15 +12,15 @@ The following are supplementary requirements for Programming.
 
 ---
 
-## 2. Environment Setup
+## 2. Configuração do ambiente
 
-The following environment must be configured before you begin. If you have any questions, please consult an administrator.
+O ambiente de trabalho abaixo deve ser configurado antes do início oficial. Siga as instruções; em caso de dúvidas, consulte um administrador.
 
-### Web Browser
+### Navegador de internet
 
-Bookmark the following additional websites:
+Salve também os seguintes sites nos favoritos:
 
-| Name | URL |
+| Nome | Endereço |
 |------|------|
 | Programming Resources | https://www.firstinspires.org/resources/library/ftc/programming-resources |
 | REV Robotics Documentation | https://docs.revrobotics.com/duo-control/hello-robot-java/welcome |
@@ -29,128 +29,126 @@ Bookmark the following additional websites:
 
 ### Git
 
-Git is the version control tool adopted by our team for program files. Android Studio does not bundle Git — install and configure it using either method below.
+O Git é a ferramenta de controle de versão dos arquivos de programa adotada pela nossa equipe. O Android Studio não vem com o Git, então é preciso instalá-lo e configurá-lo; escolha uma das duas formas a seguir.
 
-**Method 1 (download and install Git within Android Studio):**
+**Forma 1 (baixar e instalar o Git dentro do Android Studio):**
 
-1. Open Android Studio and go to Settings: File → Settings on Windows/Linux; Android Studio → Settings (or Preferences) on macOS
-2. Expand Version Control in the left menu and click Git
-3. If Git is not detected, the dialog provides a download entry — click it to download and install Git
-4. After installation, confirm the Git executable path under Path to Git executable (git.exe on Windows); click Test until it shows Successful, then click Apply and OK
+1. Abra o Android Studio e entre nas configurações: no Windows/Linux, File → Settings; no macOS, Android Studio → Settings (ou Preferences)
+2. No menu à esquerda, expanda Version Control e clique em Git
+3. Se o Git não for detectado, a tela oferece um link de download; clique para baixar e instalar
+4. Depois de instalar, confirme o caminho do Git em Path to Git executable (no Windows, `git.exe`) e clique em Test; quando aparecer Successful, clique em Apply e OK
 
-**Method 2 (install Git separately first, then configure the path in Android Studio):**
+**Forma 2 (instalar o Git separadamente e configurar o caminho no Android Studio):**
 
-1. Visit the official Git website at [https://git-scm.com/downloads](https://git-scm.com/downloads) and download the installer for your system (Windows / macOS / Linux)
-2. Run the installer and accept the defaults by clicking Next
-3. Open Android Studio and go to Settings → Version Control → Git
-4. Enter or browse to the Git executable path under Path to Git executable (auto-detected if the PATH environment variable is set)
-5. Click Test; once it shows Successful, click Apply and OK
+1. Acesse o site oficial [https://git-scm.com/downloads](https://git-scm.com/downloads) e baixe o instalador para o seu sistema (Windows / macOS / Linux)
+2. Execute o instalador e avance com Next nas opções padrão até concluir
+3. Abra o Android Studio e vá em Settings → Version Control → Git
+4. Em Path to Git executable, digite ou selecione o caminho do Git (se as variáveis de ambiente estiverem configuradas, ele é detectado automaticamente)
+5. Clique em Test; quando aparecer Successful, clique em Apply e OK
 
-To enable version control for the current project: click VCS in the top menu → Enable Version Control Integration..., choose Git, and click OK.
+Para ativar o controle de versão no projeto atual: clique em VCS → Enable Version Control Integration..., escolha Git e clique em OK.
 
 ### Android Studio
 
-Android Studio is the IDE adopted by our team for writing programs.
+O Android Studio é a ferramenta de programação adotada pela nossa equipe.
 
-**Software installation and configuration:**
+**Instalação e configuração do ambiente:**
 
-1. Open [https://developer.android.com/studio](https://developer.android.com/studio)
-2. Click "Download Android Studio" and install the version for your platform.
+1. Abra [https://developer.android.com/studio](https://developer.android.com/studio)
+2. Clique em "Download Android Studio", baixe a versão correspondente e instale.
 
-**On Windows, note the following during installation:**
+**No Windows, atenção durante a instalação:**
 
-- Both checkboxes must be checked
-- Choose a path with sufficient space that will not be moved
+- Marque as duas caixas de seleção
+- Escolha um caminho com espaço suficiente e que não será alterado
 
-**Initialization:**
+**Inicialização:**
 
-- Select "Standard" mode
-- Check "Accept" when agreeing to the licenses
-- Keep everything else unchanged and click "Next"
+- Escolha o modo "Standard"
+- Ao aceitar os termos, marque "Accept"
+- Mantenha as demais opções e clique em "Next"
 
-**Installing the Chinese language pack (optional):**
+**Instalação do pacote de idioma em português (opcional):**
 
-1. Open the [Android Studio Chinese Language Pack releases](https://github.com/sollyu/AndroidStudioChineseLanguagePack/releases)
-2. Download the latest language pack (.jar file)
-3. In the left tab list on the welcome screen, select "Plugins", then "Install Plugin from Disk"
-4. Select the downloaded .jar file and open it; make sure the plugin is enabled once loaded
-5. In the left tab list, select "Customize", open "Language and Region", select "Chinese (Simplified)" under "Language", choose "Americas" under "Region", then restart
+1. Abra a página do [Portuguese (Brazil) Language Pack](https://plugins.jetbrains.com/plugin/23206-portuguese-brazil-language-pack)
+2. Na tela inicial, abra "Plugins" → "Marketplace", pesquise "Portuguese (Brazil) Language Pack" e instale (ou baixe o pacote e use "Install Plugin from Disk")
+3. Confirme que o plugin está ativado depois de carregar
+4. Se quiser escolher idioma e região manualmente, abra "Customize" → "Language and Region", defina o idioma como "Português (Brasil)" e a região como "Americas"; depois reinicie o Android Studio
 
-**Cloning the repository:**
+**Clonar o repositório:**
 
-1. Click "GitHub" in the left tab list and sign in via "Log in with GitHub" to authorize.
-2. Select the current season's code repository (e.g., `ftc32477/FTC-32477-Decode-Program`)
-3. Choose an empty folder on a path that will not change and click "Clone"
-4. Wait for the download to finish; track progress via the "Build" tab in the left sidebar or the progress bar in the bottom-right corner
+1. Clique em "GitHub" na lista de abas à esquerda e use "Log in with GitHub" para autorizar.
+2. Escolha o repositório de código da temporada atual (por exemplo, `ftc32477/FTC-32477-Decode-Program`)
+3. Escolha uma pasta vazia, em um caminho que não vai mudar, e clique em "Clone"
+4. Aguarde a conclusão do download; acompanhe pelo cartão "Build" na barra lateral esquerda ou pela barra de progresso no canto inferior direito
 
-> [!warning] If you run into problems, ask an administrator.
+> [!warning] Em caso de problemas, consulte um administrador.
 
 ### Visual Studio Code
 
-Visual Studio Code is the tool adopted by our team for code editing and history viewing.
+O Visual Studio Code é a ferramenta adotada pela nossa equipe para edição de código e consulta de histórico.
 
-**Software installation and configuration:**
+**Instalação e configuração do ambiente:**
 
-1. Open [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download)
-2. Download and install the build for your platform
-3. Install the [Chinese language pack](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans) if you want the UI in Chinese.
+1. Abra [https://code.visualstudio.com/Download](https://code.visualstudio.com/Download)
+2. Baixe a versão correspondente e instale
+3. Para traduzir a interface, instale o [pacote de idioma português (Brasil)](https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-pt-BR).
 
 ---
 
-## 3. Tools Overview
+## 3. Introdução às ferramentas
 
 ### Android Studio
 
-Official documentation: [https://developer.android.com/studio/intro?hl=en](https://developer.android.com/studio/intro?hl=en)
+Documentação oficial: [https://developer.android.com/studio/intro?hl=pt-br](https://developer.android.com/studio/intro?hl=pt-br)
 
-In this project, we build on the official FTC application framework and write robot control programs in Java under the `TeamCode` folder, calling upon the various dependency libraries needed for robot operation.
+Neste projeto, usamos a estrutura de aplicativo oficial do FTC e escrevemos, na pasta `TeamCode`, o programa de controle do robô em Java, chamando as bibliotecas de que o robô precisa para funcionar.
 
-For the essentials you need to know about Android Studio, refer to the quick UI walkthrough in the official documentation.
+Para os conhecimentos básicos necessários no Android Studio, consulte os guias introdutórios da documentação oficial.
 
 ### Visual Studio Code
 
-Official documentation: [https://code.visualstudio.com/docs](https://code.visualstudio.com/docs)
+Documentação oficial: [https://code.visualstudio.com/docs](https://code.visualstudio.com/docs)
 
-Since Visual Studio Code follows similar operating logic to Android Studio and is used less frequently in this project, refer to the Android Studio section for interface guidance.
+Como a lógica de operação do Visual Studio Code é parecida com a do Android Studio, e o primeiro é usado com menos frequência neste projeto, consulte a seção do Android Studio para orientações de interface; não repetimos os detalhes aqui.
 
 ### Robot Dashboard
 
-- Connect to the Wi-Fi network "`32477-RC`". Wi-Fi password: ask an administrator or obtain it via the Driver Hub.
-- URL: [http://192.168.43.1:8080/](http://192.168.43.1:8080/) (accessible only within the robot's local network)
-- This is the web page of the Wi-Fi module built into the Control Hub (officially called the Robot Controller Console), providing a graphical management console for the Control Hub.
+- Conecte-se à rede Wi-Fi "`32477-RC`". Senha do Wi-Fi: pergunte ao administrador ou obtenha pelo Driver Hub.
+- Endereço: [http://192.168.43.1:8080/](http://192.168.43.1:8080/) (acessível somente na rede local do robô)
+- É a página web do módulo Wi-Fi embutido no Control Hub (nome oficial: Robot Controller Console), que oferece um painel gráfico para gerenciar o Control Hub.
 
-For the essentials you need to know about the Robot Dashboard, refer to the quick UI walkthrough in the official documentation.
+Para os conhecimentos básicos necessários no Robot Dashboard, consulte os guias introdutórios da documentação oficial.
 
 ---
 
-## 4. Workflow
+## 4. Fluxo de trabalho
 
-The Programming team's core work consists of three parts:
+O trabalho central da equipe de programação se divide em três partes:
 
-- **Autonomous programs**: control logic for the season's Autonomous period
-- **TeleOp programs**: operation logic for the driver-controlled period
-- **Sensor configuration**: configuration of sensors and vision systems
+- **Programa autônomo**: a lógica de controle da fase autônoma da temporada (Auto)
+- **Programa teleoperado**: a lógica de operação da fase controlada por controle (TeleOp)
+- **Configuração de sensores**: configuração de sensores diversos e do sistema de visão
 
-> [!info] Driver operation: the robot is driven with an Xbox controller; officially only the Xbox 360 model is permitted. Drivers are picked from the team on merit ("whoever can do it, does it"); being good at controller-based games is a natural advantage.
+> [!info] Operação do controle (Driver): o robô é operado com um controle de Xbox, e oficialmente apenas o modelo Xbox 360 é permitido; o Driver é escolhido internamente pelo critério "quem manda bem, joga", e alunos que se dão bem em jogos com controle levam vantagem natural.
 
-### Debugging Is the Core
+### A depuração é o ponto central
 
-> [!info] The real difficulty in program development lies in debugging. Autonomous paths, driver controls, PID parameters, vision configuration — most sensors come with ready-made packages you can reuse. What you really do is *tune*.
+> [!info] A verdadeira dificuldade do desenvolvimento está na depuração. Caminhos autônomos, operação manual, parâmetros de PID, configuração de visão — a maioria dos sensores tem pacotes prontos que podem ser reutilizados; o que você realmente faz é "ajustar".
 
-Debugging runs through the entire development workflow:
+O trabalho de depuração atravessa todo o fluxo de desenvolvimento:
 
-1. **Requirements analysis**: clarify the rules and task requirements of the current season
-2. **Architecture design**: design the overall program architecture and module breakdown
-3. **Implementation**: write Java code in Android Studio
-4. **Version control**: manage code versions with Git
-5. **Debugging**: tune autonomous paths, driver controls, PID parameters, and vision configuration
-6. **Testing & verification**: verify program functionality on the robot
-7. **Code review**: review and merge code via GitHub
-8. **Deployment**: deploy the final build to the Robot Controller
+1. **Análise de requisitos**: entender as regras e as tarefas da temporada atual
+2. **Arquitetura**: projetar a estrutura geral do programa e a divisão em módulos
+3. **Escrita do código**: escrever o código Java no Android Studio
+4. **Controle de versão**: gerenciar as versões do código com Git
+5. **Depuração**: ajustar caminhos autônomos, operação manual, parâmetros de PID e configuração de visão
+6. **Testes e validação**: verificar as funções do programa no robô
+7. **Revisão de código**: revisar e mesclar via GitHub
+8. **Implantação**: publicar a versão final no Robot Controller
 
+### Programação assistida por IA
 
-### AI-Assisted Programming
+> [!info] Hoje programar não é tão difícil: é possível usar ferramentas como agentes de IA como apoio. A capacidade central é **entender o código gerado pela IA, definir a direção das mudanças e dominar a depuração** — não é preciso escrever todo o código do zero.
 
-> [!info] Writing code is no longer the hard part: you can work with AI Agent tools to assist programming. The real core skill is being able to **read AI-generated code, know what to change, and debug it** — you don't need to write everything from scratch.
-
-- Core programming logic (e.g., for loops, while loops) is universal across languages; only the syntax differs. Students with C++ experience can adapt to Java quickly
+- A lógica central das linguagens de programação (como laços `for` e `while`) é universal, mudando apenas a sintaxe; quem tem base em C++ se adapta rápido ao desenvolvimento em Java

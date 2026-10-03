@@ -1,32 +1,32 @@
-# Hardware & Build
+# Hardware e construção
 
-## 1. Basic Requirements
+## 1. Requisitos básicos
 
-The following are supplementary requirements for Hardware & Build.
+Os itens a seguir são requisitos complementares de Hardware e construção.
 
-### Applications
+### Aplicativos
 
 - Bambu Studio
 - RD Works V8
 
-### Online Accounts
+### Contas online
 
-- Email address (@gmail.com or @outlook.com recommended)
+- E-mail (recomendamos @gmail.com ou @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
 - CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
 
 ---
 
-## 2. Environment Setup
+## 2. Configuração do ambiente
 
-The following environment must be configured before you begin. If you have any questions, please consult an administrator.
+O ambiente de trabalho abaixo deve ser configurado antes do início oficial. Siga as instruções; em caso de dúvidas, consulte um administrador.
 
-### Web Browser
+### Navegador de internet
 
-Bookmark the following additional websites:
+Salve também os seguintes sites nos favoritos:
 
-| Name | URL |
+| Nome | Endereço |
 |------|------|
 | goBILDA | https://www.gobilda.com/ |
 | REV Robotics | https://www.revrobotics.com/ |
@@ -34,338 +34,338 @@ Bookmark the following additional websites:
 
 ### Bambu Studio
 
-Bambu Studio is the 3D-printing solution adopted by our team.
+O Bambu Studio é a solução de impressão 3D adotada pela nossa equipe.
 
-**Registration:**
+**Registro:**
 
-1. Open [https://bambulab.cn/](https://bambulab.cn/) and register an account with a phone number or another method.
+1. Abra [https://bambulab.cn/](https://bambulab.cn/), clique no canto superior direito e registre uma conta com número de celular ou outro método.
 
-**Software installation and configuration:**
+**Instalação e configuração do ambiente:**
 
-1. Open [https://bambulab.cn/en/download/studio](https://bambulab.cn/en/download/studio)
-2. Download and install the appropriate version for your platform.
+1. Abra [https://bambulab.cn/en/download/studio](https://bambulab.cn/en/download/studio)
+2. Escolha a versão adequada, baixe e instale.
 
-**Important notes:**
+**Atenção:**
 
-- On Windows, you may change the installation directory, as long as the path ends with `..\Bambu Studio\`. During installation, check "Open .3mf files with Bambu Studio", "Open .stl files with Bambu Studio", and "Open .step/.stp files with Bambu Studio".
-- On macOS, drag `BambuStudio.app` into the Applications folder.
-- Launch Bambu Studio. Select "Mainland China" as the login region. Select at least the **Bambu Lab P1S** and **Bambu Lab P2S** printers; keep materials at default settings. Check "Install Bambu Network plugin".
-- Log in to your Bambu account with a phone number or another method.
+- No Windows, você pode alterar o diretório de instalação, desde que o caminho termine em `..\Bambu Studio\`. Ao concluir a instalação, marque as opções "abrir arquivos .3mf com o Bambu Studio", "abrir arquivos .stl com o Bambu Studio" e "abrir arquivos .step/.stp com o Bambu Studio".
+- No macOS, basta arrastar o `BambuStudio.app` para a pasta Aplicativos.
+- Abra o Bambu Studio. Na tela de login, escolha "China continental". Em impressoras, selecione pelo menos a **Bambu Lab P1S** e a **Bambu Lab P2S**; materiais podem ficar na configuração padrão. Marque "Instalar plugin de rede do Bambu".
+- Faça login na conta Bambu com número de celular ou outro método.
 
 ### RD Works V8
 
-> [!danger] **Note:** Installing this program on macOS is strongly discouraged — it would require virtual machine support such as Parallels Desktop, VMware Fusion, or CrossOver.
+> [!danger] **Atenção:** instalar este programa no macOS não é nada recomendado; seria necessário usar uma máquina virtual como Parallels Desktop, VMware Fusion ou CrossOver.
 
-RD Works V8 is the companion driver software for our laser cutter.
+O RD Works V8 é o software que acompanha a cortadora a laser adotada pela nossa equipe.
 
-**Software installation and configuration:**
+**Instalação e configuração do ambiente:**
 
-1. Obtain the `RDWorksV8Setup.exe` installer from an administrator or mentor, open it, and click "Install".
-2. You may change the installation path by checking "manually locate the installation path".
-3. Connect your computer to the laser cutter and click "Install USB driver".
-4. Keep all other options at their defaults.
+1. Obtenha o instalador `RDWorksV8Setup.exe` com um administrador ou com o professor orientador, abra-o e clique em "Install".
+2. Você pode marcar "posicionar manualmente o caminho de instalação" para alterar o local.
+3. Conecte o computador à cortadora a laser e clique em "Instalar driver USB".
+4. Mantenha as demais opções padrão.
 
 ---
 
-## 3. Supplies Overview
+## 3. Introdução a ferramentas e materiais
 
-### Common Tools
+### Ferramentas comuns
 
-> [!danger] Before using any hand tool, always check that it is in good condition (e.g., handle not loose, jaws not chipped), and wear protective gloves or goggles as needed.
+> [!danger] Antes de usar qualquer ferramenta manual, verifique se ela está em bom estado (por exemplo, se o cabo está solto ou se a mandíbula está lascada) e use luvas de proteção ou óculos de proteção quando necessário.
 
-> [!info] Only the most frequently used tools are covered here. All other tools are compiled into the *Tool List* appendix, which will keep growing over time.
+> [!info] Aqui listamos apenas as ferramentas mais usadas. As demais serão reunidas no apêndice "Lista de ferramentas", que será ampliado continuamente.
 
-#### Hex Key (Allen Wrench)
+#### Chave Allen (sextavada)
 
-An L-shaped or T-shaped tool with a regular hexagonal cross-section, used to turn socket-head screws. Insert either end fully into the hexagonal recess of the screw head; turn clockwise to tighten and counterclockwise to loosen. T-handle wrenches provide greater leverage or reach in deep bores.
+Ferramenta em L ou T de seção hexagonal, usada para girar parafusos com sextavado interno. Ao usar, insira completamente a ponta curta ou longa no encaixe hexagonal do parafuso: girar no sentido horário aperta; no sentido anti-horário, solta. Chaves com cabo em T costumam ser usadas para dar mais alavanca ou trabalhar em furos profundos.
 
-> [!info] The sizes we use most often are M3 and M4 — always keep them at hand.
+> [!info] Nossos tamanhos mais usados são M3 e M4; mantenha sempre os dois por perto.
 
-#### Socket
+#### Soquete
 
-A cylindrical fastening tool with a hexagonal bore that fits over a nut or bolt head. Place the socket vertically onto the nut and rotate it via the handle. Its advantages include a large contact area (less slippage) and suitability for tight spaces where ordinary wrenches cannot turn.
+Ferramenta cilíndrica de aperto com interior hexagonal, capaz de envolver porcas ou cabeças de parafuso. Ao usar, encaixe o soquete na vertical sobre a porca e gire com o cabo. A vantagem é a grande área de contato, que reduz o deslizamento, e a facilidade de trabalhar em espaços apertados onde uma chave comum não gira.
 
-#### Adjustable Wrench
+#### Chave inglesa
 
-A general-purpose wrench whose jaw opening can be adjusted within a certain range, fitting hex nuts of various sizes. Turn the worm gear to adjust the opening until it grips the nut flats. Always make sure the fixed jaw bears the main thrust or tension — i.e., apply force toward the fixed-jaw side — to prevent damage or slippage.
+Chave universal com abertura ajustável dentro de um intervalo, adequada para porcas hexagonais de diferentes tamanhos. Ao usar, gire a rosca sem fim para ajustar a abertura até ela encostar nos lados opostos da porca. Além disso, garanta que a mandíbula fixa receba o esforço principal — a força deve ser aplicada na direção da mandíbula fixa — para evitar que a chave quebre ou escorregue.
 
-#### Flat-Nose Pliers
+#### Alicate de bico chato
 
-A gripping tool with flat jaws, usually serrated on the inside to increase friction. Use them for bending sheet metal, holding small parts, or providing auxiliary pull during assembly.
+Ferramenta de preensão com bico achatado, geralmente com dentes finos internos para aumentar o atrito. Ao usar, serve para dobrar chapas metálicas finas, segurar peças pequenas ou dar apoio durante a montagem.
 
-#### Needle-Nose Pliers
+#### Alicate de bico fino
 
-Pliers with long, slender, conical jaws suited to tight workspaces. Commonly used to grip tiny parts, bend fine wires, or retrieve foreign objects from dense circuits or structures. The base of the jaws usually has a cutting edge, doubling as wire cutters.
+Alicate de bico longo e cônico, ideal para espaços estreitos. Ao usar, costuma segurar peças pequenas, dobrar fios finos ou retirar objetos presos em circuitos e estruturas densas. A base do bico geralmente tem lâmina de corte, podendo ser usado também como alicate de corte.
 
-#### Wire Stripper
+#### Alicate decapador
 
-A tool specifically designed to remove wire insulation without damaging the conductor. Choose the notch matching the wire gauge, place the wire in the notch, squeeze the handles, and gently twist while pulling outward to strip the insulation.
+Ferramenta específica para remover o isolamento dos fios sem ferir o condutor metálico. Ao usar, escolha o entalhe correspondente à espessura do fio, encaixe o fio no entalhe, aperte o cabo, gire levemente e puxe para fora para desencapar.
 
-#### Claw Hammer
+#### Martelo de unha
 
-A tool used to strike objects to move or deform them. One face is flat for driving; the other end is a V-shaped claw for pulling nails. Grip the end of the handle for maximum torque. Keep the hammer face parallel to the target surface when striking to prevent glancing blows.
+Ferramenta para golpear objetos e movê-los ou deformá-los. Uma face é plana, para bater, e a outra tem formato em V, para arrancar pregos. Ao usar, segure a extremidade do cabo para obter o máximo de torque. Ao bater, mantenha a face plana paralela à superfície do alvo para evitar escorregões laterais.
 
-#### Tape Measure
+#### Trena
 
-A flexible metal tape with a spring retraction mechanism, used for measuring longer distances or non-linear dimensions. Pull out the tape, hook the end claw onto an edge or butt it against a reference surface, read the graduations, and retract the tape with the locking button or the auto-return spring. Note that the hook has slight intentional play, which compensates for its thickness so that inside and outside measurements read identically.
+Fita métrica metálica flexível com mola de recolhimento, usada para medir distâncias maiores ou dimensões não lineares. Ao usar, puxe a fita e prenda o gancho na borda do objeto ou apoie-o em uma superfície de referência. Leia as marcações e, ao terminar, pressione a trava ou deixe a fita recolher sozinha. Observe que o gancho tem uma pequena folga; isso compensa a espessura do gancho para que as medições internas e externas sejam consistentes.
 
-#### Vernier Caliper
+#### Paquímetro
 
-A vernier caliper consists of a main scale (A) and a vernier scale (B) that slides along it.
+As partes principais do paquímetro são a escala principal A e a escala móvel (vernier) B, que desliza sobre ela.
 
-- **Principle**: A vernier caliper exploits the fixed small difference between the unit graduations of the main scale (1 mm) and those of the vernier scale to improve measurement precision. Common vernier calipers come in 10-division, 20-division, and 50-division varieties.
-- **Reading**: Read the main scale first — locate the zero line of the vernier scale relative to the main scale graduations. Then read the vernier scale — find which graduation line aligns exactly with a main scale line. Combine the two readings to obtain the measured length.
-- **Usage**: When the two jaws of the outside (inside) measuring faces touch, the zero line of the vernier scale aligns with the zero line of the main scale. Clamp (or seat) the object between the jaws and combine the main and vernier readings to obtain the object's length.
+- **Princípio**: o paquímetro usa a diferença fixa entre a menor divisão da escala principal (1 mm) e a da escala móvel para aumentar a precisão. Os mais comuns têm 10, 20 ou 50 divisões.
+- **Leitura**: primeiro leia a escala principal, conforme a posição do zero da escala móvel; depois veja qual linha da escala móvel coincide com uma linha da escala principal; combine as duas leituras para obter o comprimento medido.
+- **Uso**: quando as duas garras de medição externa (ou interna) se tocam, o zero da escala móvel coincide com o zero da escala principal. Prenda (ou encaixe) o objeto entre as garras e combine as leituras da escala principal e da móvel para obter o comprimento do objeto.
 
-#### Micrometer
+#### Micrômetro
 
-A micrometer consists of an anvil (A) and a fixed sleeve scale (B) mounted on a frame (C). The thimble scale (E), thimble (D), and ratchet stop (D') are connected to the spindle (F), which threads through B via a precision screw.
+No micrômetro, a bigorna A e a escala fixa B ficam presas à estrutura C; o tambor móvel E, o catraca D e o parafuso de ajuste fino D' ficam ligados ao fuso F, que se move por uma rosca de precisão dentro de B.
 
-- **Principle**: When the thimble D rotates one full turn, the spindle F advances or retracts one pitch along the axis. The fixed sleeve scale B has a pitch of 0.5 mm, and the thimble scale E has 50 equal divisions — so each thimble division corresponds to 0.01 mm of spindle travel. A micrometer measures accurately to 0.01 mm.
-- **Reading**: Read scale B first, noting whether the half-millimeter line is exposed. Then read scale E, where each division corresponds to 0.01 mm. Combine the readings from B and E to obtain the measured length.
-- **Usage**: To measure small dimensions, first bring F into contact with A and align the left edge of E with the zero line of B. Place the object between F and A, rotate D until F approaches the object, then switch to the ratchet D' and stop when you hear the "click". Then take the reading.
+- **Princípio**: quando o tambor D dá uma volta completa, o fuso F avança ou recua um passo da rosca na direção do eixo. O passo da escala fixa B do micrômetro é 0,5 mm, e o tambor E tem 50 divisões iguais; assim, cada divisão do tambor corresponde a 0,01 mm de avanço ou recuo do fuso F. O micrômetro mede com precisão de 0,01 mm.
+- **Leitura**: primeiro leia a escala B, observando se a marca de meio milímetro ficou visível; depois leia a escala E, em que cada divisão vale 0,01 mm. Combine as leituras de B e E para obter o comprimento medido.
+- **Uso**: primeiro encoste F em A, alinhando a borda esquerda de E com o zero de B; prenda o objeto entre F e A, gire D e, quando F estiver perto do objeto, pare de usar D e passe para D'; ao ouvir o som de "clique", pare e faça a leitura.
 
-### Common Materials
+### Materiais comuns
 
-#### General Materials
+#### Materiais gerais
 
-Available from a wide range of sources:
+Itens que podem ser comprados em qualquer canal:
 
-- Screws and nuts of various sizes
-- Hexagonal standoffs
-- Timing pulleys
-- Bearings
+- Parafusos e porcas diversos
+- Colunas sextavadas
+- Polias de correia dentada
+- Rolamentos
 
-> [!warning] Shafts are excluded from general materials: shaft requirements are project-specific — purchase them separately as needed.
+> [!warning] Eixos não entram nos materiais gerais: as especificações de eixo são bem específicas, então compre conforme a necessidade real de cada projeto.
 
-#### Specialized Materials
+#### Materiais específicos
 
-Official REV and goBILDA specialized extrusions.
+Perfis específicos oficiais da REV e da goBILDA.
 
-#### Material Characteristics
+#### Características dos materiais
 
-| Brand | Characteristics |
+| Marca | Características |
 |------|------|
-| **REV** | Relatively old but core. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 6 mm REX shafts; gears and chains; 72:1 transverse motors and 40:1 motors are the most usable. |
-| **goBILDA** | C-channels, square or thin beams, 8 mm REX shafts, a wide range of modular connectors with well-rounded functionality. Primarily M4 screws (10 mm official); motors are mostly 5203 series. Suitable for direct-drive motor kits. |
+| **REV** | Mais antiga, porém essencial. Os três módulos de controle eletrônico (Driver Hub, Control Hub e Expansion Hub) usam principalmente produtos REV. As peças estruturais incluem perfis de alumínio variados (uso relativamente menor), úteis para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão. Os perfis usam principalmente parafusos Allen M3 de cabeça cilíndrica, eixos REX de 6 mm, engrenagens e correntes; o motor de eixo transversal 72:1 e o motor 40:1 são os mais úteis e usados. |
+| **goBILDA** | Vigas em C, vigas quadradas ou vigas finas, eixos REX de 8 mm, conectores padronizados de vários tipos e excelente compatibilidade de fixação. Usa principalmente parafusos M4 (oficialmente de 10 mm) e motores da linha 5203. Ideal para kits com transmissão direta do motor. |
 
-**REV details:**
+**Detalhes do fornecedor REV:**
 
-- **Core control modules**: The Driver Hub, Controller Hub (Control Hub), and Expansion Hub are REV products.
-- **Structural parts**: Mostly aluminum extrusion, rarely used at present — suitable for small limit brackets and fixing non-unit-displacement structures.
-- **Special screws**: REV extrusions use M3 button-head (socket) screws, which seat inside the extrusion slots — almost exclusive to REV extrusion.
-- **Shaft spec**: REV uses 6 mm REX shafts — a REV-specific size.
-- **Motors**: REV offers a 72:1 transverse motor (officially the Core Hex Motor, 90° orientation, no built-in output shaft) and a 40:1 standard motor (officially the HD Hex Motor). The 72:1 transverse motor enables special mounting solutions, but its design is dated and hard to find compatible partners for nowadays.
-- **Gears and chains**: REV also supplies them, but goBILDA products are generally preferred.
+- **Módulos de controle eletrônico**: os três módulos Driver Hub, Controller Hub (ou seja, Control Hub) e Expansion Hub são principalmente produtos REV.
+- **Peças estruturais**: predominam os perfis de alumínio; hoje são menos usados, mas servem para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão.
+- **Parafusos especiais**: os perfis REV usam parafusos Allen M3 de cabeça cilíndrica; esse parafuso fica preso dentro do perfil de alumínio e praticamente só os perfis REV o utilizam.
+- **Especificação de eixo**: a REV usa eixos REX de 6 mm, uma medida exclusiva da marca.
+- **Motores**: a REV oferece o motor de eixo transversal 72:1 (nome oficial Core Hex, saída transversal a 90°, sem eixo de saída próprio) e o motor padrão 40:1 (nome oficial HD Hex). O motor transversal 72:1 permite soluções de montagem especiais, mas seu projeto estrutural é antigo e, no ambiente atual, é difícil encontrar com o que combiná-lo.
+- **Engrenagens e correntes**: a REV também fornece, mas normalmente damos preferência aos produtos goBILDA.
 
-**goBILDA details:**
+**Detalhes do fornecedor goBILDA:**
 
-- **C-channels**: Two kinds — square beams and thin beams. Square beams suit large frame structures such as chassis; thin beams suit span connections.
-- **Connectors**: A wide range of standardized connectors, highly modular, with well-rounded compatibility with both its own and REV materials.
-- **Screw spec**: Primarily M4 screws; the official pairing is M4×10 mm button-head screws.
-- **Shaft spec**: 8 mm REX shafts.
-- **Motors**: Commonly the 5203 series, suited to standard direct drive. Thanks to the strength of the 8 mm REX shaft and its motor mounting style, goBILDA is the kit of choice for direct motor drive.
+- **Vigas em C**: há os modelos quadrado e fino. A viga quadrada serve para estruturas grandes, como o chassi; a fina, para ligações de maior vão.
+- **Conectores**: oferece conectores padronizados de todos os tipos, com alto grau de padronização e ótima compatibilidade com os próprios materiais e com os da REV.
+- **Parafusos**: usa principalmente M4; o parafuso oficial é o M4 de 10 mm com cabeça cilíndrica.
+- **Especificação de eixo**: eixos REX de 8 mm.
+- **Motores**: a linha 5203 é a mais usada e serve bem para transmissão direta padrão. Pela resistência do eixo REX de 8 mm e pela forma de montagem dos motores, a goBILDA é o kit mais adequado para transmissão direta do motor.
 
-#### 3D Printing Filaments
+#### Filamentos de impressão 3D
 
-| Type | Print temperature (approx.) | Description |
+| Tipo | Temperatura de impressão (aprox.) | Descrição |
 |------|------|------|
-| PLA | 220°C | Standard base plastic filament |
-| PETG-CF | 240+°C | Carbon-fiber-reinforced filament |
+| PLA | 220 °C | Filamento plástico básico padrão |
+| PETG-CF | 240+ °C | Filamento plástico com fibra de carbono |
 
-Purchase official Bambu Lab or SUNLU filaments for consistent quality.
+Compre filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualidade relativamente estável.
 
-**Shrinkage:**
+**Contração:**
 
-- Normally, PLA shrinkage is not a concern.
-- When printing bushings, diameter shrinkage of about 5% can occur — measure it based on the printed geometry.
-- PETG-CF shrinkage fluctuates significantly with time, temperature, and batch. Before use, print a simple test piece matching your part's geometry to measure shrinkage.
+- Em geral, o PLA não exige preocupação com contração.
+- Ao imprimir buchas de eixo, pode ocorrer contração de cerca de 5% no diâmetro, que deve ser medida conforme o formato impresso.
+- A contração do PETG-CF varia bastante com tempo, temperatura e lote; antes de usar, recomendamos imprimir uma peça simples de teste no formato do componente para medir a contração.
 
-#### Laser Cutting Materials
+#### Materiais de corte a laser
 
-| Material | Characteristics | Use case |
+| Material | Características | Uso |
 |------|------|------|
-| Acrylic sheet | High strength | Large-span load-bearing panels |
-| PP sheet | High toughness | Protective panels; needs more attachment points; withstands direct impact |
-| Plywood | Low cost | Prone to warping; special cases only |
+| Placa de acrílico | Resistência relativamente alta | Chapas de carga em grandes vãos |
+| Placa de PP | Bastante tenaz | Peças de proteção; exigem mais pontos de fixação e suportam impacto direto |
+| Placa de madeira | Custo relativamente baixo | Empena com facilidade; usar em casos especiais |
 
-> [!info] Material properties are fixed here. Laser cutting parameters (power, speed, etc.) go in the appendix, which is updated continuously.
+> [!info] As propriedades dos materiais ficam registradas aqui de forma fixa. Os parâmetros de processo do corte a laser, como potência e velocidade, ficam em um apêndice atualizado continuamente.
 
-#### Cables
+#### Cabos
 
-**Power cables:**
+**Cabos de alimentação:**
 
-- Battery-to-Hub cable (depending on design, the battery may connect directly to either the Control Hub or the Expansion Hub)
-- Con-to-EXP cable
-- Switches that come with their own wiring
-- Motor power cables: goBILDA motor power connectors are incompatible with the Hub — cut off the original connector and remake the head with a wire ferrule.
+- Cabo bateria–Hub (conforme o projeto, a bateria pode ligar direto no Control Hub ou no Expansion Hub)
+- Cabo Con–EXP
+- Interruptor com cabo próprio
+- Cabos de alimentação dos motores: nos motores goBILDA, o conector de alimentação não é compatível com o Hub; é preciso cortar o conector original e refazer a ponta usando terminais.
 
-**Data cables (motor encoder cables):**
+**Cabos de dados (cabo do encoder do motor):**
 
-- For goBILDA, the connector and pinout differ from the Hub (yellow and white wires are swapped) — be especially careful when making them.
-- I2C sensor cables: no special requirements.
-- Con and EXP data cables.
-- Servo extension cables: watch the orientation.
+- Na goBILDA, o conector e a ordem dos fios são diferentes dos do Hub (o fio amarelo e o branco são invertidos); atenção especial ao montar.
+- Cabos de sensores I2C: sem exigências especiais.
+- Cabos de dados Con e EXP.
+- Extensores de servo: atenção à orientação.
 
-**Host data cables:**
+**Cabos de dados do computador principal:**
 
-- Hub-to-computer connection: use a USB-A to USB-C cable for the Control Hub, and a mini-USB cable for the Expansion Hub.
-- Others: USB-A to USB-C, USB-A to mini-USB, USB-C to mini-USB, and other conversion cables.
-- Ethernet cable (usable as an auxiliary network connection — not required).
-- Controller data cable (USB-A to micro-USB).
+- Hub para computador: o Control Hub usa cabo USB-A para USB-C; o Expansion Hub usa cabo mini USB.
+- Outros: cabos adaptadores USB-A para USB-C, USB-A para mini USB, USB-C para mini USB etc.
+- Cabo de rede (pode ser usado como conexão auxiliar; não é obrigatório).
+- Cabo de dados do controle (USB-A para micro USB).
 
-**Infrastructure (treated as consumables):**
+**Infraestrutura (tratada como consumível):**
 
-- Wi-Fi, monitoring, network cables, power strips, and other infrastructure are managed as consumables — replenish them in time.
+- Wi-Fi, câmeras de monitoramento, cabos de rede, réguas de tomada e outros itens de infraestrutura são geridos como consumíveis; reponha em tempo.
 
 ---
 
-## 4. Workflow
+## 4. Fluxo de trabalho
 
-1. **Parts procurement**
-   - FTC official equipment suppliers are overseas, so official purchases take long and cost more; for non-critical materials, look for domestic substitutes to balance cost and delivery speed
-2. **Custom part fabrication**
-   - 3D-printed parts
-   - Laser-cut sheet processing
-3. **Hardware assembly**
-4. **Wiring**
-5. **Robot Configuration authoring** (in coordination with Programming)
-6. **Connecting the Driver Station to the Robot Controller** (in coordination with Programming)
+1. **Compra de peças**
+   - Os fornecedores oficiais de equipamentos do FTC ficam no exterior, com prazo longo e preço alto; para materiais não urgentes, é possível buscar alternativas em plataformas nacionais, equilibrando custo e velocidade de entrega
+2. **Fabricação de peças próprias**
+   - Produção de peças por impressão 3D
+   - Corte a laser de chapas
+3. **Montagem do hardware**
+4. **Conexão dos cabos**
+5. **Escrita da Robot Configuration** (em conjunto com Programação)
+6. **Conexão entre Driver Station e Robot Controller** (em conjunto com Programação)
 
-### Hardware Assembly
+### Montagem do hardware
 
-#### Assembly Order
+#### Ordem de montagem
 
-> [!warning] The conventional hand-build approach builds the chassis first and stacks upward. But in competition robots, we have CAD models — that order easily leads to massive rework due to part occlusion.
+> [!warning] Na montagem manual comum, costuma-se fazer o chassi primeiro e ir somando por cima. Em um robô de competição temos os desenhos de modelagem, e essa ordem pode causar muito retrabalho por causa de peças que ficam encobertas.
 
-- Adjust the assembly order according to occlusion: **install parts that will be blocked by motors or electronics first**, then install the blocking components.
-- Example: finish installing everything around a motor before mounting the motor itself.
+- A ordem deve ser ajustada conforme as relações de oclusão: **instale primeiro as peças que ficam escondidas atrás de motores, módulos de controle etc.**, e depois as peças que os cobrem.
+- Por exemplo: confirme que todas as peças ao redor do motor já foram instaladas e só então instale o motor.
 
-#### Part Usage Notes
+#### Cuidados no uso das peças
 
-- On shafts, avoid prioritizing parts with set screws — set screws damage shafts.
-- Do not over-tighten screws.
-- More part usage rules will be added over time.
+- Em peças presas ao eixo, evite os modelos com parafuso de fixação (set screw): ele danifica o eixo.
+- Não aperte demais os parafusos.
+- Outras regras de uso de peças serão acrescentadas continuamente.
 
-#### Leave Room for Repairs
+#### Espaço reservado para manutenção
 
-- Never take shortcuts when assembling: don't hide screws and nuts in hard-to-reach spots.
-- Everything must follow the "easy to repair" principle — if a breakdown requires disassembling the entire robot, your competition is over.
+- Não tenha preguiça na hora de montar: não esconda parafusos e porcas em lugares difíceis de alcançar.
+- O princípio é "fácil de consertar" — se, para reparar o robô, for preciso desmontá-lo inteiro, a competição não pode continuar.
 
-#### ESD Protection
+#### Proteção contra estática
 
-- Dry weather generates static electricity, which can cause disconnections and inaccurate sensor readings.
-- Countermeasures: add a grounding wire to the robot to drain static to the floor; wrap IMU and other sensors in tin foil for electrostatic shielding.
+- Em tempo seco, a estática aparece com facilidade e causa perda de conexão do robô e leituras imprecisas dos sensores.
+- Medidas de proteção: instale um fio de aterramento no robô para descarregar a estática no chão; envolva sensores como a IMU com papel-alumínio para proteção.
 
-#### Cable Management
+#### Organização dos cabos
 
-- Telescoping structures with linear slides must be wrapped in cable sleeving to prevent wires from flying loose, jamming the slides, or being torn off.
-- Cable management is the most skill-intensive part of assembly — take it seriously.
+- Estruturas retráteis com trilhos devem usar espaguete (tubo de proteção) nos fios, para que eles não fiquem soltos, travem o trilho ou até se rompam.
+- A organização dos cabos é o trabalho mais técnico da montagem; leve a sério.
 
-### Wiring
+### Conexão dos cabos
 
-#### Connecting the Control Hub and Expansion Hub
+#### Conexão entre Control Hub e Expansion Hub
 
-- **Power**: male connector to female connector.
-- **Data**: connect via RS-485 ports using 3-pin cables. Each side has 2 RS-485 ports — pick one on each side; they do not need to correspond to fixed positions.
+- **Alimentação**: conector macho no fêmea.
+- **Dados**: use as portas RS-485 com cabos de 3 vias. Cada lado tem 2 portas RS-485; basta escolher uma de cada lado, sem necessidade de correspondência fixa.
 
-> [!warning] All official connectors are keyed — the design prevents wrong insertion but not stubbornness. If a connector will not seat, check the orientation before applying any force.
+> [!warning] Os conectores oficiais têm encaixe à prova de erro — mas o encaixe à prova de erro não protege contra insistência. Se não entrar, confira a orientação do conector; nunca force.
 
-#### Connecting the Driver Station and Robot Controller
+#### Conexão entre Driver Station e Robot Controller
 
-Network connection is required knowledge for both Hardware and Programming — reuse the content from the Programming section.
+A parte de rede, tanto na estrutura quanto no programa, pode reaproveitar diretamente o conteúdo da seção de Programação.
 
-#### Robot Configuration Authoring
+#### Escrita da Robot Configuration
 
-Writing the configuration file is a joint Hardware/Programming task — see the Programming section.
+O arquivo de configuração é conteúdo conjunto de estrutura e programação; veja a seção de Programação.
 
 ---
 
-## 5. Hardware & Build Starter
+## 5. Primeiros passos na construção
 
-### Installing and Configuring Bambu Studio
+### Instalar e configurar o Bambu Studio
 
-Download and install, clicking "Next" throughout. Note the installation location — a folder is created automatically.
+Baixe, instale e avance; escolha o local de instalação, e a pasta é criada automaticamente.
 
-**Notes:**
+**Observações:**
 
-- All checkboxes must be checked
-- When launching, follow the registration guide and select Mainland China
-- Select only the P1S and P2S printers
-- Keep material selections at default
-- Install the network plugin
-- Log in/register from the top-left corner (phone number or third-party login)
+- Marque todas as caixas de seleção
+- Ao abrir, siga o guia de registro e escolha China continental
+- Selecione apenas as impressoras P1S e P2S
+- Mantenha os materiais padrão mais usados
+- Instale o plugin de rede
+- Faça login no canto superior esquerdo (número de celular ou terceiros)
 
-### Exporting Models from Onshape
+### Exportar o arquivo de modelagem do Onshape
 
-1. Open the model, select the target part — its position in the instance list on the left will be highlighted in the bottom-left corner.
-2. Right-click the part and choose to switch to the corresponding instance workspace to enter the Part Studio.
-3. Right-click the part in the parts list and choose Export.
-   - Note: the Export option only appears if you have edit access to the document.
-4. Set the format to STEP, rename the file as needed, and leave the rest at defaults.
+1. Abra o arquivo de modelagem e selecione a peça desejada; no canto inferior esquerdo, o Onshape marca a posição dessa peça na lista de instâncias à esquerda.
+2. Clique com o botão direito na peça e escolha abrir a aba correspondente à instância para entrar na área de construção da peça.
+3. Clique com o botão direito sobre o número da peça, no canto inferior esquerdo, e escolha exportar.
+   - Atenção: a opção de exportar só aparece depois que você obtém permissão de edição do documento.
+4. Altere o formato para STEP, renomeie o arquivo conforme a necessidade e mantenha as demais opções padrão.
 
-### Importing and Arranging in Bambu Studio
+### Importar e posicionar no Bambu Studio
 
-- Create a new project in Bambu Studio, click the "Import" button at the top to import the STEP file, and confirm the import options with defaults.
-- If the part lands in an unwanted position, deselect everything, right-click the build plate, and choose "Auto Arrange" or "Auto Orient".
-- Manual adjustment: select the part, hold the left button to drag and move; use the Rotate button to rotate via relative or absolute modes.
-- Interaction difference: by default, Bambu Studio matches Onshape — left-drag rotates the view and right-drag pans; you can adjust the view controls in settings if preferred. Left-dragging a selected part moves the part directly.
+- Crie um novo projeto no Bambu Studio, clique no botão "Importar" na parte superior e importe o arquivo STEP; confirme as opções de importação padrão.
+- Se a posição da peça não ficar como esperado, não selecione nenhuma peça, clique com o botão direito na mesa de impressão e escolha "organizar automaticamente" (Auto Arrange) ou "orientar automaticamente" (Auto Orient).
+- Ajuste manual: selecione a peça e segure o botão esquerdo para arrastar; clique no botão de rotação para girar nos modos relativo ou absoluto.
+- Diferença de operação: por padrão, o Bambu Studio funciona como o Onshape — arrastar com o botão esquerdo gira a vista e com o direito desloca; se preferir, altere o modo de operação nas configurações. Com uma peça selecionada, arrastar com o botão esquerdo move a peça diretamente.
 
-### Print Parameter Configuration
+### Configurar os parâmetros de impressão
 
-**Printer and filament selection:**
+**Escolha de impressora e filamento:**
 
-| Printer | Nozzle | Filament |
+| Impressora | Bico | Filamento |
 |--------|------|------|
-| P1S (stock nozzle) | 0.4 mm | PLA Basic |
-| P1S (nozzle replaced, dedicated to carbon filament) | 0.6 mm | PETG-CF |
-| P2S (both units) | 0.4 mm | PLA Basic |
+| P1S (bico original) | 0,4 mm | PLA Basic |
+| P1S (bico trocado, dedicada a fibra de carbono) | 0,6 mm | PETG-CF |
+| P2S (duas unidades) | 0,4 mm | PLA Basic |
 
-**Process presets by part type:**
+**Escolha dos parâmetros conforme o tipo de peça:**
 
-| Type | Preset |
+| Tipo | Parâmetros |
 |------|------|
-| Decorative parts | Bambu Studio defaults |
-| Non-load-bearing structural parts | Team standard configuration |
-| Load-bearing structural parts | Team standard configuration (high strength) |
+| Peças decorativas | Parâmetros padrão do Bambu Studio |
+| Peças estruturais sem carga | Configuração usual da equipe de modelagem |
+| Peças estruturais de carga | Configuração usual da equipe de modelagem (alta resistência) |
 
-> [!info] These presets are our team's standard configurations — modify them if you have special requirements.
+> [!info] Os parâmetros acima são as configurações usuais da nossa equipe; ajuste conforme a necessidade.
 
-**Multiple parts on one plate:**
+**Várias peças na mesma mesa:**
 
-- Need multiple identical parts: select the part, right-click, choose "Clone".
-- Need different parts: click the "Import" button again to import.
+- Várias cópias da mesma peça: selecione a peça, clique com o botão direito e escolha "clonar".
+- Peças diferentes: clique de novo em "Importar" e importe o arquivo.
 
-### Connecting to 3D Printers
+### Conectar a impressora 3D
 
-- Go to the "Device" tab, enable LAN mode, and the printer will be auto-discovered on the LAN (enabling LAN mode may log you out — you can ignore the prompt).
-- If the target printer cannot be found: first confirm the printer has LAN mode enabled; if still invisible, bind it manually via IP + access code. The IP is under Settings > WiFi on the printer; the access code is shown at the login avatar position after enabling LAN mode.
-- After slicing, review in the "Preview" tab. Before printing, send the sliced preview to the current modeling or build lead for confirmation.
+- Entre na aba "Dispositivo", ative o modo LAN e a impressora na rede local será detectada automaticamente (ativar o modo LAN pode desconectar a conta atual; ignore o aviso).
+- Se a impressora não for encontrada: confirme primeiro se o modo LAN está ativado; se ainda não aparecer, vincule manualmente por IP + código de acesso. O IP fica na página de Wi-Fi das configurações da impressora, e o código de acesso, no avatar da conta após ativar o modo LAN.
+- Depois de fatiar, confira na aba "Visualizar" e, antes de imprimir, envie a pré-visualização ao responsável atual de modelagem ou de estrutura para confirmar a configuração antes de mandar imprimir.
 
-### Print Settings
+### Ajustes de impressão
 
-**P2S printers:**
+**Impressora P2S:**
 
-- Enable time-lapse before printing.
-- Auto bed leveling must be enabled.
-- Select the loaded filament and target printer.
+- Ative o timelapse antes de imprimir.
+- O nivelamento automático da mesa é obrigatório.
+- Selecione o filamento carregado e a impressora de destino.
 
-**P1S printers:**
+**Impressora P1S:**
 
-- Time-lapse can stay off.
-- Auto bed leveling and dynamic flow calibration must both be set to automatic.
+- O timelapse pode ficar desativado por padrão.
+- O nivelamento automático da mesa e a calibração dinâmica de fluxo devem estar ambos em automático.
 
-### Print Failure Handling
+### Tratamento de falhas de impressão
 
-- **P2S**: With AI spaghetti detection — on spaghetti failure (filament flying loose), the printer stops automatically and notifies the logged-in account. After clearing the failed job, the printer restarts automatically.
-- **P1S**: No automatic spaghetti detection — monitor the print in real time. If spaghetti occurs, stop the print manually; find the failed job in the history under the cache folder on the left and clean it up.
+- **P2S**: tem detecção de "spaghetti" (macarrão) por IA; quando ocorre o emaranhado de filamento, a máquina para a impressão sozinha e envia um aviso à conta logada. Depois de limpar o arquivo com erro, o equipamento reinicia automaticamente.
+- **P1S**: não tem reconhecimento automático de spaghetti; acompanhe o estado em tempo real durante a impressão. Ao detectar o problema, pare manualmente a impressão e localize o arquivo com erro no histórico de impressões, na pasta cache à esquerda, para limpá-lo.
 
-### Installing and Configuring RD Works V8
+### Instalar e configurar o RD Works V8
 
-**Installation:**
+**Instalação:**
 
-1. Get the exe installer from an administrator or mentor and choose Install
-2. Check "manually locate the installation path" to change the location
-3. Keep other options at their defaults
-4. Once connected to the laser cutter, choose to install the USB driver
-5. Close and reopen the software to finish
+1. Obtenha o instalador .exe com um administrador ou com o professor orientador e escolha Install
+2. Marque a instalação manual de caminho para alterar o local
+3. Mantenha as demais opções padrão
+4. Depois de conectar a cortadora a laser, escolha instalar o driver USB
+5. Feche e abra o software novamente

@@ -724,7 +724,7 @@ RESOURCE_TEXTS = {
         "heading": "Recursos e atualizações",
         "intro": "Este guia é revisado continuamente. Obtenha o conteúdo mais recente pelos seguintes canais:",
         "items": [
-            ("Edição on-line", "https://ftc32477.github.io/docs/"),
+            ("Edição online", "https://ftc32477.github.io/docs/"),
             ("Histórico de versões", "https://ftc32477.github.io/docs/{lang}/versions.html"),
             ("Repositório de código aberto", "https://github.com/ftc32477/quick-start-guide"),
             ("Feedback", "https://github.com/ftc32477/quick-start-guide/issues"),

@@ -1,54 +1,54 @@
-# Team Member Essentials
+# Essenciais da equipe
 
-## 1. Basic Requirements
+## 1. Requisitos básicos
 
-The following prerequisites apply to all team members.
+Os itens a seguir são exigidos de todos os membros da equipe.
 
-### Hardware
+### Equipamentos
 
-Any one of the following:
+Qualquer uma das opções:
 
-- A computer running Windows 10 or later
-- A computer running macOS 13 or later
+- Um computador com Windows 10 ou superior
+- Um computador com macOS 13 ou superior
 
-### Network Environment
+### Ambiente de rede
 
-You need a network environment that can access Android support resources.
+É necessário um ambiente de rede com acesso aos recursos de suporte do Android.
 
-- Android support: [https://support.google.com/android](https://support.google.com/android)
+- Suporte do Android: [https://support.google.com/android](https://support.google.com/android)
 
-> [!info] The team maintains its own LAN connected to a dedicated campus gateway: it is more stable than the regular campus network but keeps the campus network's access restrictions. Programming requires access to overseas network resources for Android support; the team can provide an access route, but if you expect heavy usage, purchasing your own service is recommended.
+> [!info] A equipe mantém uma rede local própria, conectada a um gateway dedicado do campus: ela é mais estável que a rede escolar comum, mas mantém as restrições de acesso desta. A área de programação precisa acessar recursos de rede no exterior para o suporte do Android; a equipe pode oferecer um caminho de acesso, mas, se houver necessidade de uso intenso, recomendamos contratar um serviço próprio.
 
-### Applications
+### Aplicativos
 
-- Web browser (Chrome, Edge, or Safari)
+- Navegador de internet (Chrome, Edge ou Safari)
 - LocalSend
 
-### Online Accounts
+### Contas online
 
-- Email address (@gmail.com or @outlook.com recommended)
-  - Create a Gmail account: [https://support.google.com/mail/answer/56256](https://support.google.com/mail/answer/56256)
-  - Create an Outlook account: [https://outlook.live.com/mail/?prompt=create_account](https://outlook.live.com/mail/?prompt=create_account)
+- E-mail (recomendamos @gmail.com ou @outlook.com)
+  - Criar uma conta do Gmail: [https://support.google.com/mail/answer/56256](https://support.google.com/mail/answer/56256)
+  - Criar uma conta do Outlook: [https://outlook.live.com/mail/?prompt=create_account](https://outlook.live.com/mail/?prompt=create_account)
 - GitHub — [https://github.com/](https://github.com/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
 
-> [!warning] In addition, 3D Modeling & Design, Hardware & Build, Programming, and Outreach & Public Relations each have their own supplementary requirements.
+> [!warning] Além disso, Modelagem e design, Hardware e construção, Programação e Divulgação e relações públicas têm cada um requisitos complementares próprios.
 
 ---
 
-## 2. Environment Setup
+## 2. Configuração do ambiente
 
-The following environment must be configured before you begin. If you have any questions, please consult an administrator.
+O ambiente de trabalho abaixo deve ser configurado antes do início oficial. Siga as instruções; em caso de dúvidas, consulte um administrador.
 
-### Web Browser
+### Navegador de internet
 
-Install it yourself. We recommend Chrome.
+Instale por conta própria. Recomendamos o Chrome.
 
-Chrome download: [https://www.google.com/chrome/](https://www.google.com/chrome/)
+Download do Chrome: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
-**Websites to know, read, and bookmark:**
+**Sites que você precisa conhecer, ler e salvar nos favoritos:**
 
-| Name | URL |
+| Nome | Endereço |
 |------|------|
 | Current Game and Season Materials | https://ftc-resources.firstinspires.org/ftc/game |
 | FIRST Tech Challenge documentation | https://ftc-docs.firstinspires.org/en/latest/index.html |
@@ -58,94 +58,94 @@ Chrome download: [https://www.google.com/chrome/](https://www.google.com/chrome/
 | 32477 — FTCScout | https://ftcscout.org/teams/32477 |
 | GitHub FTC 32477 | https://github.com/ftc32477 |
 
-### Network Environment
+### Ambiente de rede
 
-#### LAN
+#### Rede local
 
-The workspace is equipped with wired and wireless local area networks. The wireless network is named `BNDES-FTC`, the gateway is `192.168.3.1`, and the wireless standard is 802.11ax.
+O espaço de trabalho conta com redes locais com fio e sem fio. O nome da rede sem fio é `BNDES-FTC`, o gateway é `192.168.3.1` e o padrão da rede sem fio é 802.11ax.
 
-Ask an administrator for the password.
+Consulte um administrador para obter a senha.
 
 #### Internet
 
-Please consult an administrator for specific instructions.
+Consulte um administrador para instruções específicas.
 
 ### LocalSend
 
-LocalSend is the LAN file transfer tool adopted by our team.
+O LocalSend é a ferramenta de transferência de arquivos em rede local adotada pela nossa equipe.
 
-**Installation (using v1.17.0 as an example):**
+**Instalação (usando a versão v1.17.0 como exemplo):**
 
-> [!warning] For **iOS**: open [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) and install directly.
+> [!warning] Para **iOS**: abra [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) e instale diretamente.
 
-1. Open [https://localsend.org/download](https://localsend.org/download)
-2. Or go to the GitHub repository: [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
-3. Scroll down and click "Show all assets" in the Assets list of the latest release to display all available builds
-4. Download the build matching your platform and install it
+1. Abra [https://localsend.org/pt-BR/download](https://localsend.org/pt-BR/download)
+2. Ou acesse o repositório no GitHub: [https://github.com/localsend/localsend/releases](https://github.com/localsend/localsend/releases)
+3. Role a página e, na lista Assets da versão mais recente, clique em "Show all assets" para exibir todas as versões disponíveis
+4. Baixe a versão correspondente à sua plataforma e instale
 
-**Platform-specific builds:**
+**Versões por plataforma:**
 
 - **Android:**
-  - `-android-arm32v7.apk`: built for 32-bit ARM v7 CPU architectures
-  - `-android-arm64v8.apk`: built for 64-bit ARM v8 CPU architectures
-  - `-android-google-play.apk`: built for the Google Play Store (may require Google Mobile Services)
-  - `-android-x64.apk`: built for 64-bit x86 architectures
+  - `-android-arm32v7.apk`: versão compilada para CPUs ARM de 32 bits, arquitetura v7
+  - `-android-arm64v8.apk`: versão compilada para CPUs ARM de 64 bits, arquitetura v8
+  - `-android-google-play.apk`: versão compilada para a Google Play Store (pode exigir Google Mobile Services)
+  - `-android-x64.apk`: versão compilada para arquitetura x86 de 64 bits
 - **Linux:**
-  - `-linux-arm-64.deb`: Debian package for 64-bit ARM (Debian/Ubuntu and derivatives)
-  - `-linux-arm-64.tar.gz`: generic tarball for 64-bit ARM Linux
-  - `-linux-x86-64.AppImage`: AppImage executable for 64-bit x86 Linux
-  - `-linux-x86-64.deb`: Debian package for 64-bit x86 (Debian/Ubuntu and derivatives)
-  - `-linux-x86-64.tar.gz`: generic tarball for 64-bit x86 Linux
+  - `-linux-arm-64.deb`: pacote Deb para sistemas Debian/Ubuntu e derivados em ARM de 64 bits
+  - `-linux-arm-64.tar.gz`: pacote compactado genérico para Linux ARM de 64 bits
+  - `-linux-x86-64.AppImage`: executável AppImage para Linux x86 de 64 bits
+  - `-linux-x86-64.deb`: pacote Deb para Debian/Ubuntu e derivados em x86 de 64 bits
+  - `-linux-x86-64.tar.gz`: pacote compactado genérico para Linux x86 de 64 bits
 - **Windows:**
-  - `-windows-x86-64.exe`: installer built for 64-bit x86 architectures
-  - `-windows-x86-64.zip`: portable archive built for 64-bit x86 architectures
+  - `-windows-x86-64.exe`: instalador compilado para x86 de 64 bits
+  - `-windows-x86-64.zip`: pacote portátil compilado para x86 de 64 bits
 - **macOS:**
-  - `.dmg`: disk image installer built for macOS
+  - `.dmg`: imagem de disco instalável compilada para macOS
 
 ### GitHub
 
-GitHub is the open-source repository platform adopted by our team.
+O GitHub é a plataforma de repositórios de código aberto adotada pela nossa equipe.
 
-**Registration:**
+**Registro:**
 
-1. Open [https://github.com/signup](https://github.com/signup)
-2. Create a personal account by following the prompts
-   - During registration, the system will ask you to verify your email address
-   - We recommend selecting "United States of America" as your country/region
-3. After registration, tell an administrator your username and wait for an invitation to join the organization. You can find it at [https://github.com/notifications](https://github.com/notifications).
+1. Abra [https://github.com/signup](https://github.com/signup)
+2. Crie uma conta pessoal seguindo as instruções
+   - Durante o registro, o sistema pedirá a verificação do seu e-mail
+   - Recomendamos selecionar "Estados Unidos" como país/região
+3. Após o registro, informe seu nome de usuário a um administrador e aguarde o convite para entrar na organização. Você pode conferir em [https://github.com/notifications](https://github.com/notifications).
 
-After that, you can view and modify repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+Depois disso, você poderá visualizar e modificar repositórios em [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
 
-**References:**
+**Referências:**
 
-- [Creating an account on GitHub](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github)
+- [Documentação do GitHub: criar uma conta](https://docs.github.com/pt/get-started/start-your-journey/creating-an-account-on-github)
 
 ### Onshape
 
-Onshape is the cloud-based 3D modeling platform adopted by our team.
+O Onshape é a plataforma de modelagem 3D em nuvem adotada pela nossa equipe.
 
-All team Onshape accounts use the free education plan.
+Todas as contas de Onshape da equipe usam o plano educacional gratuito (Education Plan).
 
-**Registration:**
+**Registro:**
 
-1. Open the education sign-up page: [https://www.onshape.com/en/education/sign-up](https://www.onshape.com/en/education/sign-up)
-2. Fill out and submit the registration form.
+1. Abra a página de cadastro do plano educacional: [https://www.onshape.com/en/education/sign-up](https://www.onshape.com/en/education/sign-up)
+2. Preencha e envie o formulário de registro.
 
-References:
+Referências:
 
-- [Onshape education plans](https://www.onshape.com/en/education/plans)
+- [Planos educacionais do Onshape](https://www.onshape.com/en/education/plans)
 ---
 
-## 3. Season & Schedule
+## 3. Temporada e calendário
 
-### Season Timeline
+### Linha do tempo da temporada
 
-- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for vehicle design and debugging
-- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (so far only about 4 teams from mainland China have reached the Houston Championship)
-- The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
+- Uma temporada completa do FTC vai de setembro de um ano a junho do ano seguinte; o desafio da nova temporada é divulgado em meados de setembro e, após o lançamento, há cerca de sete a oito semanas para projetar e ajustar o robô
+- Os torneios classificatórios são realizados em várias cidades do país; as equipes classificadas disputam o campeonato nacional nas férias de inverno e, se avançarem novamente, vão a Houston, nos Estados Unidos, para o Campeonato Mundial (até hoje, apenas cerca de 4 equipes da China continental chegaram ao Mundial de Houston)
+- Os materiais básicos do campo da nova temporada são enviados oficialmente após o início do ano letivo e, quando chegam, o campo pode ser montado
 
-### Competition Rules Notes
+### Observações sobre as regras da competição
 
-- The robot is manually driven with an Xbox controller; officially only the Xbox 360 model is permitted
-- Magnetic levitation technology is prohibited by the rules; ordinary magnets and electromagnets are allowed
-- The official FTC age range is 12–18; middle school students may join
+- O robô é pilotado manualmente com um controle de Xbox; oficialmente, apenas o modelo Xbox 360 é permitido — outros modelos não atendem às regras
+- As regras proíbem o uso de levitação magnética; ímãs comuns e eletroímãs podem ser usados normalmente
+- A faixa etária oficial do FTC é de 12 a 18 anos; alunos do ensino fundamental (anos finais) também podem participar

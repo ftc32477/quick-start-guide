@@ -1,18 +1,18 @@
-# Outreach & Public Relations
+# Divulgação e relações públicas
 
-## 1. Basic Requirements
+## 1. Requisitos básicos
 
-The following are supplementary requirements for Outreach & Public Relations.
+Os itens a seguir são requisitos complementares de Divulgação e relações públicas.
 
-### Applications
+### Aplicativos
 
-- Web browser (Chrome, Edge, or Safari)
+- Navegador de internet (Chrome, Edge ou Safari)
 - LocalSend
 
-### Online Accounts
+### Contas online
 
-- Email address (@gmail.com or @outlook.com recommended)
-- WeChat Official Account (微信公众号)
+- E-mail (recomendamos @gmail.com ou @outlook.com)
+- Conta oficial no WeChat (微信公众号)
 - Bilibili (哔哩哔哩)
 - Douyin (抖音)
 - Xiaohongshu (小红书, RED)
@@ -22,99 +22,98 @@ The following are supplementary requirements for Outreach & Public Relations.
 
 ---
 
-## 2. Responsibilities
+## 2. Atribuições
 
-The Outreach & Public Relations division is the team's megaphone and diplomatic corps. Core responsibilities include:
+A equipe de Divulgação e relações públicas é o megafone e o corpo diplomático da equipe. As principais atribuições incluem:
 
-### Engineering Notebook
+### Caderno de engenharia
 
-The engineering notebook documents the entire season: the vehicle build process, outreach activities, and how problems were solved. It is a key supporting material for judging and one of the core scoring materials. Its content is written by the Hardware and Programming teams; Outreach is responsible for:
+O caderno de engenharia registra de forma completa o processo de construção do robô na temporada, as experiências de divulgação e o raciocínio de resolução de problemas — é um apoio importante para a entrevista de avaliação e um dos materiais centrais de pontuação da competição. Seu conteúdo é escrito pelas áreas de Estrutura e Programação, e à Divulgação cabe:
 
-- **Layout**: design and typeset the engineering notebook
-- **Material collection**: proactively accumulate promotional material
-- Organizing season engineering documents
-- Producing the engineering notebook required for competition
+- **Diagramação**: projeto gráfico e diagramação do caderno de engenharia
+- **Coleta de material**: acumular material de divulgação de forma proativa
+- Organizar os documentos de engenharia da temporada
+- Redigir o caderno de engenharia exigido pela competição
 
-### Promotional Material Collection
+### Coleta de material de divulgação
 
-- Proactively reach out to other school teams to organize friendly matches, scrimmages, and new-season game analysis sessions
-- Prioritize high schools in Haidian District that have FTC teams
-- Focus on connecting with rookie teams — you are veterans now, and rookie teams need you
+- Contatar proativamente equipes de outras escolas para organizar amistosos, treinos simulados e sessões de análise do desafio da nova temporada
+- Priorizar escolas de ensino médio do distrito de Haidian que tenham equipes de FTC
+- Focar nas equipes novas — vocês já são veteranos, e as equipes novas precisam de vocês
 
-### Team Apparel & Merchandise
+### Uniformes e produtos da equipe
 
-- Design team uniforms and the team logo so people see "32477", not "Beijing National Day Experimental School"
-- Make merchandise: stickers, badges, towels, scarves, masks, and more
-- Goal: have every team wearing our merchandise
+- Projetar uniformes e o logo da equipe, para que todos vejam "32477" e não apenas a escola
+- Produzir produtos de divulgação: adesivos, crachás, toalhas, cachecóis, máscaras etc.
+- Objetivo: fazer com que todas as equipes usem nossos produtos
 
-### Sponsorship & Resources
+### Patrocínio e recursos
 
-- Identify and reach out to potential sponsors
-- Write sponsorship proposals and business plans
-- Maintain relationships with sponsors
-- Manage the team's budget and finances
+- Buscar e contatar potenciais patrocinadores
+- Escrever propostas de patrocínio e planos de negócios
+- Manter o relacionamento com os patrocinadores
+- Gerir o orçamento e as finanças da equipe
 
-> [!info] School funding is limited: a complete competition vehicle costs about ¥10,000, and the gap must be filled through sponsorship. If the team advances to the Houston World Championship, the school will fully reimburse the related expenses.
+> [!info] O financiamento fornecido pela escola é limitado: o custo total de um robô de competição é de cerca de ¥10.000, e a diferença precisa ser coberta por patrocínios; se a equipe se classificar para o Campeonato Mundial em Houston, a escola reembolsa integralmente as despesas relacionadas à competição.
 
-### STEM Outreach
+### Promoção de STEM
 
-- Organize community STEM education events
-- Connect with local schools and businesses
-- Run robot demonstrations and hands-on experiences
+- Organizar atividades comunitárias de educação STEM
+- Contatar escolas e empresas locais
+- Realizar atividades de demonstração e experimentação de robótica
 
-### Inter-Team Exchange
+### Integração entre equipes
 
-- Establish connections with other FTC teams
-- Participate in inter-team exchange events
-- Share experience and resources
+- Criar vínculos com outras equipes de FTC
+- Participar de atividades de integração entre equipes
+- Compartilhar experiências e recursos
 
-### Social Media Operations
+### Redes sociais
 
-- Manage the team's social media accounts across platforms
-- Publish team updates and event information
-- Produce promotional content
-
----
-
-## 3. Sponsorship Development
-
-### The Essence of Sponsorship: Exchange of Value
-
-> [!info] Nobody gives you money for nothing. Sponsors provide funding and materials in exchange for exposure and brand recognition.
-
-- Better results mean more exposure, and more exposure makes sponsorships easier to win.
-- At this stage, start with small sponsorships: e.g., ask electronics factories to sponsor tools, screws, and other consumables.
-- How to reach out: email larger companies; call Taobao (淘宝) vendors directly.
-
-### Business Plans
-
-A sponsorship business plan should include:
-
-- Event introduction (what FTC is and its influence)
-- Team introduction
-- Historical results
-- Tiered sponsorship benefits: different amounts correspond to different logo exposure tiers
-
-### Case Study: FTC Team 27570's (BYNX) Commercial Development
-
-- **Light & sound module**: FTC Team 27570 developed an FTC-specific light and sound module called KIRIN (麒麟) with customizable effects. Their tiered pricing embeds team numbers — 1 unit for ¥180, 4 units for ¥570, 6 units for ¥787 — where 570 and 787 echo the numbers of FTC 27570 and FTC 25787, subtly engraving team numbers into buyers' minds.
-- **Custom servos**: They partnered with a servo factory to build custom servos under their own brand and developed companion tuning software, selling servos, power distribution boards, and accessories through their website — sales revenue funds the team.
-
-### Case Study: FGC Team China
-
-- FGC (First Global Challenge) is like the Olympics of robotics. The 2026 event will be held in Incheon, South Korea, with teams from more than 190 countries.
-- FGC Team China's business plan includes the event introduction, team introduction, historical results, and tiered sponsorship benefits. It is understood that they have secured sponsorships from brands including Xiaomi and Huawei (via its affiliated brand Huakun Zhenyu (华鲲振宇)).
-- Some strong teams that have secured major corporate sponsors build their vehicles with almost no official parts, using fully custom materials such as carbon fiber, far beyond the hardware of ordinary teams.
+- Gerenciar as contas da equipe nas plataformas sociais
+- Publicar novidades e informações das atividades da equipe
+- Produzir conteúdo de divulgação
 
 ---
 
-## 4. Miscellaneous
+## 3. Desenvolvimento de patrocínios
 
-(Refer to the relevant documents and handbooks)
+### A essência do patrocínio: troca de interesses
 
+> [!info] Ninguém dá dinheiro de graça. O patrocinador oferece recursos e materiais e, em troca, espera visibilidade e reconhecimento.
 
-### Inspire Award & Scoring
+- Quanto melhores os resultados, maior a visibilidade e mais fácil conseguir patrocínio.
+- Nesta fase, é possível começar com patrocínios pequenos: por exemplo, pedir a uma fábrica de eletrônicos ferramentas, parafusos e outros consumíveis.
+- Formas de contato: enviar e-mails a grandes empresas; ligar diretamente para vendedores do Taobao (淘宝).
 
-> [!info] Winning first place in the competitive ranking is worth only 40 points, while first place in the Inspire Award is worth 60 points. The Inspire Award is judged primarily on the team's impact in the FTC community and its record of helping other teams.
+### Proposta de patrocínio (plano de negócios)
 
-- Accumulated promotional material, inter-team exchange, and community service directly determine Inspire Award competitiveness — their value may exceed that of competitive ranking itself
+Ao apresentar uma proposta de patrocínio ao patrocinador, inclua:
+
+- Apresentação da competição (o que é o FTC, impacto do evento)
+- Apresentação da equipe
+- Resultados históricos
+- Benefícios de patrocínio por faixa: valores diferentes correspondem a níveis diferentes de exibição do logo
+
+### Caso: desenvolvimento comercial da FTC 27570 (BYNX)
+
+- **Módulo de som e luz**: a FTC 27570 desenvolveu o KIRIN (麒麟), um módulo de som e luz feito especialmente para FTC, com efeitos de iluminação personalizáveis. Nos preços escalonados, eles embutem os números das equipes — 1 unidade por ¥180, 4 por ¥570, 6 por ¥787 — em que 570 e 787 remetem aos números das equipes FTC 27570 e FTC 25787, gravando aos poucos esses números na memória dos compradores.
+- **Servos personalizados**: em parceria com uma fábrica de servos, criaram servos exclusivos com a própria marca e desenvolveram um software de ajuste de parâmetros; vendem servos, placas de distribuição de energia e acessórios pelo site oficial, e a receita das vendas vira verba da equipe.
+
+### Caso: seleção da China na FGC
+
+- A FGC (First Global Challenge) é como as Olimpíadas da robótica; a edição de 2026 será realizada em Incheon, na Coreia do Sul, com mais de 190 países participantes.
+- A proposta comercial da seleção chinesa da FGC inclui apresentação da competição, apresentação da equipe, resultados históricos e os benefícios correspondentes a cada faixa de patrocínio. Segundo informações, a equipe já obteve patrocínio de marcas como Xiaomi (小米) e Huawei (华为, por meio da marca associada Huakun Zhenyu (华鲲振宇)).
+- Algumas equipes fortes, ao conseguir patrocínio de grandes empresas, praticamente deixam de usar peças oficiais e passam a usar materiais personalizados de alto padrão, como fibra de carbono, com configuração de hardware muito acima das equipes comuns.
+
+---
+
+## 4. Outros assuntos
+
+(consulte os documentos e manuais relacionados)
+
+### Prêmio Inspiração e pontuação do evento
+
+> [!info] O primeiro lugar na classificação competitiva vale apenas 40 pontos, enquanto o primeiro lugar no Prêmio Inspiração (Inspire Award) vale 60 pontos. O Prêmio Inspiração é avaliado essencialmente pelo impacto da equipe na comunidade do evento e pelo histórico de ajuda a outras equipes.
+
+- A coleta de material de divulgação, a integração entre equipes e o serviço comunitário determinam diretamente a competitividade no Prêmio Inspiração, e esse valor pode superar o da própria colocação competitiva
