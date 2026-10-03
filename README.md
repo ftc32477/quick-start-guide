@@ -509,6 +509,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 - 语言代码统一采用 **BCP 47 脚本代码**：简体为 `zh-hans`、繁体为 `zh-hant`（不用区域代码 `zh-cn`/`zh-tw`），西班牙语为 `es`（不用 `es-es`），韩语为 `ko`（不用 `ko-kr`），巴西葡语为 `pt-br`（明确巴西变体，不用 `pt`），同时作用于目录名、语言键、HTML `lang`、PDF 文件名与线上网址路径。
 
+- 新增语言时，`VERSIONS` 既有历史条目的 `name`/`changes`（历史版本页文案）可用 `build.py` 中的回填块补齐（如 pt-br 的 `_BACKFILL_PT_BR`）；此后新版本在 `VERSIONS` 条目内直接提供该语言字段。
 - 语言切换 UI **必须显示全称**：简体中文 / 繁體中文 / English (US) / Français / Español / 한국어 / Português (BR)，不使用简写。
 - 放不下时采用**下拉选项栏**（侧边栏与移动端顶栏均为下拉栏）。
 

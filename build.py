@@ -728,6 +728,93 @@ VERSIONS = [
 ]
 
 
+_BACKFILL_PT_BR = {
+    "v1.3.3": {
+        "name": "Setembro de 2026, 1.ª edição · revisão 3",
+        "changes": [
+            'Listas de nomes adicionadas sob as duas fotos de grupo do posfácio (filas de cima/baixo, da esquerda para a direita), sincronizadas nos seis idiomas.',
+            'README reestruturado: adicionado um guia de leitura no início do arquivo, com links por tarefa, além de uma seção de "Diretrizes de imagens" (tamanhos, remoção de EXIF, higiene de capturas de tela, grupos de imagens, regras para fotos de grupo).',
+            'O site de prévia de desenvolvimento agora exibe um selo visível de "Prévia de desenvolvimento" (oculto automaticamente na impressão).',
+            'Todos os tamanhos de página dos PDFs foram unificados para A4 exato (595,276×841,89 pt) na build, sem escalar o conteúdo.',
+        ],
+    },
+    "v1.3.2": {
+        "name": "Setembro de 2026, 1.ª edição · revisão 2",
+        "changes": [
+            'Corrigido o link de download do LocalSend na edição em inglês (o antigo caminho /en/download estava quebrado) e restaurado o quadro informativo "rede local da equipe / gateway do campus" que faltava nas edições em espanhol e coreano.',
+            'As edições em francês, espanhol e coreano agora apontam para as páginas no idioma correspondente para LocalSend, Bambu Studio, documentação do GitHub e Android Studio; ordem dos casos e anotações de terminologia alinhadas.',
+            'Engenharia e site: a CI agora recompila e verifica antes de implantar, com proteção contra execuções concorrentes; corrigida a detecção do canal dev na CI; o site dev recebe noindex enquanto a produção ganha canonical/hreflang; PDFs históricos removidos do repositório de publicação, com entrada raiz, robots, 404 e sitemap adicionados.',
+            'PDF: adicionados sumário de capítulos/seções e metadados do documento, tamanhos de página unificados, melhor contraste do texto legal da página de créditos e esclarecimento do endereço acessível somente na rede local.',
+        ],
+    },
+    "v1.3.1": {
+        "name": "Setembro de 2026, 1.ª edição · revisão 1",
+        "changes": [
+            'Reformulação tipográfica dos PDFs: texto corrido em Source Han Serif, títulos em Source Han Sans, citações/legendas/prefácio em LXGW WenKai (Kai) e textos e números em latim em Times New Roman (Tinos como alternativa).',
+            'Cabeçalhos e rodapés agora são carimbados pelo script de build com subconjuntos de fontes embutidos, garantindo glifos consistentes em todas as plataformas.',
+            'As fontes são reduzidas aos caracteres realmente usados e distribuídas com o repositório (cerca de 10 MB): builds offline sem instalar fontes, além de verificação automática de cobertura de caracteres na build.',
+            'Textos CJK agora usam subconjuntos Type0 embutidos adequados, em vez de muitas fontes Type3 fragmentadas: o texto é pesquisável e copiável, e o tamanho dos PDFs caiu cerca de metade. O site não foi afetado.',
+        ],
+    },
+    "v1.3.0": {
+        "name": "Setembro de 2026, 1.ª edição",
+        "changes": [
+            'Essenciais da equipe: adicionada a seção "Temporada e calendário" (linha do tempo da temporada e observações de regras — somente controle Xbox 360, proibição de levitação magnética, faixa etária de 12 a 18 anos) e refinada a descrição da rede local da equipe.',
+            'Programação: adicionada a seção "Programação assistida por IA" (uso de ferramentas de agente de IA) e uma observação sobre o Driver/controle.',
+            'Divulgação e relações públicas: esclarecido o papel do caderno de engenharia, adicionadas notas de financiamento e a seção "Prêmio Inspiração e pontuação" (40 pontos para o primeiro lugar na competição contra 60 do Prêmio Inspiração), além de um caso de equipes fortes com robôs totalmente personalizados.',
+            'Hardware e construção: adicionada a estratégia de substituição na compra de peças oficiais; Modelagem e design: adicionada experiência sobre compartilhamento de arquivos CAD entre equipes.',
+        ],
+    },
+    "v1.2.2": {
+        "name": "Agosto de 2026, 3.ª edição, 2.ª revisão",
+        "changes": [
+            'Edição em chinês tradicional: os termos do Onshape 「结构体/装配体」 agora são escritos em caracteres tradicionais (結構體/裝配體).',
+            'Página de histórico de versões: esclarecido que as versões anteriores incluem apenas os idiomas disponíveis na época do lançamento.',
+            'Capa e contracapa dos PDFs: as informações de versão agora são dispostas em duas linhas, com espaçamento maior, e as linhas da contracapa ficam alinhadas à direita.',
+            'Atualizações de engenharia: os dados de edição agora são totalmente orientados por VERSIONS (rodapé da barra lateral, versão mais recente da página inicial, data da capa do PDF); adicionados o workflow de CI check-dist e o script semiautomático de release (release.sh); as notas de versão são arquivadas em release-notes/; todas as páginas passam a incluir meta tags de SEO/compartilhamento social e rótulos de acessibilidade localizados; --watch agora também monitora images/ e build.py.',
+        ],
+    },
+    "v1.2.1": {
+        "name": "Agosto de 2026, 3.ª edição, 1.ª revisão",
+        "changes": [
+            'Edição em chinês tradicional: os nomes de pessoas agora trazem o original em chinês simplificado (por exemplo, 付修齊（付修齐）); nomes idênticos nos dois conjuntos de caracteres não recebem anotação.',
+            'Edições em chinês simplificado e tradicional: termos traduzidos de origem estrangeira agora trazem o nome no idioma de origem (por exemplo, 结构体（Part Studio）, 构建（Build）); a convenção de anotação para todos os idiomas está documentada no README do projeto.',
+            'Portal: a cor de destaque do cartão de coreano agora combina com a do cartão de espanhol (#ffb953).',
+        ],
+    },
+    "v1.2.0": {
+        "name": "Agosto de 2026, 3.ª edição",
+        "changes": [
+            'Adicionada a edição em coreano (한국어): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em coreano incluído.',
+            'Padronizadas as anotações de nomes em todas as edições: nomes reais de pessoas agora trazem os caracteres chineses originais (por exemplo, Fu Xiuqi (付修齐); em coreano, os nomes usam a leitura em hanja, por exemplo, 부수제(付修齐)), e nomes próprios como plataformas trazem o nome no idioma de origem (por exemplo, KIRIN (麒麟), Bilibili (哔哩哔哩)).',
+            'Esta versão é a 3.ª edição de agosto de 2026.',
+        ],
+    },
+    "v1.1.0": {
+        "name": "Agosto de 2026, 2.ª edição",
+        "changes": [
+            'Adicionada a edição em espanhol (Español): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em espanhol incluído.',
+            'Atualizadas as cores de destaque dos cartões de idioma do portal: #a61615 para chinês simplificado/tradicional, #d85d23 para inglês (EUA)/francês e #ffb953 para o novo cartão de espanhol.',
+            'Esta versão é a 2.ª edição de agosto de 2026.',
+        ],
+    },
+    "v1.0.0": {
+        "name": "Agosto de 2026, 1.ª edição",
+        "changes": [
+            'Primeira publicação, com sete capítulos: Prefácio, Essenciais da equipe, Modelagem e design, Hardware e construção, Programação, Divulgação e relações públicas e Posfácio.',
+            'Disponível em quatro edições de idioma: chinês simplificado, chinês tradicional, inglês (EUA) e francês.',
+            'O PDF unificado é composto por capa, sumário, texto principal e contracapa, com numeração contínua de páginas e links navegáveis no sumário.',
+        ],
+    },
+}
+
+for _v in VERSIONS:
+    _bf = _BACKFILL_PT_BR.get(_v["tag"])
+    if _bf and "pt-br" not in _v.get("name", {}):
+        _v["name"]["pt-br"] = _bf["name"]
+        _v["changes"]["pt-br"] = _bf["changes"]
+
+
 def latest_edition(lang_key):
     """最新已发布版本的版次名（取自 VERSIONS 顶部 released 条目，数据驱动）。"""
     for v in VERSIONS:
@@ -1670,6 +1757,7 @@ section>h2 .en{font-size:inherit;color:inherit;font-weight:inherit;margin-left:1
 }
 @media print{.dev-badge{display:none!important}}
 .lang-card.ko{border-top-color:#ffb953}
+.lang-card.pt-br{border-top-color:#1b7f4b}
 .lang-card h3{font-size:18px;font-weight:700;margin-bottom:4px}
 .lang-card .lang-name{font-size:13px;color:var(--muted);margin-bottom:12px}
 
@@ -1705,7 +1793,7 @@ footer .legal p:last-child{margin-bottom:0}
 
 def render_portal():
     """生成根门户页（语言选择，仿 wikipedia.org 风格）。"""
-    portal_desc = ("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u591a\u8bed\u8a00\u95e8\u6237\uff1a\u7b80\u4f53\u4e2d\u6587 / \u7e41\u9ad4\u4e2d\u6587 / English (US) / Fran\u00e7ais / Espa\u00f1ol / \ud55c\uad6d\uc5b4\u3002Multilingual portal of the FTC 32477 Origin Quick Start Guide.")
+    portal_desc = ("FTC 32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357\u591a\u8bed\u8a00\u95e8\u6237\uff1a\u7b80\u4f53\u4e2d\u6587 / \u7e41\u9ad4\u4e2d\u6587 / English (US) / Fran\u00e7ais / Espa\u00f1ol / \ud55c\uad6d\uc5b4 / Portugu\u00eas (BR)\u3002Multilingual portal of the FTC 32477 Origin Quick Start Guide.")
     portal_langs = [
         ("zh-hans", "\u7b80\u4f53\u4e2d\u6587", "Simplified Chinese"),
         ("zh-hant", "\u7e41\u9ad4\u4e2d\u6587", "Traditional Chinese"),
@@ -1713,6 +1801,7 @@ def render_portal():
         ("fr", "Fran\u00e7ais", "French \u00b7 France"),
         ("es", "Espa\u00f1ol", "Spanish \u00b7 Spain"),
         ("ko", "\ud55c\uad6d\uc5b4", "Korean \u00b7 Korea"),
+        ("pt-br", "Portugu\u00eas (BR)", "Portuguese \u00b7 Brazil"),
     ]
     cards_html = "\n".join(
         f'<a class="lang-card {lk}" href="{lk}/index.html">'
