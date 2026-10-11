@@ -104,7 +104,7 @@ Ao apresentar uma proposta de patrocínio ao patrocinador, inclua:
 
 - A FGC (First Global Challenge) é como as Olimpíadas da robótica; a edição de 2026 será realizada em Incheon, na Coreia do Sul, com mais de 190 países participantes.
 - A proposta comercial da seleção chinesa da FGC inclui apresentação da competição, apresentação da equipe, resultados históricos e os benefícios correspondentes a cada faixa de patrocínio. Segundo informações, a equipe já obteve patrocínio de marcas como Xiaomi (小米) e Huawei (华为, por meio da marca associada Huakun Zhenyu (华鲲振宇)).
-- Algumas equipes fortes, ao conseguir patrocínio de grandes empresas, praticamente deixam de usar peças oficiais e passam a usar materiais personalizados de alto padrão, como fibra de carbono, com configuração de hardware muito acima das equipes comuns.
+- Algumas equipes fortes, ao conseguir patrocínio de grandes empresas, quase não usam peças oficiais em seu robô e passam a usar materiais personalizados de alto padrão, como fibra de carbono, com configuração de hardware muito acima das equipes comuns.
 
 ---
 

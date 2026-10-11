@@ -41,7 +41,7 @@ Onshape est la plateforme de modélisation dans le cloud adoptée par notre équ
 1. Ouvrez [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/) et inscrivez-vous à un compte Éducation
 2. Saisissez votre prénom (First name), votre nom (Last name) et votre adresse e-mail
 
-> [!warning] N'utilisez pas QQ ni d'autres services de messagerie chinois : le code de vérification risque de ne jamais arriver. Utilisez plutôt @gmail.com ou @outlook.com.
+> [!warning] N'utilisez pas QQ ni d'autres services de messagerie chinois : vous pourriez ne pas recevoir le code de vérification. Utilisez plutôt @gmail.com ou @outlook.com.
 
 3. Sur l'écran suivant, sélectionnez dans l'ordre votre statut « Student », le niveau scolaire « Grade School / K-12 (Ages <18) » et votre date de naissance, puis cliquez sur Suivant
 4. Renseignez les informations suivantes :
@@ -71,7 +71,7 @@ Onshape est la plateforme de modélisation dans le cloud adoptée par notre équ
 
 ### Plugins Onshape
 
-Grâce à sa nature cloud, Onshape dispose d'un riche écosystème de plugins partagés, disponibles via l'App Store Onshape, des sites tiers de plugins ou le partage entre utilisateurs.
+Grâce à son architecture cloud, Onshape dispose d'un riche écosystème de plugins partagés, disponibles via l'App Store Onshape, des sites tiers de plugins ou le partage entre utilisateurs.
 
 Les plugins couramment utilisés par l'équipe sont (exemples uniquement) :
 
@@ -141,15 +141,15 @@ La résistance d'une pièce imprimée en 3D dépend du matériau et de la struct
 
 ### Stratégie de conception et calendrier de saison
 
-- Lors de la conception du robot, découpez les tâches du jeu en petits éléments, concevez séparément les structures de chaque élément, puis combinez-les
+- Lors de la conception du robot, découpez les tâches du jeu en petits éléments, réalisez séparément les structures de chaque élément, puis combinez-les
 - Avant la modélisation formelle, consultez les autres membres de l'équipe sur le projet et concevez en fonction de la stratégie de score de l'équipe
-- Une fois la modélisation complète du robot terminée, pensez au processus d'assemblage réel : prévoyez des accès d'assemblage pour les vis difficiles à installer et réservez de l'espace pour le passage des câbles
+- Une fois la modélisation complète du robot terminée, tenez compte du processus d'assemblage réel : pour les structures internes difficiles à installer (vis, etc.), prévoyez en amont des accès d'assemblage et de l'espace pour le passage des câbles
 - Envisagez des structures modulaires pour faciliter les réparations et les optimisations ultérieures
 - Pour la version finale, privilégiez une structure unifiée et réduisez les petites pièces superflues afin d'améliorer la résistance globale et la légèreté
 
 **Calendrier de saison :**
 
-- Sur le planning : la première conception peut être sommaire, mais elle doit être terminée et construite le plus vite possible afin de laisser du temps au débogage des programmes et à l'entraînement des Drivers, et de tester la structure pour l'optimiser par itérations ; avant les matchs de qualification, un robot qualifiable doit subir au moins 3 itérations (référence)
+- Sur le planning : la première conception peut être sommaire, mais elle doit être terminée et construite le plus vite possible afin de laisser du temps au débogage des programmes et à l'entraînement des Drivers, et de tester la structure pour l'optimiser par itérations ; avant les matchs de qualification, un robot apte à concourir doit subir au moins 3 itérations (référence)
 - Suivez l'actualité des équipes étrangères : la communauté FTC organise des événements comme « Robot in 30 Hours Reveal | FTC » au cours desquels les équipes peuvent partager à tout moment leurs nouveaux projets de saison ; vous pouvez aussi vous inspirer des projets des équipes FRC et VEX
 - Les fichiers CAO de la plupart des autres équipes sont partagés publiquement ; demander directement les modèles d'une équipe n'est généralement pas refusé. Étudiez les bonnes conceptions pour améliorer la vôtre — les équipes comme Beijing National Day School (campus principal) méritent particulièrement d'être étudiées
 
@@ -174,5 +174,5 @@ Fournisseurs de pièces FTC et plateformes de ressources couramment utilisés :
 ### Normes de conception
 
 - Utilisez les unités métriques (mm)
-- Prévoyez un jeu approprié pour toutes les pièces imprimées en 3D (0.2-0.3mm recommandé)
+- Prévoyez un jeu approprié pour toutes les pièces imprimées en 3D (0.2-0.3 mm recommandé)
 - Formats d'export : fichiers STEP pour l'usinage, fichiers STL pour l'impression 3D et fichiers 3MF pour le tranchage

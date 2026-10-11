@@ -17,7 +17,7 @@ Qualquer uma das opções:
 
 - Suporte do Android: [https://support.google.com/android](https://support.google.com/android)
 
-> [!info] A equipe mantém uma rede local própria, conectada a um gateway dedicado do campus: ela é mais estável que a rede escolar comum, mas mantém as restrições de acesso desta. A área de programação precisa acessar recursos de rede no exterior para o suporte do Android; a equipe pode oferecer um caminho de acesso, mas, se houver necessidade de uso intenso, recomendamos contratar um serviço próprio.
+> [!info] A equipe mantém uma rede local própria, conectada a um gateway dedicado do campus: ela é mais estável que a rede escolar comum, mas ainda está sujeita às restrições de acesso desta. A programação precisa acessar recursos de rede no exterior para o suporte do Android; a equipe pode oferecer um caminho de acesso, mas, se houver necessidade de uso intenso, recomendamos contratar um serviço próprio.
 
 ### Aplicativos
 
@@ -42,7 +42,7 @@ O ambiente de trabalho abaixo deve ser configurado antes do início oficial. Sig
 
 ### Navegador de internet
 
-Instale por conta própria. Recomendamos o Chrome.
+Instale por conta própria; recomendamos o Chrome.
 
 Download do Chrome: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -141,7 +141,7 @@ Referências:
 ### Linha do tempo da temporada
 
 - Uma temporada completa do FTC vai de setembro de um ano a junho do ano seguinte; o desafio da nova temporada é divulgado em meados de setembro e, após o lançamento, há cerca de sete a oito semanas para projetar e ajustar o robô
-- Os torneios classificatórios são realizados em várias cidades do país; as equipes classificadas disputam o campeonato nacional nas férias de inverno e, se avançarem novamente, vão a Houston, nos Estados Unidos, para o Campeonato Mundial (até hoje, apenas cerca de 4 equipes da China continental chegaram ao Mundial de Houston)
+- Os torneios classificatórios são realizados em várias cidades do país; as equipes classificadas disputam o campeonato nacional nas férias de inverno e, se avançarem novamente, vão a Houston, nos Estados Unidos, para o Campeonato Mundial (até 2026, apenas cerca de 4 equipes da China continental chegaram ao Mundial de Houston)
 - Os materiais básicos do campo da nova temporada são enviados oficialmente após o início do ano letivo e, quando chegam, o campo pode ser montado
 
 ### Observações sobre as regras da competição

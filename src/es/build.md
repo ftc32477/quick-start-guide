@@ -79,7 +79,7 @@ RD Works V8 es el software controlador de la cortadora láser que utiliza nuestr
 
 Herramienta en forma de L o de T con sección hexagonal, utilizada para apretar o aflojar tornillos de cabeza hexagonal. Para usarla, inserte por completo el extremo corto o largo en el hueco hexagonal de la cabeza del tornillo; gire en el sentido de las agujas del reloj para apretar y en sentido contrario para aflojar. Las llaves con mango en T suelen emplearse para ejercer más palanca o para trabajar en orificios profundos.
 
-> [!info] Las medidas que más utilizamos son M3 y M4; lleve siempre alguna encima.
+> [!info] Las medidas más utilizadas son M3 y M4; conviene llevarlas siempre encima.
 
 #### Llave de vaso
 
@@ -129,14 +129,14 @@ En un micrómetro, el tope A y la graduación fija B están fijados al arco C; l
 
 #### Materiales generales
 
-Se pueden adquirir por distintos canales:
+Los siguientes materiales pueden adquirirse por los canales habituales:
 
 - Tornillos y tuercas de varios tipos
 - Prismas hexagonales
 - Poleas de correa síncrona
 - Rodamientos
 
-> [!warning] Los ejes no se consideran material general: sus especificaciones son especiales; cómprelos por separado según las necesidades reales del proyecto.
+> [!warning] Los ejes no se consideran material general: sus especificaciones son especiales; cómprelos por separado según las necesidades del proyecto.
 
 #### Materiales específicos
 
@@ -146,7 +146,7 @@ Perfiles específicos oficiales de REV y goBILDA.
 
 | Marca | Características |
 |------|------|
-| **REV** | Relativamente antiguo, pero fundamental. Los tres módulos principales de control electrónico (Driver Hub, Control Hub y Expansion Hub) son en su mayoría productos REV. Entre las piezas estructurales hay varios perfiles de aluminio (de uso relativamente escaso); los perfiles sirven para pequeños topes y para fijar estructuras de desplazamiento no unitario. Los perfiles usan únicamente tornillos de cabeza cilíndrica M3, ejes REX de 6 mm, engranajes y cadenas; los motores transversales 72:1 y los motores 40:1 son los más utilizables. |
+| **REV** | De los primeros, pero aún fundamental. Los tres módulos principales de control electrónico (Driver Hub, Control Hub y Expansion Hub) son en su mayoría productos REV. Entre las piezas estructurales hay varios perfiles de aluminio (de uso relativamente escaso); los perfiles sirven para pequeños topes y para fijar estructuras de desplazamiento no unitario. Los perfiles usan únicamente tornillos de cabeza cilíndrica M3, ejes REX de 6 mm, engranajes y cadenas; los motores transversales 72:1 y los motores 40:1 son los más utilizados. |
 | **goBILDA** | Vigas en C, vigas cuadradas o finas, ejes REX de 8 mm, conectores normalizados de todo tipo y funciones de conexión completas. Utiliza principalmente tornillos M4 (10 mm oficiales); los motores suelen ser de la serie 5203. Adecuado para kits de transmisión directa de motor. |
 
 **Detalles del proveedor REV:**
@@ -171,9 +171,9 @@ Perfiles específicos oficiales de REV y goBILDA.
 | Tipo | Temperatura de impresión (aprox.) | Descripción |
 |------|------|------|
 | PLA | 220 °C | Filamento plástico básico estándar |
-| PETG-CF | 240+ °C | Filamento plástico con fibra de carbono |
+| PETG-CF | 240 °C o más | Filamento plástico con fibra de carbono |
 
-Compre filamento oficial de Bambu Lab o de SUNLU, de calidad relativamente estable.
+Se recomienda usar filamento oficial de Bambu Lab (拓竹) o SUNLU (三绿), de calidad relativamente estable.
 
 **Contracción:**
 
@@ -202,7 +202,7 @@ Compre filamento oficial de Bambu Lab o de SUNLU, de calidad relativamente estab
 
 **Cables de datos (cables de codificador del motor):**
 
-- En goBILDA, el conector del Hub y el orden de los hilos difieren (los hilos amarillo y blanco están intercambiados); hay que prestar especial atención al fabricarlos.
+- En goBILDA, el conector y el orden de los hilos difieren de los del Hub (los hilos amarillo y blanco están intercambiados); hay que tener cuidado al fabricarlos.
 - Cables de sensor I2C: sin requisitos especiales.
 - Cables de datos de Con y EXP.
 - Alargadores de servo: atención a la polaridad.
@@ -236,7 +236,7 @@ Compre filamento oficial de Bambu Lab o de SUNLU, de calidad relativamente estab
 
 #### Orden de montaje
 
-> [!warning] Al montar un robot a mano se suele empezar por el chasis y construir hacia arriba. Pero en un robot de competición, donde disponemos de planos de modelado, ese orden suele provocar numerosos retrabajos por culpa de las piezas que se tapan unas a otras.
+> [!warning] Al montar un robot a mano se suele empezar por el chasis y construir hacia arriba; en un robot de competición, donde hay planos de modelado, ese orden tiende a provocar retrabajos por culpa de las piezas que se tapan unas a otras.
 
 - Durante el montaje, ajuste el orden según las relaciones de oclusión entre piezas: **instale primero las piezas tapadas por motores, módulos de control electrónico y otros componentes**, y después los componentes que las tapan.
 - Ejemplo: confirme que todas las piezas que rodean un motor están montadas antes de instalar ese motor.
@@ -285,14 +285,14 @@ La redacción del archivo de configuración es una tarea compartida entre Constr
 
 ### Instalación y configuración de Bambu Studio
 
-Descárguelo, instálelo y pulse «Siguiente»; preste atención a la ubicación de instalación; la carpeta se crea automáticamente.
+Descárguelo e instálelo con los pasos predeterminados; preste atención a la ubicación de instalación (la carpeta se crea automáticamente).
 
 **Precauciones:**
 
 - Marque todas las casillas
 - En la guía de registro que aparece al ejecutarlo, elija China continental
 - Seleccione solo P1S y P2S
-- Deje los materiales de uso común con los valores predeterminados
+- Deje los materiales con la configuración predeterminada
 - Instale el complemento de red
 - Inicie sesión o regístrese en la esquina superior izquierda (móvil o cuentas de terceros)
 
@@ -340,7 +340,7 @@ Descárguelo, instálelo y pulse «Siguiente»; preste atención a la ubicación
 
 - Entre en la pestaña «Dispositivo», active el modo LAN y la impresora de la red local se detectará automáticamente (al activar el modo LAN puede cerrarse la sesión actual; puede ignorar el aviso).
 - Si no encuentra la impresora de destino: confirme primero que la impresora tiene activado el modo LAN; si aun así no aparece, puede vincularla manualmente con la IP + código de acceso. La IP se consulta en la página de WiFi de los ajustes de la impresora; el código de acceso, en el avatar de inicio de sesión tras activar el modo LAN.
-- Una vez terminado el laminado, compruébelo en la pestaña «Vista previa»; antes de imprimir conviene enviar la imagen de la vista previa al responsable actual de modelado o de construcción para confirmar la configuración antes de lanzar la impresión.
+- Una vez terminado el laminado, compruébelo en la pestaña «Vista previa»; antes de imprimir, envíe la imagen de la vista previa al responsable actual de modelado o de construcción para confirmar la configuración y lance después la impresión.
 
 ### Ajustes de impresión
 
@@ -358,7 +358,7 @@ Descárguelo, instálelo y pulse «Siguiente»; preste atención a la ubicación
 ### Gestión de anomalías de impresión
 
 - **P2S**: cuenta con detección AI de «espaguetis»; cuando se producen (filamento suelto volando), la impresora detiene la impresión automáticamente y envía un aviso a la cuenta conectada al dispositivo. Tras limpiar los archivos defectuosos, el equipo se reinicia automáticamente.
-- **P1S**: carece de detección automática de «espaguetis»; hay que vigilar el estado de la impresión en tiempo real. Si aparecen, detenga la impresión manualmente; el archivo defectuoso puede encontrarse y limpiarse entre los archivos históricos de la carpeta de caché de la izquierda.
+- **P1S**: carece de detección automática de «espaguetis»; hay que vigilar la impresión en tiempo real. Si aparecen, detenga la impresión manualmente; el archivo defectuoso puede encontrarse y limpiarse en el historial de impresión de la carpeta de caché de la izquierda.
 
 ### Instalación y configuración de RD Works V8
 

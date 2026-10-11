@@ -79,7 +79,7 @@ O RD Works V8 é o software que acompanha a cortadora a laser adotada pela nossa
 
 Ferramenta em L ou T de seção hexagonal, usada para girar parafusos com sextavado interno. Ao usar, insira completamente a ponta curta ou longa no encaixe hexagonal do parafuso: girar no sentido horário aperta; no sentido anti-horário, solta. Chaves com cabo em T costumam ser usadas para dar mais alavanca ou trabalhar em furos profundos.
 
-> [!info] Nossos tamanhos mais usados são M3 e M4; mantenha sempre os dois por perto.
+> [!info] Os tamanhos mais usados são M3 e M4; mantenha sempre os dois por perto.
 
 #### Soquete
 
@@ -129,14 +129,14 @@ No micrômetro, a bigorna A e a escala fixa B ficam presas à estrutura C; o tam
 
 #### Materiais gerais
 
-Itens que podem ser comprados em qualquer canal:
+Os itens a seguir podem ser comprados em canais convencionais:
 
 - Parafusos e porcas diversos
 - Colunas sextavadas
 - Polias de correia dentada
 - Rolamentos
 
-> [!warning] Eixos não entram nos materiais gerais: as especificações de eixo são bem específicas, então compre conforme a necessidade real de cada projeto.
+> [!warning] Eixos não entram nos materiais gerais: as especificações de eixo são específicas, então compre conforme a necessidade do projeto.
 
 #### Materiais específicos
 
@@ -146,7 +146,7 @@ Perfis específicos oficiais da REV e da goBILDA.
 
 | Marca | Características |
 |------|------|
-| **REV** | Mais antiga, porém essencial. Os três módulos de controle eletrônico (Driver Hub, Control Hub e Expansion Hub) usam principalmente produtos REV. As peças estruturais incluem perfis de alumínio variados (uso relativamente menor), úteis para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão. Os perfis usam principalmente parafusos Allen M3 de cabeça cilíndrica, eixos REX de 6 mm, engrenagens e correntes; o motor de eixo transversal 72:1 e o motor 40:1 são os mais úteis e usados. |
+| **REV** | Mais antiga, porém ainda essencial. Os três módulos de controle eletrônico (Driver Hub, Control Hub e Expansion Hub) usam principalmente produtos REV. As peças estruturais incluem perfis de alumínio variados (uso relativamente menor), úteis para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão. Os perfis usam principalmente parafusos Allen M3 de cabeça cilíndrica, eixos REX de 6 mm, engrenagens e correntes; o motor de eixo transversal 72:1 e o motor 40:1 são os mais usados. |
 | **goBILDA** | Vigas em C, vigas quadradas ou vigas finas, eixos REX de 8 mm, conectores padronizados de vários tipos e excelente compatibilidade de fixação. Usa principalmente parafusos M4 (oficialmente de 10 mm) e motores da linha 5203. Ideal para kits com transmissão direta do motor. |
 
 **Detalhes do fornecedor REV:**
@@ -171,9 +171,9 @@ Perfis específicos oficiais da REV e da goBILDA.
 | Tipo | Temperatura de impressão (aprox.) | Descrição |
 |------|------|------|
 | PLA | 220 °C | Filamento plástico básico padrão |
-| PETG-CF | 240+ °C | Filamento plástico com fibra de carbono |
+| PETG-CF | 240 °C ou mais | Filamento plástico com fibra de carbono |
 
-Compre filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualidade relativamente estável.
+Recomendamos filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualidade relativamente estável.
 
 **Contração:**
 
@@ -202,7 +202,7 @@ Compre filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualid
 
 **Cabos de dados (cabo do encoder do motor):**
 
-- Na goBILDA, o conector e a ordem dos fios são diferentes dos do Hub (o fio amarelo e o branco são invertidos); atenção especial ao montar.
+- Na goBILDA, o conector e a ordem dos fios são diferentes dos do Hub (o fio amarelo e o branco são invertidos); atenção ao montar.
 - Cabos de sensores I2C: sem exigências especiais.
 - Cabos de dados Con e EXP.
 - Extensores de servo: atenção à orientação.
@@ -236,7 +236,7 @@ Compre filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualid
 
 #### Ordem de montagem
 
-> [!warning] Na montagem manual comum, costuma-se fazer o chassi primeiro e ir somando por cima. Em um robô de competição temos os desenhos de modelagem, e essa ordem pode causar muito retrabalho por causa de peças que ficam encobertas.
+> [!warning] Na montagem manual comum, costuma-se fazer o chassi primeiro e ir somando por cima; no robô de competição há desenhos de modelagem, e essa ordem pode causar retrabalho por causa de peças que ficam encobertas.
 
 - A ordem deve ser ajustada conforme as relações de oclusão: **instale primeiro as peças que ficam escondidas atrás de motores, módulos de controle etc.**, e depois as peças que os cobrem.
 - Por exemplo: confirme que todas as peças ao redor do motor já foram instaladas e só então instale o motor.
@@ -244,8 +244,8 @@ Compre filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualid
 #### Cuidados no uso das peças
 
 - Em peças presas ao eixo, evite os modelos com parafuso de fixação (set screw): ele danifica o eixo.
-- Não aperte demais os parafusos.
-- Outras regras de uso de peças serão acrescentadas continuamente.
+- Ao apertar os parafusos, não use força excessiva.
+- Outras regras de uso de peças serão acrescentadas aos poucos.
 
 #### Espaço reservado para manutenção
 
@@ -285,14 +285,14 @@ O arquivo de configuração é conteúdo conjunto de estrutura e programação; 
 
 ### Instalar e configurar o Bambu Studio
 
-Baixe, instale e avance; escolha o local de instalação, e a pasta é criada automaticamente.
+Baixe e instale seguindo as etapas padrão; atenção ao escolher o local de instalação (a pasta é criada automaticamente).
 
 **Observações:**
 
 - Marque todas as caixas de seleção
 - Ao abrir, siga o guia de registro e escolha China continental
 - Selecione apenas as impressoras P1S e P2S
-- Mantenha os materiais padrão mais usados
+- Mantenha os materiais na configuração padrão
 - Instale o plugin de rede
 - Faça login no canto superior esquerdo (número de celular ou terceiros)
 
@@ -340,7 +340,7 @@ Baixe, instale e avance; escolha o local de instalação, e a pasta é criada au
 
 - Entre na aba "Dispositivo", ative o modo LAN e a impressora na rede local será detectada automaticamente (ativar o modo LAN pode desconectar a conta atual; ignore o aviso).
 - Se a impressora não for encontrada: confirme primeiro se o modo LAN está ativado; se ainda não aparecer, vincule manualmente por IP + código de acesso. O IP fica na página de Wi-Fi das configurações da impressora, e o código de acesso, no avatar da conta após ativar o modo LAN.
-- Depois de fatiar, confira na aba "Visualizar" e, antes de imprimir, envie a pré-visualização ao responsável atual de modelagem ou de estrutura para confirmar a configuração antes de mandar imprimir.
+- Depois de fatiar, confira na aba "Visualizar"; antes de imprimir, envie a pré-visualização ao responsável atual de modelagem ou de estrutura para confirmar a configuração, e só então mande imprimir.
 
 ### Ajustes de impressão
 
@@ -358,7 +358,7 @@ Baixe, instale e avance; escolha o local de instalação, e a pasta é criada au
 ### Tratamento de falhas de impressão
 
 - **P2S**: tem detecção de "spaghetti" (macarrão) por IA; quando ocorre o emaranhado de filamento, a máquina para a impressão sozinha e envia um aviso à conta logada. Depois de limpar o arquivo com erro, o equipamento reinicia automaticamente.
-- **P1S**: não tem reconhecimento automático de spaghetti; acompanhe o estado em tempo real durante a impressão. Ao detectar o problema, pare manualmente a impressão e localize o arquivo com erro no histórico de impressões, na pasta cache à esquerda, para limpá-lo.
+- **P1S**: não tem reconhecimento automático de spaghetti; acompanhe em tempo real durante a impressão. Ao detectar o problema, pare manualmente e localize o arquivo com erro no histórico de impressões, na pasta cache à esquerda, para limpá-lo.
 
 ### Instalar e configurar o RD Works V8
 

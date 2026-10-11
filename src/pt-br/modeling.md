@@ -41,7 +41,7 @@ O Onshape é a plataforma de modelagem CAD em nuvem adotada pela nossa equipe. E
 1. Abra [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/) e cadastre uma conta educacional
 2. Preencha nome (First name), sobrenome (Last name) e e-mail
 
-> [!warning] Não use provedores de e-mail chineses, como o QQ: é provável que o código de verificação não chegue. Recomendamos @gmail.com ou @outlook.com.
+> [!warning] Não use provedores de e-mail chineses, como o QQ: o código de verificação pode não chegar. Recomendamos @gmail.com ou @outlook.com.
 
 3. Na tela seguinte, selecione o perfil "Student", o nível escolar "Grade School / K-12 (Ages <18)" e a data de nascimento; depois clique em avançar
 4. Preencha as informações a seguir:
@@ -71,7 +71,7 @@ O Onshape é a plataforma de modelagem CAD em nuvem adotada pela nossa equipe. E
 
 ### Plugins do Onshape
 
-Por ser uma plataforma em nuvem, o Onshape tem um ecossistema rico de plugins compartilhados, disponíveis na Onshape App Store, em sites de terceiros e por compartilhamento direto.
+Com sua arquitetura em nuvem, o Onshape tem um ecossistema rico de plugins compartilhados, disponíveis na Onshape App Store, em sites de terceiros e por compartilhamento direto.
 
 Os plugins mais usados pela equipe incluem (apenas exemplos):
 
@@ -143,7 +143,7 @@ A resistência de peças impressas em 3D depende do material e da geometria. Est
 
 - Ao conceber o robô, divida as tarefas do desafio em itens menores, pense na estrutura de cada item separadamente e só depois combine tudo
 - Antes de modelar de verdade, peça opiniões dos colegas e baseie o projeto na estratégia de pontuação da equipe
-- Depois de concluir o modelo do robô inteiro, pense no processo real de montagem: para parafusos e pontos de difícil acesso, deixe canais de instalação e espaço para a passagem de cabos
+- Depois de concluir o modelo do robô inteiro, leve em conta o processo real de montagem: para estruturas internas de difícil instalação, como parafusos, deixe canais de instalação e espaço para a passagem de cabos
 - Considere projetar estruturas modulares, que facilitam reparos e otimizações posteriores
 - Na versão final, prefira estruturas integradas e reduza pequenas estruturas desnecessárias, para ganhar resistência geral e leveza
 

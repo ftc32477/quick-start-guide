@@ -41,7 +41,7 @@ Onshape es la plataforma de modelado en la nube que utiliza nuestro equipo. Fren
 1. Abra [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/) y registre una cuenta del plan educativo
 2. Rellene el nombre (First name), los apellidos (Last name) y el correo electrónico
 
-> [!warning] No utilice buzones nacionales chinos como QQ: es probable que no reciba el código de verificación. Se recomienda @gmail.com o @outlook.com.
+> [!warning] No utilice buzones nacionales chinos como QQ: puede que no reciba el código de verificación. Se recomienda @gmail.com o @outlook.com.
 
 3. En la siguiente pantalla, seleccione el rol «Student», el tipo de centro «Grade School / K-12 (Ages <18)» y la fecha de nacimiento; cuando termine, pulse «Next»
 4. Rellene la siguiente información por orden:
@@ -71,7 +71,7 @@ Onshape es la plataforma de modelado en la nube que utiliza nuestro equipo. Fren
 
 ### Complementos de Onshape
 
-Gracias a su naturaleza en la nube, Onshape dispone de un rico catálogo de complementos compartidos, disponibles en la tienda de aplicaciones de Onshape, en sitios web de terceros y mediante el uso compartido entre usuarios.
+Gracias a su arquitectura en la nube, Onshape dispone de un rico catálogo de complementos compartidos, disponibles en la tienda de aplicaciones de Onshape, en sitios web de terceros y mediante el uso compartido entre usuarios.
 
 Entre los complementos que utiliza habitualmente el equipo (solo como ejemplos):
 
@@ -143,7 +143,7 @@ La resistencia de las piezas impresas en 3D depende del material y de la estruct
 
 - Al concebir el diseño del robot, divida las tareas del juego en elementos pequeños, diseñe por separado la estructura de cada uno y combínelos después
 - Antes de modelar formalmente, consulte la opinión de otros miembros y diseñe en función de la estrategia de puntuación del equipo
-- Tras completar el modelado del robot, piense en el proceso real de montaje: para estructuras difíciles de instalar, como los tornillos interiores, reserve de antemano canales de instalación y espacio para el cableado
+- Tras completar el modelado del robot, tenga en cuenta el proceso real de montaje: para los tornillos y otras estructuras interiores difíciles de instalar, reserve de antemano canales de instalación y espacio para el cableado
 - Considere un diseño modular que facilite la reparación y la optimización posteriores
 - En la versión final, procure un diseño integrado y reduzca las estructuras pequeñas innecesarias para aumentar la resistencia y la ligereza del conjunto
 

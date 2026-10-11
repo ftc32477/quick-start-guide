@@ -42,7 +42,7 @@ The following environment must be configured before you begin. If you have any q
 
 ### Web Browser
 
-Install it yourself. We recommend Chrome.
+Install it yourself; Chrome is recommended.
 
 Chrome download: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -111,7 +111,7 @@ GitHub is the code and resource hosting platform adopted by our team.
 1. Open [https://github.com/signup](https://github.com/signup)
 2. Create a personal account by following the prompts
    - During registration, the system will ask you to verify your email address
-   - We recommend selecting "United States of America" as your country/region
+   - Select "United States of America" as your country/region
 3. After registration, tell an administrator your username and wait for an invitation to join the organization. You can find it at [https://github.com/notifications](https://github.com/notifications).
 
 After joining the organization, you can view the organization's repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); to modify content, submit a pull request following the process in "Programming", Section 5, "GitHub Collaboration Basics".
@@ -140,8 +140,8 @@ References:
 
 ### Season Timeline
 
-- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for vehicle design and debugging
-- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (so far only about 4 teams from mainland China have reached the Houston Championship)
+- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for robot design and debugging
+- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (as of 2026, only about 4 teams from mainland China have reached the Houston Championship)
 - The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
 
 ### Competition Rules Notes

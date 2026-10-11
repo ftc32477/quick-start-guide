@@ -13,11 +13,11 @@ Une seule des options suivantes suffit :
 
 ### Environnement réseau
 
-Un environnement réseau permettant d'accéder à l'assistance Android est requis.
+Un environnement réseau permettant d'accéder aux ressources d'assistance Android est requis.
 
 - Assistance Android : [https://support.google.com/android](https://support.google.com/android)
 
-> [!info] Le réseau local de l'équipe passe par une passerelle dédiée du campus : il est plus stable que le réseau ordinaire du campus, mais conserve les restrictions d'accès de celui-ci. Le poste Programmation nécessite un accès aux ressources réseau à l'étranger pour l'assistance Android ; l'équipe peut fournir un moyen d'accès, mais si vous prévoyez un usage intensif, il est conseillé d'acheter votre propre service.
+> [!info] Le réseau local de l'équipe passe par une passerelle dédiée du campus : il est plus stable que le réseau ordinaire du campus, mais reste soumis aux restrictions d'accès de celui-ci. La Programmation nécessite un accès aux ressources réseau à l'étranger pour l'assistance Android ; l'équipe peut fournir un moyen d'accès, mais si vous prévoyez un usage intensif, il est conseillé d'acheter votre propre service.
 
 ### Applications
 
@@ -42,7 +42,7 @@ L'environnement de travail suivant doit être configuré avant de commencer ; s
 
 ### Navigateur web
 
-Installez-le vous-même. Nous recommandons Chrome.
+Installez-le vous-même ; Chrome est recommandé.
 
 Téléchargement de Chrome : [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -111,7 +111,7 @@ GitHub est la plateforme d'hébergement de code et de ressources adoptée par no
 1. Ouvrez [https://github.com/signup](https://github.com/signup)
 2. Créez un compte personnel en suivant les instructions
    - Pendant l'inscription, le système vous demandera de vérifier votre adresse e-mail
-   - Nous recommandons de sélectionner « États-Unis » comme pays/région
+   - Il est recommandé de sélectionner « États-Unis » comme pays/région
 3. Une fois l'inscription terminée, communiquez votre nom d'utilisateur à un administrateur et attendez que celui-ci vous envoie l'invitation à rejoindre l'organisation. Vous pouvez la consulter sur [https://github.com/notifications](https://github.com/notifications).
 
 Après avoir rejoint l'organisation, vous pouvez consulter les dépôts de l'organisation sur [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) ; pour modifier du contenu, soumettez une pull request selon la procédure décrite dans le chapitre « Programmation », section « 5. Bases de la collaboration sur GitHub ».
@@ -141,7 +141,7 @@ Références :
 ### Calendrier de la saison
 
 - Une saison FTC complète s'étend de septembre à juin de l'année suivante ; le thème du jeu de la nouvelle saison est publié à la mi-septembre, laissant environ sept à huit semaines pour la conception et la mise au point du robot
-- Les qualifications ont lieu dans plusieurs villes du pays ; les équipes qualifiées disputent la compétition nationale pendant les vacances d'hiver, puis peuvent se rendre à Houston (États-Unis) pour la finale internationale (à ce jour, seules environ 4 équipes de Chine continentale ont atteint la finale de Houston)
+- Les qualifications ont lieu dans plusieurs villes du pays ; les équipes qualifiées disputent la compétition nationale pendant les vacances d'hiver, puis peuvent se rendre à Houston (États-Unis) pour la finale internationale (en 2026, seules environ 4 équipes de Chine continentale ont atteint la finale de Houston)
 - Les matériaux de base du terrain de la nouvelle saison sont livrés officiellement après la rentrée ; le terrain peut être monté dès leur arrivée
 
 ### Règles à connaître

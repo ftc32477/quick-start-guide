@@ -79,7 +79,7 @@ RD Works V8 is the companion driver software for our laser cutter.
 
 An L-shaped or T-shaped tool with a regular hexagonal cross-section, used to turn socket-head screws. Insert either end fully into the hexagonal recess of the screw head; turn clockwise to tighten and counterclockwise to loosen. T-handle wrenches provide greater leverage or reach in deep bores.
 
-> [!info] The sizes we use most often are M3 and M4 — always keep them at hand.
+> [!info] The most commonly used sizes are M3 and M4 — keep them at hand.
 
 #### Socket
 
@@ -129,14 +129,14 @@ A micrometer consists of an anvil (A) and a fixed sleeve scale (B) mounted on a 
 
 #### General Materials
 
-Available from a wide range of sources:
+The following materials are available through standard channels:
 
 - Screws and nuts of various sizes
 - Hexagonal standoffs
 - Timing pulleys
 - Bearings
 
-> [!warning] Shafts are excluded from general materials: shaft requirements are project-specific — purchase them separately as needed.
+> [!warning] Shafts are excluded from general materials: they require special specifications — purchase them separately based on project needs.
 
 #### Specialized Materials
 
@@ -146,7 +146,7 @@ Official REV and goBILDA specialized extrusions.
 
 | Brand | Characteristics |
 |------|------|
-| **REV** | Relatively old but core. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 6 mm REX shafts; gears and chains; 72:1 transverse motors and 40:1 motors are the most usable. |
+| **REV** | Released earlier, but remains core today. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 6 mm REX shafts; gears and chains; 72:1 transverse motors and 40:1 motors are relatively common. |
 | **goBILDA** | C-channels, square or thin beams, 8 mm REX shafts, a wide range of modular connectors with well-rounded functionality. Primarily M4 screws (10 mm official); motors are mostly 5203 series. Suitable for direct-drive motor kits. |
 
 **REV details:**
@@ -170,10 +170,10 @@ Official REV and goBILDA specialized extrusions.
 
 | Type | Print temperature (approx.) | Description |
 |------|------|------|
-| PLA | 220°C | Standard base plastic filament |
-| PETG-CF | 240+°C | Carbon-fiber-reinforced filament |
+| PLA | 220 °C | Standard base plastic filament |
+| PETG-CF | 240 °C or above | Carbon-fiber-reinforced filament |
 
-Purchase official Bambu Lab or SUNLU filaments for consistent quality.
+For filament, official Bambu Lab (拓竹) or SUNLU (三绿) products are recommended for consistent quality.
 
 **Shrinkage:**
 
@@ -198,11 +198,11 @@ Purchase official Bambu Lab or SUNLU filaments for consistent quality.
 - Battery-to-Hub cable (depending on design, the battery may connect directly to either the Control Hub or the Expansion Hub)
 - Con-to-EXP cable
 - Switches that come with their own wiring
-- Motor power cables: goBILDA motor power connectors are incompatible with the Hub — cut off the original connector and remake the head with a wire ferrule.
+- Motor power cables: goBILDA motor power connectors are incompatible with the Hub — cut off the original connector and remake it with a terminal.
 
 **Data cables (motor encoder cables):**
 
-- For goBILDA, the connector and pinout differ from the Hub (yellow and white wires are swapped) — be especially careful when making them.
+- goBILDA's connector and pinout differ from the Hub (yellow and white wires are swapped) — be careful when making them.
 - I2C sensor cables: no special requirements.
 - Con and EXP data cables.
 - Servo extension cables: watch the orientation.
@@ -236,15 +236,15 @@ Purchase official Bambu Lab or SUNLU filaments for consistent quality.
 
 #### Assembly Order
 
-> [!warning] The conventional hand-build approach builds the chassis first and stacks upward. But in competition robots, we have CAD models — that order easily leads to massive rework due to part occlusion.
+> [!warning] Conventional hand assembly builds the chassis first and stacks upward; competition robots have CAD models — that order easily causes rework due to part occlusion.
 
 - Adjust the assembly order according to occlusion: **install parts that will be blocked by motors or electronics first**, then install the blocking components.
 - Example: finish installing everything around a motor before mounting the motor itself.
 
 #### Part Usage Notes
 
-- On shafts, avoid prioritizing parts with set screws — set screws damage shafts.
-- Do not over-tighten screws.
+- On shafts, avoid using parts with set screws — set screws damage shafts.
+- Do not use excessive force when tightening screws.
 - More part usage rules will be added over time.
 
 #### Leave Room for Repairs
@@ -285,7 +285,7 @@ Writing the configuration file is a joint Hardware/Programming task — see the 
 
 ### Installing and Configuring Bambu Studio
 
-Download and install, clicking "Next" throughout. Note the installation location — a folder is created automatically.
+Download and install with the default steps; note the installation location (a folder is created automatically).
 
 **Notes:**
 
@@ -340,7 +340,7 @@ Download and install, clicking "Next" throughout. Note the installation location
 
 - Go to the "Device" tab, enable LAN mode, and the printer will be auto-discovered on the LAN (enabling LAN mode may log you out — you can ignore the prompt).
 - If the target printer cannot be found: first confirm the printer has LAN mode enabled; if still invisible, bind it manually via IP + access code. The IP is under Settings > WiFi on the printer; the access code is shown at the login avatar position after enabling LAN mode.
-- After slicing, review in the "Preview" tab. Before printing, send the sliced preview to the current modeling or build lead for confirmation.
+- After slicing, review in the "Preview" tab; before printing, send the preview to the current modeling or build lead to confirm the configuration, then send it to print.
 
 ### Print Settings
 
@@ -358,7 +358,7 @@ Download and install, clicking "Next" throughout. Note the installation location
 ### Print Failure Handling
 
 - **P2S**: With AI spaghetti detection — on spaghetti failure (filament flying loose), the printer stops automatically and notifies the logged-in account. After clearing the failed job, the printer restarts automatically.
-- **P1S**: No automatic spaghetti detection — monitor the print in real time. If spaghetti occurs, stop the print manually; find the failed job in the history under the cache folder on the left and clean it up.
+- **P1S**: No automatic spaghetti detection — monitor the print in real time. If spaghetti occurs, stop the print manually; find the failed job in the print history under the cache folder on the left and clean it up.
 
 ### Installing and Configuring RD Works V8
 

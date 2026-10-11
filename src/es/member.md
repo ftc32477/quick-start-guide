@@ -13,11 +13,11 @@ Basta con una de las siguientes opciones:
 
 ### Entorno de red
 
-Es necesario disponer de un entorno de red con acceso al soporte de Android.
+Es necesario disponer de un entorno de red con acceso a los recursos de soporte de Android.
 
 - Soporte de Android: [https://support.google.com/android](https://support.google.com/android)
 
-> [!info] La LAN propia del equipo se conecta a una pasarela independiente del campus: es más estable que la red habitual del campus, pero conserva las restricciones de acceso de esta. El puesto de Programación necesita acceder a recursos de red en el extranjero compatibles con Android; el equipo puede facilitar una vía de acceso. Si prevé un uso intensivo, se recomienda contratar su propio servicio.
+> [!info] La LAN propia del equipo se conecta a una pasarela independiente del campus: su estabilidad supera a la de la red habitual del campus, pero sigue sujeta a las restricciones de acceso de la red del campus. Programación necesita acceder a recursos de red en el extranjero compatibles con Android; el equipo puede facilitar una vía de acceso. Si prevé un uso intensivo, se recomienda contratar su propio servicio.
 
 ### Aplicaciones
 
@@ -42,7 +42,7 @@ A continuación se describe el entorno de trabajo que hay que configurar antes d
 
 ### Navegador web
 
-Instálelo por su cuenta. Recomendamos Chrome.
+Instálelo por su cuenta; se recomienda Chrome.
 
 Descarga de Chrome: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -111,7 +111,7 @@ GitHub es la plataforma de alojamiento de código y materiales que utiliza nuest
 1. Abra [https://github.com/signup](https://github.com/signup)
 2. Siga las indicaciones para crear una cuenta personal
    - Durante el registro, el sistema pedirá verificar la dirección de correo electrónico
-   - Recomendamos seleccionar «Estados Unidos» como país/región
+   - Se recomienda seleccionar «Estados Unidos» como país/región
 3. Tras registrarse, comunique su nombre de usuario al administrador y espere a que le envíe la invitación para unirse a la organización. Puede consultarla en [https://github.com/notifications](https://github.com/notifications).
 
 Una vez unido a la organización, puede consultar los repositorios de la organización en [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); si necesita modificar algún contenido, siga el procedimiento de «5. Fundamentos de colaboración en GitHub» del capítulo «Programación» para enviar una solicitud de incorporación de cambios.
@@ -141,7 +141,7 @@ Referencias:
 ### Calendario de la temporada
 
 - Una temporada FTC completa va de septiembre a junio del año siguiente; el juego de la nueva temporada se publica a mediados de septiembre, dejando unas siete u ocho semanas para el diseño y la depuración del robot
-- Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta ahora solo unos 4 equipos de la China continental han llegado a la final de Houston)
+- Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta 2026, solo unos 4 equipos de la China continental han llegado a la final de Houston)
 - Los materiales básicos del campo de la nueva temporada se entregan oficialmente tras el inicio del curso; el campo puede montarse en cuanto lleguen
 
 ### Reglas a conocer
