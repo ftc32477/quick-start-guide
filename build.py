@@ -216,11 +216,71 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.4.0"
+RELEASE_TAG = "v1.5.0"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按各语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.5.0",
+        "date": "2026-10-11",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年10月第2版",
+            "zh-hant": "2026年10月第2版",
+            "en-us": "October 2026, 2nd Edition",
+            "fr": "Octobre 2026, 2e édition",
+            "es": "2.ª edición, octubre de 2026",
+            "ko": "2026년 10월 제2판",
+            "pt-br": "Outubro de 2026, 2.ª edição",
+        },
+        "changes": {
+            "zh-hans": [
+                "程序设计章新增「五、GitHub 协作基础」：平台与组织、团队仓库说明、议题与拉取请求、本地 Git 流程、开源项目检索与危险操作警示，并附练习清单。",
+                "全篇事实核查与修正：手柄须有线且型号以当季手册为准、电磁铁禁令（R506）与永磁材料（R302）、赛季时间线（Kickoff 至 Championship）、REV 5 mm 六角轴与 HD Hex 停产、Bambu P1S 流量校准、耗材温度区间、LocalSend 版本示例、ftconshape 与 CycleZLab 说明。",
+                "文风与版式：新增《文风与表述规范》（README）；封面字号改为指南名最大；Markdown 支持引用块内列表；代码块打印自动折行。",
+            ],
+            "zh-hant": [
+                "程式設計章新增「五、GitHub 協作基礎」：平台與組織、團隊存放庫說明、議題與提取要求、本機 Git 流程、開源專案檢索與危險操作警示，並附練習清單。",
+                "全篇事實查核與修正：手把須有線且型號以當季手冊為準、電磁鐵禁令（R506）與永磁材料（R302）、賽季時間線（Kickoff 至 Championship）、REV 5 mm 六角軸與 HD Hex 停產、Bambu P1S 流量校準、耗材溫度區間、LocalSend 版本示例、ftconshape 與 CycleZLab 說明。",
+                "文風與版式：新增《文風與表述規範》（README）；封面字級改為指南名最大；Markdown 支援引用區塊內清單；程式碼區塊列印自動折行。",
+            ],
+            "en-us": [
+                "Programming: added the \"GitHub Collaboration Basics\" section (platform and organization, team repositories, issues and pull requests, local Git workflow, open-source discovery, danger warnings, practice checklist).",
+                "Full fact-check pass: wired gamepads with models per the current season manual; electromagnet ban (R506) and permanent magnets (R302); season timeline (Kickoff to Championship); REV 5 mm hex shafts and HD Hex discontinuation; Bambu P1S manual flow calibration; filament temperature ranges; LocalSend version example; ftconshape and CycleZLab notes.",
+                "Style and layout: added the writing-style guide (README); cover hierarchy now puts the guide name largest; blockquote lists in Markdown; code blocks wrap automatically in print.",
+            ],
+            "fr": [
+                "Programmation : ajout de la section « Fondamentaux de la collaboration sur GitHub » (plateforme et organisation, dépôts de l'équipe, problèmes et pull requests, flux Git local, découverte de l'open source, avertissements, liste d'exercices).",
+                "Vérification factuelle complète : manettes filaires et modèles selon le manuel de la saison ; interdiction des électroaimants (R506) et aimants permanents (R302) ; calendrier (Kickoff à Championship) ; arbres 5 mm hex REV et arrêt du HD Hex ; calibration manuelle du débit sur P1S ; plages de température des filaments ; version LocalSend ; notes ftconshape et CycleZLab.",
+                "Style et mise en page : ajout du guide de rédaction (README) ; hiérarchie de couverture (nom du guide le plus grand) ; listes dans les citations Markdown ; retour automatique des blocs de code à l'impression.",
+            ],
+            "es": [
+                "Programación: nueva sección «Fundamentos de colaboración en GitHub» (plataforma y organización, repositorios del equipo, incidencias y solicitudes de incorporación, flujo local de Git, descubrimiento de open source, advertencias y lista de ejercicios).",
+                "Revisión factual completa: mandos con cable y modelos según el manual de la temporada; prohibición de electroimanes (R506) e imanes permanentes (R302); calendario (Kickoff a Championship); ejes de 5 mm hex de REV y descatalogación del HD Hex; calibración manual de flujo en la P1S; rangos de temperatura de filamentos; versión de ejemplo de LocalSend; notas sobre ftconshape y CycleZLab.",
+                "Estilo y maquetación: guía de redacción (README); jerarquía de cubierta (nombre de la guía más grande); listas dentro de citas en Markdown; ajuste automático de bloques de código al imprimir.",
+            ],
+            "ko": [
+                "프로그래밍: 「GitHub 협업 기초」 절 추가(플랫폼과 조직, 팀 저장소, 이슈와 PR, 로컬 Git 흐름, 오픈소스 검색, 위험 작업 경고, 연습 목록).",
+                "전면 사실 확인: 유선 컨트롤러와 시즌 매뉴얼 기준 모델, 전자석 금지(R506)와 영구 자석(R302), 시즌 일정(Kickoff~Championship), REV 5 mm 육각축과 HD Hex 단종, Bambu P1S 수동 유량 보정, 필라멘트 온도 범위, LocalSend 버전 예시, ftconshape·CycleZLab 설명.",
+                "문체·판형: 《문체와 표현 규범》(README) 추가, 표지 서체 위계(가이드명 최대), Markdown 인용 블록 내 목록 지원, 인쇄 시 코드 블록 자동 줄바꿈.",
+            ],
+            "pt-br": [
+                "Programação: nova seção “Fundamentos de colaboração no GitHub” (plataforma e organização, repositórios da equipe, issues e pull requests, fluxo local com Git, descoberta de open source, avisos de operações perigosas e lista de exercícios).",
+                "Revisão factual completa: controles com fio e modelos conforme o manual da temporada; proibição de eletroímãs (R506) e ímãs permanentes (R302); calendário (Kickoff a Championship); eixos de 5 mm hex da REV e descontinuação do HD Hex; calibração manual de fluxo na P1S; faixas de temperatura dos filamentos; versão de exemplo do LocalSend; notas sobre ftconshape e CycleZLab.",
+                "Estilo e layout: guia de redação (README); hierarquia da capa (nome do guia como maior); listas dentro de citações no Markdown; quebra automática de blocos de código na impressão.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-ko.pdf",
+            "pt-br": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-pt-br.pdf",
+        },
+    },
     {
         "tag": "v1.4.0",
         "date": "2026-10-03",
