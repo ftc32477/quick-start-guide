@@ -186,6 +186,8 @@ blockquote{
 blockquote.bq-info{border-left-color:#1565c0;background:#eaf3fb;color:#0d3c66}
 blockquote.bq-warning{border-left-color:#f9a825;background:#fff8e1;color:#6d4c00}
 blockquote.bq-danger{border-left-color:#d32f2f;background:#fef5f5;color:#8b0000}
+blockquote ul,blockquote ol{margin:6px 0 0;padding-left:20px}
+blockquote li+li{margin-top:4px}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 img{max-width:100%;border-radius:var(--radius);margin:12px 0}
 /* 锚点跳转留白（避免被固定顶栏遮挡） */
@@ -488,8 +490,7 @@ git push -u origin feat/my-feature</code></pre>
 <p><strong>參與貢獻</strong>：先閱讀專案根目錄的 <code>CONTRIBUTING.md</code>（貢獻指南）與行為準則；不確定的改動先開 Issue 討論；小修小補按上文「編輯 → 提 PR」流程提交。</p>
 <blockquote class="bq-warning">安全：不要執行來源不明的腳本或執行檔；不要把 API Key、密碼、Token 發到 Issue 或存放庫中；對 <code>curl | bash</code> 一類的安裝指令保持警覺。</blockquote>
 <h3 id="危險操作警示">危險操作警示</h3>
-<blockquote class="bq-danger">以下操作可能造成不可逆的損失，一般隊員一律不要執行；確有需要時先經管理員確認。</blockquote>
-<ul><li>直接修改發布存放庫 <code>ftc32477.github.io</code>（會被覆蓋並污染正式網站）</li><li><code>git push --force</code>：強制覆蓋遠端歷史，可能讓隊友的提交消失</li><li><code>git reset --hard</code>：捨棄本機未推送的改動，且難以找回</li><li>刪除分支、刪除存放庫，或修改存放庫的可見性、名稱、歸屬</li><li>向存放庫提交金鑰、密碼、Token（一旦公開，即使刪除仍會留在歷史記錄中，必須立即撤銷並重建）</li><li>在 Issue、PR 或公開存放庫中發布內部資料與私人資訊（電子郵件、住址、截圖中的個人資訊）</li><li>執行或合併來源不明的程式碼</li></ul>
+<blockquote class="bq-danger">以下操作可能造成不可逆的損失，一般隊員一律不要執行；確有需要時先經管理員確認。<ul><li>直接修改發布存放庫 <code>ftc32477.github.io</code>（會被覆蓋並污染正式網站）</li><li><code>git push --force</code>：強制覆蓋遠端歷史，可能讓隊友的提交消失</li><li><code>git reset --hard</code>：捨棄本機未推送的改動，且難以找回</li><li>刪除分支、刪除存放庫，或修改存放庫的可見性、名稱、歸屬</li><li>向存放庫提交金鑰、密碼、Token（一旦公開，即使刪除仍會留在歷史記錄中，必須立即撤銷並重建）</li><li>在 Issue、PR 或公開存放庫中發布內部資料與私人資訊（電子郵件、住址、截圖中的個人資訊）</li><li>執行或合併來源不明的程式碼</li></ul></blockquote>
 <blockquote class="bq-info">帳號安全：不要與他人共用帳號；GitHub 正在對參與程式碼貢獻的帳號強制要求啟用兩步驟驗證（2FA），請按提示開啟；個人存取權杖（Token）按最小權限建立，且絕不寫入程式碼或存放庫。</blockquote>
 <h3 id="練習清單">練習清單</h3>
 <ol><li>開啟組織首頁，進入 <code>quick-start-guide</code> 存放庫，用 README 說出這個專案是做什麼的</li><li>在 Releases 中下載任一種語言的指南 PDF</li><li>在提交歷史中找到最近一次修改，說出它改了什麼</li><li>在 Issues 中搜尋「PDF」，看看有沒有相關問題</li><li>按「編輯 → 提 PR」流程修正一處錯別字，並提交一個提取要求</li></ol>

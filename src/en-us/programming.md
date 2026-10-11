@@ -320,14 +320,14 @@ Common FTC open-source resources (all available on GitHub):
 ### Dangerous Operations Warning
 
 > [!danger] The following operations can cause irreversible loss and must not be performed by regular team members; if an operation is truly necessary, confirm with an administrator first.
-
-- Editing the publishing repository `ftc32477.github.io` directly (the change is overwritten and pollutes the production site)
-- `git push --force`: forcibly overwrites remote history and may make teammates' commits disappear
-- `git reset --hard`: discards unpushed local changes, which are difficult to recover
-- Deleting branches or repositories, or changing a repository's visibility, name, or ownership
-- Committing keys, passwords, or tokens to a repository (once public, they remain in the history even after deletion; revoke and replace them immediately)
-- Posting internal materials or private information (email addresses, home addresses, personal information in screenshots) in issues, pull requests, or public repositories
-- Running or merging code from unknown sources
+>
+> - Editing the publishing repository `ftc32477.github.io` directly (the change is overwritten and pollutes the production site)
+> - `git push --force`: forcibly overwrites remote history and may make teammates' commits disappear
+> - `git reset --hard`: discards unpushed local changes, which are difficult to recover
+> - Deleting branches or repositories, or changing a repository's visibility, name, or ownership
+> - Committing keys, passwords, or tokens to a repository (once public, they remain in the history even after deletion; revoke and replace them immediately)
+> - Posting internal materials or private information (email addresses, home addresses, personal information in screenshots) in issues, pull requests, or public repositories
+> - Running or merging code from unknown sources
 
 > [!info] Account security: do not share your account with others; GitHub is enforcing two-factor authentication (2FA) for accounts that contribute code — enable it when prompted; create personal access tokens with the minimum permissions required and never write them into code or repositories.
 

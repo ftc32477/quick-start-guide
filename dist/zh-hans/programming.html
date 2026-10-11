@@ -186,6 +186,8 @@ blockquote{
 blockquote.bq-info{border-left-color:#1565c0;background:#eaf3fb;color:#0d3c66}
 blockquote.bq-warning{border-left-color:#f9a825;background:#fff8e1;color:#6d4c00}
 blockquote.bq-danger{border-left-color:#d32f2f;background:#fef5f5;color:#8b0000}
+blockquote ul,blockquote ol{margin:6px 0 0;padding-left:20px}
+blockquote li+li{margin-top:4px}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 img{max-width:100%;border-radius:var(--radius);margin:12px 0}
 /* 锚点跳转留白（避免被固定顶栏遮挡） */
@@ -488,8 +490,7 @@ git push -u origin feat/my-feature</code></pre>
 <p><strong>参与贡献</strong>：先阅读项目根目录的 <code>CONTRIBUTING.md</code>（贡献指南）与行为准则；不确定的改动先开 Issue 讨论；小修小补按上文"编辑 → 提 PR"流程提交。</p>
 <blockquote class="bq-warning">安全：不要运行来源不明的脚本或可执行文件；不要把 API Key、密码、Token 发到 Issue 或仓库中；对 <code>curl | bash</code> 一类的安装命令保持警惕。</blockquote>
 <h3 id="危险操作警示">危险操作警示</h3>
-<blockquote class="bq-danger">以下操作可能造成不可逆损失，普通队员一律不要执行；确需操作时先经过管理员确认。</blockquote>
-<ul><li>直接修改发布仓库 <code>ftc32477.github.io</code>（会被覆盖并污染正式站）</li><li><code>git push --force</code>：强制覆盖远端历史，可能让队友的提交消失</li><li><code>git reset --hard</code>：丢弃本机未推送的改动，且难以找回</li><li>删除分支、删除仓库，或修改仓库的可见性、名称、归属</li><li>向仓库提交密钥、密码、Token（一旦公开，删除后仍留在历史里，必须立即吊销并重建）</li><li>在 Issue、PR 或公开仓库中发布内部资料与私人信息（邮箱、住址、截图中的个人信息）</li><li>运行或合并来源不明的代码</li></ul>
+<blockquote class="bq-danger">以下操作可能造成不可逆损失，普通队员一律不要执行；确需操作时先经过管理员确认。<ul><li>直接修改发布仓库 <code>ftc32477.github.io</code>（会被覆盖并污染正式站）</li><li><code>git push --force</code>：强制覆盖远端历史，可能让队友的提交消失</li><li><code>git reset --hard</code>：丢弃本机未推送的改动，且难以找回</li><li>删除分支、删除仓库，或修改仓库的可见性、名称、归属</li><li>向仓库提交密钥、密码、Token（一旦公开，删除后仍留在历史里，必须立即吊销并重建）</li><li>在 Issue、PR 或公开仓库中发布内部资料与私人信息（邮箱、住址、截图中的个人信息）</li><li>运行或合并来源不明的代码</li></ul></blockquote>
 <blockquote class="bq-info">账号安全：不要与他人共享账号；GitHub 正在对参与代码贡献的账号强制要求启用两步验证（2FA），按提示开启；个人访问令牌（Token）按最小权限创建，且绝不写入代码或仓库。</blockquote>
 <h3 id="练习清单">练习清单</h3>
 <ol><li>打开组织主页，进入 <code>quick-start-guide</code> 仓库，用 README 说出这个项目是做什么的</li><li>在 Releases 中下载任意一种语言的指南 PDF</li><li>在提交历史中找到最近一次修改，说出它改了什么</li><li>在 Issues 中搜索"PDF"，看看有没有相关问题</li><li>按"编辑 → 提 PR"流程修正一处错别字，并提交一个拉取请求</li></ol>

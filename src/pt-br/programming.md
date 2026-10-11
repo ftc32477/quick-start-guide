@@ -318,14 +318,14 @@ Recursos de código aberto usados com frequência no FTC (todos disponíveis no 
 ### Avisos sobre operações perigosas
 
 > [!danger] As operações abaixo podem causar perdas irreversíveis; membros comuns não devem executá-las em nenhuma hipótese; se for realmente necessário, confirme antes com um administrador.
-
-- Modificar diretamente o repositório de publicação `ftc32477.github.io` (as alterações serão sobrescritas e afetarão o site oficial)
-- `git push --force`: sobrescreve o histórico remoto à força e pode fazer com que os commits dos colegas de equipe desapareçam
-- `git reset --hard`: descarta alterações locais ainda não enviadas, e é difícil recuperá-las
-- Excluir branches ou repositórios, ou alterar a visibilidade, o nome ou a propriedade de um repositório
-- Enviar chaves, senhas ou tokens para um repositório (depois de públicos, eles permanecem no histórico mesmo se excluídos; revogue-os e recrie-os imediatamente)
-- Publicar materiais internos ou informações pessoais em Issues, PRs ou repositórios públicos (e-mail, endereço, dados pessoais em capturas de tela)
-- Executar ou mesclar código de origem desconhecida
+>
+> - Modificar diretamente o repositório de publicação `ftc32477.github.io` (as alterações serão sobrescritas e afetarão o site oficial)
+> - `git push --force`: sobrescreve o histórico remoto à força e pode fazer com que os commits dos colegas de equipe desapareçam
+> - `git reset --hard`: descarta alterações locais ainda não enviadas, e é difícil recuperá-las
+> - Excluir branches ou repositórios, ou alterar a visibilidade, o nome ou a propriedade de um repositório
+> - Enviar chaves, senhas ou tokens para um repositório (depois de públicos, eles permanecem no histórico mesmo se excluídos; revogue-os e recrie-os imediatamente)
+> - Publicar materiais internos ou informações pessoais em Issues, PRs ou repositórios públicos (e-mail, endereço, dados pessoais em capturas de tela)
+> - Executar ou mesclar código de origem desconhecida
 
 > [!info] Segurança da conta: não compartilhe a sua conta; o GitHub está exigindo a ativação da verificação em duas etapas (2FA) de contas que contribuem com código, então siga as instruções para ativá-la; crie tokens de acesso pessoal (personal access tokens) com o mínimo de permissões e nunca os escreva no código nem em repositórios.
 

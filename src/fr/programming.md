@@ -320,14 +320,14 @@ Ressources open source courantes pour la FTC (toutes disponibles sur GitHub) :
 ### Opérations dangereuses
 
 > [!danger] Les opérations suivantes peuvent causer des pertes irréversibles : ne les exécutez jamais en tant que membre ordinaire ; si elles sont réellement nécessaires, faites-les d'abord confirmer par un administrateur.
-
-- modifier directement le dépôt de publication `ftc32477.github.io` (la modification sera écrasée et polluera le site officiel)
-- `git push --force` : écrase l'historique distant et peut faire disparaître les commits de vos coéquipiers
-- `git reset --hard` : supprime les modifications locales non envoyées, avec peu de chances de les récupérer par la suite
-- supprimer une branche ou un dépôt, ou modifier la visibilité, le nom ou le propriétaire d'un dépôt
-- envoyer des clés, des mots de passe ou des tokens vers un dépôt (une fois publics, ils restent dans l'historique même après suppression : révoquez-les et recréez-les immédiatement)
-- publier des documents internes ou des informations personnelles (adresse e-mail, domicile, données personnelles dans les captures d'écran) dans une issue, une pull request ou un dépôt public
-- exécuter ou fusionner du code d'origine inconnue
+>
+> - modifier directement le dépôt de publication `ftc32477.github.io` (la modification sera écrasée et polluera le site officiel)
+> - `git push --force` : écrase l'historique distant et peut faire disparaître les commits de vos coéquipiers
+> - `git reset --hard` : supprime les modifications locales non envoyées, avec peu de chances de les récupérer par la suite
+> - supprimer une branche ou un dépôt, ou modifier la visibilité, le nom ou le propriétaire d'un dépôt
+> - envoyer des clés, des mots de passe ou des tokens vers un dépôt (une fois publics, ils restent dans l'historique même après suppression : révoquez-les et recréez-les immédiatement)
+> - publier des documents internes ou des informations personnelles (adresse e-mail, domicile, données personnelles dans les captures d'écran) dans une issue, une pull request ou un dépôt public
+> - exécuter ou fusionner du code d'origine inconnue
 
 > [!info] Sécurité du compte : ne partagez jamais votre compte ; GitHub impose progressivement l'authentification à deux facteurs (2FA) aux comptes qui contribuent au code ; activez-la lorsque la plateforme le demande ; créez les jetons d'accès personnels (tokens) avec les droits minimaux et ne les inscrivez jamais dans le code ou dans un dépôt.
 

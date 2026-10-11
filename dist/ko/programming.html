@@ -186,6 +186,8 @@ blockquote{
 blockquote.bq-info{border-left-color:#1565c0;background:#eaf3fb;color:#0d3c66}
 blockquote.bq-warning{border-left-color:#f9a825;background:#fff8e1;color:#6d4c00}
 blockquote.bq-danger{border-left-color:#d32f2f;background:#fef5f5;color:#8b0000}
+blockquote ul,blockquote ol{margin:6px 0 0;padding-left:20px}
+blockquote li+li{margin-top:4px}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 img{max-width:100%;border-radius:var(--radius);margin:12px 0}
 /* 锚点跳转留白（避免被固定顶栏遮挡） */
@@ -488,8 +490,7 @@ git push -u origin feat/my-feature</code></pre>
 <p><strong>기여 참여</strong>: 먼저 프로젝트 루트의 <code>CONTRIBUTING.md</code>(기여 가이드)와 행동 강령을 읽습니다. 확실하지 않은 변경은 먼저 Issue를 열어 논의합니다. 자잘한 수정은 위의 "편집 → PR 제출" 절차로 제출합니다.</p>
 <blockquote class="bq-warning">보안: 출처를 알 수 없는 스크립트나 실행 파일을 실행하지 마세요. API Key, 비밀번호, Token을 Issue나 저장소에 올리지 마세요. <code>curl | bash</code>류의 설치 명령에 주의하세요.</blockquote>
 <h3 id="위험한작업경고">위험한 작업 경고</h3>
-<blockquote class="bq-danger">다음 작업은 되돌릴 수 없는 손실을 초래할 수 있으므로 일반 팀원은 절대 실행하지 마세요. 반드시 필요한 경우에는 먼저 관리자의 확인을 받으세요.</blockquote>
-<ul><li>게시 저장소 <code>ftc32477.github.io</code> 직접 수정(덮어써지고 정식 사이트가 훼손됩니다)</li><li><code>git push --force</code>: 원격 이력을 강제로 덮어써 팀원의 커밋이 사라질 수 있습니다</li><li><code>git reset --hard</code>: 로컬의 미푸시 변경 사항을 버리며 되찾기 어렵습니다</li><li>브랜치 삭제, 저장소 삭제, 저장소의 공개 여부, 이름, 소유권 변경</li><li>저장소에 키, 비밀번호, Token 제출(한 번 공개되면 삭제해도 이력에 남으므로 즉시 폐기하고 재발급해야 합니다)</li><li>Issue, PR 또는 공개 저장소에 내부 자료와 개인 정보(이메일, 주소, 스크린샷 속 개인 정보) 게시</li><li>출처를 알 수 없는 코드 실행 또는 병합</li></ul>
+<blockquote class="bq-danger">다음 작업은 되돌릴 수 없는 손실을 초래할 수 있으므로 일반 팀원은 절대 실행하지 마세요. 반드시 필요한 경우에는 먼저 관리자의 확인을 받으세요.<ul><li>게시 저장소 <code>ftc32477.github.io</code> 직접 수정(덮어써지고 정식 사이트가 훼손됩니다)</li><li><code>git push --force</code>: 원격 이력을 강제로 덮어써 팀원의 커밋이 사라질 수 있습니다</li><li><code>git reset --hard</code>: 로컬의 미푸시 변경 사항을 버리며 되찾기 어렵습니다</li><li>브랜치 삭제, 저장소 삭제, 저장소의 공개 여부, 이름, 소유권 변경</li><li>저장소에 키, 비밀번호, Token 제출(한 번 공개되면 삭제해도 이력에 남으므로 즉시 폐기하고 재발급해야 합니다)</li><li>Issue, PR 또는 공개 저장소에 내부 자료와 개인 정보(이메일, 주소, 스크린샷 속 개인 정보) 게시</li><li>출처를 알 수 없는 코드 실행 또는 병합</li></ul></blockquote>
 <blockquote class="bq-info">계정 보안: 다른 사람과 계정을 공유하지 마세요. GitHub는 코드 기여에 참여하는 계정에 2단계 인증(2FA)을 의무화하고 있으므로 안내에 따라 활성화하세요. 개인용 액세스 토큰(Token)은 최소 권한으로 만들고 절대 코드나 저장소에 기록하지 마세요.</blockquote>
 <h3 id="연습목록">연습 목록</h3>
 <ol><li>조직 홈페이지를 열고 <code>quick-start-guide</code> 저장소에 들어가 README를 보고 이 프로젝트가 무엇을 하는지 말해 봅니다</li><li>Releases에서 아무 언어로 된 가이드 PDF를 다운로드합니다</li><li>커밋 이력에서 가장 최근 수정을 찾고 무엇을 바꿨는지 말해 봅니다</li><li>Issues에서 "PDF"를 검색해 관련 문제가 있는지 확인합니다</li><li>"편집 → PR 제출" 절차에 따라 오타 하나를 수정하고 끌어오기 요청을 제출합니다</li></ol>

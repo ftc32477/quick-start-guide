@@ -320,14 +320,14 @@ Recursos de código abierto de uso frecuente en FTC (todos disponibles en GitHub
 ### Advertencia sobre operaciones peligrosas
 
 > [!danger] Las siguientes operaciones pueden causar pérdidas irreversibles y ningún miembro debe realizarlas; si es realmente necesario, confirme antes con el administrador.
-
-- Modificar directamente el repositorio de publicación `ftc32477.github.io` (se sobrescribirá y contaminará el sitio oficial)
-- `git push --force`: sobrescribe a la fuerza el historial remoto y puede hacer desaparecer confirmaciones de otros compañeros
-- `git reset --hard`: descarta los cambios locales no subidos y es difícil recuperarlos
-- Eliminar ramas o repositorios, o cambiar la visibilidad, el nombre o la titularidad de un repositorio
-- Enviar al repositorio claves, contraseñas o tokens (una vez públicos, permanecen en el historial aunque se eliminen; hay que revocarlos y regenerarlos de inmediato)
-- Publicar material interno o información personal (correo, dirección, datos personales en capturas) en una incidencia, una PR o un repositorio público
-- Ejecutar o fusionar código de origen desconocido
+>
+> - Modificar directamente el repositorio de publicación `ftc32477.github.io` (se sobrescribirá y contaminará el sitio oficial)
+> - `git push --force`: sobrescribe a la fuerza el historial remoto y puede hacer desaparecer confirmaciones de otros compañeros
+> - `git reset --hard`: descarta los cambios locales no subidos y es difícil recuperarlos
+> - Eliminar ramas o repositorios, o cambiar la visibilidad, el nombre o la titularidad de un repositorio
+> - Enviar al repositorio claves, contraseñas o tokens (una vez públicos, permanecen en el historial aunque se eliminen; hay que revocarlos y regenerarlos de inmediato)
+> - Publicar material interno o información personal (correo, dirección, datos personales en capturas) en una incidencia, una PR o un repositorio público
+> - Ejecutar o fusionar código de origen desconocido
 
 > [!info] Seguridad de la cuenta: no comparta su cuenta con otras personas; GitHub está exigiendo la autenticación en dos fases (2FA) a las cuentas que contribuyen con código, actívela según las indicaciones; cree los tokens de acceso personal con los permisos mínimos y no los escriba nunca en el código ni en un repositorio.
 

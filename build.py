@@ -1150,7 +1150,7 @@ def parse_markdown(text):
             out.append(list_html)
             continue
 
-        # 引用（支持第一行 [!info] / [!warning] / [!danger] 类型标记）
+        # 引用（支持第一行 [!info] / [!warning] / [!danger] 类型标记；块内支持列表）
         blockquote_match = re.match(r"^>\s?(.*)$", line)
         if blockquote_match:
             flush_paragraph(para_buf)
@@ -1171,7 +1171,60 @@ def parse_markdown(text):
                 else:
                     bq_lines.append(m.group(1))
                 i += 1
-            bq_content = inline_parse(" ".join(bq_lines))
+            bq_parts = []
+            bq_para = []
+            bq_list = None
+            bq_list_items = []
+            bq_list_start = 1
+
+            def _flush_bq_para():
+                if bq_para:
+                    bq_parts.append(inline_parse(" ".join(bq_para)))
+                    bq_para.clear()
+
+            def _flush_bq_list():
+                nonlocal bq_list, bq_list_items, bq_list_start
+                if bq_list and bq_list_items:
+                    lis = "".join(
+                        f"<li>{inline_parse(t)}</li>" for t in bq_list_items
+                    )
+                    if bq_list == "ol" and bq_list_start != 1:
+                        bq_parts.append(f'<ol start="{bq_list_start}">{lis}</ol>')
+                    else:
+                        bq_parts.append(f"<{bq_list}>{lis}</{bq_list}>")
+                bq_list = None
+                bq_list_items = []
+                bq_list_start = 1
+
+            for raw in bq_lines:
+                t = raw.strip()
+                if not t:
+                    _flush_bq_para()
+                    _flush_bq_list()
+                    continue
+                mu = re.match(r"^[-*+]\s+(.+)$", t)
+                mo = re.match(r"^(\d+)[.)]\s+(.+)$", t)
+                if mu:
+                    _flush_bq_para()
+                    if bq_list == "ol":
+                        _flush_bq_list()
+                    bq_list = "ul"
+                    bq_list_items.append(mu.group(1))
+                elif mo:
+                    _flush_bq_para()
+                    if bq_list == "ul":
+                        _flush_bq_list()
+                    if bq_list is None:
+                        bq_list = "ol"
+                        bq_list_start = int(mo.group(1))
+                    bq_list_items.append(mo.group(2))
+                else:
+                    if bq_list:
+                        _flush_bq_list()
+                    bq_para.append(t)
+            _flush_bq_para()
+            _flush_bq_list()
+            bq_content = "".join(bq_parts)
             cls = f' class="bq-{bq_class}"' if bq_class else ""
             out.append(f"<blockquote{cls}>{bq_content}</blockquote>")
             continue
@@ -1493,6 +1546,8 @@ blockquote{
 blockquote.bq-info{border-left-color:#1565c0;background:#eaf3fb;color:#0d3c66}
 blockquote.bq-warning{border-left-color:#f9a825;background:#fff8e1;color:#6d4c00}
 blockquote.bq-danger{border-left-color:#d32f2f;background:#fef5f5;color:#8b0000}
+blockquote ul,blockquote ol{margin:6px 0 0;padding-left:20px}
+blockquote li+li{margin-top:4px}
 hr{border:none;border-top:1px solid var(--border);margin:24px 0}
 img{max-width:100%;border-radius:var(--radius);margin:12px 0}
 /* 锚点跳转留白（避免被固定顶栏遮挡） */
