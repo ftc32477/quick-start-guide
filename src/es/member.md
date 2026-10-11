@@ -74,7 +74,7 @@ Para las operaciones concretas, consulte al administrador.
 
 LocalSend es la herramienta de transferencia de archivos en la red local que utiliza nuestro equipo.
 
-**Proceso de instalación (ejemplo con la versión v1.17.0):**
+**Proceso de instalación (ejemplo con la versión v1.18.2):**
 
 > [!warning] En **iOS**: abra [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) e instálela.
 
@@ -140,12 +140,12 @@ Referencias:
 
 ### Calendario de la temporada
 
-- Una temporada FTC completa va de septiembre a junio del año siguiente; el juego de la nueva temporada se publica a mediados de septiembre, dejando unas siete u ocho semanas para el diseño y la depuración del robot
+- La temporada FTC comienza con el Kickoff a mediados de septiembre y se extiende hasta el FIRST Championship de finales de abril o principios de mayo (Houston); el soporte oficial suele prolongarse hasta finales de julio. El juego de la nueva temporada se publica con el Kickoff, tras lo cual comienza la fase de diseño y depuración del robot
 - Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta 2026, solo unos 4 equipos de la China continental han llegado a la final de Houston)
 - Los materiales básicos del campo de la nueva temporada se entregan oficialmente tras el inicio del curso; el campo puede montarse en cuanto lleguen
 
 ### Reglas a conocer
 
-- El robot se pilota manualmente con un mando Xbox; oficialmente solo se permite el modelo Xbox 360
-- La levitación magnética está prohibida por el reglamento; los imanes ordinarios y los electroimanes están permitidos
+- El robot se pilota manualmente con un mando con cable (p. ej., Logitech F310, Xbox 360); la conexión por cable es obligatoria y los modelos permitidos son los que se indican en el manual de competición de la temporada
+- El reglamento prohíbe los relés, los electroimanes y los actuadores solenoides (R506); los imanes permanentes comunes pueden utilizarse como materia prima (R302)
 - El rango de edad oficial de la FTC es de 12 a 18 años; los estudiantes de secundaria pueden participar

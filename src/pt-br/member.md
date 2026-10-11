@@ -74,7 +74,7 @@ Consulte um administrador para instruções específicas.
 
 O LocalSend é a ferramenta de transferência de arquivos em rede local adotada pela nossa equipe.
 
-**Instalação (usando a versão v1.17.0 como exemplo):**
+**Instalação (usando a versão v1.18.2 como exemplo):**
 
 > [!warning] Para **iOS**: abra [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) e instale diretamente.
 
@@ -140,12 +140,12 @@ Referências:
 
 ### Linha do tempo da temporada
 
-- Uma temporada completa do FTC vai de setembro de um ano a junho do ano seguinte; o desafio da nova temporada é divulgado em meados de setembro e, após o lançamento, há cerca de sete a oito semanas para projetar e ajustar o robô
+- A temporada do FTC vai do Kickoff, em meados de setembro de um ano, até o FIRST Championship (em Houston), no fim de abril ou início de maio do ano seguinte; o suporte oficial costuma se estender até o fim de julho. O desafio da nova temporada é divulgado no Kickoff; a partir daí, começa a fase de projeto e depuração do robô
 - Os torneios classificatórios são realizados em várias cidades do país; as equipes classificadas disputam o campeonato nacional nas férias de inverno e, se avançarem novamente, vão a Houston, nos Estados Unidos, para o Campeonato Mundial (até 2026, apenas cerca de 4 equipes da China continental chegaram ao Mundial de Houston)
 - Os materiais básicos do campo da nova temporada são enviados oficialmente após o início do ano letivo e, quando chegam, o campo pode ser montado
 
 ### Observações sobre as regras da competição
 
-- O robô é pilotado manualmente com um controle de Xbox; oficialmente, apenas o modelo Xbox 360 é permitido — outros modelos não atendem às regras
-- As regras proíbem o uso de levitação magnética; ímãs comuns e eletroímãs podem ser usados normalmente
+- O robô é pilotado manualmente com um controle com fio (como o Logitech F310 e o Xbox 360); oficialmente, a conexão com fio é obrigatória, e os modelos permitidos são os do Manual de Competição da temporada
+- As regras proíbem relés, eletroímãs e atuadores solenoides (R506); ímãs permanentes comuns podem ser usados como matéria-prima (R302)
 - A faixa etária oficial do FTC é de 12 a 18 anos; alunos do ensino fundamental (anos finais) também podem participar

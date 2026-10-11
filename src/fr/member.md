@@ -74,7 +74,7 @@ Pour les opérations concrètes, consultez un administrateur.
 
 LocalSend est l'outil de transfert de fichiers en réseau local adopté par notre équipe.
 
-**Procédure d'installation (exemple avec la version v1.17.0) :**
+**Procédure d'installation (exemple avec la version v1.18.2) :**
 
 > [!warning] Pour **iOS** : ouvrez [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) puis installez l'application.
 
@@ -140,12 +140,12 @@ Références :
 
 ### Calendrier de la saison
 
-- Une saison FTC complète s'étend de septembre à juin de l'année suivante ; le thème du jeu de la nouvelle saison est publié à la mi-septembre, laissant environ sept à huit semaines pour la conception et la mise au point du robot
+- La saison FTC commence au Kickoff, à la mi-septembre, et s'achève au FIRST Championship (Houston) de fin avril à début mai ; le support officiel se poursuit généralement jusqu'à fin juillet. Le thème de la nouvelle saison est publié lors du Kickoff, puis s'ouvre la phase de conception et de mise au point du robot
 - Les qualifications ont lieu dans plusieurs villes du pays ; les équipes qualifiées disputent la compétition nationale pendant les vacances d'hiver, puis peuvent se rendre à Houston (États-Unis) pour la finale internationale (en 2026, seules environ 4 équipes de Chine continentale ont atteint la finale de Houston)
 - Les matériaux de base du terrain de la nouvelle saison sont livrés officiellement après la rentrée ; le terrain peut être monté dès leur arrivée
 
 ### Règles à connaître
 
-- Le robot est piloté manuellement avec une manette Xbox ; officiellement, seul le modèle Xbox 360 est autorisé
-- La sustentation magnétique est interdite par le règlement ; les aimants ordinaires et les électroaimants sont autorisés
+- Le robot est piloté manuellement avec une manette filaire (par exemple Logitech F310, Xbox 360) ; la connexion filaire est obligatoire et les modèles autorisés sont ceux indiqués dans le manuel de compétition de la saison
+- Le règlement interdit les relais, les électroaimants et les actionneurs à solénoïde (R506) ; les aimants permanents ordinaires sont autorisés comme matières premières (R302)
 - La tranche d'âge officielle de la FTC est de 12 à 18 ans ; les collégiens peuvent participer

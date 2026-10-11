@@ -131,7 +131,7 @@ The Programming team's core work consists of three parts:
 - **TeleOp programs**: operation logic for the driver-controlled period
 - **Sensor configuration**: configuration of sensors and vision systems
 
-> [!info] Driver operation: the competition robot is driven with an Xbox controller; officially only the Xbox 360 model is permitted. Drivers are selected from within the team; familiarity with controller operation is an advantage.
+> [!info] Driver operation: the competition robot is driven with a wired gamepad (such as the Logitech F310 or Xbox 360); a wired connection is mandatory, and the permitted models are governed by the current season's Competition Manual. Drivers are selected from within the team; familiarity with controller operation is an advantage.
 
 ### Debugging Is the Core
 

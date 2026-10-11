@@ -14,7 +14,7 @@ The following are supplementary requirements for Hardware & Build.
 - Email address (@gmail.com or @outlook.com recommended)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (website currently unreachable; GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -146,16 +146,16 @@ Official REV and goBILDA specialized extrusions.
 
 | Brand | Characteristics |
 |------|------|
-| **REV** | Released earlier, but remains core today. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 6 mm REX shafts; gears and chains; 72:1 transverse motors and 40:1 motors are relatively common. |
+| **REV** | Released earlier, but remains core today. The three main control system modules (Driver Hub, Control Hub, Expansion Hub) are REV products. Structural parts include various aluminum extrusions (used less frequently); extrusions can serve as small limit brackets or fix non-unit-displacement structures. Extrusions take M3 button-head screws only; 5 mm hex shafts; gears and chains; motors are mainly the 72:1 Core Hex and the 40:1 HD Hex (the latter is discontinued, though existing stock is still in circulation). |
 | **goBILDA** | C-channels, square or thin beams, 8 mm REX shafts, a wide range of modular connectors with well-rounded functionality. Primarily M4 screws (10 mm official); motors are mostly 5203 series. Suitable for direct-drive motor kits. |
 
 **REV details:**
 
-- **Core control modules**: The Driver Hub, Controller Hub (Control Hub), and Expansion Hub are REV products.
+- **Core control modules**: The Driver Hub, Control Hub, and Expansion Hub are REV products.
 - **Structural parts**: Mostly aluminum extrusion, rarely used at present — suitable for small limit brackets and fixing non-unit-displacement structures.
 - **Special screws**: REV extrusions use M3 button-head (socket) screws, which seat inside the extrusion slots — almost exclusive to REV extrusion.
-- **Shaft spec**: REV uses 6 mm REX shafts — a REV-specific size.
-- **Motors**: REV offers a 72:1 transverse motor (officially the Core Hex Motor, 90° orientation, no built-in output shaft) and a 40:1 standard motor (officially the HD Hex Motor). The 72:1 transverse motor enables special mounting solutions, but its design is dated and hard to find compatible partners for nowadays.
+- **Shaft spec**: REV uses 5 mm hex shafts (the DUO system).
+- **Motors**: REV offers a 72:1 transverse motor (officially the Core Hex Motor, 90° orientation, no built-in output shaft) and a 40:1 standard motor (officially the HD Hex Motor, discontinued—existing stock is still in circulation). The 72:1 transverse motor enables special mounting solutions, but its design is dated and hard to find compatible partners for nowadays.
 - **Gears and chains**: REV also supplies them, but goBILDA products are generally preferred.
 
 **goBILDA details:**
@@ -170,8 +170,8 @@ Official REV and goBILDA specialized extrusions.
 
 | Type | Print temperature (approx.) | Description |
 |------|------|------|
-| PLA | 220 °C | Standard base plastic filament |
-| PETG-CF | 240 °C or above | Carbon-fiber-reinforced filament |
+| PLA | 190–230 °C (220 °C typical) | Standard base plastic filament |
+| PETG-CF | 240–270 °C | Carbon-fiber-reinforced filament |
 
 For filament, official Bambu Lab (拓竹) or SUNLU (三绿) products are recommended for consistent quality.
 
@@ -353,7 +353,7 @@ Download and install with the default steps; note the installation location (a f
 **P1S printers:**
 
 - Time-lapse can stay off.
-- Auto bed leveling and dynamic flow calibration must both be set to automatic.
+- Auto bed leveling must be enabled; dynamic flow calibration must be run manually following the prompts in Bambu Studio (the P1 series has no automatic calibration).
 
 ### Print Failure Handling
 

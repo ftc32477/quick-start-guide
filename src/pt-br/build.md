@@ -14,7 +14,7 @@ Os itens a seguir são requisitos complementares de Hardware e construção.
 - E-mail (recomendamos @gmail.com ou @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (site oficial indisponível no momento; organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -146,16 +146,16 @@ Perfis específicos oficiais da REV e da goBILDA.
 
 | Marca | Características |
 |------|------|
-| **REV** | Mais antiga, porém ainda essencial. Os três módulos de controle eletrônico (Driver Hub, Control Hub e Expansion Hub) usam principalmente produtos REV. As peças estruturais incluem perfis de alumínio variados (uso relativamente menor), úteis para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão. Os perfis usam principalmente parafusos Allen M3 de cabeça cilíndrica, eixos REX de 6 mm, engrenagens e correntes; o motor de eixo transversal 72:1 e o motor 40:1 são os mais usados. |
+| **REV** | Mais antiga, porém ainda essencial. Os três módulos de controle eletrônico (Driver Hub, Control Hub e Expansion Hub) usam principalmente produtos REV. As peças estruturais incluem perfis de alumínio variados (uso relativamente menor), úteis para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão. Os perfis usam principalmente parafusos Allen M3 de cabeça cilíndrica, eixos hexagonais de 5 mm, engrenagens e correntes; os motores mais usados são o Core Hex 72:1 e o HD Hex 40:1 (este último foi descontinuado, mas ainda há estoque em circulação). |
 | **goBILDA** | Vigas em C, vigas quadradas ou vigas finas, eixos REX de 8 mm, conectores padronizados de vários tipos e excelente compatibilidade de fixação. Usa principalmente parafusos M4 (oficialmente de 10 mm) e motores da linha 5203. Ideal para kits com transmissão direta do motor. |
 
 **Detalhes do fornecedor REV:**
 
-- **Módulos de controle eletrônico**: os três módulos Driver Hub, Controller Hub (ou seja, Control Hub) e Expansion Hub são principalmente produtos REV.
+- **Módulos de controle eletrônico**: os três módulos Driver Hub, Control Hub e Expansion Hub são principalmente produtos REV.
 - **Peças estruturais**: predominam os perfis de alumínio; hoje são menos usados, mas servem para pequenos batentes e para fixar estruturas com deslocamentos fora do padrão.
 - **Parafusos especiais**: os perfis REV usam parafusos Allen M3 de cabeça cilíndrica; esse parafuso fica preso dentro do perfil de alumínio e praticamente só os perfis REV o utilizam.
-- **Especificação de eixo**: a REV usa eixos REX de 6 mm, uma medida exclusiva da marca.
-- **Motores**: a REV oferece o motor de eixo transversal 72:1 (nome oficial Core Hex, saída transversal a 90°, sem eixo de saída próprio) e o motor padrão 40:1 (nome oficial HD Hex). O motor transversal 72:1 permite soluções de montagem especiais, mas seu projeto estrutural é antigo e, no ambiente atual, é difícil encontrar com o que combiná-lo.
+- **Especificação de eixo**: a REV usa eixos hexagonais de 5 mm (sistema DUO).
+- **Motores**: a REV oferece o motor de eixo transversal 72:1 (nome oficial Core Hex, saída transversal a 90°, sem eixo de saída próprio) e o motor padrão 40:1 (nome oficial HD Hex, descontinuado, mas ainda há estoque em circulação). O motor transversal 72:1 permite soluções de montagem especiais, mas seu projeto estrutural é antigo e, no ambiente atual, é difícil encontrar com o que combiná-lo.
 - **Engrenagens e correntes**: a REV também fornece, mas normalmente damos preferência aos produtos goBILDA.
 
 **Detalhes do fornecedor goBILDA:**
@@ -170,8 +170,8 @@ Perfis específicos oficiais da REV e da goBILDA.
 
 | Tipo | Temperatura de impressão (aprox.) | Descrição |
 |------|------|------|
-| PLA | 220 °C | Filamento plástico básico padrão |
-| PETG-CF | 240 °C ou mais | Filamento plástico com fibra de carbono |
+| PLA | 190–230 °C (220 °C usual) | Filamento plástico básico padrão |
+| PETG-CF | 240–270 °C | Filamento plástico com fibra de carbono |
 
 Recomendamos filamentos oficiais da Bambu Lab (拓竹) ou da SUNLU (三绿), de qualidade relativamente estável.
 
@@ -353,7 +353,7 @@ Baixe e instale seguindo as etapas padrão; atenção ao escolher o local de ins
 **Impressora P1S:**
 
 - O timelapse pode ficar desativado por padrão.
-- O nivelamento automático da mesa e a calibração dinâmica de fluxo devem estar ambos em automático.
+- O nivelamento automático da mesa deve estar ativado; a calibração dinâmica de fluxo deve ser executada manualmente conforme as instruções do Bambu Studio (a série P1 não tem calibração automática).
 
 ### Tratamento de falhas de impressão
 

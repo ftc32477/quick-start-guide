@@ -74,7 +74,7 @@ Please consult an administrator for specific instructions.
 
 LocalSend is the LAN file transfer tool adopted by our team.
 
-**Installation (using v1.17.0 as an example):**
+**Installation (using v1.18.2 as an example):**
 
 > [!warning] For **iOS**: open [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) and install directly.
 
@@ -140,12 +140,12 @@ References:
 
 ### Season Timeline
 
-- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for robot design and debugging
+- The FTC season starts with the Kickoff in mid-September and runs through the FIRST Championship (Houston) in late April to early May of the following year; official support usually continues through the end of July. The new season game is released at Kickoff, after which the team moves into robot design and debugging
 - Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (as of 2026, only about 4 teams from mainland China have reached the Houston Championship)
 - The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
 
 ### Competition Rules Notes
 
-- The robot is manually driven with an Xbox controller; officially only the Xbox 360 model is permitted
-- Magnetic levitation technology is prohibited by the rules; ordinary magnets and electromagnets are allowed
+- The competition robot is manually driven with a wired gamepad (such as the Logitech F310 or Xbox 360); a wired connection is mandatory, and the permitted models are governed by the current season's Competition Manual
+- The rules prohibit relays, electromagnets, and electrical solenoid actuators (R506); ordinary permanent magnets are allowed as raw materials (R302)
 - The official FTC age range is 12–18; middle school students may join

@@ -8,12 +8,12 @@ The following are supplementary requirements for 3D Modeling & Design.
 
 - Web browser (Chrome, Edge, or Safari)
 - LocalSend
-- Onshape FTC parts library — [https://ftconshape.com/](https://ftconshape.com/) (maintained by FIRST and PTC; email FIRST@ptc.com to be added to the shared folder)
+- Onshape FTC parts library — [https://ftconshape.com/](https://ftconshape.com/) (maintained by FTC Team 2901; email FIRST@ptc.com to be added to the shared folder)
 - FTC Insert Tool parts library plugin — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba) (install from the Onshape App Store: Subscribe → Get for Free)
 
 ### Online Accounts
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required; the website is currently unreachable—see its GitHub organization at [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Commonly used FTC parts suppliers and resource platforms:
 
 - **goBILDA**: provides a complete range of FTC structural components
 - **REV Robotics**: provides control system modules and structural components
-- **CycleZLab**: a FIRST robotics community platform (archive of CAD, code, and build logs)
+- **CycleZLab**: a FIRST robotics community (archive of CAD, code, and build logs; the website is currently unreachable—GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Design Standards
 

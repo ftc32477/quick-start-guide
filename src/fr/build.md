@@ -14,7 +14,7 @@ Voici les informations supplémentaires requises pour la construction.
 - Adresse e-mail (nous recommandons une adresse @gmail.com ou @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (le site officiel est actuellement inaccessible ; organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -146,16 +146,16 @@ Profilés spécifiques officiels REV et goBILDA.
 
 | Marque | Caractéristiques |
 |------|------|
-| **REV** | Apparue plus tôt, mais toujours essentielle. Les trois grands modules électroniques (Driver Hub, Control Hub, Expansion Hub) sont principalement des produits REV. Les pièces de structure comprennent divers profilés en aluminium (d'un usage relativement rare) ; les profilés peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire. Les profilés correspondent principalement aux vis à tête bombée M3 (uniquement), aux axes REX de 6 mm, aux engrenages et aux chaînes ; les moteurs transversaux 72:1 et les moteurs 40:1 sont les plus courants. |
+| **REV** | Apparue plus tôt, mais toujours essentielle. Les trois grands modules électroniques (Driver Hub, Control Hub, Expansion Hub) sont principalement des produits REV. Les pièces de structure comprennent divers profilés en aluminium (d'un usage relativement rare) ; les profilés peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire. Les profilés correspondent principalement aux vis à tête bombée M3 (uniquement), aux axes hexagonaux de 5 mm, aux engrenages et aux chaînes ; les moteurs sont principalement le Core Hex 72:1 et le HD Hex 40:1 (dont la production est arrêtée, mais des stocks circulent encore). |
 | **goBILDA** | Poutres en C, poutres carrées ou minces, axes REX de 8 mm, connecteurs modulaires variés et fonctions de connexion complètes. Utilise principalement des vis M4 (10 mm officiels) ; les moteurs sont majoritairement de la série 5203. Convient aux kits de transmission directe du moteur. |
 
 **Détails du fournisseur REV :**
 
-- **Modules électroniques essentiels** : les trois grands modules Driver Hub, Controller Hub (c'est-à-dire Control Hub) et Expansion Hub sont principalement des produits REV.
+- **Modules électroniques essentiels** : les trois grands modules Driver Hub, Control Hub et Expansion Hub sont principalement des produits REV.
 - **Pièces de structure** : essentiellement des profilés en aluminium, d'un usage actuellement réduit ; ils peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire.
 - **Vis spéciales** : les profilés REV utilisent des vis M3 à tête bombée (six pans creux), qui s'encastrent dans le profilé en aluminium ; presque seuls les profilés REV en font usage.
-- **Spécification des axes** : REV correspond aux axes REX de 6 mm, une spécification propre à REV.
-- **Moteurs** : REV propose le moteur transversal 72:1 (nom officiel Core Hex, sortie transversale à 90° et sans arbre de sortie intégré) et le moteur standard 40:1 (nom officiel HD Hex). Le moteur transversal 72:1 offre des solutions de montage particulières, mais sa conception est ancienne et il est difficile, dans l'environnement actuel, de lui trouver des pièces adaptées.
+- **Spécification des axes** : REV utilise des axes hexagonaux de 5 mm (système DUO).
+- **Moteurs** : REV propose le moteur transversal 72:1 (nom officiel Core Hex, sortie transversale à 90° et sans arbre de sortie intégré) et le moteur standard 40:1 (nom officiel HD Hex, dont la production est arrêtée, mais des stocks circulent encore). Le moteur transversal 72:1 offre des solutions de montage particulières, mais sa conception est ancienne et il est difficile, dans l'environnement actuel, de lui trouver des pièces adaptées.
 - **Engrenages et chaînes** : REV en fournit également, mais les produits goBILDA sont généralement privilégiés.
 
 **Détails du fournisseur goBILDA :**
@@ -170,8 +170,8 @@ Profilés spécifiques officiels REV et goBILDA.
 
 | Type | Température d'impression (approx.) | Description |
 |------|------|------|
-| PLA | 220 °C | Filament plastique standard de base |
-| PETG-CF | 240 °C et plus | Filament plastique renforcé de carbone |
+| PLA | 190–230 °C (220 °C le plus courant) | Filament plastique standard de base |
+| PETG-CF | 240–270 °C | Filament plastique renforcé de carbone |
 
 Il est conseillé de choisir des filaments officiels Bambu Lab (拓竹) ou SUNLU (三绿) : leur qualité est relativement stable.
 
@@ -352,7 +352,7 @@ Téléchargez puis installez en suivant les étapes par défaut ; faites attent
 **Imprimante P1S :**
 
 - Le time-lapse peut rester désactivé par défaut.
-- Le nivellement automatique du plateau et la calibration dynamique du débit doivent tous deux être réglés sur automatique.
+- Le nivellement automatique du plateau doit être activé ; la calibration dynamique du débit doit être exécutée manuellement en suivant les indications de Bambu Studio (la série P1 ne prend pas en charge la calibration automatique).
 
 ### Gestion des échecs d'impression
 

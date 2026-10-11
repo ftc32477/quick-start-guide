@@ -131,7 +131,7 @@ Le travail principal de l'équipe Programmation se divise en trois volets :
 - **Programmes de téléopération (TeleOp)** : la logique de commande de la phase télécommandée (TeleOp)
 - **Configuration des capteurs** : la configuration des différents capteurs et systèmes de vision
 
-> [!info] Pilotage (Driver) : le robot est piloté à la manette Xbox ; officiellement, seul le modèle Xbox 360 est autorisé. Les pilotes sont sélectionnés au sein de l'équipe ; les personnes déjà à l'aise avec la manette sont avantagées.
+> [!info] Pilotage (Driver) : le robot est piloté avec une manette filaire (par exemple Logitech F310, Xbox 360) ; la connexion filaire est obligatoire et les modèles autorisés sont ceux indiqués dans le manuel de compétition de la saison. Les pilotes sont sélectionnés au sein de l'équipe ; les personnes déjà à l'aise avec la manette sont avantagées.
 
 ### Le débogage est au cœur du travail
 

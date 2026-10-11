@@ -14,7 +14,7 @@
 - 電子郵件（推薦使用 @gmail.com 或 @outlook.com）
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（官網目前無法存取；GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ---
 
@@ -146,16 +146,16 @@ RD Works V8 是我隊採用的雷射切割機的配套驅動軟體。
 
 | 品牌 | 特點 |
 |------|------|
-| **REV** | 推出較早，但目前仍是核心。三大電控模組（Driver Hub、Control Hub、Expansion Hub）主要採用 REV 產品。結構件包括各種鋁型材（應用相對較少），型材可做小限位架、固定非單位位移結構。型材主要對應 M3 杯頭螺絲（僅），6 mm REX 軸，齒輪和鏈條，72:1 橫軸馬達與 40:1 馬達較為常用。 |
+| **REV** | 推出較早，但目前仍是核心。三大電控模組（Driver Hub、Control Hub、Expansion Hub）主要採用 REV 產品。結構件包括各種鋁型材（應用相對較少），型材可做小限位架、固定非單位位移結構。型材主要對應 M3 杯頭螺絲（僅）、5 mm 六角軸、齒輪和鏈條；馬達以 72:1 的 Core Hex 與 40:1 的 HD Hex 為主（後者已停產，存量仍在流通）。 |
 | **goBILDA** | C 型樑、方樑或薄樑，8 mm REX 軸，各種單位化的連接件，連接功能完善。主要採用 M4 螺絲（官方 10 mm），馬達多為 5203 系列。適用於馬達直傳的套件。 |
 
 **REV 供應商細節：**
 
-- **核心電控模組**：Driver Hub、Controller Hub（即 Control Hub）、Expansion Hub 三大電控模組主要採用 REV 產品。
+- **核心電控模組**：Driver Hub、Control Hub、Expansion Hub 三大電控模組主要採用 REV 產品。
 - **結構件**：以鋁型材為主，目前使用較少，可做小限位架、固定非單位位移的結構。
 - **特殊螺絲**：REV 型材使用 M3 杯頭（內六角）螺絲，這種螺絲卡在鋁型材內，幾乎只有 REV 型材會用到。
-- **軸規格**：REV 對應 6 毫米 REX 軸，這是 REV 特有的規格。
-- **馬達**：REV 提供 72:1 橫軸馬達（官方名 Core Hex，90° 橫置輸出、無自帶輸出軸）與 40:1 標準馬達（官方名 HD Hex）。72:1 橫軸馬達可提供特殊安裝方案，但結構設計較老，在現有環境中較難找到適配對象。
+- **軸規格**：REV 使用 5 mm 六角軸（DUO 體系）。
+- **馬達**：REV 提供 72:1 橫軸馬達（官方名 Core Hex，90° 橫置輸出、無自帶輸出軸）與 40:1 標準馬達（官方名 HD Hex，已停產，存量仍在流通）。72:1 橫軸馬達可提供特殊安裝方案，但結構設計較老，在現有環境中較難找到適配對象。
 - **齒輪與鏈條**：REV 也提供，但通常優先選用 goBILDA 產品。
 
 **goBILDA 供應商細節：**
@@ -170,8 +170,8 @@ RD Works V8 是我隊採用的雷射切割機的配套驅動軟體。
 
 | 類型 | 列印溫度（約） | 說明 |
 |------|------|------|
-| PLA | 220 °C | 標準基礎塑膠耗材 |
-| PETG-CF | 240 °C 以上 | 含碳塑膠耗材 |
+| PLA | 190–230 °C（常用 220 °C） | 標準基礎塑膠耗材 |
+| PETG-CF | 240–270 °C | 含碳塑膠耗材 |
 
 耗材建議選用 Bambu Lab（拓竹）或 SUNLU（三綠）官方產品，品質較穩定。
 
@@ -353,7 +353,7 @@ RD Works V8 是我隊採用的雷射切割機的配套驅動軟體。
 **P1S 印表機：**
 
 - 延時攝影預設關閉即可。
-- 自動熱床調平和動態流量校準必須全部設定為自動。
+- 自動熱床調平須開啟；動態流量校準需按 Bambu Studio 提示手動執行（P1 系列不支援自動校準）。
 
 ### 列印異常處理
 

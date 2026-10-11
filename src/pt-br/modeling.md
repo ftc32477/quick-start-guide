@@ -8,12 +8,12 @@ Os itens a seguir são requisitos complementares de Modelagem e design.
 
 - Navegador de internet (Chrome, Edge ou Safari)
 - LocalSend
-- Biblioteca de peças FTC do Onshape — [https://ftconshape.com/](https://ftconshape.com/) (mantida pela FIRST em parceria com a PTC; envie um e-mail para FIRST@ptc.com para entrar na pasta compartilhada)
+- Biblioteca de peças FTC do Onshape — [https://ftconshape.com/](https://ftconshape.com/) (mantida pela equipe FTC 2901; envie um e-mail para FIRST@ptc.com para entrar na pasta compartilhada)
 - Plugin da biblioteca de peças FTC Insert Tool — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba) (instale pela Onshape App Store: Subscribe → Get for Free)
 
 ### Contas online
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito, é preciso solicitar entrada)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito, é preciso solicitar entrada; site oficial indisponível no momento, organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Fornecedores de peças e plataformas de recursos usados com frequência no FTC:
 
 - **goBILDA**: oferece uma linha completa de peças estruturais para FTC
 - **REV Robotics**: oferece módulos de controle eletrônico e peças estruturais
-- **CycleZLab**: plataforma da comunidade de robótica da FIRST (arquivo de CAD, código e registros de construção)
+- **CycleZLab**: comunidade de robótica da FIRST (arquivo de CAD, código e registros de construção; site oficial indisponível no momento, organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Padrões de projeto
 

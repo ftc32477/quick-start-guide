@@ -8,12 +8,12 @@ A continuación se indican los materiales adicionales que requiere Modelado y di
 
 - Navegador web (Chrome, Edge o Safari)
 - LocalSend
-- Biblioteca de piezas FTC de Onshape — [https://ftconshape.com/](https://ftconshape.com/) (mantenida por FIRST y PTC; puede solicitar el acceso a la carpeta compartida enviando un correo a FIRST@ptc.com)
+- Biblioteca de piezas FTC de Onshape — [https://ftconshape.com/](https://ftconshape.com/) (mantenida por el equipo FTC 2901; puede solicitar el acceso a la carpeta compartida enviando un correo a FIRST@ptc.com)
 - Complemento de la biblioteca de piezas FTC Insert Tool — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba) (instalar desde la tienda de aplicaciones de Onshape: Subscribe → Get for Free)
 
 ### Cuentas en línea
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito; hay que solicitar la adhesión)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito; hay que solicitar la adhesión; el sitio web no está accesible actualmente, puede visitar su organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -39,7 +39,7 @@ Onshape es la plataforma de modelado en la nube que utiliza nuestro equipo. Fren
 **Proceso de registro:**
 
 1. Abra [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/) y registre una cuenta del plan educativo
-2. Rellene el nombre (First name), los apellidos (Last name) y el correo electrónico
+2. Rellene el nombre (First name), el apellido (Last name) y el correo electrónico
 
 > [!warning] No utilice buzones nacionales chinos como QQ: puede que no reciba el código de verificación. Se recomienda @gmail.com o @outlook.com.
 
@@ -169,7 +169,7 @@ Proveedores de piezas y plataformas de recursos habituales en FTC:
 
 - **goBILDA**: ofrece piezas estructurales FTC completas
 - **REV Robotics**: ofrece módulos de control electrónico y piezas estructurales
-- **CycleZLab**: plataforma de la comunidad FIRST Robotics (archivo de CAD, código y diarios de construcción)
+- **CycleZLab**: plataforma de la comunidad FIRST Robotics (archivo de CAD, código y diarios de construcción; el sitio web no está accesible actualmente, organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Convenciones de diseño
 

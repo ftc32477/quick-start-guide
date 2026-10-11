@@ -130,7 +130,7 @@ O trabalho central da equipe de programação se divide em três partes:
 - **Programa teleoperado**: a lógica de operação da fase controlada por controle (TeleOp)
 - **Configuração de sensores**: configuração de sensores diversos e do sistema de visão
 
-> [!info] Operação do controle (Driver): o robô é operado com um controle de Xbox, e oficialmente apenas o modelo Xbox 360 é permitido; o Driver é escolhido pela equipe, e quem tem familiaridade com o controle leva vantagem.
+> [!info] Operação do controle (Driver): o robô é operado com um controle com fio (como o Logitech F310 e o Xbox 360); oficialmente, a conexão com fio é obrigatória, e os modelos permitidos são os do Manual de Competição da temporada; o Driver é escolhido pela equipe, e quem tem familiaridade com o controle leva vantagem.
 
 ### A depuração é o ponto central
 

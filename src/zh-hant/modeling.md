@@ -8,12 +8,12 @@
 
 - 網路瀏覽器（Chrome 或 Edge 或 Safari）
 - LocalSend
-- Onshape FTC 零件庫 — [https://ftconshape.com/](https://ftconshape.com/)（FIRST 與 PTC 合作維護；發郵件至 FIRST@ptc.com 可加入共享資料夾）
+- Onshape FTC 零件庫 — [https://ftconshape.com/](https://ftconshape.com/)（由 FTC 2901 隊維護；發郵件至 FIRST@ptc.com 可加入共享資料夾）
 - FTC Insert Tool 零件庫外掛 — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba)（Onshape 應用程式商店安裝：Subscribe → Get for Free）
 
 ### 線上帳戶
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免費，需申請加入）
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免費，需申請加入；官網目前無法存取，可前往其 GitHub 組織 [https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ---
 
@@ -39,7 +39,7 @@ Onshape 是我們隊伍所採用的雲端建模平台。相較於 SolidWorks 等
 **註冊流程：**
 
 1. 開啟 [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/)，註冊教育版帳號
-2. 填入姓（First name）、名（Last name）以及電子郵件
+2. 填入名（First name）、姓（Last name）以及電子郵件
 
 > [!warning] 不要使用 QQ 等中國大陸郵箱，可能收不到驗證碼；推薦使用 @gmail.com 或 @outlook.com。
 
@@ -169,7 +169,7 @@ Onshape 作為專業的建模平台，具有完整的官方學習資源：[https
 
 - **goBILDA**：提供完整的 FTC 結構件
 - **REV Robotics**：提供電控模組和結構件
-- **CycleZLab**：FIRST 機器人社群平台（CAD、程式碼與建造日誌檔案庫）
+- **CycleZLab**：FIRST 機器人社群（CAD、程式碼與建造日誌檔案庫；官網目前無法存取，GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ### 設計規範
 

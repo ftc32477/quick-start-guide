@@ -8,12 +8,12 @@
 
 - 웹 브라우저(Chrome 또는 Edge 또는 Safari)
 - LocalSend
-- Onshape FTC 부품 라이브러리 — [https://ftconshape.com/](https://ftconshape.com/)(FIRST와 PTC가 공동 운영; FIRST@ptc.com으로 이메일을 보내면 공유 폴더에 참여할 수 있음)
+- Onshape FTC 부품 라이브러리 — [https://ftconshape.com/](https://ftconshape.com/)(FTC 2901 팀이 유지 관리; FIRST@ptc.com으로 이메일을 보내면 공유 폴더에 참여할 수 있음)
 - FTC Insert Tool 부품 라이브러리 플러그인 — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba)(Onshape 앱 스토어에서 설치: Subscribe → Get for Free)
 
 ### 온라인 계정
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(무료, 가입 신청 필요)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(무료, 가입 신청 필요; 현재 공식 웹사이트는 접속할 수 없으며, GitHub 조직 [https://github.com/CycleZLab](https://github.com/CycleZLab)을 이용할 수 있음)
 
 ---
 
@@ -169,7 +169,7 @@ FTC에서 자주 쓰는 부품 공급업체와 자료 플랫폼:
 
 - **goBILDA**: 완전한 FTC 구조 부품 제공
 - **REV Robotics**: 전자 제어 모듈과 구조 부품 제공
-- **CycleZLab**: FIRST 로봇 커뮤니티 플랫폼(CAD, 코드, 제작 일지 아카이브)
+- **CycleZLab**: FIRST 로봇 커뮤니티(CAD, 코드, 제작 일지 아카이브; 현재 공식 웹사이트는 접속할 수 없으며, GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### 설계 규칙
 

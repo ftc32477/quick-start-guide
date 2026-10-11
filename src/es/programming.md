@@ -131,7 +131,7 @@ El trabajo central del grupo de Programación se divide en tres partes:
 - **Programa manual**: la lógica de manejo de la fase de control por mando (TeleOp)
 - **Configuración de sensores**: la configuración de los distintos sensores y del sistema de visión
 
-> [!info] Pilotaje (Driver): el robot de competición se pilota con un mando Xbox; oficialmente solo se permite el modelo Xbox 360. Los pilotos se seleccionan dentro del equipo; quienes están familiarizados con el manejo del mando tienen más ventaja.
+> [!info] Pilotaje (Driver): el robot de competición se pilota con un mando con cable (p. ej., Logitech F310, Xbox 360); la conexión por cable es obligatoria y los modelos permitidos son los que se indican en el manual de competición de la temporada. Los pilotos se seleccionan dentro del equipo; quienes están familiarizados con el manejo del mando tienen más ventaja.
 
 ### La depuración es el núcleo
 

@@ -14,7 +14,7 @@ A continuación se indican los materiales adicionales que requiere Hardware y co
 - Correo electrónico (se recomienda @gmail.com o @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (el sitio web no está accesible actualmente; organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -146,16 +146,16 @@ Perfiles específicos oficiales de REV y goBILDA.
 
 | Marca | Características |
 |------|------|
-| **REV** | De los primeros, pero aún fundamental. Los tres módulos principales de control electrónico (Driver Hub, Control Hub y Expansion Hub) son en su mayoría productos REV. Entre las piezas estructurales hay varios perfiles de aluminio (de uso relativamente escaso); los perfiles sirven para pequeños topes y para fijar estructuras de desplazamiento no unitario. Los perfiles usan únicamente tornillos de cabeza cilíndrica M3, ejes REX de 6 mm, engranajes y cadenas; los motores transversales 72:1 y los motores 40:1 son los más utilizados. |
+| **REV** | De los primeros, pero aún fundamental. Los tres módulos principales de control electrónico (Driver Hub, Control Hub y Expansion Hub) son en su mayoría productos REV. Entre las piezas estructurales hay varios perfiles de aluminio (de uso relativamente escaso); los perfiles sirven para pequeños topes y para fijar estructuras de desplazamiento no unitario. Los perfiles usan únicamente tornillos de cabeza cilíndrica M3, ejes hexagonales de 5 mm (sistema DUO), engranajes y cadenas; los motores más utilizados son el Core Hex 72:1 y el HD Hex 40:1 (este último descatalogado, aunque aún queda stock en circulación). |
 | **goBILDA** | Vigas en C, vigas cuadradas o finas, ejes REX de 8 mm, conectores normalizados de todo tipo y funciones de conexión completas. Utiliza principalmente tornillos M4 (10 mm oficiales); los motores suelen ser de la serie 5203. Adecuado para kits de transmisión directa de motor. |
 
 **Detalles del proveedor REV:**
 
-- **Módulos de control electrónico**: los tres módulos principales (Driver Hub, Controller Hub —es decir, Control Hub— y Expansion Hub) son en su mayoría productos REV.
+- **Módulos de control electrónico**: los tres módulos principales (Driver Hub, Control Hub y Expansion Hub) son en su mayoría productos REV.
 - **Piezas estructurales**: sobre todo perfiles de aluminio, de uso actualmente reducido; sirven para pequeños topes y para fijar estructuras de desplazamiento no unitario.
 - **Tornillos especiales**: los perfiles REV usan tornillos M3 de cabeza cilíndrica (hueco hexagonal), que encajan en el perfil de aluminio; prácticamente solo los perfiles REV los emplean.
-- **Especificaciones de ejes**: REV corresponde a ejes REX de 6 milímetros, una especificación propia de REV.
-- **Motores**: REV ofrece el motor transversal 72:1 (nombre oficial Core Hex, salida transversal a 90°, sin eje de salida propio) y el motor estándar 40:1 (nombre oficial HD Hex). El motor transversal 72:1 permite esquemas de montaje especiales, pero su diseño estructural es antiguo y resulta difícil encontrar piezas compatibles en el entorno actual.
+- **Especificaciones de ejes**: REV utiliza ejes hexagonales de 5 mm (sistema DUO).
+- **Motores**: REV ofrece el motor transversal 72:1 (nombre oficial Core Hex, salida transversal a 90°, sin eje de salida propio) y el motor estándar 40:1 (nombre oficial HD Hex, descatalogado, aunque aún queda stock en circulación). El motor transversal 72:1 permite esquemas de montaje especiales, pero su diseño estructural es antiguo y resulta difícil encontrar piezas compatibles en el entorno actual.
 - **Engranajes y cadenas**: REV también los ofrece, pero normalmente se da prioridad a los productos goBILDA.
 
 **Detalles del proveedor goBILDA:**
@@ -170,8 +170,8 @@ Perfiles específicos oficiales de REV y goBILDA.
 
 | Tipo | Temperatura de impresión (aprox.) | Descripción |
 |------|------|------|
-| PLA | 220 °C | Filamento plástico básico estándar |
-| PETG-CF | 240 °C o más | Filamento plástico con fibra de carbono |
+| PLA | 190–230 °C (220 °C habitual) | Filamento plástico básico estándar |
+| PETG-CF | 240–270 °C | Filamento plástico con fibra de carbono |
 
 Se recomienda usar filamento oficial de Bambu Lab (拓竹) o SUNLU (三绿), de calidad relativamente estable.
 
@@ -353,7 +353,7 @@ Descárguelo e instálelo con los pasos predeterminados; preste atención a la u
 **Impresora P1S:**
 
 - El time-lapse puede quedar desactivado por defecto.
-- La nivelación automática de la cama y la calibración dinámica de flujo deben estar todas en automático.
+- La nivelación automática de la cama debe estar activada; la calibración dinámica de flujo debe ejecutarse manualmente siguiendo las indicaciones de Bambu Studio (la serie P1 no admite la calibración automática).
 
 ### Gestión de anomalías de impresión
 
