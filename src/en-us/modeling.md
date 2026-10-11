@@ -8,12 +8,12 @@ The following are supplementary requirements for 3D Modeling & Design.
 
 - Web browser (Chrome, Edge, or Safari)
 - LocalSend
-- Onshape FTC parts library — [https://ftconshape.com/](https://ftconshape.com/) (maintained by FIRST and PTC; email FIRST@ptc.com to be added to the shared folder)
+- Onshape FTC parts library — [https://ftconshape.com/](https://ftconshape.com/) (maintained by FTC Team 2901; email FIRST@ptc.com to be added to the shared folder)
 - FTC Insert Tool parts library plugin — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba) (install from the Onshape App Store: Subscribe → Get for Free)
 
 ### Online Accounts
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required; the website is currently unreachable—see its GitHub organization at [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -41,7 +41,7 @@ Onshape is the cloud-based CAD platform adopted by our team. Compared with indus
 1. Open [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/) and sign up for an Education account
 2. Enter your first name, last name, and email address
 
-> [!warning] Do not use QQ or other Chinese domestic email providers—verification emails may never arrive. Use @gmail.com or @outlook.com instead.
+> [!warning] Do not use QQ or other Chinese domestic email providers—verification emails may not arrive. Use @gmail.com or @outlook.com instead.
 
 3. On the next screen, select your role "Student", school level "Grade School / K-12 (Ages <18)", and date of birth, then click Next
 4. Fill in the following information:
@@ -71,7 +71,7 @@ Onshape is the cloud-based CAD platform adopted by our team. Compared with indus
 
 ### Onshape Plugins
 
-Thanks to its cloud-based nature, Onshape has a rich ecosystem of shared plugins, available through the Onshape App Store, third-party plugin websites, and sharing between users.
+Built on its cloud architecture, Onshape has a rich ecosystem of shared plugins, available through the Onshape App Store, third-party plugin websites, and sharing between users.
 
 Plugins commonly used by the team include (examples only):
 
@@ -143,7 +143,7 @@ The strength of 3D-printed parts depends on the material and the geometry. Here 
 
 - When designing the robot, break the game tasks into small items, design the structures for each item separately, and then combine them
 - Before formal modeling, consult your teammates on the design and base it on the team's scoring strategy
-- After completing the whole-robot design, consider the actual assembly process: leave assembly access for hard-to-reach screws and reserve space for cable routing
+- After completing the whole-robot design, take the actual assembly process into account: for internal structures that are hard to install, such as screws, reserve assembly access and cable routing space in advance
 - Consider modular structures to make later repairs and optimization easier
 - For the final version, aim for a unified structure and cut unnecessary small parts to improve overall strength and reduce weight
 
@@ -169,7 +169,7 @@ Commonly used FTC parts suppliers and resource platforms:
 
 - **goBILDA**: provides a complete range of FTC structural components
 - **REV Robotics**: provides control system modules and structural components
-- **CycleZLab**: a FIRST robotics community platform (archive of CAD, code, and build logs)
+- **CycleZLab**: a FIRST robotics community (archive of CAD, code, and build logs; the website is currently unreachable—GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Design Standards
 

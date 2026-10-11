@@ -8,12 +8,12 @@
 
 - 网络浏览器（Chrome 或 Edge 或 Safari）
 - LocalSend
-- Onshape FTC 零件库 — [https://ftconshape.com/](https://ftconshape.com/)（FIRST 与 PTC 合作维护；发邮件至 FIRST@ptc.com 可加入共享文件夹）
+- Onshape FTC 零件库 — [https://ftconshape.com/](https://ftconshape.com/)（由 FTC 2901 队维护；发邮件至 FIRST@ptc.com 可加入共享文件夹）
 - FTC Insert Tool 零件库插件 — [https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba](https://cad.onshape.com/appstore/apps/Design%20&%20Documentation/6515cfb91574253b1b96a6ba)（Onshape 应用商店安装：Subscribe → Get for Free）
 
 ### 在线账户
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免费，需申请加入）
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免费，需申请加入；官网目前无法访问，可访问其 GitHub 组织 [https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ---
 
@@ -39,9 +39,9 @@ Onshape 是我们队伍所采用的云端建模平台。相较于 SolidWorks 等
 **注册流程：**
 
 1. 打开 [https://www.onshape.com/en/education/](https://www.onshape.com/en/education/)，注册教育版账号
-2. 填入姓（First name）、名（Last name）以及邮箱
+2. 填入名（First name）、姓（Last name）以及邮箱
 
-> [!warning] 不要使用 QQ 等国内邮箱，有概率收不到验证码；推荐使用 @gmail.com 或 @outlook.com。
+> [!warning] 不要使用 QQ 等国内邮箱，可能收不到验证码；推荐使用 @gmail.com 或 @outlook.com。
 
 3. 在下一个界面依次选择身份 "Student"、学校类别 "Grade School / K-12 (Ages <18)"、生日，完成后点击下一步
 4. 依次填入以下信息：
@@ -71,7 +71,7 @@ Onshape 是我们队伍所采用的云端建模平台。相较于 SolidWorks 等
 
 ### Onshape 插件
 
-得益于云端性质，Onshape 具有丰富的共享插件，获取渠道包括 Onshape 应用商店、第三方插件网站、他人分享等。
+依托云端架构，Onshape 拥有丰富的共享插件，获取渠道包括 Onshape 应用商店、第三方插件网站与他人分享。
 
 队伍常用的插件包括（仅供举例）：
 
@@ -131,25 +131,25 @@ Onshape 提供测量、剖切、质量属性等分析工具，可在建模过程
 
 3D 打印零件的强度与材质、结构有关，以下是常用的结构设计概念：
 
-- **核心结构件**（如梁、结构板）：尽量使用 PETG-CF 打印（参数见《结构建造》一章），厚度不小于 4mm
-- **导向件**（如球轨道、结构限位）：可选 PLA，壁厚不小于 2mm
-- **保护性装饰件**（如侧板）：壁厚不小于 1.5mm
-- 对于亚克力等较为脆性的板类或结构，尽量避免设计密集孔（孔间距小于 3mm）；结构间受力连接部分宽度不小于 7mm
+- **核心结构件**（如梁、结构板）：尽量使用 PETG-CF 打印（参数见《结构建造》一章），厚度不小于 4 mm
+- **导向件**（如球轨道、结构限位）：可选 PLA，壁厚不小于 2 mm
+- **保护性装饰件**（如侧板）：壁厚不小于 1.5 mm
+- 对于亚克力等较为脆性的板类或结构，尽量避免设计密集孔（孔间距小于 3 mm）；结构间受力连接部分宽度不小于 7 mm
 - 尽量使零件不含锐角，倒角成圆角，防止零件应力集中导致断裂
 
 > [!info] 以上数据仅供参考，实际参数需通过实物验证进行调优。
 
 ### 建模思路与赛程参考
 
-- 构思车辆设计时，可以将赛题任务拆分成小项，分别构思完成各小项的结构，再进行组合
+- 构思机器人设计时，可将赛题任务拆分为小项，分别完成各小项的结构，再进行组合
 - 正式建模前，应向其他队员征询方案意见，基于队伍得分策略进行设计
-- 完成整车设计建模后，应考虑实际装配流程：对于内部的螺丝等难安装结构，应提前预留安装通道，并预留走线空间
+- 完成整机设计建模后，应结合实际装配流程：对螺丝等难以安装的内部结构，提前预留安装通道与走线空间
 - 可以考虑设计模块化结构，方便后期修理与优化
 - 终版方案尽量设计一体结构，减少不必要的小结构，以提升整体结构强度与轻便性
 
 **赛程参考：**
 
-- 工期安排上，初代设计可以比较潦草，但必须尽快设计完并制作，给程序调试和 Driver 练习留时间，并实测结构进行迭代优化；在资格赛前，一辆具备资格的整车要迭代至少 3 次（参考）
+- 工期安排上，初代设计可以比较潦草，但必须尽快设计完并制作，给程序调试和 Driver 练习留时间，并实测结构进行迭代优化；在资格赛前，具备参赛资格的整机要迭代至少 3 次（参考）
 - 多关注国外队伍动态，FTC 社区有类似 "Robot in 30 Hours Reveal | FTC" 的活动，参赛队伍随时可能分享新赛季方案；也可以参考 FRC、VEX 等赛事的队伍方案
 - 其他队伍的建模文件大多公开分享，主动向对方索要通常不会被拒绝，可参考优秀设计优化自身方案；北京十一学校本部等强队的经验尤其值得学习
 
@@ -169,10 +169,10 @@ Onshape 作为专业的建模平台，具有完整的官方学习资源：[https
 
 - **goBILDA**：提供完整的 FTC 结构件
 - **REV Robotics**：提供电控模块和结构件
-- **CycleZLab**：FIRST 机器人社区平台（CAD、代码与建造日志档案库）
+- **CycleZLab**：FIRST 机器人社区（CAD、代码与建造日志档案库；官网目前无法访问，GitHub 组织：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ### 设计规范
 
 - 使用公制单位（mm）
-- 所有 3D 打印件需预留适当的间隙（推荐 0.2-0.3mm）
+- 所有 3D 打印件需预留适当间隙（推荐 0.2-0.3 mm）
 - 导出格式：STEP 文件用于加工，STL 文件用于 3D 打印，3MF 文件用于切片打印

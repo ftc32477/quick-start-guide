@@ -42,7 +42,7 @@ The following environment must be configured before you begin. If you have any q
 
 ### Web Browser
 
-Install it yourself. We recommend Chrome.
+Install it yourself; Chrome is recommended.
 
 Chrome download: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -74,7 +74,7 @@ Please consult an administrator for specific instructions.
 
 LocalSend is the LAN file transfer tool adopted by our team.
 
-**Installation (using v1.17.0 as an example):**
+**Installation (using v1.18.2 as an example):**
 
 > [!warning] For **iOS**: open [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) and install directly.
 
@@ -104,17 +104,17 @@ LocalSend is the LAN file transfer tool adopted by our team.
 
 ### GitHub
 
-GitHub is the open-source repository platform adopted by our team.
+GitHub is the code and resource hosting platform adopted by our team.
 
 **Registration:**
 
 1. Open [https://github.com/signup](https://github.com/signup)
 2. Create a personal account by following the prompts
    - During registration, the system will ask you to verify your email address
-   - We recommend selecting "United States of America" as your country/region
+   - Select "United States of America" as your country/region
 3. After registration, tell an administrator your username and wait for an invitation to join the organization. You can find it at [https://github.com/notifications](https://github.com/notifications).
 
-After that, you can view and modify repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+After joining the organization, you can view the organization's repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); to modify content, submit a pull request following the process in "Programming", Section 5, "GitHub Collaboration Basics".
 
 **References:**
 
@@ -140,12 +140,12 @@ References:
 
 ### Season Timeline
 
-- A full FTC season runs from September through June of the following year; the new season game is released in mid-September, leaving about seven to eight weeks for vehicle design and debugging
-- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (so far only about 4 teams from mainland China have reached the Houston Championship)
+- The FTC season starts with the Kickoff in mid-September and runs through the FIRST Championship (Houston) in late April to early May of the following year; official support usually continues through the end of July. The new season game is released at Kickoff, after which the team moves into robot design and debugging
+- Qualifiers are held in several cities across the country; teams that advance play in the national championship during the winter break, and those that advance again go to Houston, USA, for the World Championship (as of 2026, only about 4 teams from mainland China have reached the Houston Championship)
 - The official basic field materials are delivered after the school year begins, and the new season field can be assembled once they arrive
 
 ### Competition Rules Notes
 
-- The robot is manually driven with an Xbox controller; officially only the Xbox 360 model is permitted
-- Magnetic levitation technology is prohibited by the rules; ordinary magnets and electromagnets are allowed
+- The competition robot is manually driven with a wired gamepad (such as the Logitech F310 or Xbox 360); a wired connection is mandatory, and the permitted models are governed by the current season's Competition Manual
+- The rules prohibit relays, electromagnets, and electrical solenoid actuators (R506); ordinary permanent magnets are allowed as raw materials (R302)
 - The official FTC age range is 12–18; middle school students may join

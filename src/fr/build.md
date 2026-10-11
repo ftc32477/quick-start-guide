@@ -14,7 +14,7 @@ Voici les informations supplémentaires requises pour la construction.
 - Adresse e-mail (nous recommandons une adresse @gmail.com ou @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (le site officiel est actuellement inaccessible ; organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -79,7 +79,7 @@ RD Works V8 est le logiciel pilote qui accompagne la découpeuse laser utilisée
 
 Outil en forme de L ou de T dont la section est un hexagone régulier, utilisé pour serrer les vis et boulons à six pans creux. Insérez complètement l'une des extrémités (courte ou longue) dans l'empreinte hexagonale de la tête de vis : une rotation dans le sens horaire serre, une rotation dans le sens antihoraire desserre. Les clés à poignée en T offrent généralement un bras de levier plus important ou permettent de travailler dans des alésages profonds.
 
-> [!info] Les tailles que nous utilisons le plus souvent sont les M3 et les M4 : ayez-les toujours à portée de main.
+> [!info] Les tailles les plus courantes sont les M3 et les M4 : ayez-les toujours à portée de main.
 
 #### Douille
 
@@ -129,14 +129,14 @@ Dans un micromètre, l'enclume A et la graduation fixe B sont fixées sur la mon
 
 #### Matériaux génériques
 
-Disponibles auprès de toutes sortes de canaux :
+Les matériaux suivants sont disponibles dans les circuits d'approvisionnement habituels :
 
 - Vis et écrous divers
 - Entretoises hexagonales
 - Poulies de courroie crantée
 - Roulements
 
-> [!warning] Les axes ne font pas partie des matériaux génériques : leurs spécifications sont assez particulières ; achetez-les séparément selon les besoins réels du projet.
+> [!warning] Les axes ne font pas partie des matériaux génériques : leurs spécifications sont particulières ; achetez-les séparément selon les besoins du projet.
 
 #### Matériaux spécifiques
 
@@ -146,16 +146,16 @@ Profilés spécifiques officiels REV et goBILDA.
 
 | Marque | Caractéristiques |
 |------|------|
-| **REV** | Relativement ancienne mais essentielle. Les trois grands modules électroniques (Driver Hub, Control Hub, Expansion Hub) sont principalement des produits REV. Les pièces de structure comprennent divers profilés en aluminium (d'un usage relativement rare) ; les profilés peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire. Les profilés correspondent principalement aux vis à tête bombée M3 (uniquement), aux axes REX de 6 mm, aux engrenages et aux chaînes ; les moteurs transversaux 72:1 et les moteurs 40:1 sont les plus utilisables et les plus courants. |
+| **REV** | Apparue plus tôt, mais toujours essentielle. Les trois grands modules électroniques (Driver Hub, Control Hub, Expansion Hub) sont principalement des produits REV. Les pièces de structure comprennent divers profilés en aluminium (d'un usage relativement rare) ; les profilés peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire. Les profilés correspondent principalement aux vis à tête bombée M3 (uniquement), aux axes hexagonaux de 5 mm, aux engrenages et aux chaînes ; les moteurs sont principalement le Core Hex 72:1 et le HD Hex 40:1 (dont la production est arrêtée, mais des stocks circulent encore). |
 | **goBILDA** | Poutres en C, poutres carrées ou minces, axes REX de 8 mm, connecteurs modulaires variés et fonctions de connexion complètes. Utilise principalement des vis M4 (10 mm officiels) ; les moteurs sont majoritairement de la série 5203. Convient aux kits de transmission directe du moteur. |
 
 **Détails du fournisseur REV :**
 
-- **Modules électroniques essentiels** : les trois grands modules Driver Hub, Controller Hub (c'est-à-dire Control Hub) et Expansion Hub sont principalement des produits REV.
+- **Modules électroniques essentiels** : les trois grands modules Driver Hub, Control Hub et Expansion Hub sont principalement des produits REV.
 - **Pièces de structure** : essentiellement des profilés en aluminium, d'un usage actuellement réduit ; ils peuvent servir de petits supports de butée ou à fixer des structures à déplacement non unitaire.
 - **Vis spéciales** : les profilés REV utilisent des vis M3 à tête bombée (six pans creux), qui s'encastrent dans le profilé en aluminium ; presque seuls les profilés REV en font usage.
-- **Spécification des axes** : REV correspond aux axes REX de 6 mm, une spécification propre à REV.
-- **Moteurs** : REV propose le moteur transversal 72:1 (nom officiel Core Hex, sortie transversale à 90° et sans arbre de sortie intégré) et le moteur standard 40:1 (nom officiel HD Hex). Le moteur transversal 72:1 offre des solutions de montage particulières, mais sa conception est ancienne et il est difficile, dans l'environnement actuel, de lui trouver des pièces adaptées.
+- **Spécification des axes** : REV utilise des axes hexagonaux de 5 mm (système DUO).
+- **Moteurs** : REV propose le moteur transversal 72:1 (nom officiel Core Hex, sortie transversale à 90° et sans arbre de sortie intégré) et le moteur standard 40:1 (nom officiel HD Hex, dont la production est arrêtée, mais des stocks circulent encore). Le moteur transversal 72:1 offre des solutions de montage particulières, mais sa conception est ancienne et il est difficile, dans l'environnement actuel, de lui trouver des pièces adaptées.
 - **Engrenages et chaînes** : REV en fournit également, mais les produits goBILDA sont généralement privilégiés.
 
 **Détails du fournisseur goBILDA :**
@@ -170,10 +170,10 @@ Profilés spécifiques officiels REV et goBILDA.
 
 | Type | Température d'impression (approx.) | Description |
 |------|------|------|
-| PLA | 220°C | Filament plastique standard de base |
-| PETG-CF | 240+°C | Filament plastique renforcé de carbone |
+| PLA | 190–230 °C (220 °C le plus courant) | Filament plastique standard de base |
+| PETG-CF | 240–270 °C | Filament plastique renforcé de carbone |
 
-Achetez des filaments officiels Bambu Lab ou SUNLU : leur qualité est relativement stable.
+Il est conseillé de choisir des filaments officiels Bambu Lab (拓竹) ou SUNLU (三绿) : leur qualité est relativement stable.
 
 **Retrait :**
 
@@ -198,11 +198,11 @@ Achetez des filaments officiels Bambu Lab ou SUNLU : leur qualité est relative
 - Câble de liaison batterie–Hub (selon les besoins de conception, la batterie peut être reliée directement au Control Hub ou à l'Expansion Hub)
 - Câble de liaison Con–EXP
 - Interrupteurs avec leur propre câblage
-- Câbles d'alimentation des moteurs : pour les moteurs goBILDA, le connecteur d'alimentation n'est pas compatible avec le Hub ; il faut couper le connecteur d'origine et refabriquer la prise à l'aide d'un embout de sertissage.
+- Câbles d'alimentation des moteurs : pour les moteurs goBILDA, le connecteur d'alimentation n'est pas compatible avec le Hub ; il faut couper le connecteur d'origine et le refabriquer à l'aide de terminaux.
 
 **Câbles de données (câbles d'encodeur de moteur) :**
 
-- Pour goBILDA, le connecteur et l'ordre des fils diffèrent de ceux du Hub (les fils jaune et blanc sont intervertis) : une attention particulière est requise lors de la fabrication.
+- Chez goBILDA, le connecteur et l'ordre des fils diffèrent de ceux du Hub (les fils jaune et blanc sont intervertis) : soyez vigilant lors de la fabrication.
 - Câbles de capteur I2C : aucune exigence particulière.
 - Câbles de données Con et EXP.
 - Rallonges de servo : attention au sens.
@@ -235,16 +235,16 @@ Achetez des filaments officiels Bambu Lab ou SUNLU : leur qualité est relative
 
 #### Ordre de montage
 
-> [!warning] L'assemblage manuel d'un robot commence habituellement par le châssis, puis s'élève couche par couche. Mais sur un robot de compétition, nous disposons de plans de modélisation : cet ordre entraîne facilement de nombreux retours en arrière, car certaines pièces en masquent d'autres.
+> [!warning] L'assemblage manuel commence habituellement par le châssis, puis s'élève couche par couche ; sur un robot de compétition, nous disposons de plans de modélisation : cet ordre entraîne facilement des retours en arrière, car certaines pièces en masquent d'autres.
 
 - Ajustez l'ordre de montage en fonction des relations de masquage entre les pièces : **montez d'abord les pièces masquées par les moteurs, l'électronique et les autres composants**, puis installez les composants qui les masquent.
 - Par exemple : terminez l'installation de toutes les pièces nécessaires autour d'un moteur avant de monter ce moteur.
 
 #### Précautions d'utilisation des pièces
 
-- Sur les axes, évitez de privilégier les modèles équipés de vis de pression (vis sans tête) : ces vis endommagent les axes.
-- Ne serrez pas excessivement les vis.
-- Les autres règles d'utilisation des pièces seront complétées au fur et à mesure.
+- Sur les axes, évitez les modèles équipés de vis de pression (vis sans tête) : ces vis endommagent les axes.
+- Ne forcez pas excessivement en serrant les vis.
+- Les autres règles d'utilisation des pièces seront complétées progressivement.
 
 #### Prévoir l'accès pour les réparations
 
@@ -284,7 +284,7 @@ La rédaction du fichier de configuration relève de la collaboration entre la s
 
 ### Installation et configuration de Bambu Studio
 
-Téléchargez puis installez en cliquant sur « Suivant » ; faites attention au choix de l'emplacement d'installation, un dossier est créé automatiquement.
+Téléchargez puis installez en suivant les étapes par défaut ; faites attention au choix de l'emplacement d'installation (un dossier est créé automatiquement).
 
 **Remarques :**
 
@@ -339,7 +339,7 @@ Téléchargez puis installez en cliquant sur « Suivant » ; faites attention a
 
 - Rendez-vous dans l'onglet « Appareil » : après avoir activé le mode LAN, le logiciel détecte automatiquement les imprimantes du réseau local (l'activation du mode LAN peut déconnecter le compte actuellement connecté, vous pouvez ignorer ce message).
 - Si l'imprimante cible n'est pas détectée : vérifiez d'abord que le mode LAN est activé sur l'imprimante ; si elle reste invisible, liez-la manuellement via IP + code d'accès. L'IP se trouve dans la page WiFi des paramètres de l'imprimante, et le code d'accès s'affiche à l'emplacement de l'avatar de connexion une fois le mode LAN activé.
-- Après le tranchage (slicing), vérifiez dans l'onglet « Aperçu » ; avant d'imprimer, il est recommandé d'envoyer l'aperçu du tranchage au responsable actuel de la modélisation ou de la structure pour confirmer que la configuration est correcte, avant de lancer l'impression.
+- Après le tranchage (slicing), vérifiez dans l'onglet « Aperçu » ; avant d'imprimer, envoyez l'aperçu du tranchage au responsable actuel de la modélisation ou de la structure pour confirmer la configuration, puis lancez l'impression.
 
 ### Réglages d'impression
 
@@ -352,12 +352,12 @@ Téléchargez puis installez en cliquant sur « Suivant » ; faites attention a
 **Imprimante P1S :**
 
 - Le time-lapse peut rester désactivé par défaut.
-- Le nivellement automatique du plateau et la calibration dynamique du débit doivent tous deux être réglés sur automatique.
+- Le nivellement automatique du plateau doit être activé ; la calibration dynamique du débit doit être exécutée manuellement en suivant les indications de Bambu Studio (la série P1 ne prend pas en charge la calibration automatique).
 
 ### Gestion des échecs d'impression
 
 - **P2S** : dotée de la détection de spaghettis par IA. En cas de spaghettis (échec spaghetti), c'est-à-dire lorsque le filament vole dans tous les sens, l'appareil arrête automatiquement l'impression et envoie un rappel au compte connecté à l'appareil. Une fois le fichier défaillant nettoyé, l'appareil redémarre automatiquement.
-- **P1S** : ne possède pas de détection automatique des spaghettis : il faut surveiller l'état en temps réel pendant l'impression. Si des spaghettis apparaissent, arrêtez manuellement l'impression ; vous pouvez retrouver le fichier défaillant dans les fichiers d'impression historiques du dossier cache à gauche et le nettoyer.
+- **P1S** : dépourvue de détection automatique des spaghettis : surveillez l'état en temps réel pendant l'impression. Si des spaghettis apparaissent, arrêtez manuellement l'impression ; retrouvez le fichier défaillant dans l'historique d'impression du dossier cache à gauche et nettoyez-le.
 
 ### Installation et configuration de RD Works V8
 

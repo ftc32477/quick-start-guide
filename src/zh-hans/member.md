@@ -13,11 +13,11 @@
 
 ### 网络环境
 
-需要具备可以获取 Android 支持的网络环境。
+需要能够访问 Android 支持资源的网络环境。
 
 - Android 支持：[https://support.google.com/android](https://support.google.com/android)
 
-> [!info] 队伍自建局域网接入校园独立网关，速度较普通校园网更稳定，但仍保留校园网的访问限制。程序设计岗位需要访问 Android 支持的境外网络资源，队伍可提供相关途径；如有大流量使用需求，建议自行购买相应服务。
+> [!info] 队伍自建局域网接入校园独立网关，稳定性高于普通校园网，但仍受校园网访问限制。程序设计需要访问 Android 支持的境外网络资源，队伍可提供访问途径；如有大流量需求，建议自行购买服务。
 
 ### 应用程序
 
@@ -42,7 +42,7 @@
 
 ### 网络浏览器
 
-自行安装即可。我们推荐使用 Chrome。
+自行安装即可，推荐使用 Chrome。
 
 Chrome 下载地址：[https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -74,7 +74,7 @@ Chrome 下载地址：[https://www.google.com/chrome/](https://www.google.com/ch
 
 LocalSend 是我队采用的局域网文件传输工具。
 
-**安装流程（以 v1.17.0 版本为例）：**
+**安装流程（以 v1.18.2 版本为例）：**
 
 > [!warning] 对于 **iOS** 系统：打开 [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) 安装即可。
 
@@ -104,17 +104,17 @@ LocalSend 是我队采用的局域网文件传输工具。
 
 ### GitHub
 
-GitHub 是我队采用的开源资料存储仓库。
+GitHub 是我队采用的代码与资料托管平台。
 
 **注册流程：**
 
 1. 打开 [https://github.com/signup](https://github.com/signup)
 2. 按照提示创建个人帐户
    - 注册期间，系统会要求验证电子邮件地址
-   - 我们建议将国家/地区选项选择为"美国"
+   - 建议将国家/地区选项选择为"美国"
 3. 注册完成后，请向管理员告知你的用户名，并等待管理员向你发来加入组织邀请。你可以在 [https://github.com/notifications](https://github.com/notifications) 查收。
 
-而后，你就可以在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 查看、修改仓库了。
+加入组织后，即可在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 查看组织仓库；如需修改内容，按《程序设计》「五、GitHub 协作基础」的流程提交拉取请求。
 
 **参考资料：**
 
@@ -141,12 +141,12 @@ Onshape 是我队采用的云端 3D 建模平台。
 
 ### 赛季时间线
 
-- FTC 一个完整赛季从当年 9 月持续到次年 6 月；每年 9 月中旬发布新赛季赛题，赛题发布后约有七八周时间用于车辆设计与调试
-- 资格赛在全国多个城市设置分赛场；资格赛晋级后可在寒假参加全国赛事，再晋级可赴美国休斯顿参加国际总决赛（截至目前中国大陆仅约 4 支队伍晋级过休斯顿总决赛）
+- FTC 赛季从当年 9 月中旬的 Kickoff 开始，至次年 4 月下旬至 5 月初的 FIRST Championship（休斯顿）；官方支持通常延续至当年 7 月底。新赛季赛题随 Kickoff 发布，此后进入机器人设计与调试阶段
+- 资格赛在全国多个城市设置分赛场；资格赛晋级后可在寒假参加全国赛事，再晋级可赴美国休斯顿参加国际总决赛（截至 2026 年，中国大陆仅约 4 支队伍晋级过休斯顿总决赛）
 - 新赛季基础场地材料在开学后由官方统一配送，到货后即可搭建新赛季场地
 
 ### 赛事规则须知
 
-- 参赛车辆使用 Xbox 手柄进行手动操控，赛事官方仅允许使用 Xbox 360 型号手柄，其他型号不符合规则要求
-- 赛事规则禁止使用磁悬浮技术；普通磁铁、电磁铁类部件可正常使用
-- FTC 官方参赛年龄范围为 12–18 岁，初中生也可报名参与
+- 参赛机器人使用有线手柄手动操控（如 Logitech F310、Xbox 360）；官方要求必须为有线连接，允许型号以当季《竞赛手册》为准
+- 规则禁止使用继电器、电磁铁与电磁螺线管（R506）；普通永磁磁铁可作为原材料使用（R302）
+- FTC 官方参赛年龄范围为 12–18 岁，初中生也可参加

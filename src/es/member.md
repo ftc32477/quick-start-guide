@@ -13,11 +13,11 @@ Basta con una de las siguientes opciones:
 
 ### Entorno de red
 
-Es necesario disponer de un entorno de red con acceso al soporte de Android.
+Es necesario disponer de un entorno de red con acceso a los recursos de soporte de Android.
 
 - Soporte de Android: [https://support.google.com/android](https://support.google.com/android)
 
-> [!info] La LAN propia del equipo se conecta a una pasarela independiente del campus: es más estable que la red habitual del campus, pero conserva las restricciones de acceso de esta. El puesto de Programación necesita acceder a recursos de red en el extranjero compatibles con Android; el equipo puede facilitar una vía de acceso. Si prevé un uso intensivo, se recomienda contratar su propio servicio.
+> [!info] La LAN propia del equipo se conecta a una pasarela independiente del campus: su estabilidad supera a la de la red habitual del campus, pero sigue sujeta a las restricciones de acceso de la red del campus. Programación necesita acceder a recursos de red en el extranjero compatibles con Android; el equipo puede facilitar una vía de acceso. Si prevé un uso intensivo, se recomienda contratar su propio servicio.
 
 ### Aplicaciones
 
@@ -42,7 +42,7 @@ A continuación se describe el entorno de trabajo que hay que configurar antes d
 
 ### Navegador web
 
-Instálelo por su cuenta. Recomendamos Chrome.
+Instálelo por su cuenta; se recomienda Chrome.
 
 Descarga de Chrome: [https://www.google.com/chrome/](https://www.google.com/chrome/)
 
@@ -74,7 +74,7 @@ Para las operaciones concretas, consulte al administrador.
 
 LocalSend es la herramienta de transferencia de archivos en la red local que utiliza nuestro equipo.
 
-**Proceso de instalación (ejemplo con la versión v1.17.0):**
+**Proceso de instalación (ejemplo con la versión v1.18.2):**
 
 > [!warning] En **iOS**: abra [https://apps.apple.com/us/app/localsend/id1661733229](https://apps.apple.com/us/app/localsend/id1661733229) e instálela.
 
@@ -104,17 +104,17 @@ LocalSend es la herramienta de transferencia de archivos en la red local que uti
 
 ### GitHub
 
-GitHub es el repositorio de almacenamiento de material de código abierto que utiliza nuestro equipo.
+GitHub es la plataforma de alojamiento de código y materiales que utiliza nuestro equipo.
 
 **Proceso de registro:**
 
 1. Abra [https://github.com/signup](https://github.com/signup)
 2. Siga las indicaciones para crear una cuenta personal
    - Durante el registro, el sistema pedirá verificar la dirección de correo electrónico
-   - Recomendamos seleccionar «Estados Unidos» como país/región
+   - Se recomienda seleccionar «Estados Unidos» como país/región
 3. Tras registrarse, comunique su nombre de usuario al administrador y espere a que le envíe la invitación para unirse a la organización. Puede consultarla en [https://github.com/notifications](https://github.com/notifications).
 
-A continuación, ya puede consultar y modificar los repositorios en [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+Una vez unido a la organización, puede consultar los repositorios de la organización en [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); si necesita modificar algún contenido, siga el procedimiento de «5. Fundamentos de colaboración en GitHub» del capítulo «Programación» para enviar una solicitud de incorporación de cambios.
 
 **Referencias:**
 
@@ -140,12 +140,12 @@ Referencias:
 
 ### Calendario de la temporada
 
-- Una temporada FTC completa va de septiembre a junio del año siguiente; el juego de la nueva temporada se publica a mediados de septiembre, dejando unas siete u ocho semanas para el diseño y la depuración del robot
-- Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta ahora solo unos 4 equipos de la China continental han llegado a la final de Houston)
+- La temporada FTC comienza con el Kickoff a mediados de septiembre y se extiende hasta el FIRST Championship de finales de abril o principios de mayo (Houston); el soporte oficial suele prolongarse hasta finales de julio. El juego de la nueva temporada se publica con el Kickoff, tras lo cual comienza la fase de diseño y depuración del robot
+- Las fases de clasificación se celebran en varias ciudades del país; los equipos clasificados disputan el campeonato nacional durante las vacaciones de invierno y, si vuelven a clasificarse, van a Houston (EE. UU.) para la final internacional (hasta 2026, solo unos 4 equipos de la China continental han llegado a la final de Houston)
 - Los materiales básicos del campo de la nueva temporada se entregan oficialmente tras el inicio del curso; el campo puede montarse en cuanto lleguen
 
 ### Reglas a conocer
 
-- El robot se pilota manualmente con un mando Xbox; oficialmente solo se permite el modelo Xbox 360
-- La levitación magnética está prohibida por el reglamento; los imanes ordinarios y los electroimanes están permitidos
+- El robot se pilota manualmente con un mando con cable (p. ej., Logitech F310, Xbox 360); la conexión por cable es obligatoria y los modelos permitidos son los que se indican en el manual de competición de la temporada
+- El reglamento prohíbe los relés, los electroimanes y los actuadores solenoides (R506); los imanes permanentes comunes pueden utilizarse como materia prima (R302)
 - El rango de edad oficial de la FTC es de 12 a 18 años; los estudiantes de secundaria pueden participar

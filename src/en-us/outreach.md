@@ -28,7 +28,7 @@ The Outreach & Public Relations division is the team's megaphone and diplomatic 
 
 ### Engineering Notebook
 
-The engineering notebook documents the entire season: the vehicle build process, outreach activities, and how problems were solved. It is a key supporting material for judging and one of the core scoring materials. Its content is written by the Hardware and Programming teams; Outreach is responsible for:
+The engineering notebook documents the entire season: the robot build process, outreach activities, and how problems were solved. It is a key supporting material for judging and one of the core scoring materials. Its content is written by the Hardware and Programming teams; Outreach is responsible for:
 
 - **Layout**: design and typeset the engineering notebook
 - **Material collection**: proactively accumulate promotional material
@@ -54,7 +54,7 @@ The engineering notebook documents the entire season: the vehicle build process,
 - Maintain relationships with sponsors
 - Manage the team's budget and finances
 
-> [!info] School funding is limited: a complete competition vehicle costs about ¥10,000, and the gap must be filled through sponsorship. If the team advances to the Houston World Championship, the school will fully reimburse the related expenses.
+> [!info] School funding is limited: a complete competition robot costs about ¥10,000, and the gap must be filled through sponsorship. If the team advances to the Houston World Championship, the school will fully reimburse the related expenses.
 
 ### STEM Outreach
 
@@ -104,7 +104,7 @@ A sponsorship business plan should include:
 
 - FGC (First Global Challenge) is like the Olympics of robotics. The 2026 event will be held in Incheon, South Korea, with teams from more than 190 countries.
 - FGC Team China's business plan includes the event introduction, team introduction, historical results, and tiered sponsorship benefits. It is understood that they have secured sponsorships from brands including Xiaomi and Huawei (via its affiliated brand Huakun Zhenyu (华鲲振宇)).
-- Some strong teams that have secured major corporate sponsors build their vehicles with almost no official parts, using fully custom materials such as carbon fiber, far beyond the hardware of ordinary teams.
+- Some strong teams that have secured major corporate sponsors build their robots with almost no official parts, using fully custom materials such as carbon fiber, far beyond the hardware of ordinary teams.
 
 ---
 

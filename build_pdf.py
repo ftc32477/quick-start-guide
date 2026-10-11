@@ -79,7 +79,8 @@ PDF_TEXTS = {
         "lang": "\u7b80\u4f53\u4e2d\u6587\u7248",
     },
     "zh-hant": {
-        "name": "32477 Origin \u5feb\u901f\u5165\u95e8\u6307\u5357",
+        "name": "32477 Origin \u5feb\u901f\u5165\u9580\u6307\u5357",
+        "name2": "\u5feb\u901f\u5165\u9580\u6307\u5357",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
         "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },
@@ -432,8 +433,8 @@ html,body{{margin:0;padding:0}}
   background:#d32f2f;padding:6px 22px;border-radius:22px;
   font-size:13px;font-weight:600;letter-spacing:3px;margin-bottom:28px;position:relative
 }}
-.cover h1{{font-size:42px;margin:0 0 18px;font-weight:700;position:relative}}
-.cover .name{{font-size:24px;font-weight:600;position:relative}}
+.cover h1{{font-size:28px;margin:0 0 14px;font-weight:700;position:relative}}
+.cover .name{{font-size:36px;font-weight:700;position:relative;line-height:1.25}}
 .cover .name2{{font-size:17px;opacity:.75;margin-top:16px;position:relative}}
 .cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
