@@ -455,23 +455,23 @@ tr:nth-child(even){background:#fafafa}
 <ul><li>WiFi、监控、网线、电插板等基础设施均按耗材管理，注意及时补充。</li></ul>
 <hr>
 <h2 id="四工作流程">四、工作流程</h2>
-<ol><li><strong>零件采购</strong><ul><li>FTC 官方器材供应商位于境外，采购工期长、价格高；非必需材料可在国内平台寻找替代品，以兼顾成本与交付速度</li></ul></li><li><strong>自制件制作</strong><ul><li>3D 打印件制作</li><li>激光切割板材加工</li></ul></li><li><strong>硬件安装</strong></li><li><strong>导线连接</strong></li><li><strong>Robot Configuration 编写</strong>（与程序设计协同）</li><li><strong>Driver Station 与 Robot Controller 连接</strong>（与程序设计协同）</li></ol>
+<ol><li><strong>零件采购</strong><ul><li>FTC 官方器材供应商位于境外，采购工期长、价格高；非刚需材料可在国内平台寻找平替，兼顾成本与交付速度</li></ul></li><li><strong>自制件制作</strong><ul><li>3D 打印件制作</li><li>激光切割板材加工</li></ul></li><li><strong>硬件安装</strong></li><li><strong>导线连接</strong></li><li><strong>Robot Configuration 编写</strong>（与程序设计协同）</li><li><strong>Driver Station 与 Robot Controller 连接</strong>（与程序设计协同）</li></ol>
 <h3 id="硬件安装">硬件安装</h3>
 <h4>安装次序</h4>
 <blockquote class="bq-warning">常规手搭装配习惯先做底盘再向上累加；比赛机器人有建模图纸，该顺序容易因零件遮挡造成返工。</blockquote>
 <ul><li>安装时需要根据零件遮挡关系调整次序：<strong>先安装被电机、电控等部件遮挡的零件</strong>，再安装遮挡它们的部件。</li><li>例如：确认电机周围需要安装的零件装完后，再装这颗电机。</li></ul>
 <h4>零件使用注意事项</h4>
 <ul><li>轴上的零件避免使用带顶丝的款式：顶丝会损坏轴。</li><li>拧紧螺丝时不要过度用力。</li><li>其余零件使用规则将陆续补充。</li></ul>
-<h4>为维修预留空间</h4>
-<ul><li>装配时不要将螺丝、螺母置于难以触及的位置。</li><li>应以便于维修为原则：若故障需要拆解整机才能维修，将影响比赛进行。</li></ul>
+<h4>为修车预留空间</h4>
+<ul><li>装车时切勿图省事：不要把螺丝、螺母藏在难以触及的位置。</li><li>一切以"好修"为原则——如果车坏了需要拆整车才能维修，比赛将无法继续。</li></ul>
 <h4>静电防护</h4>
-<ul><li>干燥天气容易产生静电，静电会导致机器人断联、传感器数据不准。</li><li>防护措施：机器人加装导地线，将静电导入地面；用锡纸包裹 IMU 等传感器。</li></ul>
+<ul><li>干燥天气容易产生静电，静电会导致车辆断联、传感器数据不准。</li><li>防护措施：车辆加装导地线将静电导入地面；用锡纸包裹 IMU 等传感器做静电防护。</li></ul>
 <h4>理线</h4>
-<ul><li>带滑轨的伸缩结构必须套线管，防止线缆松脱卡住滑轨或拉断。</li><li>理线是装配中要求最高的环节，应认真执行。</li></ul>
+<ul><li>带滑轨的伸缩结构必须套线管，防止线乱飞卡死滑轨甚至扯断线。</li><li>理线是装车中技术含量最高的工作，务必认真对待。</li></ul>
 <h3 id="导线连接">导线连接</h3>
 <h4>Control Hub 与 Expansion Hub 连接</h4>
 <ul><li><strong>电源连接</strong>：公头对母头连接。</li><li><strong>数据连接</strong>：使用 RS-485 口配合 3P 线材连接。两边各有 2 个 RS-485 口，各选一个插上即可，无需相互对应固定位置。</li></ul>
-<blockquote class="bq-warning">官方插头具有防呆设计。无法插入时，先检查插线方向，切勿强行插拔。</blockquote>
+<blockquote class="bq-warning">官方插头均具有防呆设计，该设计防呆不防傻。遇到无法插入的情况，请及时检查插线方向，切勿用力插拔。</blockquote>
 <h4>Driver Station 与 Robot Controller 连接</h4>
 <p>网络连接部分，结构与程序都需要掌握，可直接复用程序部分内容。</p>
 <h4>Robot Configuration 编写</h4>
