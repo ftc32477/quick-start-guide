@@ -104,7 +104,7 @@ LocalSend 是我队采用的局域网文件传输工具。
 
 ### GitHub
 
-GitHub 是我队采用的开源资料存储仓库。
+GitHub 是我队采用的代码与资料托管平台。
 
 **注册流程：**
 
@@ -114,7 +114,7 @@ GitHub 是我队采用的开源资料存储仓库。
    - 我们建议将国家/地区选项选择为"美国"
 3. 注册完成后，请向管理员告知你的用户名，并等待管理员向你发来加入组织邀请。你可以在 [https://github.com/notifications](https://github.com/notifications) 查收。
 
-而后，你就可以在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 查看、修改仓库了。
+加入组织后，即可在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 查看组织仓库；如需修改内容，按《程序设计》「五、GitHub 协作基础」的流程提交拉取请求。
 
 **参考资料：**
 

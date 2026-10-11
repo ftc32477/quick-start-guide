@@ -86,7 +86,7 @@ ftc_quick_start_guide/
 └── README.md                  # 本文档
 ```
 
-> 本项目托管于主仓库 `ftc32477/quick-start-guide`；推送后由 GitHub Actions 自动把 `dist/` 同步为发布仓库 `ftc32477/ftc32477.github.io` 的 `docs/` 目录，即线上站点 https://ftc32477.github.io/docs/ 。详见第一部分"八、发布到 GitHub Pages"。
+> 本项目托管于主仓库 `ftc32477/quick-start-guide`；推送后由 GitHub Actions 自动把 `dist/` 同步为发布仓库 `ftc32477/ftc32477.github.io` 的 `docs/` 目录，即线上站点 https://ftc32477.github.io/docs/ 。发布仓库 `ftc32477.github.io` 定位为团队站点：根路径当前重定向到本指南（`/docs/`），后续各栏目将各自建立源仓库，经 Actions 构建后推送到对应子路径。详见第一部分"八、发布到 GitHub Pages"。
 
 ---
 
@@ -150,7 +150,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es / ko / pt-br）按**教科书式装订**排布：封面/封底单独印刷，**不印刷封二、封三**（印厂无法在封里印刷内容），页面顺序如下：
 
-1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年10月第1版"，位置略上移）
+1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；**字号层级以指南名为最大（36px），"FIRST® Tech Challenge"次之（28px）**，封面整体字号大于扉页（30/26px）；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年10月第1版"，位置略上移）
 2. **扉页（内页第 1 页）**：白底黑字复述封面信息（队徽、徽章、"FIRST® Tech Challenge"、指南名、副题、学校；内容集群与封面一样上移至黄金分割点（中心 ≈ 38.2vh）；底部居中"语言版本 / 版次日期"两行），位于右页
 3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年10月第1版）**、**版本号（v1.4.0）**、**发布日期（2026年10月3日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
 4. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）；中文版正文用楷体（霞鹜文楷）
@@ -326,6 +326,11 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 **原因**：超长不可断行的 URL（如 Onshape 应用商店链接）超出可打印宽度，Chrome 打印时为容纳它把**整页内容等比缩放**（PDF 内容流中 `cm` 矩阵从 0.75 变为约 0.54，字号 Tf 数值不变，肉眼看到的却是整章缩小）。
 
 **对策**：链接必须允许任意位置断行——全局 `a{overflow-wrap:anywhere}`，并在 `@media print` 中 `a{overflow-wrap:anywhere !important}` 防媒体查询泄漏。验证方法：用 pypdf 的 `extract_text(visitor_text=...)` 检查各页 `cm` 矩阵比例是否一致（正常为 0.75）。
+
+### 代码块折行（打印）
+
+- **现象**：代码块中的长行在 PDF 中被裁切，行尾内容不可见（屏幕端 `pre` 为 `overflow-x:auto` 可滚动，打印端不渲染滚动条）。
+- **对策**：`@media print` 中强制 `pre{white-space:pre-wrap;overflow-wrap:anywhere;overflow:visible}`；书写长命令时注释单独成行，中文注释按双倍字符宽度估算。
 
 ### 表格打印规则
 

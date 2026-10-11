@@ -432,8 +432,8 @@ html,body{{margin:0;padding:0}}
   background:#d32f2f;padding:6px 22px;border-radius:22px;
   font-size:13px;font-weight:600;letter-spacing:3px;margin-bottom:28px;position:relative
 }}
-.cover h1{{font-size:42px;margin:0 0 18px;font-weight:700;position:relative}}
-.cover .name{{font-size:24px;font-weight:600;position:relative}}
+.cover h1{{font-size:28px;margin:0 0 14px;font-weight:700;position:relative}}
+.cover .name{{font-size:36px;font-weight:700;position:relative;line-height:1.25}}
 .cover .name2{{font-size:17px;opacity:.75;margin-top:16px;position:relative}}
 .cover .school{{font-size:16px;opacity:.7;margin-top:48px;position:relative}}
 .cover .date{{
