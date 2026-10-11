@@ -104,7 +104,7 @@ LocalSend est l'outil de transfert de fichiers en réseau local adopté par notr
 
 ### GitHub
 
-GitHub est le dépôt de stockage des ressources open source adopté par notre équipe.
+GitHub est la plateforme d'hébergement de code et de ressources adoptée par notre équipe.
 
 **Procédure d'inscription :**
 
@@ -114,7 +114,7 @@ GitHub est le dépôt de stockage des ressources open source adopté par notre �
    - Nous recommandons de sélectionner « États-Unis » comme pays/région
 3. Une fois l'inscription terminée, communiquez votre nom d'utilisateur à un administrateur et attendez que celui-ci vous envoie l'invitation à rejoindre l'organisation. Vous pouvez la consulter sur [https://github.com/notifications](https://github.com/notifications).
 
-Vous pourrez ensuite consulter et modifier les dépôts sur [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+Après avoir rejoint l'organisation, vous pouvez consulter les dépôts de l'organisation sur [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) ; pour modifier du contenu, soumettez une pull request selon la procédure décrite dans le chapitre « Programmation », section « 5. Bases de la collaboration sur GitHub ».
 
 **Références :**
 

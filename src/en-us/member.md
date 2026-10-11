@@ -104,7 +104,7 @@ LocalSend is the LAN file transfer tool adopted by our team.
 
 ### GitHub
 
-GitHub is the open-source repository platform adopted by our team.
+GitHub is the code and resource hosting platform adopted by our team.
 
 **Registration:**
 
@@ -114,7 +114,7 @@ GitHub is the open-source repository platform adopted by our team.
    - We recommend selecting "United States of America" as your country/region
 3. After registration, tell an administrator your username and wait for an invitation to join the organization. You can find it at [https://github.com/notifications](https://github.com/notifications).
 
-After that, you can view and modify repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+After joining the organization, you can view the organization's repositories at [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); to modify content, submit a pull request following the process in "Programming", Section 5, "GitHub Collaboration Basics".
 
 **References:**
 

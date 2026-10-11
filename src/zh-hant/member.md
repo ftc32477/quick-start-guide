@@ -104,7 +104,7 @@ LocalSend 是我隊採用的區域網路檔案傳輸工具。
 
 ### GitHub
 
-GitHub 是我隊採用的開源資料儲存存放庫。
+GitHub 是我隊採用的程式碼與資料代管平台。
 
 **註冊流程：**
 
@@ -114,7 +114,7 @@ GitHub 是我隊採用的開源資料儲存存放庫。
    - 我們建議將國家/地區選項選擇為「美國」
 3. 註冊完成後，請向管理員告知你的使用者名稱，並等待管理員向你發來加入組織邀請。你可以在 [https://github.com/notifications](https://github.com/notifications) 查收。
 
-而後，你就可以在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 檢視、修改存放庫了。
+加入組織後，即可在 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories) 檢視組織存放庫；如需修改內容，按《程式設計》「五、GitHub 協作基礎」的流程提交提取要求。
 
 **參考資料：**
 
@@ -134,6 +134,7 @@ Onshape 是我隊採用的雲端 3D 建模平台。
 參考資料：
 
 - [Onshape 教育版計畫說明](https://www.onshape.com/en/education/plans)
+
 ---
 
 ## 三、賽季與活動安排

@@ -104,7 +104,7 @@ O LocalSend é a ferramenta de transferência de arquivos em rede local adotada 
 
 ### GitHub
 
-O GitHub é a plataforma de repositórios de código aberto adotada pela nossa equipe.
+O GitHub é a plataforma de hospedagem de código e materiais adotada pela nossa equipe.
 
 **Registro:**
 
@@ -114,7 +114,7 @@ O GitHub é a plataforma de repositórios de código aberto adotada pela nossa e
    - Recomendamos selecionar "Estados Unidos" como país/região
 3. Após o registro, informe seu nome de usuário a um administrador e aguarde o convite para entrar na organização. Você pode conferir em [https://github.com/notifications](https://github.com/notifications).
 
-Depois disso, você poderá visualizar e modificar repositórios em [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+Depois de entrar na organização, você pode visualizar os repositórios da organização em [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); para modificar conteúdo, envie um pull request seguindo o fluxo da seção "5. Fundamentos de colaboração no GitHub" do capítulo "Programação".
 
 **Referências:**
 

@@ -104,7 +104,7 @@ LocalSend es la herramienta de transferencia de archivos en la red local que uti
 
 ### GitHub
 
-GitHub es el repositorio de almacenamiento de material de código abierto que utiliza nuestro equipo.
+GitHub es la plataforma de alojamiento de código y materiales que utiliza nuestro equipo.
 
 **Proceso de registro:**
 
@@ -114,7 +114,7 @@ GitHub es el repositorio de almacenamiento de material de código abierto que ut
    - Recomendamos seleccionar «Estados Unidos» como país/región
 3. Tras registrarse, comunique su nombre de usuario al administrador y espere a que le envíe la invitación para unirse a la organización. Puede consultarla en [https://github.com/notifications](https://github.com/notifications).
 
-A continuación, ya puede consultar y modificar los repositorios en [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories).
+Una vez unido a la organización, puede consultar los repositorios de la organización en [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories); si necesita modificar algún contenido, siga el procedimiento de «5. Fundamentos de colaboración en GitHub» del capítulo «Programación» para enviar una solicitud de incorporación de cambios.
 
 **Referencias:**
 

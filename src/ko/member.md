@@ -104,7 +104,7 @@ LocalSend는 우리 팀이 사용하는 LAN 파일 전송 도구입니다.
 
 ### GitHub
 
-GitHub는 우리 팀이 사용하는 오픈소스 자료 저장소입니다.
+GitHub는 우리 팀이 사용하는 코드와 자료 호스팅 플랫폼입니다.
 
 **가입 절차:**
 
@@ -114,7 +114,7 @@ GitHub는 우리 팀이 사용하는 오픈소스 자료 저장소입니다.
    - 국가/지역은 '미국' 선택을 권장합니다
 3. 가입 후 관리자에게 사용자 이름을 알리고 조직 초대를 기다립니다. [https://github.com/notifications](https://github.com/notifications)에서 확인할 수 있습니다.
 
-이후 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories)에서 저장소를 보고 수정할 수 있습니다.
+조직에 가입한 후에는 [https://github.com/orgs/ftc32477/repositories](https://github.com/orgs/ftc32477/repositories)에서 조직 저장소를 볼 수 있습니다. 내용을 수정해야 하면 《프로그래밍》「5. GitHub 협업 기초」의 절차에 따라 끌어오기 요청을 제출하세요.
 
 **참고 자료:**
 
