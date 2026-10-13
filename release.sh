@@ -5,7 +5,7 @@
 #   例: ./release.sh v1.3.2 release-notes/v1.3.2.md
 #
 # 流程（与 README「八、发版流程」一致）:
-#   构建 HTML + 六语言 PDF → 本地提交 → [确认] 打 tag 并推送
+#   构建 HTML + 七语言 PDF → 本地提交 → [确认] 打 tag 并推送
 #   → 创建 Release 上传 PDF（随后才推送 dev，避免主页下载按钮暂时 404）
 #   → 清理本地旧版 PDF → [确认] 合并 main 重建推送
 # 推送类步骤会逐项询问确认（保持"推送必须人工确认"的原则）。
@@ -54,7 +54,7 @@ confirm() {
     [[ "$ans" =~ ^[Yy]$ ]]
 }
 
-echo "==> [1/7] 构建 HTML 与六语言 PDF（请自查 dist/pdf 产物）"
+echo "==> [1/7] 构建 HTML 与七语言 PDF（请自查 dist/pdf 产物）"
 python3 build.py
 python3 build_pdf.py
 
@@ -70,7 +70,7 @@ echo "==> [3/7] 打 tag 并推送（tag 携带提交，源码压缩包即为当�
 git tag "$TAG"
 git push origin "$TAG"
 
-echo "==> [4/7] 创建 GitHub Release 并上传六语言 PDF"
+echo "==> [4/7] 创建 GitHub Release 并上传七语言 PDF"
 gh release create "$TAG" --title "$TAG" --notes-file "$NOTES" \
     "dist/pdf"/FTC-Team-32477-Origin-Quick-Start-Guide-"${TAG}"-*.pdf
 
