@@ -13,7 +13,7 @@ Os itens a seguir são requisitos complementares de Modelagem e design.
 
 ### Contas online
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito, é preciso solicitar entrada; site oficial indisponível no momento, organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito, é preciso solicitar entrada; organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Fornecedores de peças e plataformas de recursos usados com frequência no FTC:
 
 - **goBILDA**: oferece uma linha completa de peças estruturais para FTC
 - **REV Robotics**: oferece módulos de controle eletrônico e peças estruturais
-- **CycleZLab**: comunidade de robótica da FIRST (arquivo de CAD, código e registros de construção; site oficial indisponível no momento, organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- **CycleZLab**: comunidade de robótica da FIRST (arquivo de CAD, código e registros de construção; organização no GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Padrões de projeto
 

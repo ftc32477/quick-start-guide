@@ -47,4 +47,4 @@ Profitez de la compétition, profitez de la création, et atteignons de nouveaux
 
 ---
 
-*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Octobre 2026, 2e édition*
+*Équipe de rédaction du Guide de démarrage rapide 32477 Origin · Octobre 2026, 2e édition · révision 1*

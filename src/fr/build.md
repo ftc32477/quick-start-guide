@@ -14,7 +14,7 @@ Voici les informations supplémentaires requises pour la construction.
 - Adresse e-mail (nous recommandons une adresse @gmail.com ou @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (le site officiel est actuellement inaccessible ; organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 

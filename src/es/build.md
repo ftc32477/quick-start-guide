@@ -14,7 +14,7 @@ A continuación se indican los materiales adicionales que requiere Hardware y co
 - Correo electrónico (se recomienda @gmail.com o @outlook.com)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (el sitio web no está accesible actualmente; organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 

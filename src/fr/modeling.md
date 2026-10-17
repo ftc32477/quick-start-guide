@@ -13,7 +13,7 @@ Voici les éléments complémentaires requis pour la Modélisation et conception
 
 ### Comptes en ligne
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuit, inscription requise ; le site officiel est actuellement inaccessible, consultez son organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuit, inscription requise ; organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Fournisseurs de pièces FTC et plateformes de ressources couramment utilisés :
 
 - **goBILDA** : fournit une gamme complète de pièces structurelles FTC
 - **REV Robotics** : fournit des modules de commande électronique et des pièces structurelles
-- **CycleZLab** : plateforme communautaire de robotique FIRST (archives de CAO, de code et de journaux de construction ; le site officiel est actuellement inaccessible, organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- **CycleZLab** : plateforme communautaire de robotique FIRST (archives de CAO, de code et de journaux de construction ; organisation GitHub : [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Normes de conception
 

@@ -14,7 +14,7 @@
 - 이메일(@gmail.com 또는 @outlook.com 권장)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(공식 웹사이트는 현재 접속할 수 없음; GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 

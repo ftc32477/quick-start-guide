@@ -69,20 +69,23 @@ ftc_quick_start_guide/
 │   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-fr.pdf     # 法语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-es.pdf     # 西班牙语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-ko.pdf     # 韩语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-pt-br.pdf  # 巴西葡语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-es.pdf     # 西班牙语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-ko.pdf     # 韩语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-pt-br.pdf  # 巴西葡语完整指南
 ├── fonts/                     # PDF 字体（开源字体按用字裁成的子集，入库；网页版不使用）
 │   ├── subsets/               # 构建 PDF 实际加载的静态子集（含 coverage.json 用字覆盖清单）
 │   ├── licenses/              # 各字体 OFL 1.1 许可证文本
 │   ├── source/                # 全量源字体（不入库，.gitignore；仅重建子集时下载）
 │   └── build_subsets.py       # 字体子集生成工具（维护者用，需要 fonttools）
+├── .github/workflows/         # CI：dist 同步校验与 GitHub Pages 自动部署
+├── release-notes/             # 各版 Release 说明（与 tag 一一对应）
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
+├── release.sh                 # 半自动发版脚本（见"八、发布到 GitHub Pages"）
 └── README.md                  # 本文档
 ```
 
@@ -103,7 +106,7 @@ ftc_quick_start_guide/
 | 工具 | 用途 |
 |------|------|
 | Python 3 | 运行构建脚本（`build.py`、`build_pdf.py`） |
-| Google Chrome / Microsoft Edge | 无头模式渲染 HTML 页面为 PDF（PDF 导出核心） |
+| Google Chrome / Microsoft Edge | 无头模式渲染 HTML 页面为 PDF（PDF 导出核心；Chrome Dev / Edge Dev 通道同样可用，脚本自动探测常见安装路径） |
 | pip3 | 安装以下 Python 依赖 |
 | websocket-client | 与 Chrome 调试端口（CDP）通信，渲染封面/扉页/目录等页面 |
 | pypdf | PDF 合并、读取页面、页眉页脚覆盖层盖印、目录内部超链接注解（Link） |
@@ -152,7 +155,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；**字号层级以指南名为最大（36px），"FIRST® Tech Challenge"次之（28px）**，封面整体字号大于扉页（30/26px）；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年10月第2版"，位置略上移）
 2. **扉页（内页第 1 页）**：白底黑字复述封面信息（队徽、徽章、"FIRST® Tech Challenge"、指南名、副题、学校；内容集群与封面一样上移至黄金分割点（中心 ≈ 38.2vh）；底部居中"语言版本 / 版次日期"两行），位于右页
-3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年10月第2版）**、**版本号（v1.5.0）**、**发布日期（2026年10月11日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
+3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年10月第2版·第1次修订）**、**版本号（v1.5.1）**、**发布日期（2026年10月17日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
 4. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）；中文版正文用楷体（霞鹜文楷）
 5. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接（目录标题 22pt、条目 12.5pt、行高 38/34pt），点击跳转到对应页；目录页脚沿用罗马数字；**若前言+目录总页数为奇数，自动在目录与正文之间插入一白页（不编页码），保证正文第 1 页位于右页（物理奇数页）**
 6. **正文页**（队员须知起）：
@@ -222,7 +225,7 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 仿 wikipedia.org 的语言选择落地页，结构极简：
 
 - **英雄区**：队徽 + 队伍徽章 + 指南标题 + 标语（拒绝重复造轮子 · Refuse to Reinvent the Wheel）。
-- **语言选择**：六张卡片（简体中文 / 繁體中文 / English (US) / Français / Español / 한국어），卡片整体为链接 → `{lang}/index.html`（各语言主页）；最多两列排布（宽屏两列、窄屏 ≤600px 单列）。
+- **语言选择**：七张卡片（简体中文 / 繁體中文 / English (US) / Français / Español / 한국어 / Português (BR)），卡片整体为链接 → `{lang}/index.html`（各语言主页）；最多两列排布（宽屏两列、窄屏 ≤600px 单列）。
 - **页脚**：编辑组署名 + 中英双语法律声明。
 - 门户不含 PDF 下载与历史版本入口（都在各语言主页内）。
 
@@ -266,7 +269,7 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 
 ### 语言切换行为
 
-- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US) / Français），选择后跳转到**当前页面**的对应语言版本（如 `zh-hans/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
+- **侧边栏**：品牌区下方为下拉选项栏（简体中文 / 繁體中文 / English (US) / Français / Español / 한국어 / Português (BR)），选择后跳转到**当前页面**的对应语言版本（如 `zh-hans/member.html` → `../en-us/member.html`）。采用下拉栏而非按钮排列是为了**节省侧边栏空间给目录**。
 - **移动端顶栏**：下拉选项栏（`<select>`）同样显示全称，切换即跳转。
 - 页面标题格式：`{页面名}｜{站点名}`（如 `队员须知｜FTC 32477 Origin 快速入门指南`）。
 - 侧边栏导航标题、页脚、`<title>` 均随语言自动本地化。
@@ -386,7 +389,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | 改动类型 | 示例 | SemVer | 版权页（月度版次） |
 |---------|------|--------|--------|
 | 大改版：章节重排/新增整章/整体重写 | 建模设计章全新扩写 | 主版本 +1 → v2.0.0 | 当月新一版 |
-| 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例）、巴西葡语（Português (BR)）版（v1.4.0 先例） | 次版本 +1 → v1.5.0 | 当月新一版 |
+| 新增语言版本：全书新语言译本 | 新增西班牙语（Español）版（v1.1.0 先例）、韩语（한국어）版（v1.2.0 先例）、巴西葡语（Português (BR)）版（v1.4.0 先例） | 次版本 +1 → v1.6.0 | 当月新一版 |
 | 常规更新：新增小节/附录/新页面 | 新增《工具清单》附录；GitHub 协作基础章（v1.5.0 先例，10月第2版） | 次版本 +1 → v1.6.0 | 当月新一版 |
 | 勘误：错别字/样式/小修正 | 人名与专有名词加注修正（v1.2.1 先例）、封面排版与工程化（v1.2.2 先例）、PDF 字体与排版升级（v1.3.1 先例）、外部审查修缮（v1.3.2 先例）、合照名单与 README 导航（v1.3.3 先例） | 修订 +1 → v1.5.1 | 当月版次·第N次修订 |
 | 开发中 | — | v1.6.0-preview | （仅预览站） |
@@ -398,7 +401,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 3. 本地运行 `build_pdf.py` 生成各语言 PDF（新文件名，当前 7 份）并自查
 4. 打 tag 并推送 → 创建新 Release（tag 如 `v1.4.0`）并上传各语言 PDF（当前 7 份）作为资产 → **最后再推送 dev**（先建 Release 再推 dev，避免主页下载按钮短暂 404；tag 本身携带提交，Release 源码压缩包即为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
-6. **发布后核对发布日期**：GitHub Release 页面显示的发布时间应与 `VERSIONS` 中该版本 `date` 一致（历史版本页展示该日期、版权页取自该日期）；如不一致，立即修正 `VERSIONS` 日期、重新运行 `build.py` 与 `build_pdf.py`，并用 `gh release upload <TAG> <PDF...> --clobber` 原地替换 Release 资产
+6. **发布后核对发布日期**：GitHub Release 页面显示的发布时间应与 `VERSIONS` 中该版本 `date` 一致（历史版本页展示该日期、版权页取自该日期）；如不一致，立即修正 `VERSIONS` 日期、重新运行 `build.py` 与 `build_pdf.py`，并用 `gh release upload <TAG> <PDF...> --clobber` 原地替换 Release 资产。**注意时区**：GitHub API 的 `publishedAt` 为 UTC，若发布时间在本地午夜前后（如 +08:00 的凌晨），UTC 日期会比本地日期早一天——按本地时区/网页显示核对，例如 v1.3.1、v1.3.2 的 `publishedAt` 为 10-02（UTC），而本地发布日期为 10-03
 
 > 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认；脚本开头会断言 TAG 与 `build.py` 的 `RELEASE_TAG`、`VERSIONS[0].tag` 一致）。`check-dist.yml` 与 `deploy.yml` 都会重跑 `build.py` 校验 `dist/` 与源码同步；**`deploy.yml` 在同步前校验**，构建或校验失败即中止本次部署，因此"未构建就推送"不会把旧内容发上线。构建通道由 `GITHUB_REF_NAME` 判定（CI 检出为 detached HEAD，无法用 git 分支名判断），本地也可用 `python3 build.py --channel dev|release` 显式指定；dev 通道页面对搜索引擎加 `noindex`，历史页显示 preview 条目。
 
@@ -511,11 +514,12 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | fr | Français | 法语（法国），正式 vous 语体，遵循法语排版规范（« guillemets »、双标点前不换行空格等） |
 | es | Español | 西班牙语（西班牙），正式/无人称语体（usted 与无人称句式，避免 tú），遵循西语排版规范（« » 引号、¿ ¡ 疑问感叹号等） |
 | ko | 한국어 | 韩语（韩国），正式 합쇼체 语体（-합니다）；中国人名采用汉字读音并附注汉字原名（如 부수제(付修齐)） |
-| pt-br | Português (BR) | 巴西葡语（巴西正字法与排版规范，正式但亲切的 você 语体；术语采用巴西 FTC/SESI 惯用译法，如 torneio regional、caderno de engenharia） |
+| pt-br | Português (BR) | 巴西葡语（巴西正字法与排版规范，正式但亲切的 você 语体；术语采用巴西 FTC/SESI 惯用译法，如 torneio classificatório、caderno de engenharia） |
 
 - 语言代码统一采用 **BCP 47 脚本代码**：简体为 `zh-hans`、繁体为 `zh-hant`（不用区域代码 `zh-cn`/`zh-tw`），西班牙语为 `es`（不用 `es-es`），韩语为 `ko`（不用 `ko-kr`），巴西葡语为 `pt-br`（明确巴西变体，不用 `pt`），同时作用于目录名、语言键、HTML `lang`、PDF 文件名与线上网址路径。
 
 - 新增语言时，`VERSIONS` 既有历史条目的 `name`/`changes`（历史版本页文案）可用 `build.py` 中的回填块补齐（如 pt-br 的 `_BACKFILL_PT_BR`）；此后新版本在 `VERSIONS` 条目内直接提供该语言字段。
+- 下一计划语言为阿拉伯语（`ar`）：需先完成 RTL（从右到左）排版、字体与版式的工程预研，并作为单独版本发布。
 - 语言切换 UI **必须显示全称**：简体中文 / 繁體中文 / English (US) / Français / Español / 한국어 / Português (BR)，不使用简写。
 - 放不下时采用**下拉选项栏**（侧边栏与移动端顶栏均为下拉栏）。
 
@@ -936,4 +940,4 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 2. **激光切割工艺参数附录**：同章「激光切割耗材」注明功率、速度等工艺参数放附录持续更新，目前未写（需实验室实测数据）
 3. **新增合照的名单标注**：每次新增合照时，按现有格式补充"日期 + 上/下排姓名"名单（各语言同步；格式见第二部分「配图规范 → 合照规范」）
 4. **GitHub 章节配图**：程序设计章「五、GitHub 协作基础」当前为纯文字版，需补去敏截图。建议清单（按出现顺序）：①组织主页；②仓库首页（README 与页签）；③提交历史与单次 diff；④Releases 资产列表；⑤Issues 列表与新建表单；⑥网页端编辑（铅笔按钮）；⑦无写入权限时的 Fork 提示；⑧Commit changes 分支选项；⑨新建 PR 表单；⑩PR 审查界面；⑪Actions 运行列表（可选）；⑫`topic:ftc` 搜索结果。要求遵守《配图规范》，不得出现邮箱、Token、私有仓库内容与浏览器个人信息。
-5. **CycleZLab 站点复查**：指南已注明其官网在 2026-10 核查时无法访问；待站点恢复后更新注记（或其 GitHub 组织即作为正式入口）。
+5. **pt-br 母语审校**：巴西葡语版目前为 AI 初译（v1.4.0 起已上线），尚无母语审校留痕；需葡语母语者通读全部七章与版次文案，审校后按发版流程更新。

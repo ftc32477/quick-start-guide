@@ -11,7 +11,7 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 构建通道判定：--channel 参数 > GITHUB_REF_NAME（CI 检出为 detached HEAD）> 本地 git 分支。
 
 目录结构:
-    src/{zh-hans,zh-hant,en-us,fr,es,ko}/  — 各语言 Markdown 源文件（在此编辑内容）
+    src/{zh-hans,zh-hant,en-us,fr,es,ko,pt-br}/  — 各语言 Markdown 源文件（在此编辑内容）
     images/                 — 图片资源（自动复制到 dist/images/）
     fonts/                  — PDF 字体子集（网页版不使用）
     dist/                   — 生成的 HTML 网站（根门户 + 各语言子目录）
@@ -216,11 +216,71 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.5.0"
+RELEASE_TAG = "v1.5.1"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按各语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.5.1",
+        "date": "2026-10-17",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年10月第2版·第1次修订",
+            "zh-hant": "2026年10月第2版·第1次修訂",
+            "en-us": "October 2026, 2nd Edition · Revision 1",
+            "fr": "Octobre 2026, 2e édition · révision 1",
+            "es": "2.ª edición, octubre de 2026 · revisión 1",
+            "ko": "2026년 10월 제2판 · 1차 개정",
+            "pt-br": "outubro de 2026, 2.ª edição · revisão 1",
+        },
+        "changes": {
+            "zh-hans": [
+                "勘误：修正巴西葡语版 Android Studio 语言包链接（原链接指向无关插件）；更新 CycleZLab 站点状态注记（官网已恢复访问）；巴西葡语版次名称中的月份统一为小写。",
+                "PDF：修正繁体中文版封面与扉页副题（改用 Quick Start Guide，原与书名重复）。",
+                "工程：构建时清理 dist/ 中的过期页面与已下线语言目录；check-dist 增加未跟踪产物校验；release.sh 修复 Release 说明归档顺序、补充推送/发布确认并校验 PDF 数量。",
+            ],
+            "zh-hant": [
+                "勘誤：修正巴西葡語版 Android Studio 語言套件連結（原連結指向無關外掛）；更新 CycleZLab 站點狀態註記（官網已恢復存取）；巴西葡語版次名稱中的月份統一為小寫。",
+                "PDF：修正繁體中文版封面與扉頁副題（改用 Quick Start Guide，原與書名重複）。",
+                "工程：建置時清理 dist/ 中的過期頁面與已下線語言目錄；check-dist 增加未追蹤產物校驗；release.sh 修正 Release 說明歸檔順序、補充推送/發布確認並校驗 PDF 數量。",
+            ],
+            "en-us": [
+                "Errata: fixed the Brazilian Portuguese Android Studio language-pack link (the old link pointed to an unrelated plugin); updated the CycleZLab site-status note (the official site is reachable again); normalized month capitalization in Brazilian Portuguese edition names.",
+                "PDF: fixed the Traditional Chinese cover and title-page subtitle (now \"Quick Start Guide\" instead of repeating the book title).",
+                "Engineering: the build now prunes stale pages and retired language directories; check-dist rejects untracked build output; release.sh now archives release notes after its precondition checks, confirms tag push and Release creation, and verifies the PDF count.",
+            ],
+            "fr": [
+                "Errata : correction du lien du pack de langue Android Studio en portugais du Brésil (l'ancien lien pointait vers un plugin sans rapport) ; mise à jour de la note sur l'état du site CycleZLab (le site officiel est de nouveau accessible) ; normalisation des mois en minuscules dans les noms d'édition en portugais du Brésil.",
+                "PDF : correction du sous-titre de couverture et de page de titre de l'édition en chinois traditionnel (« Quick Start Guide » au lieu de répéter le titre du livre).",
+                "Ingénierie : la compilation purge désormais les pages obsolètes et les répertoires de langues retirées ; check-dist rejette les sorties non suivies ; release.sh archive les notes après ses vérifications préalables, demande confirmation avant le push du tag et la création de la Release, et vérifie le nombre de PDF.",
+            ],
+            "es": [
+                "Errata: corregido el enlace del paquete de idioma de Android Studio en portugués de Brasil (el enlace anterior apuntaba a un plugin ajeno); actualizada la nota sobre el estado del sitio CycleZLab (el sitio oficial vuelve a estar accesible); normalizados los meses en minúsculas en los nombres de edición en portugués de Brasil.",
+                "PDF: corregido el subtítulo de la cubierta y de la portada de la edición en chino tradicional («Quick Start Guide» en lugar de repetir el título del libro).",
+                "Ingeniería: la compilación ahora elimina páginas obsoletas y directorios de idiomas retirados; check-dist rechaza los artefactos sin seguimiento; release.sh archiva las notas tras sus comprobaciones previas, pide confirmación antes de subir el tag y crear la Release, y verifica el número de PDF.",
+            ],
+            "ko": [
+                "정오: 브라질 포르투갈어판 Android Studio 언어 팩 링크 수정(기존 링크는 무관한 플러그인을 가리킴), CycleZLab 사이트 상태 안내 갱신(공식 사이트 접속 재개), 브라질 포르투갈어 판본 이름의 월 표기를 소문자로 통일.",
+                "PDF: 번체 중국어판 표지와 속표지 부제 수정(책 제목을 반복하는 대신 “Quick Start Guide” 사용).",
+                "엔지니어링: 빌드 시 오래된 페이지와 폐지된 언어 디렉터리를 정리하고, check-dist는 추적되지 않은 산출물을 거부하며, release.sh는 Release 설명 보관 순서를 수정하고 태그 푸시와 Release 생성 전 확인을 추가하며 PDF 수량을 검증합니다.",
+            ],
+            "pt-br": [
+                "Errata: corrigido o link do pacote de idioma do Android Studio em português do Brasil (o link anterior apontava para um plugin sem relação); atualizada a nota sobre o status do site CycleZLab (o site oficial está acessível novamente); padronizados os meses em minúsculas nos nomes das edições em português do Brasil.",
+                "PDF: corrigido o subtítulo da capa e da folha de rosto da edição em chinês tradicional («Quick Start Guide» em vez de repetir o título do livro).",
+                "Engenharia: a compilação agora remove páginas obsoletas e diretórios de idiomas descontinuados; o check-dist rejeita artefatos não rastreados; o release.sh arquiva as notas após as verificações prévias, pede confirmação antes do push da tag e da criação da Release, e verifica a quantidade de PDFs.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-ko.pdf",
+            "pt-br": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-pt-br.pdf",
+        },
+    },
     {
         "tag": "v1.5.0",
         "date": "2026-10-11",
@@ -232,7 +292,7 @@ VERSIONS = [
             "fr": "Octobre 2026, 2e édition",
             "es": "2.ª edición, octubre de 2026",
             "ko": "2026년 10월 제2판",
-            "pt-br": "Outubro de 2026, 2.ª edição",
+            "pt-br": "outubro de 2026, 2.ª edição",
         },
         "changes": {
             "zh-hans": [
@@ -292,7 +352,7 @@ VERSIONS = [
             "fr": "Octobre 2026, 1re édition",
             "es": "1.ª edición, octubre de 2026",
             "ko": "2026년 10월 제1판",
-            "pt-br": "Outubro de 2026, 1.ª edição",
+            "pt-br": "outubro de 2026, 1.ª edição",
         },
         "changes": {
             "zh-hans": [
@@ -843,7 +903,7 @@ VERSIONS = [
 
 _BACKFILL_PT_BR = {
     "v1.3.3": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 3",
+        "name": "setembro de 2026, 1.ª edição · revisão 3",
         "changes": [
             'Listas de nomes adicionadas sob as duas fotos de grupo do posfácio (filas de cima/baixo, da esquerda para a direita), sincronizadas nos seis idiomas.',
             'README reestruturado: adicionado um guia de leitura no início do arquivo, com links por tarefa, além de uma seção de "Diretrizes de imagens" (tamanhos, remoção de EXIF, higiene de capturas de tela, grupos de imagens, regras para fotos de grupo).',
@@ -852,7 +912,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.2": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 2",
+        "name": "setembro de 2026, 1.ª edição · revisão 2",
         "changes": [
             'Corrigido o link de download do LocalSend na edição em inglês (o antigo caminho /en/download estava quebrado) e restaurado o quadro informativo "rede local da equipe / gateway do campus" que faltava nas edições em espanhol e coreano.',
             'As edições em francês, espanhol e coreano agora apontam para as páginas no idioma correspondente para LocalSend, Bambu Studio, documentação do GitHub e Android Studio; ordem dos casos e anotações de terminologia alinhadas.',
@@ -861,7 +921,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.1": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 1",
+        "name": "setembro de 2026, 1.ª edição · revisão 1",
         "changes": [
             'Reformulação tipográfica dos PDFs: texto corrido em Source Han Serif, títulos em Source Han Sans, citações/legendas/prefácio em LXGW WenKai (Kai) e textos e números em latim em Times New Roman (Tinos como alternativa).',
             'Cabeçalhos e rodapés agora são carimbados pelo script de build com subconjuntos de fontes embutidos, garantindo glifos consistentes em todas as plataformas.',
@@ -870,7 +930,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.0": {
-        "name": "Setembro de 2026, 1.ª edição",
+        "name": "setembro de 2026, 1.ª edição",
         "changes": [
             'Essenciais da equipe: adicionada a seção "Temporada e calendário" (linha do tempo da temporada e observações de regras — somente controle Xbox 360, proibição de levitação magnética, faixa etária de 12 a 18 anos) e refinada a descrição da rede local da equipe.',
             'Programação: adicionada a seção "Programação assistida por IA" (uso de ferramentas de agente de IA) e uma observação sobre o Driver/controle.',
@@ -879,7 +939,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.2": {
-        "name": "Agosto de 2026, 3.ª edição, 2.ª revisão",
+        "name": "agosto de 2026, 3.ª edição, 2.ª revisão",
         "changes": [
             'Edição em chinês tradicional: os termos do Onshape 「结构体/装配体」 agora são escritos em caracteres tradicionais (結構體/裝配體).',
             'Página de histórico de versões: esclarecido que as versões anteriores incluem apenas os idiomas disponíveis na época do lançamento.',
@@ -888,7 +948,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.1": {
-        "name": "Agosto de 2026, 3.ª edição, 1.ª revisão",
+        "name": "agosto de 2026, 3.ª edição, 1.ª revisão",
         "changes": [
             'Edição em chinês tradicional: os nomes de pessoas agora trazem o original em chinês simplificado (por exemplo, 付修齊（付修齐）); nomes idênticos nos dois conjuntos de caracteres não recebem anotação.',
             'Edições em chinês simplificado e tradicional: termos traduzidos de origem estrangeira agora trazem o nome no idioma de origem (por exemplo, 结构体（Part Studio）, 构建（Build）); a convenção de anotação para todos os idiomas está documentada no README do projeto.',
@@ -896,7 +956,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.0": {
-        "name": "Agosto de 2026, 3.ª edição",
+        "name": "agosto de 2026, 3.ª edição",
         "changes": [
             'Adicionada a edição em coreano (한국어): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em coreano incluído.',
             'Padronizadas as anotações de nomes em todas as edições: nomes reais de pessoas agora trazem os caracteres chineses originais (por exemplo, Fu Xiuqi (付修齐); em coreano, os nomes usam a leitura em hanja, por exemplo, 부수제(付修齐)), e nomes próprios como plataformas trazem o nome no idioma de origem (por exemplo, KIRIN (麒麟), Bilibili (哔哩哔哩)).',
@@ -904,7 +964,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.1.0": {
-        "name": "Agosto de 2026, 2.ª edição",
+        "name": "agosto de 2026, 2.ª edição",
         "changes": [
             'Adicionada a edição em espanhol (Español): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em espanhol incluído.',
             'Atualizadas as cores de destaque dos cartões de idioma do portal: #a61615 para chinês simplificado/tradicional, #d85d23 para inglês (EUA)/francês e #ffb953 para o novo cartão de espanhol.',
@@ -912,7 +972,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.0.0": {
-        "name": "Agosto de 2026, 1.ª edição",
+        "name": "agosto de 2026, 1.ª edição",
         "changes": [
             'Primeira publicação, com sete capítulos: Prefácio, Essenciais da equipe, Modelagem e design, Hardware e construção, Programação, Divulgação e relações públicas e Posfácio.',
             'Disponível em quatro edições de idioma: chinês simplificado, chinês tradicional, inglês (EUA) e francês.',
@@ -2672,6 +2732,45 @@ def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
 
+def prune_stale_outputs():
+    """清理 dist/ 中过期 HTML 与已下线/未知目录。
+
+    防止删除页面或语言后旧产物残留，被 check-dist 漏检并随部署一起发布。
+    dist/ 是纯生成目录（README 约定不直接编辑），保留 images/ 与 pdf/。
+    """
+    if not os.path.isdir(DIST_DIR):
+        return
+    expected = {
+        lang_key: {f"{key}.html" for key in PAGE_KEYS} | {"index.html", "versions.html"}
+        for lang_key in LANGUAGES
+    }
+    for name in os.listdir(DIST_DIR):
+        path = os.path.join(DIST_DIR, name)
+        if not os.path.isdir(path):
+            # 根目录只允许 index.html；其他散落的 HTML 为过期产物
+            if name.endswith(".html") and name != "index.html":
+                os.remove(path)
+                print(f"  [清理] 移除过期页面: {name}")
+            continue
+        if name in ("images", "pdf"):
+            continue
+        if name not in LANGUAGES:
+            # 删除任何含 HTML 的未知目录（语言增删会留下此类目录）
+            has_html = any(
+                fn.endswith(".html")
+                for _root, _dirs, files in os.walk(path)
+                for fn in files
+            )
+            if has_html:
+                shutil.rmtree(path)
+                print(f"  [清理] 移除已下线/未知目录: {name}")
+            continue
+        for fn in os.listdir(path):
+            if fn.endswith(".html") and fn not in expected[name]:
+                os.remove(os.path.join(path, fn))
+                print(f"  [清理] 移除过期页面: {name}/{fn}")
+
+
 def build():
     """读取所有语言的 Markdown 文件并生成 HTML。"""
     print("=" * 56)
@@ -2679,6 +2778,7 @@ def build():
     print("=" * 56)
 
     ensure_dir(DIST_DIR)
+    prune_stale_outputs()
 
     total = 0
     for lang_key, lang in LANGUAGES.items():
