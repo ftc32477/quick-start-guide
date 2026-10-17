@@ -11,7 +11,7 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 构建通道判定：--channel 参数 > GITHUB_REF_NAME（CI 检出为 detached HEAD）> 本地 git 分支。
 
 目录结构:
-    src/{zh-hans,zh-hant,en-us,fr,es,ko}/  — 各语言 Markdown 源文件（在此编辑内容）
+    src/{zh-hans,zh-hant,en-us,fr,es,ko,pt-br}/  — 各语言 Markdown 源文件（在此编辑内容）
     images/                 — 图片资源（自动复制到 dist/images/）
     fonts/                  — PDF 字体子集（网页版不使用）
     dist/                   — 生成的 HTML 网站（根门户 + 各语言子目录）
@@ -2672,6 +2672,45 @@ def ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
 
+def prune_stale_outputs():
+    """清理 dist/ 中过期 HTML 与已下线/未知目录。
+
+    防止删除页面或语言后旧产物残留，被 check-dist 漏检并随部署一起发布。
+    dist/ 是纯生成目录（README 约定不直接编辑），保留 images/ 与 pdf/。
+    """
+    if not os.path.isdir(DIST_DIR):
+        return
+    expected = {
+        lang_key: {f"{key}.html" for key in PAGE_KEYS} | {"index.html", "versions.html"}
+        for lang_key in LANGUAGES
+    }
+    for name in os.listdir(DIST_DIR):
+        path = os.path.join(DIST_DIR, name)
+        if not os.path.isdir(path):
+            # 根目录只允许 index.html；其他散落的 HTML 为过期产物
+            if name.endswith(".html") and name != "index.html":
+                os.remove(path)
+                print(f"  [清理] 移除过期页面: {name}")
+            continue
+        if name in ("images", "pdf"):
+            continue
+        if name not in LANGUAGES:
+            # 删除任何含 HTML 的未知目录（语言增删会留下此类目录）
+            has_html = any(
+                fn.endswith(".html")
+                for _root, _dirs, files in os.walk(path)
+                for fn in files
+            )
+            if has_html:
+                shutil.rmtree(path)
+                print(f"  [清理] 移除已下线/未知目录: {name}")
+            continue
+        for fn in os.listdir(path):
+            if fn.endswith(".html") and fn not in expected[name]:
+                os.remove(os.path.join(path, fn))
+                print(f"  [清理] 移除过期页面: {name}/{fn}")
+
+
 def build():
     """读取所有语言的 Markdown 文件并生成 HTML。"""
     print("=" * 56)
@@ -2679,6 +2718,7 @@ def build():
     print("=" * 56)
 
     ensure_dir(DIST_DIR)
+    prune_stale_outputs()
 
     total = 0
     for lang_key, lang in LANGUAGES.items():

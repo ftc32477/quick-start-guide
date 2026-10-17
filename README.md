@@ -81,8 +81,11 @@ ftc_quick_start_guide/
 │   ├── licenses/              # 各字体 OFL 1.1 许可证文本
 │   ├── source/                # 全量源字体（不入库，.gitignore；仅重建子集时下载）
 │   └── build_subsets.py       # 字体子集生成工具（维护者用，需要 fonttools）
+├── .github/workflows/         # CI：dist 同步校验与 GitHub Pages 自动部署
+├── release-notes/             # 各版 Release 说明（与 tag 一一对应）
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
+├── release.sh                 # 半自动发版脚本（见"八、发布到 GitHub Pages"）
 └── README.md                  # 本文档
 ```
 
@@ -103,7 +106,7 @@ ftc_quick_start_guide/
 | 工具 | 用途 |
 |------|------|
 | Python 3 | 运行构建脚本（`build.py`、`build_pdf.py`） |
-| Google Chrome / Microsoft Edge | 无头模式渲染 HTML 页面为 PDF（PDF 导出核心） |
+| Google Chrome / Microsoft Edge | 无头模式渲染 HTML 页面为 PDF（PDF 导出核心；Chrome Dev / Edge Dev 通道同样可用，脚本自动探测常见安装路径） |
 | pip3 | 安装以下 Python 依赖 |
 | websocket-client | 与 Chrome 调试端口（CDP）通信，渲染封面/扉页/目录等页面 |
 | pypdf | PDF 合并、读取页面、页眉页脚覆盖层盖印、目录内部超链接注解（Link） |
@@ -398,7 +401,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 3. 本地运行 `build_pdf.py` 生成各语言 PDF（新文件名，当前 7 份）并自查
 4. 打 tag 并推送 → 创建新 Release（tag 如 `v1.4.0`）并上传各语言 PDF（当前 7 份）作为资产 → **最后再推送 dev**（先建 Release 再推 dev，避免主页下载按钮短暂 404；tag 本身携带提交，Release 源码压缩包即为最新代码）；Release 说明文本同时存入 `release-notes/{tag}.md` 入库留档
 5. dev 合并入 main 后**在 main 上重新运行 `python3 build.py`**（历史页自动隐藏 preview 条目）并提交 → 正式站点自动更新，主页下载链接指向新 Release
-6. **发布后核对发布日期**：GitHub Release 页面显示的发布时间应与 `VERSIONS` 中该版本 `date` 一致（历史版本页展示该日期、版权页取自该日期）；如不一致，立即修正 `VERSIONS` 日期、重新运行 `build.py` 与 `build_pdf.py`，并用 `gh release upload <TAG> <PDF...> --clobber` 原地替换 Release 资产
+6. **发布后核对发布日期**：GitHub Release 页面显示的发布时间应与 `VERSIONS` 中该版本 `date` 一致（历史版本页展示该日期、版权页取自该日期）；如不一致，立即修正 `VERSIONS` 日期、重新运行 `build.py` 与 `build_pdf.py`，并用 `gh release upload <TAG> <PDF...> --clobber` 原地替换 Release 资产。**注意时区**：GitHub API 的 `publishedAt` 为 UTC，若发布时间在本地午夜前后（如 +08:00 的凌晨），UTC 日期会比本地日期早一天——按本地时区/网页显示核对，例如 v1.3.1、v1.3.2 的 `publishedAt` 为 10-02（UTC），而本地发布日期为 10-03
 
 > 步骤 3–5 可用 `./release.sh <TAG> <NOTES_FILE>` 半自动执行（推送类步骤逐项询问确认；脚本开头会断言 TAG 与 `build.py` 的 `RELEASE_TAG`、`VERSIONS[0].tag` 一致）。`check-dist.yml` 与 `deploy.yml` 都会重跑 `build.py` 校验 `dist/` 与源码同步；**`deploy.yml` 在同步前校验**，构建或校验失败即中止本次部署，因此"未构建就推送"不会把旧内容发上线。构建通道由 `GITHUB_REF_NAME` 判定（CI 检出为 detached HEAD，无法用 git 分支名判断），本地也可用 `python3 build.py --channel dev|release` 显式指定；dev 通道页面对搜索引擎加 `noindex`，历史页显示 preview 条目。
 
@@ -511,7 +514,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | fr | Français | 法语（法国），正式 vous 语体，遵循法语排版规范（« guillemets »、双标点前不换行空格等） |
 | es | Español | 西班牙语（西班牙），正式/无人称语体（usted 与无人称句式，避免 tú），遵循西语排版规范（« » 引号、¿ ¡ 疑问感叹号等） |
 | ko | 한국어 | 韩语（韩国），正式 합쇼체 语体（-합니다）；中国人名采用汉字读音并附注汉字原名（如 부수제(付修齐)） |
-| pt-br | Português (BR) | 巴西葡语（巴西正字法与排版规范，正式但亲切的 você 语体；术语采用巴西 FTC/SESI 惯用译法，如 torneio regional、caderno de engenharia） |
+| pt-br | Português (BR) | 巴西葡语（巴西正字法与排版规范，正式但亲切的 você 语体；术语采用巴西 FTC/SESI 惯用译法，如 torneio classificatório、caderno de engenharia） |
 
 - 语言代码统一采用 **BCP 47 脚本代码**：简体为 `zh-hans`、繁体为 `zh-hant`（不用区域代码 `zh-cn`/`zh-tw`），西班牙语为 `es`（不用 `es-es`），韩语为 `ko`（不用 `ko-kr`），巴西葡语为 `pt-br`（明确巴西变体，不用 `pt`），同时作用于目录名、语言键、HTML `lang`、PDF 文件名与线上网址路径。
 

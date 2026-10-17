@@ -15,7 +15,7 @@ FTC 32477 Origin 快速入门指南 — PDF 导出工具
 
 用法:
     python3 build_pdf.py            # 导出所有语言的单页 PDF + 合并 PDF
-    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr / es / ko）
+    python3 build_pdf.py --lang en-us  # 仅导出指定语言（zh-hans / zh-hant / en-us / fr / es / ko / pt-br）
     python3 build_pdf.py --page member  # 仅导出指定页面（仅单页，不含封面封底）
     python3 build_pdf.py --rebuild  # 先执行 build.py 再导出
 

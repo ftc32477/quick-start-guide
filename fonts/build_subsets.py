@@ -110,7 +110,7 @@ def is_hangul(ch):
 
 
 def han_union():
-    """六语言文本中的全部汉字（供简/繁/韩 CJK 字体覆盖跨语言注记）。"""
+    """七语言文本中的全部汉字（供简/繁/韩 CJK 字体覆盖跨语言注记）。"""
     s = set()
     for lang in bp.LANGUAGES:
         s |= {c for c in lang_text(lang) if is_cjk(c)}
@@ -118,7 +118,7 @@ def han_union():
 
 
 def latin_union():
-    """六语言文本中的全部非 CJK/谚文字符（供 Tinos / Noto Sans 覆盖）。"""
+    """七语言文本中的全部非 CJK/谚文字符（供 Tinos / Noto Sans 覆盖）。"""
     s = set()
     for lang in bp.LANGUAGES:
         s |= {c for c in lang_text(lang) if not is_cjk(c) and not is_hangul(c)}
