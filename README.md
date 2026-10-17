@@ -68,7 +68,7 @@ ftc_quick_start_guide/
 │   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones）
 │   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões）
-│   ├── images/                # 图片（自动复制）
+│   ├── images/                # 图片派生（display/print/hi，由 images-opt/ 复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf  # 繁体中文完整指南
@@ -147,6 +147,17 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留各语言合并版。
 - `--page` 用于内容调试：只生成指定页的单页 PDF（含页眉页脚），不删除。
 - `dist/pdf/` 已加入 `.gitignore` **不入库**，仅本地生成用于自查纠错；正式发布的 PDF 上传为 GitHub Release 资产（见"八、发布到 GitHub Pages"）。
+
+### 编译器自检与语法示例
+
+```bash
+python3 -m unittest discover -s tests     # 编译工具单元测试
+python3 demo/build_demo.py                # 生成语法示例到 /tmp/ftc-syntax-demo（HTML + PDF）
+python3 build.py && git status --porcelain -- dist   # 无输出 = dist 与源码同步
+```
+
+- 修改图片后先运行 `python3 build.py --optimize-images` 重建 `images-opt/{display,print,hi}/` 并提交。
+- `demo/` 与 `tests/` 不参与构建发布，仅用于本地验收。
 
 ### 链接行为约定
 
@@ -356,6 +367,18 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 - **HTML 高清查看**：正文图片默认加载 `display` 版本（≤1600px，加载快）；点击图片在新标签页打开 `hi` 版本（≤4000px），可放大、右键另存或复制图片地址。PDF 生成前会自动切换为 `print` 版本，不受 display 压缩影响。
 - 图注自动编号（`图 x-y`）与 `{#fig:id}` 引用在 HTML/PDF 一致；PDF 中 `[](#fig:id)` 链接可点击。
 - `build.py` 检查缺图、体积、低分辨率、打印 DPI 与图号引用；`build_pdf.py` 会提示空白页、HTML/PDF 图片数不一致。
+
+### 编译工具改造经验（2026-10）
+
+- **图片组不要用 flex 做打印布局**：Chrome 打印会把 flex 子项拆到不同页；改为真实 `<table>` 后，真实后记页从 4 页恢复到 2 页、两张合照同页。
+- **响应式规则必须限定 `@media screen`**：A4 内容区宽度约 554px，会命中 `max-width:600px` 的屏幕堆叠规则，导致"图文并排"在 PDF 中被压成一列；打印布局统一放到 `@media print`。
+- **全局表格样式会污染媒体表格**：`th,td{border:...}`、`tr:nth-child(even){background:...}` 会作用到图片组/并排表格；用更高优先级选择器覆盖为无边框、无底色。
+- **超长图必须限制 `max-height`**：否则 Chrome 按页高切段（实测 1000×3600 的图被切成 3 段、图注落到最后一页）；构建同时提示打印 DPI。
+- **跨页图号需要两遍解析**：第一遍只收集 图 id→图号，第二遍渲染并填 `[](#fig:id)`；否则前向引用取不到编号。
+- **打印与在线用不同派生图**：`display`（≤1600px，页面快）/ `print`（≤2600px，A4 满幅 ≥300dpi）/ `hi`（≤4000px，点击查看）。PDF 导出前用 JS 把 `img[data-print]` 切到 print 版本。
+- **构建不依赖 Pillow**：三套派生图入库 `images-opt/`，CI 只复制；改图后本地 `--optimize-images` 重建并提交，保证各机器/CI 产物一致。
+- **打印前等待图片**：懒加载/大图解码未完成会缺图；`build_pdf.py` 在打印前轮询 `img.complete && naturalWidth`，并对空白页、图片数做校验。
+- **媒体排版回归**：媒体表格统一无边框；并排间距统一 14px（图片组 7+7，`::: side` 用第二列 14px 左内边距），避免 `reverse` 时图文贴边。
 
 ### 打印隐藏
 
@@ -842,6 +865,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 ### 图注编号与交叉引用
 
 - 图号自动生成，无需手写：正文页为 `图 4-1`；前言/序言为 `图 序-1`，后记为 `图 后-1`，附录为 `图 A-1`；七语言前缀自动本地化。
+- 正文页章号按 `PAGE_KEYS` 顺序分配（当前：队员须知=1、建模设计=2、结构建造=3、程序设计=4、外部联络=5）；新增页面（如 v2.0.0 的比赛与运营/附录）后章号会变化，需复核已有图号引用。附录多页时依次用 A/B/C。
 - 引用：正文写 `[](#fig:hub)` 会自动填成对应图号（PDF 中可点击）；也可手写 `[图 4-1](#fig:hub)`。
 - 图 id 用 `{#fig:名字}`；重复或引用不存在的 id 会在构建日志中告警。
 
@@ -1012,7 +1036,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 1. **空行很重要：** 不同元素之间必须用空行分隔，否则可能会被错误地合并为段落。
 2. **缩进：** 列表项可以通过缩进实现嵌套，子列表项缩进 2 个空格即可。
 3. **嵌套列表：** 支持嵌套列表（列表内再套列表），有序与无序列表可以互相嵌套。
-4. **HTML 标签：** 除换行标签 `<br>`（用于标题或段落内的显式换行，如三行排版的前言标题）外，不要在 Markdown 中混入其他原始 HTML 标签，可能会破坏渲染结果。
+4. **HTML 标签：** 除换行标签 `<br>`（用于标题或段落内的显式换行，如三行排版的前言标题）外，常规内容不要混入原始 HTML。原始 HTML 会直通输出，仅作为应急手段保留；使用后必须同时检查 HTML 与 PDF 效果，并优先改用上述 Markdown/容器语法。
 5. **文件编码：** 所有 `.md` 文件必须使用 UTF-8 编码。
 6. **代码块长行：** 打印时超长行会折行（见第一部分「代码块折行」）；命令与注释分行书写，注释单独成行，中文注释按双倍字符宽度估算。
 
