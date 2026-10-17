@@ -13,7 +13,7 @@
 
 ### 線上帳戶
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免費，需申請加入；官網目前無法存取，可前往其 GitHub 組織 [https://github.com/CycleZLab](https://github.com/CycleZLab)）
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（免費，需申請加入；GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ---
 
@@ -169,7 +169,7 @@ Onshape 作為專業的建模平台，具有完整的官方學習資源：[https
 
 - **goBILDA**：提供完整的 FTC 結構件
 - **REV Robotics**：提供電控模組和結構件
-- **CycleZLab**：FIRST 機器人社群（CAD、程式碼與建造日誌檔案庫；官網目前無法存取，GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
+- **CycleZLab**：FIRST 機器人社群（CAD、程式碼與建造日誌檔案庫；GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ### 設計規範
 

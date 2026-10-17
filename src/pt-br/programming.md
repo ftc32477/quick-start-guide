@@ -70,7 +70,7 @@ O Android Studio é a ferramenta de programação adotada pela nossa equipe.
 
 **Instalação do pacote de idioma em português (opcional):**
 
-1. Abra a página do [Portuguese (Brazil) Language Pack](https://plugins.jetbrains.com/plugin/23206-portuguese-brazil-language-pack)
+1. Abra a página do [Portuguese (Brazil) Language Pack](https://plugins.jetbrains.com/plugin/32512-portuguese-brazil-language-pack)
 2. Na tela inicial, abra "Plugins" → "Marketplace", pesquise "Portuguese (Brazil) Language Pack" e instale (ou baixe o pacote e use "Install Plugin from Disk")
 3. Confirme que o plugin está ativado depois de carregar
 4. Se quiser escolher idioma e região manualmente, abra "Customize" → "Language and Region", defina o idioma como "Português (Brasil)" e a região como "Americas"; depois reinicie o Android Studio

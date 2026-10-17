@@ -80,7 +80,7 @@ PDF_TEXTS = {
     },
     "zh-hant": {
         "name": "32477 Origin \u5feb\u901f\u5165\u9580\u6307\u5357",
-        "name2": "\u5feb\u901f\u5165\u9580\u6307\u5357",
+        "name2": "Quick Start Guide",
         "school": "\u5317\u4eac\u5341\u4e00\u5be6\u9a57\u4e2d\u5b78",
         "lang": "\u7e41\u9ad4\u4e2d\u6587\u7248",
     },

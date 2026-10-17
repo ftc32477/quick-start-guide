@@ -13,7 +13,7 @@ A continuación se indican los materiales adicionales que requiere Modelado y di
 
 ### Cuentas en línea
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito; hay que solicitar la adhesión; el sitio web no está accesible actualmente, puede visitar su organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (gratuito; hay que solicitar la adhesión; organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Proveedores de piezas y plataformas de recursos habituales en FTC:
 
 - **goBILDA**: ofrece piezas estructurales FTC completas
 - **REV Robotics**: ofrece módulos de control electrónico y piezas estructurales
-- **CycleZLab**: plataforma de la comunidad FIRST Robotics (archivo de CAD, código y diarios de construcción; el sitio web no está accesible actualmente, organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- **CycleZLab**: plataforma de la comunidad FIRST Robotics (archivo de CAD, código y diarios de construcción; organización de GitHub: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Convenciones de diseño
 

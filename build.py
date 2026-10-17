@@ -232,7 +232,7 @@ VERSIONS = [
             "fr": "Octobre 2026, 2e édition",
             "es": "2.ª edición, octubre de 2026",
             "ko": "2026년 10월 제2판",
-            "pt-br": "Outubro de 2026, 2.ª edição",
+            "pt-br": "outubro de 2026, 2.ª edição",
         },
         "changes": {
             "zh-hans": [
@@ -292,7 +292,7 @@ VERSIONS = [
             "fr": "Octobre 2026, 1re édition",
             "es": "1.ª edición, octubre de 2026",
             "ko": "2026년 10월 제1판",
-            "pt-br": "Outubro de 2026, 1.ª edição",
+            "pt-br": "outubro de 2026, 1.ª edição",
         },
         "changes": {
             "zh-hans": [
@@ -843,7 +843,7 @@ VERSIONS = [
 
 _BACKFILL_PT_BR = {
     "v1.3.3": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 3",
+        "name": "setembro de 2026, 1.ª edição · revisão 3",
         "changes": [
             'Listas de nomes adicionadas sob as duas fotos de grupo do posfácio (filas de cima/baixo, da esquerda para a direita), sincronizadas nos seis idiomas.',
             'README reestruturado: adicionado um guia de leitura no início do arquivo, com links por tarefa, além de uma seção de "Diretrizes de imagens" (tamanhos, remoção de EXIF, higiene de capturas de tela, grupos de imagens, regras para fotos de grupo).',
@@ -852,7 +852,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.2": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 2",
+        "name": "setembro de 2026, 1.ª edição · revisão 2",
         "changes": [
             'Corrigido o link de download do LocalSend na edição em inglês (o antigo caminho /en/download estava quebrado) e restaurado o quadro informativo "rede local da equipe / gateway do campus" que faltava nas edições em espanhol e coreano.',
             'As edições em francês, espanhol e coreano agora apontam para as páginas no idioma correspondente para LocalSend, Bambu Studio, documentação do GitHub e Android Studio; ordem dos casos e anotações de terminologia alinhadas.',
@@ -861,7 +861,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.1": {
-        "name": "Setembro de 2026, 1.ª edição · revisão 1",
+        "name": "setembro de 2026, 1.ª edição · revisão 1",
         "changes": [
             'Reformulação tipográfica dos PDFs: texto corrido em Source Han Serif, títulos em Source Han Sans, citações/legendas/prefácio em LXGW WenKai (Kai) e textos e números em latim em Times New Roman (Tinos como alternativa).',
             'Cabeçalhos e rodapés agora são carimbados pelo script de build com subconjuntos de fontes embutidos, garantindo glifos consistentes em todas as plataformas.',
@@ -870,7 +870,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.3.0": {
-        "name": "Setembro de 2026, 1.ª edição",
+        "name": "setembro de 2026, 1.ª edição",
         "changes": [
             'Essenciais da equipe: adicionada a seção "Temporada e calendário" (linha do tempo da temporada e observações de regras — somente controle Xbox 360, proibição de levitação magnética, faixa etária de 12 a 18 anos) e refinada a descrição da rede local da equipe.',
             'Programação: adicionada a seção "Programação assistida por IA" (uso de ferramentas de agente de IA) e uma observação sobre o Driver/controle.',
@@ -879,7 +879,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.2": {
-        "name": "Agosto de 2026, 3.ª edição, 2.ª revisão",
+        "name": "agosto de 2026, 3.ª edição, 2.ª revisão",
         "changes": [
             'Edição em chinês tradicional: os termos do Onshape 「结构体/装配体」 agora são escritos em caracteres tradicionais (結構體/裝配體).',
             'Página de histórico de versões: esclarecido que as versões anteriores incluem apenas os idiomas disponíveis na época do lançamento.',
@@ -888,7 +888,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.1": {
-        "name": "Agosto de 2026, 3.ª edição, 1.ª revisão",
+        "name": "agosto de 2026, 3.ª edição, 1.ª revisão",
         "changes": [
             'Edição em chinês tradicional: os nomes de pessoas agora trazem o original em chinês simplificado (por exemplo, 付修齊（付修齐）); nomes idênticos nos dois conjuntos de caracteres não recebem anotação.',
             'Edições em chinês simplificado e tradicional: termos traduzidos de origem estrangeira agora trazem o nome no idioma de origem (por exemplo, 结构体（Part Studio）, 构建（Build）); a convenção de anotação para todos os idiomas está documentada no README do projeto.',
@@ -896,7 +896,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.2.0": {
-        "name": "Agosto de 2026, 3.ª edição",
+        "name": "agosto de 2026, 3.ª edição",
         "changes": [
             'Adicionada a edição em coreano (한국어): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em coreano incluído.',
             'Padronizadas as anotações de nomes em todas as edições: nomes reais de pessoas agora trazem os caracteres chineses originais (por exemplo, Fu Xiuqi (付修齐); em coreano, os nomes usam a leitura em hanja, por exemplo, 부수제(付修齐)), e nomes próprios como plataformas trazem o nome no idioma de origem (por exemplo, KIRIN (麒麟), Bilibili (哔哩哔哩)).',
@@ -904,7 +904,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.1.0": {
-        "name": "Agosto de 2026, 2.ª edição",
+        "name": "agosto de 2026, 2.ª edição",
         "changes": [
             'Adicionada a edição em espanhol (Español): tradução completa dos sete capítulos e das páginas do site (página inicial do idioma, histórico de versões), com PDF em espanhol incluído.',
             'Atualizadas as cores de destaque dos cartões de idioma do portal: #a61615 para chinês simplificado/tradicional, #d85d23 para inglês (EUA)/francês e #ffb953 para o novo cartão de espanhol.',
@@ -912,7 +912,7 @@ _BACKFILL_PT_BR = {
         ],
     },
     "v1.0.0": {
-        "name": "Agosto de 2026, 1.ª edição",
+        "name": "agosto de 2026, 1.ª edição",
         "changes": [
             'Primeira publicação, com sete capítulos: Prefácio, Essenciais da equipe, Modelagem e design, Hardware e construção, Programação, Divulgação e relações públicas e Posfácio.',
             'Disponível em quatro edições de idioma: chinês simplificado, chinês tradicional, inglês (EUA) e francês.',

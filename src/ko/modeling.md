@@ -13,7 +13,7 @@
 
 ### 온라인 계정
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(무료, 가입 신청 필요; 현재 공식 웹사이트는 접속할 수 없으며, GitHub 조직 [https://github.com/CycleZLab](https://github.com/CycleZLab)을 이용할 수 있음)
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)(무료, 가입 신청 필요; GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ FTC에서 자주 쓰는 부품 공급업체와 자료 플랫폼:
 
 - **goBILDA**: 완전한 FTC 구조 부품 제공
 - **REV Robotics**: 전자 제어 모듈과 구조 부품 제공
-- **CycleZLab**: FIRST 로봇 커뮤니티(CAD, 코드, 제작 일지 아카이브; 현재 공식 웹사이트는 접속할 수 없으며, GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- **CycleZLab**: FIRST 로봇 커뮤니티(CAD, 코드, 제작 일지 아카이브; GitHub 조직: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### 설계 규칙
 

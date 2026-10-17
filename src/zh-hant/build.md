@@ -14,7 +14,7 @@
 - 電子郵件（推薦使用 @gmail.com 或 @outlook.com）
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（官網目前無法存取；GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/)（GitHub 組織：[https://github.com/CycleZLab](https://github.com/CycleZLab)）
 
 ---
 

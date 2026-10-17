@@ -13,7 +13,7 @@ The following are supplementary requirements for 3D Modeling & Design.
 
 ### Online Accounts
 
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required; the website is currently unreachable—see its GitHub organization at [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (free, application required; GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
@@ -169,7 +169,7 @@ Commonly used FTC parts suppliers and resource platforms:
 
 - **goBILDA**: provides a complete range of FTC structural components
 - **REV Robotics**: provides control system modules and structural components
-- **CycleZLab**: a FIRST robotics community (archive of CAD, code, and build logs; the website is currently unreachable—GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- **CycleZLab**: a FIRST robotics community (archive of CAD, code, and build logs; GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ### Design Standards
 

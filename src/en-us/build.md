@@ -14,7 +14,7 @@ The following are supplementary requirements for Hardware & Build.
 - Email address (@gmail.com or @outlook.com recommended)
 - Bambu Studio — [https://bambulab.cn/](https://bambulab.cn/)
 - Onshape — [https://www.onshape.com/](https://www.onshape.com/)
-- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (website currently unreachable; GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
+- CycleZLab — [https://www.cyclezlab.com/](https://www.cyclezlab.com/) (GitHub organization: [https://github.com/CycleZLab](https://github.com/CycleZLab))
 
 ---
 
