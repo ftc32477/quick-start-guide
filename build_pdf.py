@@ -974,12 +974,41 @@ class CDPClient:
             msg = json.loads(self.ws.recv())
             if msg.get("method") == "Page.loadEventFired":
                 break
-        # 触发懒加载图片 + 等待图片解码
+        # PDF 打印使用高分辨率 print 派生图（HTML 在线显示用 display 派生图）
         self.call("Runtime.evaluate", {
-            "expression": "window.scrollTo(0, document.body.scrollHeight); "
-                          "window.scrollTo(0, 0);"
+            "expression": "document.querySelectorAll('img[data-print]')"
+                          ".forEach(i => { const s = i.getAttribute('data-print');"
+                          " if (s) i.src = s; });"
         })
+        # 触发懒加载图片 + 等待全部图片加载/解码完成
+        self.wait_images()
+        self.call("Runtime.evaluate", {"expression": "window.scrollTo(0, 0);"})
         time.sleep(settle)
+
+    def wait_images(self, timeout=8.0):
+        """滚动触发懒加载并等待所有 <img> 加载完成（PDF 防缺图）。"""
+        expr = """
+        (async () => {
+          const deadline = Date.now() + %d;
+          while (Date.now() < deadline) {
+            window.scrollTo(0, document.body.scrollHeight);
+            await new Promise(r => setTimeout(r, 120));
+            const imgs = Array.from(document.images || []);
+            const pending = imgs.filter(i => !(i.complete && i.naturalWidth > 0));
+            if (pending.length === 0) { window.scrollTo(0, 0); return imgs.length; }
+            await new Promise(r => setTimeout(r, 150));
+          }
+          return -1;
+        })()
+        """ % int(timeout * 1000)
+        try:
+            res = self.call("Runtime.evaluate", {
+                "expression": expr, "awaitPromise": True, "returnByValue": True})
+            count = (res.get("result") or {}).get("value")
+            if count == -1:
+                print("  [警告] 等待图片加载超时（部分图片可能未渲染）")
+        except Exception as e:
+            print(f"  [警告] 等待图片加载失败: {e}")
 
     def print_to_pdf(self, out_path, header=None, footer=None,
                      margin_top=MARGIN_TOP, margin_bottom=MARGIN_BOTTOM,
@@ -1364,6 +1393,41 @@ def merge_pdfs(pdf_paths, output_path):
         writer.write(f)
 
 
+def check_chapter_pdf(pdf_path, html_path, page_key, lang_key):
+    """版式预检：空白页、图片数量与 HTML 不一致时告警。"""
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(pdf_path)
+        blank_pages = []
+        total_images = 0
+        for idx, page in enumerate(reader.pages):
+            text = (page.extract_text() or "").strip()
+            try:
+                n_imgs = len(page.images)
+            except Exception:
+                n_imgs = 0
+            total_images += n_imgs
+            if not text and n_imgs == 0:
+                blank_pages.append(idx + 1)
+        expected = 0
+        try:
+            html = open(html_path, encoding="utf-8").read()
+            m = re.search(r"<main>(.*?)</main>", html, re.S)
+            if m:
+                # 按唯一 src 计数：同一张图被复用时 PDF 只嵌入一次
+                srcs = re.findall(r'<img[^>]*\bsrc="([^"]+)"', m.group(1))
+                expected = len(set(srcs))
+        except OSError:
+            pass
+        if blank_pages:
+            print(f"  [PDF 警告] {lang_key}/{page_key}: 发现空白页 {blank_pages}")
+        if expected and total_images < expected:
+            print(f"  [PDF 警告] {lang_key}/{page_key}: HTML 图片 {expected} 张，"
+                  f"PDF 仅 {total_images} 张（可能未加载完成）")
+    except Exception as e:
+        print(f"  [PDF 警告] {lang_key}/{page_key}: 版式检查失败: {e}")
+
+
 # ============================================================
 #  导出主流程
 # ============================================================
@@ -1424,6 +1488,7 @@ def export(lang_filter=None, page_filter=None):
                     client.navigate("file://" + html_path)
                     inject_pdf_fonts(client, lang, page_key)
                     client.print_to_pdf(tmp_pdf)
+                    check_chapter_pdf(tmp_pdf, html_path, page_key, lang)
                     # 单页 PDF：复制后按自身页数盖印页眉页脚
                     shutil.copyfile(tmp_pdf, pdf_path)
                     stamp_footer(pdf_path, lang, header_right=chapter)

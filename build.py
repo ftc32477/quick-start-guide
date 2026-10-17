@@ -5,6 +5,7 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 用法:
     python3 build.py                      # 构建所有语言版本
     python3 build.py --watch              # 监听文件变化并自动构建
+    python3 build.py --optimize-images    # 重建 images-opt/ 图片优化副本（改图后运行并提交）
     python3 build.py --channel dev        # 显式指定构建通道（dev 显示 preview 版本并加 noindex）
     python3 build.py --channel release    # release 通道（默认非 dev 分支）
 
@@ -12,14 +13,17 @@ FTC 32477 Origin 快速入门指南 — 多语言 Markdown → HTML 构建工具
 
 目录结构:
     src/{zh-hans,zh-hant,en-us,fr,es,ko,pt-br}/  — 各语言 Markdown 源文件（在此编辑内容）
-    images/                 — 图片资源（自动复制到 dist/images/）
+    images/                 — 图片原图（入库；修改后运行 --optimize-images）
+    images-opt/             — 图片优化副本（入库；构建时复制到 dist/images/，保证各机器产物一致）
     fonts/                  — PDF 字体子集（网页版不使用）
     dist/                   — 生成的 HTML 网站（根门户 + 各语言子目录）
 """
 
 import os
 import re
+import io
 import sys
+import json
 import time
 import shutil
 import hashlib
@@ -1136,13 +1140,305 @@ def visible_versions():
 #  MARKDOWN → HTML 转换器
 # ============================================================
 
-def parse_markdown(text):
+# ============================================================
+#  扩展语法：图片属性 / 图文并排 / 图注编号 / 分页控制
+# ============================================================
+
+FIGURE_WORDS = {
+    "zh-hans": "图", "zh-hant": "圖", "en-us": "Figure",
+    "fr": "Figure", "es": "Figura", "ko": "그림", "pt-br": "Figura",
+}
+
+# 特殊页面的图注前缀；其余正文页按 PAGE_KEYS 顺序取数字章节号
+FIGURE_SPECIALS = {
+    "zh-hans": {"preface": "序", "afterword": "后", "appendix": "A"},
+    "zh-hant": {"preface": "序", "afterword": "後", "appendix": "A"},
+    "en-us": {"preface": "Preface", "afterword": "Postscript", "appendix": "A"},
+    "fr": {"preface": "Préface", "afterword": "Postface", "appendix": "A"},
+    "es": {"preface": "Prefacio", "afterword": "Epílogo", "appendix": "A"},
+    "ko": {"preface": "머리말", "afterword": "후기", "appendix": "A"},
+    "pt-br": {"preface": "Prefácio", "afterword": "Posfácio", "appendix": "A"},
+}
+
+# 图片派生三套（原图 images/ 保留；派生入库 images-opt/）
+IMAGE_DISPLAY_EDGE = 1600       # HTML 显示：长边上限
+IMAGE_DISPLAY_QUALITY = 82      # HTML 显示：JPEG 质量
+IMAGE_DISPLAY_TARGET = 300 * 1024
+IMAGE_PRINT_EDGE = 2600         # PDF 打印：长边上限（A4 内容区 300dpi 需要 ~2600px）
+IMAGE_PRINT_QUALITY = 88        # PDF 打印：JPEG 质量
+IMAGE_PRINT_TARGET = 900 * 1024
+IMAGE_HI_EDGE = 4000            # 点击查看高清图：长边上限
+IMAGE_HI_QUALITY = 90           # 高清图：JPEG 质量
+IMAGE_HI_TARGET = 3 * 1024 * 1024
+IMAGE_MIN_EDGE = 800            # 低于此值提示分辨率不足（px）
+IMAGE_WARN_BYTES = 1_000_000    # 源图超过 1MB 时提示
+# A4 内容区（8.27-2*1.25 × 11.69-2*1.00 英寸），用于估算打印有效 DPI
+A4_CONTENT_W_IN = 5.77
+A4_CONTENT_H_IN = 8.66
+PRINT_DPI_MIN = 300             # 打印有效分辨率下限
+
+IMAGE_VARIANTS = (
+    ("display", IMAGE_DISPLAY_EDGE, IMAGE_DISPLAY_QUALITY, IMAGE_DISPLAY_TARGET),
+    ("print", IMAGE_PRINT_EDGE, IMAGE_PRINT_QUALITY, IMAGE_PRINT_TARGET),
+    ("hi", IMAGE_HI_EDGE, IMAGE_HI_QUALITY, IMAGE_HI_TARGET),
+)
+
+IMAGE_OPT_DIR = os.path.join(BASE_DIR, "images-opt")  # 入库的优化副本（构建时直接复制）
+FORCE_OPTIMIZE_IMAGES = False  # --optimize-images 时强制重建优化副本
+
+_FIG_CTX = None
+
+
+def figure_prefix(page_key, lang_key):
+    """返回某页图注的章节/位置前缀（序、后、A 或数字章节号）。"""
+    specials = FIGURE_SPECIALS.get(lang_key, {})
+    if page_key in specials:
+        return specials[page_key]
+    mains = [k for k in PAGE_KEYS if k not in ("preface", "afterword", "appendix")]
+    try:
+        return str(mains.index(page_key) + 1)
+    except ValueError:
+        return ""
+
+
+def new_figure_context(lang_key, page_key, collect=False, fig_map=None):
+    return {
+        "lang": lang_key,
+        "page_key": page_key,
+        "prefix": figure_prefix(page_key, lang_key),
+        "word": FIGURE_WORDS.get(lang_key, "Figure"),
+        "collect": collect,
+        "counter": 0,
+        "map": fig_map if fig_map is not None else {},
+        "warnings": [],
+    }
+
+
+def _fig_label(ctx):
+    prefix = ctx.get("prefix") or ""
+    word = ctx["word"]
+    n = ctx["counter"]
+    sep = " "
+    if prefix:
+        return f"{word}{sep}{prefix}-{n}"
+    return f"{word}{sep}{n}"
+
+
+_IMAGE_LINE_RE = re.compile(r"^!\[(.*?)\]\((.*?)\)\s*(?:\{([^{}]*)\})?\s*$")
+_IMAGE_INLINE_RE = re.compile(r"!\[(.*?)\]\((.*?)\)(?:\{([^{}]*)\})?")
+
+
+def parse_attr_text(text):
+    """解析图片后缀属性：{w=60% mh=8cm align=center #fig:id}。"""
+    attrs = {}
+    if not text:
+        return attrs
+    for tok in text.split():
+        tok = tok.strip()
+        if not tok:
+            continue
+        if tok.startswith("#") and len(tok) > 1:
+            attrs["id"] = tok[1:]
+            continue
+        if "=" not in tok:
+            continue
+        key, _, val = tok.partition("=")
+        key = key.strip().lower()
+        key = {"width": "w", "maxheight": "mh", "max-height": "mh",
+               "height": "h"}.get(key, key)
+        if key in ("w", "h", "mh", "align"):
+            attrs[key] = val.strip()
+    return attrs
+
+
+def parse_image_line(line):
+    """若整行是图片语法则返回 {alt, src, attrs}，否则 None。"""
+    if line is None:
+        return None
+    m = _IMAGE_LINE_RE.match(line.strip())
+    if not m:
+        return None
+    return {"alt": m.group(1), "src": m.group(2), "attrs": parse_attr_text(m.group(3))}
+
+
+def _style_attr(attrs, block=True):
+    styles = []
+    if attrs.get("w"):
+        styles.append(f"width:{attrs['w']}")
+    if attrs.get("h"):
+        styles.append(f"height:{attrs['h']}")
+    if attrs.get("mh"):
+        styles.append(f"max-height:{attrs['mh']}")
+    if block:
+        styles.append("max-width:100%")
+    return f' style="{";".join(styles)}"' if styles else ""
+
+
+def _align_class(attrs):
+    align = (attrs.get("align") or "").lower()
+    return f" fig-align-{align}" if align in ("left", "center", "right") else ""
+
+
+def _image_variant_srcs(src):
+    """返回 (display, print, hi) 三套派生路径；非 ../images/ 路径返回 None。"""
+    if not src.startswith("../images/"):
+        return None
+    rel = src[len("../images/"):]
+    return (f"../images/display/{rel}",
+            f"../images/print/{rel}",
+            f"../images/hi/{rel}")
+
+
+def render_inline_image(alt, src, attrs):
+    variants = _image_variant_srcs(src)
+    real_src = variants[0] if variants else src
+    return (f'<img src="{real_src}" alt="{escape_html(alt)}" loading="lazy"'
+            f'{_style_attr(attrs, block=False)}>')
+
+
+def render_figure(item, ctx):
+    """渲染单张带图注/编号的图片；collect 模式只登记编号，不关心外观。"""
+    attrs = item["attrs"]
+    ctx["counter"] += 1
+    label = _fig_label(ctx)
+    fid = attrs.get("id")
+    if fid:
+        if ctx["collect"]:
+            ctx["map"][fid] = label
+        else:
+            label = ctx["map"].get(fid, label)
+    alt = item["alt"]
+    cap = ""
+    if alt:
+        cap = (f'<figcaption><span class="fig-label">{escape_html(label)}</span> '
+               f'{escape_html(alt)}</figcaption>')
+    id_attr = f' id="{escape_html(fid)}"' if fid else ""
+    variants = _image_variant_srcs(item["src"])
+    if variants:
+        display_src, print_src, hi_src = variants
+    else:
+        display_src = print_src = hi_src = item["src"]
+    img = (f'<img src="{display_src}" alt="{escape_html(alt)}" loading="lazy"'
+           f' data-print="{print_src}"{_style_attr(attrs)}>')
+    if variants:
+        img = (f'<a class="fig-hi" href="{hi_src}" target="_blank" '
+               f'rel="noopener">{img}</a>')
+    return (f'<figure class="fig{_align_class(attrs)}"{id_attr}>'
+            f'{img}{cap}</figure>')
+
+
+def _render_figures_table(items, ctx, cols=2):
+    cells = [f"<td>{render_figure(it, ctx)}</td>" for it in items]
+    rows = ["<tr>" + "".join(cells[i:i + cols]) + "</tr>"
+            for i in range(0, len(cells), cols)]
+    return (f'<table class="media-row media-cols-{cols}" role="presentation">'
+            '<tbody>' + "".join(rows) + "</tbody></table>")
+
+
+def render_image_block(items, ctx):
+    if len(items) == 1:
+        return '<div class="fig-single">' + render_figure(items[0], ctx) + "</div>"
+    return _render_figures_table(items, ctx, cols=2)
+
+
+def _split_body_images(lines):
+    """把容器内容拆成 [('text', lines), ('images', items)]，保持原有顺序。"""
+    segments = []
+    buf = []
+    i = 0
+    while i < len(lines):
+        img = parse_image_line(lines[i])
+        if img:
+            if buf:
+                segments.append(("text", buf))
+                buf = []
+            items = []
+            while i < len(lines):
+                it = parse_image_line(lines[i])
+                if not it:
+                    break
+                items.append(it)
+                i += 1
+            segments.append(("images", items))
+        else:
+            buf.append(lines[i])
+            i += 1
+    if buf:
+        segments.append(("text", buf))
+    return segments
+
+
+def _render_text_lines(lines):
+    """递归解析容器内的文本块（沿用当前 _FIG_CTX）。"""
+    return parse_markdown("\n".join(lines))[0]
+
+
+def render_container(kind, param, lines, ctx):
+    """渲染 ::: side / ::: grid N / ::: keep / ::: break 容器。"""
+    if kind == "break":
+        return '<div class="page-break" aria-hidden="true"></div>'
+    if kind == "keep":
+        return '<div class="keep">' + _render_text_lines(lines) + "</div>"
+    segments = _split_body_images(lines)
+    image_segments = [p for t, p in segments if t == "images"]
+    text_segments = [p for t, p in segments if t == "text"]
+
+    if kind == "side":
+        if len(image_segments) != 1 or len(image_segments[0]) != 1:
+            ctx["warnings"].append(
+                "::: side 需要且只能包含一张独占一段的图片；已按普通内容渲染")
+            return _render_text_lines(lines)
+        img = image_segments[0][0]
+        # 按文档顺序渲染，保证图号与出现顺序一致
+        parts = []
+        for typ, payload in segments:
+            if typ == "images":
+                parts.append(("image", render_image_block(payload, ctx)))
+            else:
+                parts.append(("text", _render_text_lines(payload)))
+        text_html = "".join(p for t, p in parts if t == "text").strip()
+        fig_html = "".join(p for t, p in parts if t == "image")
+        reverse = "reverse" in param.lower()
+        m = re.search(r"(\d{1,3})\s*%?", param)
+        width = m.group(1) if m else ""
+        style = f' style="--side-img:{width}%"' if width else ""
+        text_cell = f'<td class="side-text">{text_html}</td>'
+        fig_cell = f'<td class="side-fig">{fig_html}</td>'
+        cells = fig_cell + text_cell if reverse else text_cell + fig_cell
+        return (f'<table class="media-side" role="presentation"{style}>'
+                f'<tbody><tr>{cells}</tr></tbody></table>')
+
+    if kind == "grid":
+        nums = re.findall(r"\d+", param)
+        cols = int(nums[0]) if nums else 2
+        cols = 3 if cols >= 3 else 2
+        if any(p for p in text_segments if any(s.strip() for s in p)) or not image_segments:
+            ctx["warnings"].append("::: grid 内应为纯图片；已按普通内容渲染")
+            return _render_text_lines(lines)
+        items = []
+        for payload in image_segments:
+            items.extend(payload)
+        return _render_figures_table(items, ctx, cols=cols)
+
+    ctx["warnings"].append(f"未知容器类型 ::: {kind}；已按普通内容渲染")
+    return _render_text_lines(lines)
+
+
+def parse_markdown(text, fig_ctx=None):
     """
     将 Markdown 文本转换为 HTML。
 
     返回 (html, headings)，其中 headings 为 h2/h3 标题列表，
     每项为 {"level": int, "id": str, "text": str}，供侧边栏二级目录使用。
+
+    fig_ctx 为图注编号上下文（见 new_figure_context）；不传则不做编号。
     """
+    global _FIG_CTX
+    _prev_fig_ctx = _FIG_CTX
+    if fig_ctx is not None:
+        _FIG_CTX = fig_ctx
+    if _FIG_CTX is None:
+        _FIG_CTX = new_figure_context("zh-hans", "")
     lines = text.split("\n")
     out = []
     headings = []
@@ -1175,28 +1471,36 @@ def parse_markdown(text):
             out.append(f"<pre><code>{code_html}</code></pre>")
             continue
 
-        # 图片 ![](url)（连续多张自动合并为横向排布）
-        img_match = re.match(r"^!\[(.*?)\]\((.*?)\)\s*$", line.strip())
+        # 自定义容器 ::: side / ::: grid N / ::: keep / ::: break
+        container_match = re.match(r"^:::\s*([a-zA-Z]+)\s*(.*)$", line.strip())
+        if container_match:
+            flush_paragraph(para_buf)
+            pending_ol_start = 0
+            kind = container_match.group(1).lower()
+            param = container_match.group(2).strip()
+            body = []
+            i += 1
+            while i < len(lines) and lines[i].strip() != ":::":
+                body.append(lines[i])
+                i += 1
+            if i < len(lines):
+                i += 1
+            out.append(render_container(kind, param, body, _FIG_CTX))
+            continue
+
+        # 图片 ![](url){属性}（连续多张自动合并为并排图片组）
+        img_match = parse_image_line(line)
         if img_match:
             flush_paragraph(para_buf)
             pending_ol_start = 0
-            imgs = []
+            items = []
             while i < len(lines):
-                m = re.match(r"^!\[(.*?)\]\((.*?)\)\s*$", lines[i].strip())
-                if not m:
+                it = parse_image_line(lines[i])
+                if not it:
                     break
-                alt = m.group(1)
-                src = m.group(2)
-                caption = f'<figcaption>{escape_html(alt)}</figcaption>' if alt else ""
-                imgs.append(
-                    f'<figure class="img-fig">'
-                    f'<img src="{src}" alt="{escape_html(alt)}" loading="lazy">{caption}</figure>'
-                )
+                items.append(it)
                 i += 1
-            if len(imgs) > 1:
-                out.append('<div class="img-row">' + "".join(imgs) + "</div>")
-            else:
-                out.append('<div class="img-row img-row-single">' + "".join(imgs) + "</div>")
+            out.append(render_image_block(items, _FIG_CTX))
             continue
 
         # 表格
@@ -1372,13 +1676,15 @@ def parse_markdown(text):
         i += 1
 
     flush_paragraph(para_buf)
-    return escape_bare_amp("\n".join(out)), headings
+    html = escape_bare_amp("\n".join(out))
+    _FIG_CTX = _prev_fig_ctx
+    return html, headings
 
 
 def plain_text(md_text):
     """去除行内 Markdown 标记，返回纯文本（用于目录显示）。"""
-    text = re.sub(r"!\[(.*?)\]\((.*?)\)", r"\1", md_text)
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1", text)
+    text = re.sub(r"!\[(.*?)\]\((.*?)\)(?:\{[^{}]*\})?", r"\1", md_text)
+    text = re.sub(r"\[([^\]]*)\]\(([^)]+)\)", r"\1", text)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"[*_`]", "", text)
     return text.strip()
@@ -1432,12 +1738,38 @@ def parse_list(lines, i, indent, ordered):
     return html, i, len(items)
 
 
+def _fig_ref_label(fid):
+    """内部空链接 [](#fig:id) 自动填图号；找不到时告警。"""
+    ctx = _FIG_CTX
+    if ctx and fid in ctx.get("map", {}):
+        return ctx["map"][fid]
+    if ctx is not None and not ctx.get("collect"):
+        ctx["warnings"].append(f"引用了不存在的图号 #{fid}")
+    return ""
+
+
 def inline_parse(text):
-    """解析行内元素。"""
-    # 图片（行内）
-    text = re.sub(r"!\[(.*?)\]\((.*?)\)", r'<img src="\2" alt="\1" loading="lazy">', text)
-    # 链接
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
+    """解析行内元素（图片/链接/粗斜体/行内代码）。"""
+    # 图片（行内，可带 {w=...} 等属性）
+    def _img_repl(m):
+        alt, src = m.group(1), m.group(2)
+        attrs = parse_attr_text(m.group(3) or "")
+        return render_inline_image(alt, src, attrs)
+
+    text = _IMAGE_INLINE_RE.sub(_img_repl, text)
+
+    # 链接：内部锚点不加 target=_blank；空文字 + #fig: 自动填图号
+    _link_re = re.compile(r"\[([^\]]*?)\]\(([^)]+)\)")
+
+    def _link_repl(m):
+        label, url = m.group(1), m.group(2)
+        if url.startswith("#"):
+            if not label and url.startswith("#fig:"):
+                label = _fig_ref_label(url[1:])
+            return f'<a href="{url}">{label}</a>'
+        return f'<a href="{url}" target="_blank" rel="noopener">{label}</a>'
+
+    text = _link_re.sub(_link_repl, text)
     # 粗斜体
     text = re.sub(r"\*\*\*(.+?)\*\*\*", r"<strong><em>\1</em></strong>", text)
     # 粗体
@@ -1673,22 +2005,45 @@ img{max-width:100%;border-radius:var(--radius);margin:12px 0}
 /* 锚点跳转留白（避免被固定顶栏遮挡） */
 h2,h3{scroll-margin-top:16px}
 
-/* 图片排布：多图横向，窄屏自动纵向 */
-.img-row{
-  display:flex;flex-wrap:wrap;gap:14px;margin:14px 0
-}
-.img-row .img-fig{
-  flex:1 1 40%;min-width:0;margin:0
-}
-.img-row .img-fig img{
-  width:100%;margin:0;border-radius:var(--radius)
-}
-.img-row figcaption{
-  text-align:center;font-size:12px;color:var(--muted);margin-top:6px
-}
-.img-row-single .img-fig{flex-basis:100%}
-@media(max-width:600px){
-  .img-row{flex-direction:column;gap:12px}
+/* 图注与图片编号 */
+.fig{margin:14px 0;text-align:center}
+.fig-hi{display:block;line-height:0;cursor:zoom-in;text-decoration:none}
+.fig img{max-width:100%;height:auto;margin:0 auto;border-radius:var(--radius)}
+.fig figcaption{text-align:center;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+.fig-label{font-weight:600;color:var(--muted);margin-right:.35em}
+.fig-align-left{text-align:left}
+.fig-align-right{text-align:right}
+.fig-align-left img{margin-left:0}
+.fig-align-right img{margin-right:0}
+.fig-align-left figcaption,.fig-align-right figcaption{text-align:inherit}
+
+/* 图片组 / 图文并排：真实表格布局（HTML 与 PDF 双端稳定，窄屏自动堆叠） */
+.media-row{width:100%;table-layout:fixed;border-collapse:collapse;margin:14px 0}
+.media-row td{vertical-align:top;width:50%;padding:0 7px;box-sizing:border-box}
+.media-row.media-cols-3 td{width:33.3333%}
+.media-row td:first-child{padding-left:0}
+.media-row td:last-child{padding-right:0}
+.media-row .fig{margin:0}
+.media-row .fig img{width:100%;height:auto;margin:0}
+.media-side{width:100%;table-layout:fixed;border-collapse:collapse;margin:14px 0}
+.media-side td{vertical-align:top;box-sizing:border-box;padding:0}
+/* 并排间距统一为 14px：图片组为 7px+7px；图文并排给第二列加 14px 左内边距 */
+.media-side td+td{padding-left:14px}
+.media-side .side-fig{width:var(--side-img,45%)}
+.media-side .side-fig .fig{margin:0}
+.media-side .side-fig .fig img{width:100%;height:auto;margin:0}
+/* 覆盖全局表格样式：图片组/并排表格不显示边框、底色，不继承表格字号 */
+.media-row,.media-side{border:none;font-size:inherit}
+.media-row td,.media-side td{border:none;background:none;text-align:left}
+table.media-row tbody tr,table.media-side tbody tr{background:none}
+.keep{break-inside:avoid;page-break-inside:avoid}
+.page-break{display:none}
+/* 窄屏堆叠仅用于屏幕；打印时始终保留表格并排布局（纸张宽度也小于 600px） */
+@media screen and (max-width:600px){
+  .media-row,.media-row tbody,.media-row tr,.media-row td{display:block;width:100%!important;padding:0}
+  .media-row td+td{margin-top:14px}
+  .media-side,.media-side tbody,.media-side tr,.media-side td{display:block;width:100%!important;padding:0}
+  .media-side .side-fig{margin-top:14px}
   h2,h3{scroll-margin-top:64px}
 }
 
@@ -1777,9 +2132,26 @@ tr:nth-child(even){background:#fafafa}
   th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
   tr{page-break-inside:avoid}
   pre{white-space:pre-wrap !important;overflow-wrap:anywhere !important;overflow:visible !important}
-  .img-row{flex-wrap:nowrap}
-  .img-fig{page-break-inside:avoid}
-  .img-row .img-fig{flex:1 1 0}
+  /* 图片/图片组：尺寸封顶 + 真实表格布局，避免跨页拆图与切段 */
+  figure.fig,.fig-single{break-inside:avoid;page-break-inside:avoid}
+  figure.fig{margin:12px 0}
+  figure.fig img{max-width:100%!important;height:auto!important;max-height:22cm!important;display:block;margin:0 auto}
+  table.media-row{display:table!important;width:100%!important;table-layout:fixed!important;border-collapse:collapse!important;break-inside:avoid;page-break-inside:avoid}
+  table.media-row td{display:table-cell!important;vertical-align:top!important;width:50%!important;padding:0 7px!important;box-sizing:border-box!important}
+  table.media-row.media-cols-3 td{width:33.3333%!important}
+  table.media-row td:first-child{padding-left:0!important}
+  table.media-row td:last-child{padding-right:0!important}
+  table.media-row td img{width:100%!important;height:auto!important;max-height:20cm!important;display:block!important;margin:0 auto!important}
+  table.media-row figure.fig{margin:0!important}
+  table.media-side{display:table!important;width:100%!important;table-layout:fixed!important;border-collapse:collapse!important;break-inside:avoid;page-break-inside:avoid}
+  table.media-side td{display:table-cell!important;vertical-align:top!important;box-sizing:border-box!important}
+  table.media-side td+td{padding-left:14px!important}
+  table.media-side .side-fig{width:var(--side-img,45%)!important}
+  table.media-side .side-fig img{width:100%!important;height:auto!important;max-height:20cm!important;display:block!important;margin:0 auto!important}
+  .keep{break-inside:avoid;page-break-inside:avoid}
+  .page-break{display:block!important;height:0!important;margin:0!important;border:0!important;break-after:page;page-break-after:always}
+  blockquote{break-inside:avoid;page-break-inside:avoid}
+  thead{display:table-header-group}
   /* 中文版段落首行缩进 2 字符（英文版按英文规范不缩进） */
   html[lang="zh-hans"] main p,html[lang="zh-hant"] main p{text-indent:2em}
   .align-right{text-align:right}
@@ -2771,6 +3143,257 @@ def prune_stale_outputs():
                 print(f"  [清理] 移除过期页面: {name}/{fn}")
 
 
+def _pil_image():
+    """可选依赖 Pillow；缺失时图片原样复制并给出提示。"""
+    try:
+        from PIL import Image
+        return Image
+    except Exception:
+        return None
+
+
+def _sha1_file(path):
+    h = hashlib.sha1()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def _image_manifest():
+    """源图内容哈希表：{相对路径: sha1}。"""
+    manifest = {}
+    if not os.path.isdir(IMAGES_DIR):
+        return manifest
+    for root, dirs, files in os.walk(IMAGES_DIR):
+        dirs[:] = [d for d in dirs if not d.startswith(".")]
+        for name in sorted(files):
+            if name.startswith("."):
+                continue
+            path = os.path.join(root, name)
+            manifest[os.path.relpath(path, IMAGES_DIR)] = _sha1_file(path)
+    return manifest
+
+
+def _load_opt_manifest():
+    path = os.path.join(IMAGE_OPT_DIR, "manifest.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _opt_expected_files(manifest):
+    """images-opt/ 中期望存在的派生文件清单（用于缓存完整性检查）。"""
+    expected = []
+    for rel in manifest:
+        for name, _edge, _quality, _target in IMAGE_VARIANTS:
+            expected.append(os.path.join(IMAGE_OPT_DIR, name, rel))
+        if rel.startswith("basic/"):
+            # UI 模板直接引用 ../images/basic/...，保留一份根目录副本
+            expected.append(os.path.join(IMAGE_OPT_DIR, rel))
+    return expected
+
+
+def _opt_cache_valid(manifest):
+    if _load_opt_manifest() != manifest:
+        return False
+    return all(os.path.exists(path) for path in _opt_expected_files(manifest))
+
+
+def _write_image_variant(Image, src, dst, ext, max_edge, quality, target,
+                         rel, messages):
+    """生成单套派生图片；返回 (w, h, out_size)。"""
+    try:
+        with Image.open(src) as im:
+            im.load()
+            w, h = im.size
+            if max(w, h) > max_edge:
+                ratio = max_edge / float(max(w, h))
+                im = im.resize((max(1, int(w * ratio)), max(1, int(h * ratio))),
+                               Image.LANCZOS)
+                w, h = im.size
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            if ext in (".jpg", ".jpeg"):
+                if im.mode in ("RGBA", "P"):
+                    im = im.convert("RGB")
+                best = None
+                for q in (quality, quality - 5, quality - 10,
+                          max(60, quality - 15)):
+                    buf = io.BytesIO()
+                    im.save(buf, "JPEG", quality=q, optimize=True,
+                            progressive=True)
+                    data = buf.getvalue()
+                    if best is None or len(data) < best[0]:
+                        best = (len(data), q, data)
+                    if len(data) <= target:
+                        best = (len(data), q, data)
+                        break
+                data = best[2]
+                with open(dst, "wb") as f:
+                    f.write(data)
+                out_size = len(data)
+            elif ext == ".png":
+                im.save(dst, "PNG", optimize=True)
+                out_size = os.path.getsize(dst)
+            elif ext == ".webp":
+                im.save(dst, "WEBP", quality=min(quality, 90), method=6)
+                out_size = os.path.getsize(dst)
+            else:
+                shutil.copy2(src, dst)
+                out_size = os.path.getsize(dst)
+        return w, h, out_size
+    except Exception as e:
+        shutil.copy2(src, dst)
+        messages.append(f"{rel} 派生图片处理失败（{e}），已原样复制")
+        return 0, 0, os.path.getsize(dst)
+
+
+def optimize_images(force=False):
+    """把 images/ 生成三套派生图写入 images-opt/（入库）；返回 (changed, messages)。
+
+    display：HTML 在线显示；print：PDF 打印（A4 300dpi 所需的更高分辨率）；
+    hi：点击图片后在新窗口查看的高清版。原图保留在 images/。
+    日常构建只复制 images-opt/，不依赖 Pillow。
+    """
+    messages = []
+    manifest = _image_manifest()
+    if not manifest:
+        return False, messages
+    if not force and _opt_cache_valid(manifest):
+        return False, messages
+    Image = _pil_image()
+    if Image is None:
+        messages.append("未安装 Pillow，无法重建 images-opt/；将使用现有优化副本（若缺失则用原图）")
+        return False, messages
+    if os.path.exists(IMAGE_OPT_DIR):
+        shutil.rmtree(IMAGE_OPT_DIR)
+    os.makedirs(IMAGE_OPT_DIR, exist_ok=True)
+    total_in = 0
+    total_out = 0
+    counts = {name: 0 for name, _edge, _quality, _target in IMAGE_VARIANTS}
+    downscaled = 0
+    for rel in sorted(manifest):
+        src = os.path.join(IMAGES_DIR, rel)
+        size_in = os.path.getsize(src)
+        total_in += size_in
+        ext = os.path.splitext(rel)[1].lower()
+        src_w = src_h = 0
+        try:
+            with Image.open(src) as im:
+                im.load()
+                src_w, src_h = im.size
+        except Exception:
+            pass
+        if src_w and max(src_w, src_h) < IMAGE_MIN_EDGE and not rel.startswith("basic/"):
+            messages.append(
+                f"{rel} 分辨率偏低（长边 {max(src_w, src_h)}px < {IMAGE_MIN_EDGE}px）")
+        print_w = print_h = 0
+        for name, edge, quality, target in IMAGE_VARIANTS:
+            dst = os.path.join(IMAGE_OPT_DIR, name, rel)
+            w, h, out_size = _write_image_variant(
+                Image, src, dst, ext, edge, quality, target, rel, messages)
+            counts[name] += out_size
+            total_out += out_size
+            if max(w, h) < max(src_w, src_h):
+                downscaled += 1
+            if name == "print":
+                print_w, print_h = w, h
+        if rel.startswith("basic/"):
+            root_dst = os.path.join(IMAGE_OPT_DIR, rel)
+            os.makedirs(os.path.dirname(root_dst), exist_ok=True)
+            shutil.copy2(os.path.join(IMAGE_OPT_DIR, "display", rel), root_dst)
+        if print_w and not rel.startswith("basic/"):
+            dpi = max(print_w / A4_CONTENT_W_IN, print_h / A4_CONTENT_H_IN)
+            if dpi < PRINT_DPI_MIN:
+                messages.append(
+                    f"{rel} 满幅打印约 {dpi:.0f}dpi（<{PRINT_DPI_MIN}），"
+                    f"建议换更高清源图或缩小显示宽度")
+    with open(os.path.join(IMAGE_OPT_DIR, "manifest.json"), "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=1, sort_keys=True)
+    parts = "、".join(
+        f"{name} {counts[name] / 1024 / 1024:.2f}MB"
+        for name, _edge, _quality, _target in IMAGE_VARIANTS)
+    messages.append(
+        f"images-opt/ 已重建：{len(manifest)} 个源图（{total_in / 1024 / 1024:.2f}MB）"
+        f" → {parts}；缩放 {downscaled} 次")
+    return True, messages
+
+
+def copy_images_to_dist():
+    """把 images-opt/（优先）或 images/ 复制到 dist/images/；返回 (数量, 来源目录)。"""
+    dist_images = os.path.join(DIST_DIR, "images")
+    if os.path.exists(dist_images):
+        shutil.rmtree(dist_images)
+    os.makedirs(dist_images, exist_ok=True)
+    source = IMAGE_OPT_DIR if os.path.isdir(IMAGE_OPT_DIR) else IMAGES_DIR
+    if not os.path.isdir(source):
+        return 0, source
+    count = 0
+    for root, dirs, files in os.walk(source):
+        dirs[:] = [d for d in dirs if not d.startswith(".")]
+        for name in sorted(files):
+            if name.startswith(".") or name == "manifest.json":
+                continue
+            src = os.path.join(root, name)
+            rel = os.path.relpath(src, source)
+            dst = os.path.join(dist_images, rel)
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
+            count += 1
+    return count, source
+
+
+def check_image_references():
+    """检查 md 中引用的图片是否存在，返回告警列表。"""
+    warnings = []
+    for lang in LANGUAGES:
+        lang_dir = os.path.join(SRC_DIR, lang)
+        if not os.path.isdir(lang_dir):
+            continue
+        for fn in sorted(os.listdir(lang_dir)):
+            if not fn.endswith(".md"):
+                continue
+            path = os.path.join(lang_dir, fn)
+            try:
+                text = open(path, encoding="utf-8").read()
+            except OSError:
+                continue
+            for m in re.finditer(r"!\[[^\]]*\]\(([^)]+)\)", text):
+                src = m.group(1).split()[0]
+                if src.startswith(("http://", "https://")):
+                    continue
+                if src.startswith("../images/"):
+                    target = os.path.join(IMAGES_DIR, src[len("../images/"):])
+                elif src.startswith("images/"):
+                    target = os.path.join(BASE_DIR, src)
+                else:
+                    warnings.append(f"{lang}/{fn}: 图片路径建议以 ../images/ 开头：{src}")
+                    continue
+                if not os.path.exists(target):
+                    warnings.append(f"{lang}/{fn}: 图片不存在：{src}")
+    return warnings
+
+
+def collect_figure_maps(lang_key):
+    """第一遍解析：为某语言收集所有图注编号与交叉引用 id。"""
+    fig_map = {}
+    warnings = []
+    for page_key in PAGE_KEYS:
+        md_path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
+        if not os.path.exists(md_path):
+            continue
+        with open(md_path, encoding="utf-8") as f:
+            md = f.read()
+        ctx = new_figure_context(lang_key, page_key, collect=True, fig_map=fig_map)
+        parse_markdown(md, fig_ctx=ctx)
+        warnings.extend(ctx["warnings"])
+    return fig_map, warnings
+
+
 def build():
     """读取所有语言的 Markdown 文件并生成 HTML。"""
     print("=" * 56)
@@ -2780,11 +3403,32 @@ def build():
     ensure_dir(DIST_DIR)
     prune_stale_outputs()
 
+    # 图片：images-opt/ 为入库的优化副本；改图后运行 --optimize-images 重建并提交
+    changed, img_messages = optimize_images(force=FORCE_OPTIMIZE_IMAGES)
+    for msg in img_messages[:20]:
+        print(f"  [图片] {msg}")
+    img_count, img_source = copy_images_to_dist()
+    src_label = "images-opt/" if img_source == IMAGE_OPT_DIR else "images/（原图）"
+    print(f"  [图片] {img_count} 个文件 ← {src_label}")
+    if img_source != IMAGE_OPT_DIR:
+        print("  [图片提示] 未找到优化副本；改图后请运行 python3 build.py --optimize-images 并提交 images-opt/")
+
+    ref_warnings = check_image_references()
+    for w in ref_warnings[:20]:
+        print(f"  [图片警告] {w}")
+    if len(ref_warnings) > 20:
+        print(f"  [图片警告] …另有 {len(ref_warnings) - 20} 条")
+
     total = 0
     for lang_key, lang in LANGUAGES.items():
         lang_src = os.path.join(SRC_DIR, lang_key)
         lang_dist = os.path.join(DIST_DIR, lang_key)
         ensure_dir(lang_dist)
+
+        # 第一遍：收集图注编号与交叉引用 id（跨页引用需要先知道编号）
+        fig_map, fig_warnings = collect_figure_maps(lang_key)
+        for w in fig_warnings[:10]:
+            print(f"  [图注警告] {lang_key}: {w}")
 
         # 该语言的主页
         lang_home_html = render_lang_homepage(lang_key)
@@ -2801,7 +3445,11 @@ def build():
             with open(md_path, "r", encoding="utf-8") as f:
                 md_content = f.read()
 
-            html_body, headings = parse_markdown(md_content)
+            ctx = new_figure_context(lang_key, page_key,
+                                     collect=False, fig_map=fig_map)
+            html_body, headings = parse_markdown(md_content, fig_ctx=ctx)
+            for w in ctx["warnings"][:10]:
+                print(f"  [图注警告] {lang_key}/{page_key}: {w}")
             full_html = render_page(page_key, html_body, lang_key, headings)
 
             out_path = os.path.join(lang_dist, f"{page_key}.html")
@@ -2823,36 +3471,6 @@ def build():
         f.write(portal_html)
     total += 1
     print("  [生成] index.html（语言门户）")
-
-    # 复制图片目录
-    dist_images = os.path.join(DIST_DIR, "images")
-    if os.path.exists(dist_images):
-        shutil.rmtree(dist_images)
-    if os.path.exists(IMAGES_DIR):
-        shutil.copytree(IMAGES_DIR, dist_images)
-        img_count = sum(
-            len(files)
-            for _, _, files in os.walk(IMAGES_DIR)
-        )
-        print(f"  [复制] images/ → dist/images/ ({img_count} 个文件)")
-        exif_files = []
-        for root, _, files in os.walk(IMAGES_DIR):
-            for name in files:
-                if name.lower().endswith((".jpg", ".jpeg")):
-                    path = os.path.join(root, name)
-                    try:
-                        with open(path, "rb") as f:
-                            if b"Exif\x00\x00" in f.read(65536):
-                                exif_files.append(os.path.relpath(path, BASE_DIR))
-                    except Exception:
-                        pass
-        if exif_files:
-            print("  [提示] 以下图片含 EXIF 元数据（可能含 GPS/设备信息），建议清除后重新构建：")
-            for rel in exif_files:
-                print(f"         {rel}")
-    else:
-        ensure_dir(dist_images)
-        print("  [提示] images/ 目录为空，可放置图片后重新构建")
 
     print("-" * 56)
     print(f"  构建完成! 共生成 {total} 个 HTML 文件（根门户 + 各语言主页 + 内容页 + 历史版本页），输出目录: {shorten_path(DIST_DIR)}")
@@ -2928,6 +3546,8 @@ if __name__ == "__main__":
             set_channel(sys.argv[_i + 1])
         elif _a.startswith("--channel="):
             set_channel(_a.split("=", 1)[1])
+    if "--optimize-images" in sys.argv:
+        FORCE_OPTIMIZE_IMAGES = True
     if "--watch" in sys.argv:
         watch()
     else:
