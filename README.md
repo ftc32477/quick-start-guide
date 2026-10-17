@@ -69,13 +69,13 @@ ftc_quick_start_guide/
 │   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões）
 │   ├── images/                # 图片（自动复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-zh-hant.pdf  # 繁体中文完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-en-us.pdf  # 英文（美式）完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-fr.pdf     # 法语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-es.pdf     # 西班牙语完整指南
-│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-ko.pdf     # 韩语完整指南
-│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.0-pt-br.pdf  # 巴西葡语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf  # 繁体中文完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-en-us.pdf  # 英文（美式）完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-fr.pdf     # 法语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-es.pdf     # 西班牙语完整指南
+│       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-ko.pdf     # 韩语完整指南
+│       └── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-pt-br.pdf  # 巴西葡语完整指南
 ├── fonts/                     # PDF 字体（开源字体按用字裁成的子集，入库；网页版不使用）
 │   ├── subsets/               # 构建 PDF 实际加载的静态子集（含 coverage.json 用字覆盖清单）
 │   ├── licenses/              # 各字体 OFL 1.1 许可证文本
@@ -155,7 +155,7 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；**字号层级以指南名为最大（36px），"FIRST® Tech Challenge"次之（28px）**，封面整体字号大于扉页（30/26px）；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年10月第2版"，位置略上移）
 2. **扉页（内页第 1 页）**：白底黑字复述封面信息（队徽、徽章、"FIRST® Tech Challenge"、指南名、副题、学校；内容集群与封面一样上移至黄金分割点（中心 ≈ 38.2vh）；底部居中"语言版本 / 版次日期"两行），位于右页
-3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年10月第2版）**、**版本号（v1.5.0）**、**发布日期（2026年10月11日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
+3. **版权页（扉页背面）**：白底排版、内容置于页面下部，含完整书名、**版次（取自 `VERSIONS` 最新条目，如 2026年10月第2版·第1次修订）**、**版本号（v1.5.1）**、**发布日期（2026年10月17日）**、语言版本、主编/编写人员、出品方与地址，以及完整法律声明；数据全部取自 `VERSIONS` 最新已发布条目，随发版自动更新；位于左页
 4. **前言**：罗马数字页脚（仅当前页码，如 I、II，不标总页码）；中文版正文用楷体（霞鹜文楷）
 5. **目录**：前言之后、队员须知之前，两级结构——第一级为章节，第二级为各章 h2 小标题（更深层级不收录）；每行标注起始页码（前言用罗马数字、正文用阿拉伯数字），整行均为 PDF 内部超链接（目录标题 22pt、条目 12.5pt、行高 38/34pt），点击跳转到对应页；目录页脚沿用罗马数字；**若前言+目录总页数为奇数，自动在目录与正文之间插入一白页（不编页码），保证正文第 1 页位于右页（物理奇数页）**
 6. **正文页**（队员须知起）：

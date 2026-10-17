@@ -216,11 +216,71 @@ def meta_tags(title, description):
 
 # PDF 下载链接指向的 GitHub Release（发版时更新 RELEASE_TAG，并同步 VERSIONS 顶部条目与 PDF 文件名）
 RELEASE_BASE = "https://github.com/ftc32477/quick-start-guide/releases/download"
-RELEASE_TAG = "v1.5.0"
+RELEASE_TAG = "v1.5.1"
 
 # 历史版本数据（发版时在最前追加一条；status："released" 正式发布 / "preview" 开发中，仅 dev 分支预览站显示）
 # name / changes 均按各语言提供；date 为 ISO 格式，页面按语言本地化展示
 VERSIONS = [
+    {
+        "tag": "v1.5.1",
+        "date": "2026-10-17",
+        "status": "released",
+        "name": {
+            "zh-hans": "2026年10月第2版·第1次修订",
+            "zh-hant": "2026年10月第2版·第1次修訂",
+            "en-us": "October 2026, 2nd Edition · Revision 1",
+            "fr": "Octobre 2026, 2e édition · révision 1",
+            "es": "2.ª edición, octubre de 2026 · revisión 1",
+            "ko": "2026년 10월 제2판 · 1차 개정",
+            "pt-br": "outubro de 2026, 2.ª edição · revisão 1",
+        },
+        "changes": {
+            "zh-hans": [
+                "勘误：修正巴西葡语版 Android Studio 语言包链接（原链接指向无关插件）；更新 CycleZLab 站点状态注记（官网已恢复访问）；巴西葡语版次名称中的月份统一为小写。",
+                "PDF：修正繁体中文版封面与扉页副题（改用 Quick Start Guide，原与书名重复）。",
+                "工程：构建时清理 dist/ 中的过期页面与已下线语言目录；check-dist 增加未跟踪产物校验；release.sh 修复 Release 说明归档顺序、补充推送/发布确认并校验 PDF 数量。",
+            ],
+            "zh-hant": [
+                "勘誤：修正巴西葡語版 Android Studio 語言套件連結（原連結指向無關外掛）；更新 CycleZLab 站點狀態註記（官網已恢復存取）；巴西葡語版次名稱中的月份統一為小寫。",
+                "PDF：修正繁體中文版封面與扉頁副題（改用 Quick Start Guide，原與書名重複）。",
+                "工程：建置時清理 dist/ 中的過期頁面與已下線語言目錄；check-dist 增加未追蹤產物校驗；release.sh 修正 Release 說明歸檔順序、補充推送/發布確認並校驗 PDF 數量。",
+            ],
+            "en-us": [
+                "Errata: fixed the Brazilian Portuguese Android Studio language-pack link (the old link pointed to an unrelated plugin); updated the CycleZLab site-status note (the official site is reachable again); normalized month capitalization in Brazilian Portuguese edition names.",
+                "PDF: fixed the Traditional Chinese cover and title-page subtitle (now \"Quick Start Guide\" instead of repeating the book title).",
+                "Engineering: the build now prunes stale pages and retired language directories; check-dist rejects untracked build output; release.sh now archives release notes after its precondition checks, confirms tag push and Release creation, and verifies the PDF count.",
+            ],
+            "fr": [
+                "Errata : correction du lien du pack de langue Android Studio en portugais du Brésil (l'ancien lien pointait vers un plugin sans rapport) ; mise à jour de la note sur l'état du site CycleZLab (le site officiel est de nouveau accessible) ; normalisation des mois en minuscules dans les noms d'édition en portugais du Brésil.",
+                "PDF : correction du sous-titre de couverture et de page de titre de l'édition en chinois traditionnel (« Quick Start Guide » au lieu de répéter le titre du livre).",
+                "Ingénierie : la compilation purge désormais les pages obsolètes et les répertoires de langues retirées ; check-dist rejette les sorties non suivies ; release.sh archive les notes après ses vérifications préalables, demande confirmation avant le push du tag et la création de la Release, et vérifie le nombre de PDF.",
+            ],
+            "es": [
+                "Errata: corregido el enlace del paquete de idioma de Android Studio en portugués de Brasil (el enlace anterior apuntaba a un plugin ajeno); actualizada la nota sobre el estado del sitio CycleZLab (el sitio oficial vuelve a estar accesible); normalizados los meses en minúsculas en los nombres de edición en portugués de Brasil.",
+                "PDF: corregido el subtítulo de la cubierta y de la portada de la edición en chino tradicional («Quick Start Guide» en lugar de repetir el título del libro).",
+                "Ingeniería: la compilación ahora elimina páginas obsoletas y directorios de idiomas retirados; check-dist rechaza los artefactos sin seguimiento; release.sh archiva las notas tras sus comprobaciones previas, pide confirmación antes de subir el tag y crear la Release, y verifica el número de PDF.",
+            ],
+            "ko": [
+                "정오: 브라질 포르투갈어판 Android Studio 언어 팩 링크 수정(기존 링크는 무관한 플러그인을 가리킴), CycleZLab 사이트 상태 안내 갱신(공식 사이트 접속 재개), 브라질 포르투갈어 판본 이름의 월 표기를 소문자로 통일.",
+                "PDF: 번체 중국어판 표지와 속표지 부제 수정(책 제목을 반복하는 대신 “Quick Start Guide” 사용).",
+                "엔지니어링: 빌드 시 오래된 페이지와 폐지된 언어 디렉터리를 정리하고, check-dist는 추적되지 않은 산출물을 거부하며, release.sh는 Release 설명 보관 순서를 수정하고 태그 푸시와 Release 생성 전 확인을 추가하며 PDF 수량을 검증합니다.",
+            ],
+            "pt-br": [
+                "Errata: corrigido o link do pacote de idioma do Android Studio em português do Brasil (o link anterior apontava para um plugin sem relação); atualizada a nota sobre o status do site CycleZLab (o site oficial está acessível novamente); padronizados os meses em minúsculas nos nomes das edições em português do Brasil.",
+                "PDF: corrigido o subtítulo da capa e da folha de rosto da edição em chinês tradicional («Quick Start Guide» em vez de repetir o título do livro).",
+                "Engenharia: a compilação agora remove páginas obsoletas e diretórios de idiomas descontinuados; o check-dist rejeita artefatos não rastreados; o release.sh arquiva as notas após as verificações prévias, pede confirmação antes do push da tag e da criação da Release, e verifica a quantidade de PDFs.",
+            ],
+        },
+        "pdfs": {
+            "zh-hans": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf",
+            "zh-hant": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf",
+            "en-us": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-en-us.pdf",
+            "fr": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-fr.pdf",
+            "es": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-es.pdf",
+            "ko": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-ko.pdf",
+            "pt-br": "FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-pt-br.pdf",
+        },
+    },
     {
         "tag": "v1.5.0",
         "date": "2026-10-11",
