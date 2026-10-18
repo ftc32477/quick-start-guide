@@ -69,7 +69,7 @@ FTC 赛事是**头对头（head-to-head）**的机器人比赛。一个赛事通
 
 - Pit 是队伍的维修区：桌面分区（工具区/备件区/电池区/垃圾区），线缆不要横穿通道。
 - 墙上张贴：赛程表、检查清单、队内分工与联系方式、赞助商 logo。
-- 打印材料：工程笔记/PORTFOLIO、队员名单、检查清单、赞助商材料、备用标签。
+- 打印材料：工程笔记（PORTFOLIO）、队员名单、检查清单、赞助商材料、备用标签。
 
 <!-- TODO(I-09): 插入 Pit 布置照片/平面图；补本队实际 Pit 物资清单。 -->
 
@@ -84,7 +84,7 @@ FTC 赛事是**头对头（head-to-head）**的机器人比赛。一个赛事通
 | 线缆 | 无裸露、无卡阻、有应力释放 | ☐ | 电控 |
 | 固件/代码 | 版本与备份一致，DS 能连上 | ☐ | 程序 |
 | 工具/备件 | 按清单齐全 | ☐ | 后勤 |
-| 材料 | PORTFOLIO/名单/赞助材料已打印 | ☐ | 外联 |
+| 材料 | 工程笔记（PORTFOLIO）/名单/赞助材料已打印 | ☐ | 外联 |
 
 <!-- TODO(I-09): 确认本队实际检查清单项目与负责人后，与附录中的《赛前检查清单》合并去重。 -->
 
@@ -181,14 +181,14 @@ FTC 每场比赛的 **Drive Team 最多 4 人**（以当季手册术语表为准
 
 <!-- TODO(I-09): 补本队 Scouting 表模板与一次真实赛事的数据示例（去敏）。 -->
 
-## 六、工程文档与评审
+## 六、工程笔记（PORTFOLIO）与评审
 
-- 2026–2027 赛季官方把团队文档称为 **PORTFOLIO**（替代此前的"工程笔记"表述）：用于 Think Award 等评审，需按官方要求提交打印版/电子版。
-- 评审信息来自 **Initial Interview、Pit Interview 与 PORTFOLIO**；不同赛事提供的奖项不同，以当季 Section 6 Awards 为准。
+- 官方 2026–2027 手册使用 **PORTFOLIO** 这一名称；本指南沿用队伍习惯，统一写作 **工程笔记（PORTFOLIO）**。
+- 评审信息来自 **Initial Interview、Pit Interview 与工程笔记（PORTFOLIO）**；不同赛事提供的奖项不同，以当季 Section 6 Awards 为准。
 - 2026–2027 常见团队奖项包括：Inspire、Think、Connect、Reach、Sustain、Innovate、Control、Design、Judges' Choice 等；具体名称与标准以官方手册为准。
-- PORTFOLIO 的写作与排版见《外部联络》章"工程笔记"一节；本章只负责把比赛数据、复盘与证据交给外联组。
+- 工程笔记（PORTFOLIO）的写作与排版见《外部联络》章"工程笔记"一节；本章只负责把比赛数据、复盘与证据交给外联组。
 
-<!-- TODO(I-10): 补本队近年 PORTFOLIO 样例页（去敏）与答辩常见问题；确认"工程笔记"旧称在本队内的统一用法。 -->
+<!-- TODO(I-10): 补本队近年工程笔记（PORTFOLIO）样例页（去敏）与答辩常见问题；统一写法为"工程笔记（PORTFOLIO）"。 -->
 <!-- TODO(I-01): 核对当季奖项清单与申报要求（手册 Section 6 及 Team Update）。 -->
 
 ## 七、赛后复盘
@@ -218,4 +218,4 @@ FTC 每场比赛的 **Drive Team 最多 4 人**（以当季手册术语表为准
 - 赛制/规则手册：[https://ftc-resources.firstinspires.org/ftc/game/manual](https://ftc-resources.firstinspires.org/ftc/game/manual)
 - 赛事与队伍页面：[https://ftc-events.firstinspires.org/team/32477](https://ftc-events.firstinspires.org/team/32477)
 - 检查清单、参数表、模板：见《附录》
-- PORTFOLIO 与答辩：见《外部联络》章
+- 工程笔记（PORTFOLIO）与答辩：见《外部联络》章

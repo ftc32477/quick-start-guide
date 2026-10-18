@@ -73,6 +73,7 @@ def main():
   padding:10px 16px;margin:0 0 24px;font-size:13px;color:#6d4c00
 }
 .draft-section{padding-bottom:32px;border-bottom:1px dashed #ccc;margin-bottom:32px}
+@media print{.draft-section + .draft-section{break-before:page;page-break-before:always}}
 .draft-section:last-child{border-bottom:none}
 """
     html = (
