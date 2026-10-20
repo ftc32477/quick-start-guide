@@ -46,13 +46,15 @@ ftc_quick_start_guide/
 │   │   ├── build.md           # 结构建造
 │   │   ├── programming.md     # 程序设计
 │   │   ├── outreach.md        # 外部联络
+│   │   ├── operations.md      # 比赛与运营（v2.0.0 新增）
+│   │   ├── appendix.md        # 附录（v2.0.0 新增）
 │   │   └── afterword.md       # 后记
-│   ├── zh-hant/                 # 繁体中文源文件（同 zh-hans 结构）
-│   ├── en-us/                 # 英文（美式）源文件（同 zh-hans 结构）
-│   ├── fr/                    # 法语源文件（同 zh-hans 结构）
-│   ├── es/                    # 西班牙语源文件（同 zh-hans 结构）
-│   ├── ko/                    # 韩语源文件（同 zh-hans 结构）
-│   └── pt-br/                 # 巴西葡萄牙语源文件（同 zh-hans 结构）
+│   ├── zh-hant/                 # 繁体中文源文件（暂为 v1.5.1 七页结构，待同步）
+│   ├── en-us/                 # 英文（美式）源文件（暂为 v1.5.1 七页结构，待同步）
+│   ├── fr/                    # 法语源文件（暂为 v1.5.1 七页结构，待同步）
+│   ├── es/                    # 西班牙语源文件（暂为 v1.5.1 七页结构，待同步）
+│   ├── ko/                    # 韩语源文件（暂为 v1.5.1 七页结构，待同步）
+│   └── pt-br/                 # 巴西葡萄牙语源文件（暂为 v1.5.1 七页结构，待同步）
 ├── images/                    # 图片原图（入库；改图后运行 --optimize-images）
 │   ├── basic/                 # 通用资源（各语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
@@ -61,13 +63,13 @@ ftc_quick_start_guide/
 ├── images-opt/                # 图片三套派生副本（display/print/hi，入库；构建/CI 直接复制到 dist/images/）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
 │   ├── index.html             # 根门户（语言选择落地页，仿 wikipedia.org）
-│   ├── zh-hans/                 # 简体中文网站（主页 + 7 页 + 历史版本页）
-│   ├── zh-hant/                 # 繁体中文网站（主页 + 7 页 + 歷史版本頁）
-│   ├── en-us/                 # 英文（美式）网站（Home + 7 pages + Version History）
-│   ├── fr/                    # 法语网站（Accueil + 7 pages + Historique des versions）
-│   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones）
-│   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
-│   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões）
+│   ├── zh-hans/                 # 简体中文网站（主页 + 9 页 + 历史版本页）
+│   ├── zh-hant/                 # 繁体中文网站（主页 + 7 页 + 歷史版本頁，待同步）
+│   ├── en-us/                 # 英文（美式）网站（Home + 7 pages + Version History，待同步）
+│   ├── fr/                    # 法语网站（Accueil + 7 pages + Historique des versions，待同步）
+│   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones，待同步）
+│   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록，待同步）
+│   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões，待同步）
 │   ├── images/                # 图片派生（display/print/hi，由 images-opt/ 复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
@@ -168,6 +170,8 @@ python3 build.py && git status --porcelain -- dist   # 无输出 = dist 与源�
 
 ## 三、PDF 结构（多语言自动本地化）
 
+> [!info] v2.0.0 开发中：当前仅 zh-hans 已加入《比赛与运营》《附录》，合并 PDF 为 8 章、约 88 页；其余六语言仍为 v1.5.1 的 6 章结构，待翻译同步后重新生成。
+
 每个语言的合并指南 `FTC-Team-32477-Origin-Quick-Start-Guide-{RELEASE_TAG}-{lang}.pdf`（{lang} 为 zh-hans / zh-hant / en-us / fr / es / ko / pt-br）按**教科书式装订**排布：封面/封底单独印刷，**不印刷封二、封三**（印厂无法在封里印刷内容），页面顺序如下：
 
 1. **封面**：深色渐变背景（135°），内容放大并位于黄金分割点（内容中心 ≈ 38.2vh）；居中队徽、队伍徽章、"FIRST® Tech Challenge"、指南名（本地化）、学校，组团信息行距较大；**字号层级以指南名为最大（36px），"FIRST® Tech Challenge"次之（28px）**，封面整体字号大于扉页（30/26px）；底部居中"语言版本 / 版次日期"**两行**（如"简体中文版"+"2026年10月第2版"，位置略上移）
@@ -248,12 +252,12 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 
 ### 各语言主页（dist/{lang}/index.html，由 `render_lang_homepage()` 生成）
 
-选择语言后进入的本地化落地页，复用指南页外壳（侧边栏/顶栏/语言切换），侧边栏导航为"主页 + 7 章"。内容分节：
+选择语言后进入的本地化落地页，复用指南页外壳（侧边栏/顶栏/语言切换），侧边栏导航：zh-hans 为"主页 + 9 章"，其余六语言暂为"主页 + 7 章"（待同步翻译）。内容分节：
 
 1. **英雄区**：队徽 + 徽章 + 指南名（本地化）+ 标语（本地化）
 2. **项目概况**：队伍 / 学校 / 地址 / 最新版本（本地化）
 3. **下载**：说明文字（离线版本、无需联网即可阅读、可打印）+ 本语言 PDF 下载按钮 → GitHub Release 资产（自动取 `VERSIONS` 中最新已发布版本的本语言资产）
-4. **内容结构**：7 章链接列表（本地化，链到各章页面）
+4. **内容结构**：章节链接列表（zh-hans 为 9 章；其余六语言暂为 7 章）
 5. **历史版本入口**：说明文字 + 按钮 → 本语言 `versions.html`
 6. **法律声明**：本地化单语
 
@@ -410,7 +414,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
                                     预览站点 https://ftc32477.github.io/docs/dev/
 ```
 
-- ① 本地构建：生成根门户 + 各语言"主页 + 7 页 + 历史版本页"（页面数 = 1 + 9 × 语言数，当前 7 语言共 64 个 HTML；需 Python 依赖，见"一、使用的工具与依赖"）；`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
+- ① 本地构建：生成根门户 + 各语言主页/内容页/历史版本页。当前 zh-hans 为"主页 + 9 页 + 历史版本页"，其余六语言暂为"主页 + 7 页 + 历史版本页"，合计 66 个 HTML；六语言补齐后为 1 + 11 × 语言数 = 78 个。`build_pdf.py` 生成的 PDF 留在本地自查纠错，不入库
 - ② 提交推送：每次修改完成后自动 `git commit` 到本地；经人工审查给出指示后才 `git push`，换机迁移只需 clone 主仓库
 - ③ 云端同步：Actions 在同步前先重跑 `build.py` 并校验 `dist/` 与源码一致、且 `dist/pdf/` 未入库，通过后才把 dist 整体同步为发布仓库对应目录（先清空再复制，避免残留旧文件；无变化时自动跳过提交；同一时刻只允许一次同步）。**main → docs/（正式站点）、dev → docs/dev/（开发预览站）**
 - ④ 站点生效：推送后约 1–2 分钟
@@ -590,8 +594,12 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 | build.md | 结构建造 | 結構建造 | Hardware & Build | Matériel & Construction | Hardware y construcción | 하드웨어 및 제작 | Hardware e construção |
 | programming.md | 程序设计 | 程式設計 | Programming | Programmation | Programación | 프로그래밍 | Programação |
 | outreach.md | 外部联络 | 外部聯絡 | Outreach & PR | Sensibilisation & Relations publiques | Divulgación y relaciones públicas | 아웃리치 및 대외 홍보 | Divulgação e relações públicas |
+| operations.md | 比赛与运营 | 比賽與營運 | Competition & Operations | Compétition et opérations | Competición y operaciones | 대회와 운영 | Competição e operações |
+| appendix.md | 附录 | 附錄 | Appendix | Annexe | Apéndice | 부록 | Apêndice |
 | afterword.md | 后记 | 後記 | Afterword | Postface | Epílogo | 후기 | Posfácio |
 | versions.html | 历史版本 | 歷史版本 | Version History | Historique des versions | Historial de versiones | 버전 기록 | Histórico de versões |
+
+> v2.0.0 开发中：`operations.md`、`appendix.md` 目前只有 zh-hans 源文件；其余六语言暂保留 v1.5.1 的七页结构，待翻译后补齐。
 
 <a id="s2-style"></a>
 
@@ -1053,3 +1061,4 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 3. **新增合照的名单标注**：每次新增合照时，按现有格式补充"日期 + 上/下排姓名"名单（各语言同步；格式见第二部分「配图规范 → 合照规范」）
 4. **GitHub 章节配图**：程序设计章「五、GitHub 协作基础」当前为纯文字版，需补去敏截图。建议清单（按出现顺序）：①组织主页；②仓库首页（README 与页签）；③提交历史与单次 diff；④Releases 资产列表；⑤Issues 列表与新建表单；⑥网页端编辑（铅笔按钮）；⑦无写入权限时的 Fork 提示；⑧Commit changes 分支选项；⑨新建 PR 表单；⑩PR 审查界面；⑪Actions 运行列表（可选）；⑫`topic:ftc` 搜索结果。要求遵守《配图规范》，不得出现邮箱、Token、私有仓库内容与浏览器个人信息。
 5. **pt-br 母语审校**：巴西葡语版目前为 AI 初译（v1.4.0 起已上线），尚无母语审校留痕；需葡语母语者通读全部七章与版次文案，审校后按发版流程更新。
+6. **v2.0.0 内容初稿（zh-hans）**：整书 9 页初稿已完成并接入构建（比赛与运营、附录为新增页），共约 23,300 中文字符、35 处不可见 TODO（见 `drafts/v2.0.0/TODO.md`）。发版前仍需：补齐 TODO 素材、完成六语言翻译与母语审校、升级 `VERSIONS`/`RELEASE_TAG` 为 v2.0.0 并重建全部 PDF/Release。

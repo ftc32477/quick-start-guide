@@ -1462,14 +1462,14 @@ def export(lang_filter=None, page_filter=None):
             if lang in LANGUAGES:
                 check_font_coverage(lang)
 
-        pages = [page_filter] if page_filter else PAGE_KEYS
-
         tmp_dir = tempfile.mkdtemp(prefix="ftc-cover-")
 
         for lang in langs:
             if lang not in LANGUAGES:
                 print(f"  [错误] 未知语言: {lang}")
                 continue
+            pages = [page_filter] if page_filter else build_mod.available_pages(lang)
+            lang_pages = build_mod.available_pages(lang)
 
             lang_pdf_dir = os.path.join(PDF_DIR, lang)
             os.makedirs(lang_pdf_dir, exist_ok=True)
@@ -1501,7 +1501,7 @@ def export(lang_filter=None, page_filter=None):
             # 封面 + 扉页(白底黑字封面信息) + 版权页(扉页背面) + 前言(罗马)
             # + 目录(罗马) + 正文(阿拉伯) + 资源页(内页最后一页) + 封底
             merged_ok = False
-            if set(PAGE_KEYS).issubset(rendered) and not page_filter:
+            if set(lang_pages).issubset(rendered) and not page_filter:
                 cover_html = os.path.join(tmp_dir, f"cover-{lang}.html")
                 title_html = os.path.join(tmp_dir, f"titlepage-{lang}.html")
                 back_html = os.path.join(tmp_dir, f"back-{lang}.html")
@@ -1547,7 +1547,7 @@ def export(lang_filter=None, page_filter=None):
 
                     # 计算正文各章起始页码（队员须知 = 第 1 页）
                     from pypdf import PdfReader as _R
-                    main_keys = [k for k in PAGE_KEYS if k != "preface"]
+                    main_keys = [k for k in lang_pages if k != "preface"]
                     page_counts = {k: len(_R(rendered[k]).pages) for k in main_keys}
                     starts = {}
                     acc = 1

@@ -350,3 +350,103 @@ FTC 常用开源资源（均可在 GitHub 找到）：
 - 交互式课程（英文）：[https://skills.github.com/](https://skills.github.com/)
 
 > [!info] 遇到不确定的操作，先咨询管理员或在 Issues 中提问。
+
+## 六、FTC SDK 与工程结构
+
+<!-- TODO(I-08): 由程序组补充本队示例仓库链接、已验证的 SDK 版本与硬件映射。 -->
+
+FTC 官方 SDK 是一个 Android 工程，核心目录：
+
+```
+FtcRobotController/        # 官方示例与基础模块
+TeamCode/src/main/java/    # 队伍自己的代码（OpMode 放在这里）
+build.gradle               # 依赖与 SDK 版本
+```
+
+- 每个 OpMode 是 `TeamCode` 下的一个 Java 类，用 `@TeleOp` / `@Autonomous` 注解标记；
+- 新赛季从官方模板复刻仓库，保留 `TeamCode`，不要在官方目录里写队伍代码；
+- Android Studio 打开工程后先 Gradle Sync，再连接 Robot Controller 部署；
+- 代码提交前跑一次本地构建，避免把编译错误推给全队。
+
+## 七、Robot Configuration 与 DS/RC 连接
+
+### 7.1 机器人配置
+
+<!-- TODO(I-02): 补 Control Hub 实际端口与设备命名截图（去敏）。 -->
+
+- 在 Driver Station 的 Robot Configuration 中为每个电机、舵机、传感器分配名字与端口；
+- 命名规范：`leftFront`、`rightFront`、`arm`、`intake`、`imu` 等，代码里用同一个名字；
+- 修改配置后必须保存并重启 Robot Controller，否则 `hardwareMap.get()` 会找不到设备；
+- 每台机器人保留一份配置备份（截图或配置文件）。
+
+### 7.2 DS 与 RC 连接
+
+1. 给 Control Hub 上电，等待状态灯正常；
+2. Driver Station 连接机器人网络（Wi-Fi Direct 或路由器）；
+3. 在 Driver Station 选择 OpMode，点击 INIT → START；
+4. 连接失败时依次检查：电池电压、网络、Robot Controller App 是否运行、配置是否匹配。
+
+## 八、第一个 OpMode
+
+<!-- TODO(I-08): 示例代码需程序组在实机验证后定稿；硬件名以实际 Robot Configuration 为准。 -->
+
+下面是一个最小 TeleOp：左手柄摇杆同时驱动左右电机，并在 Driver Station 显示功率。
+
+```java
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+@TeleOp(name = "Hello Drive", group = "Guide")
+public class HelloDrive extends LinearOpMode {
+    @Override
+    public void runOpMode() {
+        DcMotor left = hardwareMap.get(DcMotor.class, "leftFront");
+        DcMotor right = hardwareMap.get(DcMotor.class, "rightFront");
+
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+        waitForStart();
+
+        while (opModeIsActive()) {
+            double y = -gamepad1.left_stick_y;
+            left.setPower(y);
+            right.setPower(y);
+            telemetry.addData("power", y);
+            telemetry.update();
+        }
+    }
+}
+```
+
+- `runOpMode()` 的生命周期：init → waitForStart() → loop → stop；不要在 init 阶段做耗时动作；
+- `gamepad1.left_stick_y` 向上为负，所以取反；
+- 若一侧电机方向相反，在配置里改方向或代码里对 `right.setPower(-y)`；
+- 部署流程：Android Studio Run → 选择 Robot Controller → 在 Driver Station 选 OpMode → INIT/START。
+
+## 九、常用硬件控制与调试
+
+### 9.1 常用硬件
+
+| 硬件 | 用途 | 关键点 |
+|---|---|---|
+| 直流电机 + 编码器 | 驱动/升降 | 编码器读数换算距离/速度 |
+| 舵机 / CRServo | 角度/连续转动 | 行程标定，避免堵转 |
+| 距离/颜色传感器 | 自动对齐/识别 | 安装高度与量程 |
+| IMU | 转向/姿态 | 初始化后需校准 |
+| 摄像头 + AprilTag | 视觉定位 | 光照与标定 |
+
+### 9.2 调试方法
+
+- **Telemetry**：把关键变量打到 Driver Station，先看数再改代码；
+- **日志**：异常时保留完整报错，不要只看最后一行；
+- **分步验证**：先单电机，再双电机，再机构，最后整机；
+- **常见故障**：见《附录》故障排查表。
+
+## 十、测试与第一次任务
+
+测试分三层：台架测试（架空轮子）→ 场地测试（完整动作）→ 对抗测试（有人干扰）。
+
+第一次任务：写出并部署一个 TeleOp，用左手柄摇杆驱动两个电机，在 Driver Station 显示实时功率；再给其中一个电机加编码器读数并显示。验收：能部署、能驱动、遥测正常、代码提交到队伍仓库分支。

@@ -42,6 +42,8 @@ PAGE_KEYS = [
     "build",
     "programming",
     "outreach",
+    "operations",
+    "appendix",
     "afterword",
 ]
 
@@ -65,6 +67,8 @@ LANGUAGES = {
             "build":       "结构建造",
             "programming": "程序设计",
             "outreach":    "外部联络",
+            "operations":  "比赛与运营",
+            "appendix":    "附录",
             "afterword":   "后记",
         },
     },
@@ -86,6 +90,8 @@ LANGUAGES = {
             "build":       "結構建造",
             "programming": "程式設計",
             "outreach":    "外部聯絡",
+            "operations":  "比賽與營運",
+            "appendix":    "附錄",
             "afterword":   "後記",
         },
     },
@@ -107,6 +113,8 @@ LANGUAGES = {
             "build":       "Hardware &amp; Build",
             "programming": "Programming",
             "outreach":    "Outreach &amp; PR",
+            "operations":  "Competition & Operations",
+            "appendix":    "Appendix",
             "afterword":   "Afterword",
         },
     },
@@ -128,6 +136,8 @@ LANGUAGES = {
             "build":       "Matériel &amp; Construction",
             "programming": "Programmation",
             "outreach":    "Sensibilisation &amp; Relations publiques",
+            "operations":  "Compétition et opérations",
+            "appendix":    "Annexe",
             "afterword":   "Postface",
         },
     },
@@ -149,6 +159,8 @@ LANGUAGES = {
             "build":       "Hardware y construcción",
             "programming": "Programación",
             "outreach":    "Divulgación y relaciones públicas",
+            "operations":  "Competición y operaciones",
+            "appendix":    "Apéndice",
             "afterword":   "Epílogo",
         },
     },
@@ -170,6 +182,8 @@ LANGUAGES = {
             "build":       "하드웨어 및 제작",
             "programming": "프로그래밍",
             "outreach":    "아웃리치 및 대외 홍보",
+            "operations":  "대회와 운영",
+            "appendix":    "부록",
             "afterword":   "후기",
         },
     },
@@ -191,6 +205,8 @@ LANGUAGES = {
             "build":       "Hardware e construção",
             "programming": "Programação",
             "outreach":    "Divulgação e relações públicas",
+            "operations":  "Competição e operações",
+            "appendix":    "Apêndice",
             "afterword":   "Posfácio",
         },
     },
@@ -2167,6 +2183,12 @@ tr:nth-child(even){background:#fafafa}
 #  页面生成
 # ============================================================
 
+def available_pages(lang_key):
+    """该语言实际存在的页面（新页面可先只做 zh-hans，其余语言暂缺）。"""
+    return [key for key in PAGE_KEYS
+            if os.path.exists(os.path.join(SRC_DIR, lang_key, f"{key}.md"))]
+
+
 def render_page(page_key, html_body, lang_key, headings=None):
     """将 HTML 正文包装进完整页面模板。"""
     lang = LANGUAGES[lang_key]
@@ -2179,8 +2201,9 @@ def render_page(page_key, html_body, lang_key, headings=None):
             desc = plain[:120]
 
     # 侧边栏导航（主页 + 当前语言的页面标题 + 当前页的二级目录）
+    page_list = available_pages(lang_key)
     nav_items = [f'<a href="index.html">{lang["pages"]["index"]}</a>']
-    for key in PAGE_KEYS:
+    for key in page_list:
         cls = ' class="active"' if key == page_key else ""
         title = lang["pages"][key]
         nav_items.append(f'<a href="{key}.html"{cls}>{title}</a>')
@@ -2196,8 +2219,11 @@ def render_page(page_key, html_body, lang_key, headings=None):
     sidebar_options = []
     for lk, lc in LANGUAGES.items():
         sel = " selected" if lk == lang_key else ""
+        target = (f"{page_key}.html"
+                  if os.path.exists(os.path.join(SRC_DIR, lk, f"{page_key}.md"))
+                  else "index.html")
         sidebar_options.append(
-            f'<option value="../{lk}/{page_key}.html"{sel}>{lc["label"]}</option>'
+            f'<option value="../{lk}/{target}"{sel}>{lc["label"]}</option>'
         )
     sidebar_select_html = "".join(sidebar_options)
 
@@ -2205,8 +2231,11 @@ def render_page(page_key, html_body, lang_key, headings=None):
     select_options = []
     for lk, lc in LANGUAGES.items():
         sel = " selected" if lk == lang_key else ""
+        target = (f"{page_key}.html"
+                  if os.path.exists(os.path.join(SRC_DIR, lk, f"{page_key}.md"))
+                  else "index.html")
         select_options.append(
-            f'<option value="../{lk}/{page_key}.html"{sel}>{lc["label"]}</option>'
+            f'<option value="../{lk}/{target}"{sel}>{lc["label"]}</option>'
         )
     select_html = "".join(select_options)
 
@@ -2637,8 +2666,9 @@ def render_lang_homepage(lang_key):
     lang = LANGUAGES[lang_key]
     t = LANG_HOME_TEXTS[lang_key]
 
+    pages = available_pages(lang_key)
     nav_items = [f'<a href="index.html" class="active">{lang["pages"]["index"]}</a>']
-    for key in PAGE_KEYS:
+    for key in pages:
         nav_items.append(f'<a href="{key}.html">{lang["pages"][key]}</a>')
     nav_html = "\n".join(nav_items)
 
@@ -2656,7 +2686,7 @@ def render_lang_homepage(lang_key):
 
     chapter_items = "".join(
         f'<li><span class="num">{i}</span><a href="{key}.html">{lang["pages"][key]}</a></li>'
-        for i, key in enumerate(PAGE_KEYS, start=1)
+        for i, key in enumerate(pages, start=1)
     )
 
     released = [v for v in VERSIONS if v.get("status") != "preview"]
@@ -3382,7 +3412,7 @@ def collect_figure_maps(lang_key):
     """第一遍解析：为某语言收集所有图注编号与交叉引用 id。"""
     fig_map = {}
     warnings = []
-    for page_key in PAGE_KEYS:
+    for page_key in available_pages(lang_key):
         md_path = os.path.join(SRC_DIR, lang_key, f"{page_key}.md")
         if not os.path.exists(md_path):
             continue
@@ -3436,10 +3466,10 @@ def build():
             f.write(lang_home_html)
         total += 1
 
-        for page_key in PAGE_KEYS:
+        lang_pages = available_pages(lang_key)
+        for page_key in lang_pages:
             md_path = os.path.join(lang_src, f"{page_key}.md")
             if not os.path.exists(md_path):
-                print(f"  [警告] 源文件不存在: {md_path}")
                 continue
 
             with open(md_path, "r", encoding="utf-8") as f:
@@ -3463,7 +3493,7 @@ def build():
             f.write(versions_html)
         total += 1
 
-        print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(PAGE_KEYS)} 页 + 历史版本页")
+        print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(lang_pages)} 页 + 历史版本页")
 
     # 生成根门户（语言选择落地页）
     portal_html = render_portal()
