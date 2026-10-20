@@ -53,11 +53,12 @@ ftc_quick_start_guide/
 │   ├── es/                    # 西班牙语源文件（同 zh-hans 结构）
 │   ├── ko/                    # 韩语源文件（同 zh-hans 结构）
 │   └── pt-br/                 # 巴西葡萄牙语源文件（同 zh-hans 结构）
-├── images/                    # 图片资源（构建时自动复制到 dist/images/）
+├── images/                    # 图片原图（入库；改图后运行 --optimize-images）
 │   ├── basic/                 # 通用资源（各语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
 │   │   └── team_logo.png      # 队徽（侧边栏/顶栏/主页英雄区）
 │   └── afterword/             # 后记专用图片（大合照等）
+├── images-opt/                # 图片三套派生副本（display/print/hi，入库；构建/CI 直接复制到 dist/images/）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
 │   ├── index.html             # 根门户（语言选择落地页，仿 wikipedia.org）
 │   ├── zh-hans/                 # 简体中文网站（主页 + 7 页 + 历史版本页）
@@ -67,7 +68,7 @@ ftc_quick_start_guide/
 │   ├── es/                    # 西班牙语网站（Inicio + 7 páginas + Historial de versiones）
 │   ├── ko/                    # 韩语网站（홈 + 7 페이지 + 버전 기록）
 │   ├── pt-br/                 # 巴西葡萄牙语网站（Início + 7 páginas + Histórico de versões）
-│   ├── images/                # 图片（自动复制）
+│   ├── images/                # 图片派生（display/print/hi，由 images-opt/ 复制）
 │   └── pdf/                   # PDF 产物（本地生成、不入库；正式版作为 GitHub Release 资产发布）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hans.pdf  # 简体中文完整指南（封面+扉页+版权页+正文+资源页+封底）
 │       ├── FTC-Team-32477-Origin-Quick-Start-Guide-v1.5.1-zh-hant.pdf  # 繁体中文完整指南
@@ -83,6 +84,8 @@ ftc_quick_start_guide/
 │   └── build_subsets.py       # 字体子集生成工具（维护者用，需要 fonttools）
 ├── .github/workflows/         # CI：dist 同步校验与 GitHub Pages 自动部署
 ├── release-notes/             # 各版 Release 说明（与 tag 一一对应）
+├── demo/                      # 编译工具语法示例（不随书发布）
+├── tests/                     # 编译工具单元测试（python3 -m unittest discover -s tests）
 ├── build.py                   # HTML 构建脚本
 ├── build_pdf.py               # PDF 导出脚本
 ├── release.sh                 # 半自动发版脚本（见"八、发布到 GitHub Pages"）
@@ -111,11 +114,12 @@ ftc_quick_start_guide/
 | websocket-client | 与 Chrome 调试端口（CDP）通信，渲染封面/扉页/目录等页面 |
 | pypdf | PDF 合并、读取页面、页眉页脚覆盖层盖印、目录内部超链接注解（Link） |
 | reportlab | 盖印页眉/页脚，直接嵌入 `fonts/subsets/` 的字体子集 |
+| Pillow | **仅维护者需要**：重建 `images-opt/{display,print,hi}/` 三套图片派生版本（`python3 build.py --optimize-images`）；日常构建与 CI 直接复制，不需要 Pillow |
 | fonttools | **仅维护者需要**：内容新增用字后重建字体子集（见下文「PDF 字体」）。队员无需安装，子集已入库 |
 
 ```bash
 pip3 install websocket-client pypdf reportlab
-pip3 install fonttools   # 仅维护者重建字体子集时需要
+pip3 install Pillow fonttools   # 仅维护者重建图片派生版本 / 字体子集时需要
 ```
 
 <a id="s1-quickstart"></a>
@@ -129,6 +133,8 @@ python3 build.py              # 一次性构建
 python3 build.py --watch      # 监听模式（src/*.md、images/ 与 build.py 变化自动重建；build.py 变更时自动重启监听）
 ```
 
+- 构建时会复制入库的 `images-opt/{display,print,hi}/` 到 `dist/images/`，并检查 Markdown 中引用的图片是否存在；改图后请先运行 `python3 build.py --optimize-images`（需要 Pillow）重建三套派生版本并提交 `images/` 与 `images-opt/`。日志中的 `[图片警告]` / `[图注警告]` 需处理后再提交。
+
 ### 导出 PDF
 
 ```bash
@@ -141,6 +147,17 @@ python3 build_pdf.py --rebuild      # 先重建 HTML 再导出 PDF
 - 完整导出（不带 `--page`）在合并成功后会自动删除各语言的单页 PDF，`dist/pdf/` 下只保留各语言合并版。
 - `--page` 用于内容调试：只生成指定页的单页 PDF（含页眉页脚），不删除。
 - `dist/pdf/` 已加入 `.gitignore` **不入库**，仅本地生成用于自查纠错；正式发布的 PDF 上传为 GitHub Release 资产（见"八、发布到 GitHub Pages"）。
+
+### 编译器自检与语法示例
+
+```bash
+python3 -m unittest discover -s tests     # 编译工具单元测试
+python3 demo/build_demo.py                # 生成语法示例到 /tmp/ftc-syntax-demo（HTML + PDF）
+python3 build.py && git status --porcelain -- dist   # 无输出 = dist 与源码同步
+```
+
+- 修改图片后先运行 `python3 build.py --optimize-images` 重建 `images-opt/{display,print,hi}/` 并提交。
+- `demo/` 与 `tests/` 不参与构建发布，仅用于本地验收。
 
 ### 链接行为约定
 
@@ -341,6 +358,27 @@ PDF 排版使用开源字体，按各语言**实际用字**裁成静态子集后
 - `word-break:normal` + `overflow-wrap:break-word` —— 普通单词以词为单位换行（不切断单词）；仅当单个超长词/URL 超出单元格宽度时才在任意位置切断，防止触发整页缩放
 - 打印时缩小单元格内边距（6px 8px）与字号（12px）
 - `tr{page-break-inside:avoid}` —— 行不跨页截断
+
+### 图片打印规则
+
+- 单图：打印 CSS 限制 `max-width:100%`、`max-height` 约 22cm；超长图等比缩进一页，不跨页切段。
+- 图片组 / 图文并排：HTML 输出真实 `<table>` 结构，PDF 中保持并排、不拆页；窄屏（HTML）自动堆叠。
+- **打印清晰度**：PDF 使用 `print` 派生版本（长边 ≤ 2600px、JPEG q88），A4 内容区满幅时约 ≥ 300dpi；`build.py --optimize-images` 会提示"满幅打印约 Xdpi"，低于 300dpi 时应更换更高清源图或缩小显示宽度。
+- **HTML 高清查看**：正文图片默认加载 `display` 版本（≤1600px，加载快）；点击图片在新标签页打开 `hi` 版本（≤4000px），可放大、右键另存或复制图片地址。PDF 生成前会自动切换为 `print` 版本，不受 display 压缩影响。
+- 图注自动编号（`图 x-y`）与 `{#fig:id}` 引用在 HTML/PDF 一致；PDF 中 `[](#fig:id)` 链接可点击。
+- `build.py` 检查缺图、体积、低分辨率、打印 DPI 与图号引用；`build_pdf.py` 会提示空白页、HTML/PDF 图片数不一致。
+
+### 编译工具改造经验（2026-10）
+
+- **图片组不要用 flex 做打印布局**：Chrome 打印会把 flex 子项拆到不同页；改为真实 `<table>` 后，真实后记页从 4 页恢复到 2 页、两张合照同页。
+- **响应式规则必须限定 `@media screen`**：A4 内容区宽度约 554px，会命中 `max-width:600px` 的屏幕堆叠规则，导致"图文并排"在 PDF 中被压成一列；打印布局统一放到 `@media print`。
+- **全局表格样式会污染媒体表格**：`th,td{border:...}`、`tr:nth-child(even){background:...}` 会作用到图片组/并排表格；用更高优先级选择器覆盖为无边框、无底色。
+- **超长图必须限制 `max-height`**：否则 Chrome 按页高切段（实测 1000×3600 的图被切成 3 段、图注落到最后一页）；构建同时提示打印 DPI。
+- **跨页图号需要两遍解析**：第一遍只收集 图 id→图号，第二遍渲染并填 `[](#fig:id)`；否则前向引用取不到编号。
+- **打印与在线用不同派生图**：`display`（≤1600px，页面快）/ `print`（≤2600px，A4 满幅 ≥300dpi）/ `hi`（≤4000px，点击查看）。PDF 导出前用 JS 把 `img[data-print]` 切到 print 版本。
+- **构建不依赖 Pillow**：三套派生图入库 `images-opt/`，CI 只复制；改图后本地 `--optimize-images` 重建并提交，保证各机器/CI 产物一致。
+- **打印前等待图片**：懒加载/大图解码未完成会缺图；`build_pdf.py` 在打印前轮询 `img.complete && naturalWidth`，并对空白页、图片数做校验。
+- **媒体排版回归**：媒体表格统一无边框；并排间距统一 14px（图片组 7+7，`::: side` 用第二列 14px 左内边距），避免 `reverse` 时图文贴边。
 
 ### 打印隐藏
 
@@ -620,26 +658,31 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 
 ### 目录与命名
 
-- 通用图片（队徽、图标等 UI 资源）放 `images/basic/`；正文配图按用途分子目录（如 `images/afterword/`）。
-- `build.py` 构建时会把 `images/` 整体复制到 `dist/images/`；Markdown 中引用路径必须为 `../images/...`。
-- 各语言共用同一套图片；目前没有语言专属图片。
+- 通用图片（队徽、图标等 UI 资源）放 `images/basic/`；正文配图按用途分子目录（如 `images/afterword/`、`images/build/`）。
+- 仓库保存：`images/` **原图**（入库、保留全部信息）与 `images-opt/{display,print,hi}/` **三套派生版本**（入库，构建/CI 直接使用）。Markdown 仍写 `../images/...`，构建时自动映射，无需改动引用。
+- 各语言共用同一套图片；**截图/示意图以英文界面为范例，不随语言版本改变**（正文与图注按各语言书写）。
 
-### 尺寸与体积
+### 三套派生图与体积
 
-- 相机/手机原图先压缩：长边建议 1600–2000px、JPEG 质量 80 左右（macOS 可用 `sips -Z 2000 图片.jpg`）。
-- 网页正文可用宽度约 820px，PDF 打印下 1600px 宽足够清晰；单张图片建议 < 500KB。
-- UI 小图使用已有小尺寸副本（如 `team_logo_small.png`，256px），不要把大原图直接放进页面。
+- **display**（HTML 在线显示）：长边 ≤ 1600px、JPEG q82；正文可用宽度约 820px，约为 2× 清晰度，页面加载更快。
+- **print**（PDF 打印）：长边 ≤ 2600px、JPEG q88；保证在 A4 内容区（约 5.77×8.66 英寸）满幅使用时约 **300dpi 或更高**，打印不模糊。
+- **hi**（点击查看高清图）：长边 ≤ 4000px、JPEG q90（源图更小则保持原尺寸）；HTML 中点击图片会在新标签页打开 hi 版本，可放大、右键另存或复制图片地址。PDF 不引用 hi 版本。
+- 源图建议长边 2000–4000px；低于 800px 会在派生日志提示"分辨率偏低"（`images/basic/` 小图标不提示）。标注密集的截图建议保存为 PNG（无损）。
+- 改动图片后运行 `python3 build.py --optimize-images`（需要 Pillow）重建三套派生版本，并提交 `images/` 与 `images-opt/`；构建日志会提示体积与"满幅打印约 Xdpi"，低于 300dpi 请换更高清源图或缩小显示宽度。
+- 日常构建 `python3 build.py` 只把 `images-opt/` 复制到 `dist/images/`，不依赖 Pillow；CI 因此可复现。
 
 ### 新图入库前的技术处理
 
-- **去除 EXIF/GPS**：可用 `exiftool -all= 图片.jpg` 或 `magick 图片.jpg -strip 输出.jpg`；macOS「预览」导出也可清除元数据。`build.py` 在复制图片时会对含 EXIF 的 JPEG 输出提醒。
 - **截图去敏**：软件/控制台截图不得出现 API Key、Token、密码、序列号、个人账号头像或真实姓名；示例数据请用虚构值。
+- 建议先清除 EXIF/GPS（`exiftool -all= 图片.jpg` 或系统预览导出）；构建生成派生版本时也会重建图片并去除元数据。
 - 统一方向与比例；并排图片请使用相同宽高比，横图优先。
+- 图片缺失、体积/分辨率/打印 DPI 异常会在 `python3 build.py` 日志中以 `[图片警告]` / `[图片提示]` 输出。
 
-### 图片组与图注
+### 图片组、图注与编号
 
-- 连续多行图片语法（中间无空行）会自动并排显示，窄屏自动改为单列；PDF 中保持并排且不跨页截断。
-- `![]` 中的文字即图注（显示在图下方）；图注写清对象与时间，如"大合照（2025年12月19日）"。
+- 连续多行图片语法（中间无空行）自动并排显示（**PDF 中为真实表格布局，不会拆页**）；窄屏自动改为单列。
+- `![]` 中的文字即图注（显示在图下方）；**图注自动编号**，无需手写（如 `图 4-1`、`图 序-1`、`图 后-1`、`图 A-1`）。
+- 需要引用图号时给图加 id：`![图注](../images/x.png){#fig:x}`；正文写 `[](#fig:x)` 会自动变成该图号（PDF 中可点击），引用不存在的 id 会在构建日志告警。
 - 图片说明较长时，改为图片下方的普通段落，不要塞进图注。
 
 ### 合照规范
@@ -651,9 +694,10 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 ### 操作流程
 
 1. 处理好的图片放入 `images/` 对应子目录；
-2. 在 `src/zh-hans/*.md` 中引用（`../images/...`），定稿后同步其余各语言；
-3. 运行 `python3 build.py` 自动复制图片并生成页面；
-4. 运行 `python3 build_pdf.py` 重建 PDF，检查图片是否跨页截断。
+2. 运行 `python3 build.py --optimize-images` 重建 `images-opt/` 三套派生版本（需要 Pillow），并提交 `images/` 与 `images-opt/`；
+3. 在 `src/zh-hans/*.md` 中引用（`../images/...`），定稿后同步其余各语言；
+4. 运行 `python3 build.py`：复制派生版本、检测缺图与打印 DPI、生成页面并校验图号引用；
+5. 运行 `python3 build_pdf.py` 重建 PDF，检查图注编号、图片并排与跨页情况（脚本会提示空白页/缺图）。
 
 ---
 
@@ -746,30 +790,98 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 ### 图片
 
 ```markdown
-![图片描述](images/photo.png)
+![图片描述](../images/photo.png)
+![宽 60% 的图](../images/photo.png){w=60%}
+![最大高度 8cm 的图](../images/photo.png){mh=8cm align=center}
+![可被正文引用的图](../images/photo.png){#fig:hub}
 ```
 
-**效果：** 在页面中插入图片。
+**效果：** 整行图片渲染为带图注与自动图号的 `figure`；图片也支持行内写法：`文字 ![图标](../images/basic/icon.png) 文字`（行内图无图注/编号）。
 
-**用途：** 在文档中插入照片、截图、示意图等。先将图片放入项目根目录的 `images/` 文件夹（建议按用途分子目录，如 `basic/`、`afterword/`），构建时会自动复制到 `dist/images/`，各语言页面共用。
+**属性（均可省略）**：
+
+| 写法 | 含义 | 示例 |
+|------|------|------|
+| `w=` | 显示宽度（百分比或像素） | `{w=60%}`、`{w=420}` |
+| `mh=` | 最大高度（PDF 中自动约束，防止超长图跨页） | `{mh=8cm}`、`{mh=3in}` |
+| `h=` | 固定高度（少用，可能变形） | `{h=200}` |
+| `align=` | 对齐 `left` / `center` / `right` | `{align=left}` |
+| `#fig:id` | 图 id，供正文交叉引用 | `{#fig:hub}` |
+
+**用途：** 在文档中插入照片、截图、示意图等。先将图片放入 `images/` 对应子目录，运行 `python3 build.py --optimize-images` 生成 `images-opt/{display,print,hi}/` 三套派生版本；构建时复制到 `dist/images/`，各语言页面共用。HTML 中点击图片会在新标签页打开高清版（hi）；PDF 自动使用 print 版本保证打印清晰。截图/示意图统一以英文界面为范例，不随语言版本改变。
 
 **路径注意：** 语言页面位于 `dist/{lang}/` 子目录中，Markdown 中的相对路径需以 `../images/` 开头（如 `../images/afterword/photo.jpg`）。
 
-> 图片也支持行内写法：`文字 ![图标](../images/basic/icon.png) 文字`，可以穿插在段落中。
+### 图片组（并排）
 
-### 并排图片（图片组）
-
-**连续多行**图片语法（中间无空行、无其他内容）会自动合并为一个横向排布的图片组，窄屏（≤600px）时自动改为纵向单列：
+**连续多行**图片语法（中间无空行、无其他内容）自动合并为并排图片组，窄屏（≤600px）自动纵向堆叠；PDF 中使用表格布局，**保持并排且不拆页**：
 
 ```markdown
 ![大合照（2025年12月19日）](../images/afterword/group_photo_20251219.jpg)
 ![大合照（2026年5月28日）](../images/afterword/group_photo_20260528.jpg)
 ```
 
-- 两张并排各占约一半宽度，三张及以上自动折行。
-- 图片的 `[]` 描述文字会渲染为图片下方的说明文字（图注）。
-- 单张图片独占一行宽度。
-- PDF 打印时保持并排且不跨页截断。
+- 两张并排各占一半宽度；3 张及以上默认每行 2 张（需要 3 列用 `::: grid 3`）。
+- 每张图的 `[]` 描述文字渲染为图注，并自动编号。
+- 单张图片独占一行，按内容宽度显示。
+- 并排间距统一为 **14px**（图片组、图文并排、网格一致；HTML 与 PDF 相同）。
+
+### 图文并排（::: side）
+
+```markdown
+::: side
+### 文字在左
+说明文字，可以包含段落和列表。
+
+- 第一项
+- 第二项
+
+![右侧图片](../images/a.png)
+:::
+
+::: side reverse 40
+文字在右、图片在左，图片占 40% 宽度。
+
+![左侧图片](../images/b.png)
+:::
+```
+
+- 一个 `side` 容器内只放一张图（图片独占一段）；默认文字 55% / 图片 45%。
+- 数字参数（如 `40`）表示图片宽度百分比；`reverse` 把图片放到左侧。
+- 窄屏自动上下堆叠；PDF 中保持左右两栏。
+
+### 图片网格（::: grid N）
+
+```markdown
+::: grid 3
+![端口 1](../images/port1.jpg)
+![端口 2](../images/port2.jpg)
+![端口 3](../images/port3.jpg)
+:::
+```
+
+- `N` 为 2 或 3；容器内只放图片；每张图独立图注与编号。
+
+### 图注编号与交叉引用
+
+- 图号自动生成，无需手写：正文页为 `图 4-1`；前言/序言为 `图 序-1`，后记为 `图 后-1`，附录为 `图 A-1`；七语言前缀自动本地化。
+- 正文页章号按 `PAGE_KEYS` 顺序分配（当前：队员须知=1、建模设计=2、结构建造=3、程序设计=4、外部联络=5）；新增页面（如 v2.0.0 的比赛与运营/附录）后章号会变化，需复核已有图号引用。附录多页时依次用 A/B/C。
+- 引用：正文写 `[](#fig:hub)` 会自动填成对应图号（PDF 中可点击）；也可手写 `[图 4-1](#fig:hub)`。
+- 图 id 用 `{#fig:名字}`；重复或引用不存在的 id 会在构建日志中告警。
+
+### 分页与整块保持（PDF）
+
+```markdown
+::: break
+:::
+
+::: keep
+> [!warning] 这段提示尽量不跨页
+:::
+```
+
+- `::: break` 仅在 PDF 中强制分页（HTML 不显示）。
+- `::: keep` 让容器内容尽量保持在同一页（提示块、代码块、表格）。
 
 ### 引用
 
@@ -924,7 +1036,7 @@ dist/（HTML 网站；dist/pdf/ 本地生成但不入库）
 1. **空行很重要：** 不同元素之间必须用空行分隔，否则可能会被错误地合并为段落。
 2. **缩进：** 列表项可以通过缩进实现嵌套，子列表项缩进 2 个空格即可。
 3. **嵌套列表：** 支持嵌套列表（列表内再套列表），有序与无序列表可以互相嵌套。
-4. **HTML 标签：** 除换行标签 `<br>`（用于标题或段落内的显式换行，如三行排版的前言标题）外，不要在 Markdown 中混入其他原始 HTML 标签，可能会破坏渲染结果。
+4. **HTML 标签：** 除换行标签 `<br>`（用于标题或段落内的显式换行，如三行排版的前言标题）外，常规内容不要混入原始 HTML。原始 HTML 会直通输出，仅作为应急手段保留；使用后必须同时检查 HTML 与 PDF 效果，并优先改用上述 Markdown/容器语法。
 5. **文件编码：** 所有 `.md` 文件必须使用 UTF-8 编码。
 6. **代码块长行：** 打印时超长行会折行（见第一部分「代码块折行」）；命令与注释分行书写，注释单独成行，中文注释按双倍字符宽度估算。
 
