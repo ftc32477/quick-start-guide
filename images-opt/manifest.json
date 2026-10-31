@@ -5,5 +5,12 @@
  "basic/icon_team_logo.ico": "c05f25685bfb0befcdfacf1aa223d6ac91446aa7",
  "basic/icon_team_logo_32.png": "35a927f5702d80f560a9ec90c7f638eb0b7a30e9",
  "basic/team_logo.png": "45a19ac4e49632da607de6ad463778ca3a74c850",
- "basic/team_logo_small.png": "1f38bd1a2df7189091a948d96a4b3b9081ad3755"
+ "basic/team_logo_small.png": "1f38bd1a2df7189091a948d96a4b3b9081ad3755",
+ "build/bambu-arrange.jpg": "febb74fb7c957d4f3a922ee2dd2fd00299f74a97",
+ "build/bambu-install.jpg": "134845613b70aa4ef541bb47399371ac08bdc47e",
+ "build/onshape-export.jpg": "95fbeb39d9102eba1db6efad504e52802d4c5ab2",
+ "build/printer-network.jpg": "1403be1e28cc5df1260f472ec5ba4355aed6e889",
+ "build/tools-overview.jpg": "d0f6d655d7eddaca421e1553b8085d47d88c2213",
+ "programming/android-studio.jpg": "b6c59b731a60f9f1c41d5fe22d2dd390f56e80d7",
+ "programming/ds-rc.jpg": "b9aa7094d754b300800b0d494b5f06a95f52513d"
 }

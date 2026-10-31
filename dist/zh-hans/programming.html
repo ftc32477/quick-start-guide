@@ -556,12 +556,14 @@ git push -u origin feat/my-feature</code></pre>
 TeamCode/src/main/java/    # 队伍自己的代码（OpMode 放在这里）
 build.gradle               # 依赖与 SDK 版本</code></pre>
 <ul><li>每个 OpMode 是 <code>TeamCode</code> 下的一个 Java 类，用 <code>@TeleOp</code> / <code>@Autonomous</code> 注解标记；</li><li>新赛季从官方模板复刻仓库，保留 <code>TeamCode</code>，不要在官方目录里写队伍代码；</li><li>Android Studio 打开工程后先 Gradle Sync，再连接 Robot Controller 部署；</li><li>代码提交前跑一次本地构建，避免把编译错误推给全队。</li></ul>
+<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/programming/android-studio.jpg" target="_blank" rel="noopener"><img src="../images/display/programming/android-studio.jpg" alt="Android Studio 打开官方 FTC SDK 工程" loading="lazy" data-print="../images/print/programming/android-studio.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 4-1</span> Android Studio 打开官方 FTC SDK 工程</figcaption></figure></div>
 <h2 id="七RobotConfiguration与DSRC连接">七、Robot Configuration 与 DS/RC 连接</h2>
 <h3 id="71机器人配置">7.1 机器人配置</h3>
 <p><!-- TODO(I-02): 补 Control Hub 实际端口与设备命名截图（去敏）。 --></p>
 <ul><li>在 Driver Station 的 Robot Configuration 中为每个电机、舵机、传感器分配名字与端口；</li><li>命名规范：<code>leftFront</code>、<code>rightFront</code>、<code>arm</code>、<code>intake</code>、<code>imu</code> 等，代码里用同一个名字；</li><li>修改配置后必须保存并重启 Robot Controller，否则 <code>hardwareMap.get()</code> 会找不到设备；</li><li>每台机器人保留一份配置备份（截图或配置文件）。</li></ul>
 <h3 id="72DS与RC连接">7.2 DS 与 RC 连接</h3>
 <ol><li>给 Control Hub 上电，等待状态灯正常；</li><li>Driver Station 连接机器人网络（Wi-Fi Direct 或路由器）；</li><li>在 Driver Station 选择 OpMode，点击 INIT → START；</li><li>连接失败时依次检查：电池电压、网络、Robot Controller App 是否运行、配置是否匹配。</li></ol>
+<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/programming/ds-rc.jpg" target="_blank" rel="noopener"><img src="../images/display/programming/ds-rc.jpg" alt="Driver Station 与 Robot Controller 的连接信息（密码已隐去）" loading="lazy" data-print="../images/print/programming/ds-rc.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 4-2</span> Driver Station 与 Robot Controller 的连接信息（密码已隐去）</figcaption></figure></div>
 <h2 id="八第一个OpMode">八、第一个 OpMode</h2>
 <p><!-- TODO(I-08): 示例代码需程序组在实机验证后定稿；硬件名以实际 Robot Configuration 为准。 --></p>
 <p>下面是一个最小 TeleOp：左手柄摇杆同时驱动左右电机，并在 Driver Station 显示功率。</p>

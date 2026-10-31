@@ -368,6 +368,9 @@ build.gradle               # 依赖与 SDK 版本
 - Android Studio 打开工程后先 Gradle Sync，再连接 Robot Controller 部署；
 - 代码提交前跑一次本地构建，避免把编译错误推给全队。
 
+![Android Studio 打开官方 FTC SDK 工程](../images/programming/android-studio.jpg)
+
+
 ## 七、Robot Configuration 与 DS/RC 连接
 
 ### 7.1 机器人配置
@@ -385,6 +388,9 @@ build.gradle               # 依赖与 SDK 版本
 2. Driver Station 连接机器人网络（Wi-Fi Direct 或路由器）；
 3. 在 Driver Station 选择 OpMode，点击 INIT → START；
 4. 连接失败时依次检查：电池电压、网络、Robot Controller App 是否运行、配置是否匹配。
+
+![Driver Station 与 Robot Controller 的连接信息（密码已隐去）](../images/programming/ds-rc.jpg)
+
 
 ## 八、第一个 OpMode
 

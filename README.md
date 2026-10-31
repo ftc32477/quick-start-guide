@@ -59,6 +59,8 @@ ftc_quick_start_guide/
 │   ├── basic/                 # 通用资源（各语言共用）
 │   │   ├── icon_team_logo.ico # 标签栏图标（favicon）
 │   │   └── team_logo.png      # 队徽（侧边栏/顶栏/主页英雄区）
+│   ├── build/                 # 结构建造配图（工具总览、Bambu Studio、打印机设置）
+│   ├── programming/           # 程序设计配图（Driver Station、Android Studio）
 │   └── afterword/             # 后记专用图片（大合照等）
 ├── images-opt/                # 图片三套派生副本（display/print/hi，入库；构建/CI 直接复制到 dist/images/）
 ├── dist/                      # 生成产物（每次构建都会覆盖，勿直接编辑）
