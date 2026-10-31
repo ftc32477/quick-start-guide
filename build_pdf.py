@@ -260,7 +260,7 @@ def pdf_role_css(lang_key, page_key=None):
         f"body,main,p,li,td,th,table{{font-family:{body};}}"
         f"h1,h2,h3,h4,h5,h6{{font-family:{head};}}"
         f"blockquote,blockquote p,blockquote li{{font-family:{kai};}}"
-        f"figcaption,.img-row figcaption{{font-family:{kai};}}"
+        f"figcaption,.img-row figcaption,.table-caption{{font-family:{head};}}"
         f"pre,code,kbd,samp{{font-family:{MONO_FONT};}}"
     )
     if page_key == "preface" and lang_key in ("zh-hans", "zh-hant"):

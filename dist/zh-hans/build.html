@@ -197,8 +197,22 @@ h2,h3{scroll-margin-top:16px}
 .fig{margin:14px 0;text-align:center}
 .fig-hi{display:block;line-height:0;cursor:zoom-in;text-decoration:none}
 .fig img{max-width:100%;height:auto;margin:0 auto;border-radius:var(--radius)}
-.fig figcaption{text-align:center;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-.fig-label{font-weight:600;color:var(--muted);margin-right:.35em}
+.fig figcaption{text-align:center;font-size:12px;color:#333;margin-top:6px;line-height:1.5;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.fig-label{font-weight:600;color:#222;margin-right:1em}
+.fig-title{font-weight:400}
+.table-figure{margin:18px 0}
+.table-caption{text-align:center;font-size:12px;font-weight:600;color:#222;margin:4px 0 6px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.table-title-gap{display:inline-block;width:1em}
+.book-index{margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+.book-index h2{margin-top:24px}
+.index-list{list-style:none;padding:0;margin:8px 0 0}
+.index-list li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--border);font-size:13px}
+.index-list a{color:var(--text);text-decoration:none}
+.index-list a:hover{color:var(--red)}
+.idx-gap{display:inline-block;width:1em}
+.idx-page{color:var(--muted);white-space:nowrap}
+.idx-page-todo{letter-spacing:1px}
+.idx-empty{color:var(--muted);font-size:13px}
 .fig-align-left{text-align:left}
 .fig-align-right{text-align:right}
 .fig-align-left img{margin-left:0}
@@ -317,8 +331,20 @@ tr:nth-child(even){background:#fafafa}
     width:100% !important;max-width:100% !important;
     table-layout:fixed;font-size:12px
   }
-  th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
+  th,td{padding:5px 6px;word-break:normal;overflow-wrap:break-word;border:none!important;border-bottom:0.5pt solid #999!important;background:none!important;color:#111!important}
+  th{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif!important;font-weight:600}
+  thead th{border-top:1pt solid #222!important;border-bottom:0.75pt solid #222!important}
+  tbody tr:last-child td{border-bottom:1pt solid #222!important}
+  tr:nth-child(even){background:none!important}
   tr{page-break-inside:avoid}
+  .table-caption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;font-weight:600;text-align:center;margin:8pt 0 3pt;line-height:1.45}
+  .table-figure{break-inside:avoid;page-break-inside:avoid}
+  .fig figcaption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;color:#222;line-height:1.45}
+  .fig-label{margin-right:1em;font-weight:600}
+  .book-index{break-before:page;page-break-before:always;margin-top:0;border-top:none;padding-top:0}
+  .book-index h2{font-size:16pt;margin:18pt 0 8pt}
+  .index-list li{font-size:9pt;padding:3pt 0}
+  .idx-page{color:#333}
   pre{white-space:pre-wrap !important;overflow-wrap:anywhere !important;overflow:visible !important}
   /* 图片/图片组：尺寸封顶 + 真实表格布局，避免跨页拆图与切段 */
   figure.fig,.fig-single{break-inside:avoid;page-break-inside:avoid}
@@ -433,7 +459,7 @@ tr:nth-child(even){background:#fafafa}
 <p>以下是在正式开始前需要配置的工作环境，请按照说明操作。如有疑问，请向管理员咨询。</p>
 <h3 id="网络浏览器">网络浏览器</h3>
 <p>需要追加收藏保存的网址如下：</p>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">名称</th><th style="text-align:left">地址</th></tr></thead><tbody><tr><td style="text-align:left">goBILDA</td><td style="text-align:left">https://www.gobilda.com/</td></tr><tr><td style="text-align:left">REV Robotics</td><td style="text-align:left">https://www.revrobotics.com/</td></tr><tr><td style="text-align:left">CycleZLab</td><td style="text-align:left">https://www.cyclezlab.com/</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-1"><div class="table-caption">表 3-1<span class="table-title-gap"></span>常用网址</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">名称</th><th style="text-align:left">地址</th></tr></thead><tbody><tr><td style="text-align:left">goBILDA</td><td style="text-align:left">https://www.gobilda.com/</td></tr><tr><td style="text-align:left">REV Robotics</td><td style="text-align:left">https://www.revrobotics.com/</td></tr><tr><td style="text-align:left">CycleZLab</td><td style="text-align:left">https://www.cyclezlab.com/</td></tr></tbody></table></div></div>
 <h3 id="BambuStudio">Bambu Studio</h3>
 <p>Bambu Studio 是我队采用的 3D 打印构件解决方案。</p>
 <p><strong>注册流程：</strong></p>
@@ -452,7 +478,7 @@ tr:nth-child(even){background:#fafafa}
 <h3 id="常用工具">常用工具</h3>
 <blockquote class="bq-danger">在使用任何手动工具前，请务必检查工具状态是否完好（如手柄是否松动、钳口是否有崩刃），并在操作时按需佩戴防护手套或护目镜。</blockquote>
 <blockquote class="bq-info">此处仅收录最常用的工具。其余不常用工具统一整理为《工具清单》附录，后续将持续扩充。</blockquote>
-<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/build/tools-overview.jpg" target="_blank" rel="noopener"><img src="../images/display/build/tools-overview.jpg" alt="常用手动工具" loading="lazy" data-print="../images/print/build/tools-overview.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-1</span> 常用手动工具</figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-1"><a class="fig-hi" href="../images/hi/build/tools-overview.jpg" target="_blank" rel="noopener"><img src="../images/display/build/tools-overview.jpg" alt="常用手动工具" loading="lazy" data-print="../images/print/build/tools-overview.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-1</span> <span class="fig-title">常用手动工具</span></figcaption></figure></div>
 <h4>内六角型扳手</h4>
 <p>截面呈正六边形的 L 型或 T 型工具，用于拧转内六角螺栓或螺钉。使用时，将扳手较短或长的一端完全插入螺钉头的六角孔内，顺时针旋转为紧固，逆时针旋转为松开。T 型手柄扳手通常用于提供更大的杠杆力或在深孔作业。</p>
 <blockquote class="bq-info">最常用的规格为 M3 与 M4，应随身常备。</blockquote>
@@ -484,18 +510,18 @@ tr:nth-child(even){background:#fafafa}
 <h4>专用材料</h4>
 <p>官方 REV 和 goBILDA 的专用型材。</p>
 <h4>材料特性</h4>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">品牌</th><th style="text-align:left">特点</th></tr></thead><tbody><tr><td style="text-align:left"><strong>REV</strong></td><td style="text-align:left">推出较早，但目前仍是核心。三大电控模块（Driver Hub、Control Hub、Expansion Hub）主要采用 REV 产品。结构件包括各种铝型材（应用相对较少），型材可做小限位架、固定非单位位移结构。型材主要对应 M3 杯头螺丝（仅）、5 mm 六角轴、齿轮和链条；电机以 72:1 的 Core Hex 与 40:1 的 HD Hex 为主（后者已停产，存量仍在流通）。</td></tr><tr><td style="text-align:left"><strong>goBILDA</strong></td><td style="text-align:left">C 型梁、方梁或薄梁，8 mm REX 轴，各种单位化的连接件，连接功能完善。主要采用 M4 螺丝（官方 10 mm），电机多为 5203 系列。适用于电机直传的套件。</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-2"><div class="table-caption">表 3-2<span class="table-title-gap"></span>常用材料特性</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">品牌</th><th style="text-align:left">特点</th></tr></thead><tbody><tr><td style="text-align:left"><strong>REV</strong></td><td style="text-align:left">推出较早，但目前仍是核心。三大电控模块（Driver Hub、Control Hub、Expansion Hub）主要采用 REV 产品。结构件包括各种铝型材（应用相对较少），型材可做小限位架、固定非单位位移结构。型材主要对应 M3 杯头螺丝（仅）、5 mm 六角轴、齿轮和链条；电机以 72:1 的 Core Hex 与 40:1 的 HD Hex 为主（后者已停产，存量仍在流通）。</td></tr><tr><td style="text-align:left"><strong>goBILDA</strong></td><td style="text-align:left">C 型梁、方梁或薄梁，8 mm REX 轴，各种单位化的连接件，连接功能完善。主要采用 M4 螺丝（官方 10 mm），电机多为 5203 系列。适用于电机直传的套件。</td></tr></tbody></table></div></div>
 <p><strong>REV 供应商细节：</strong></p>
 <ul><li><strong>核心电控模块</strong>：Driver Hub、Control Hub、Expansion Hub 三大电控模块主要采用 REV 产品。</li><li><strong>结构件</strong>：以铝型材为主，当前使用较少，可做小限位架、固定非单位位移的结构。</li><li><strong>特殊螺丝</strong>：REV 型材使用 M3 杯头（内六角）螺丝，这种螺丝卡在铝型材内，几乎只有 REV 型材会用到。</li><li><strong>轴规格</strong>：REV 使用 5 mm 六角轴（DUO 体系）。</li><li><strong>电机</strong>：REV 提供 72:1 横轴电机（官方名 Core Hex，90° 横置输出、无自带输出轴）与 40:1 标准电机（官方名 HD Hex，已停产，存量仍在流通）。72:1 横轴电机可提供特殊安装方案，但结构设计较老，在现有环境中较难找到适配对象。</li><li><strong>齿轮与链条</strong>：REV 也提供，但通常优先选用 goBILDA 产品。</li></ul>
 <p><strong>goBILDA 供应商细节：</strong></p>
 <ul><li><strong>C 型梁</strong>：分为方梁与薄梁两种。方梁适合做底盘等大框架结构，薄梁适合做跨度性连接。</li><li><strong>连接件</strong>：提供各类标准化连接件，单位化程度高，与自身材料和 REV 材料连接功能完善。</li><li><strong>螺丝规格</strong>：主要采用 M4 螺丝，官方配用 M4×10 毫米杯头螺丝。</li><li><strong>轴规格</strong>：对应 8 毫米 REX 轴。</li><li><strong>电机</strong>：常用 5203 系列，适合标准直传。由于 8 mm REX 轴强度与电机安装方式的特性，goBILDA 是适合电机直传的套件。</li></ul>
 <h4>3D 打印耗材</h4>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">类型</th><th style="text-align:left">打印温度（约）</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">PLA</td><td style="text-align:left">190–230 °C（常用 220 °C）</td><td style="text-align:left">标准基础塑料耗材</td></tr><tr><td style="text-align:left">PETG-CF</td><td style="text-align:left">240–270 °C</td><td style="text-align:left">含碳塑料耗材</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-3"><div class="table-caption">表 3-3<span class="table-title-gap"></span>3D 打印耗材选择</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">类型</th><th style="text-align:left">打印温度（约）</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">PLA</td><td style="text-align:left">190–230 °C（常用 220 °C）</td><td style="text-align:left">标准基础塑料耗材</td></tr><tr><td style="text-align:left">PETG-CF</td><td style="text-align:left">240–270 °C</td><td style="text-align:left">含碳塑料耗材</td></tr></tbody></table></div></div>
 <p>耗材建议选用 Bambu Lab（拓竹）或 SUNLU（三绿）官方产品，质量较稳定。</p>
 <p><strong>收缩量：</strong></p>
 <ul><li>通常情况下，PLA 不需考虑收缩量问题。</li><li>打印轴套时，可能出现直径约 5% 的收缩量，需要根据打印形态来测量。</li><li>PETG-CF 的收缩量受时间、温度、批次等因素影响波动较大，使用前建议根据零件形态制作简单测试件测量收缩量。</li></ul>
 <h4>激光切割耗材</h4>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">材料</th><th style="text-align:left">特点</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left">亚克力板</td><td style="text-align:left">强度较高</td><td style="text-align:left">大跨度承重板</td></tr><tr><td style="text-align:left">PP 板</td><td style="text-align:left">韧性较强</td><td style="text-align:left">保护件，需要更多连接点，可承受直接冲击</td></tr><tr><td style="text-align:left">木板</td><td style="text-align:left">成本较低</td><td style="text-align:left">易发生翘曲，特殊情况使用</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-4"><div class="table-caption">表 3-4<span class="table-title-gap"></span>激光切割耗材</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">材料</th><th style="text-align:left">特点</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left">亚克力板</td><td style="text-align:left">强度较高</td><td style="text-align:left">大跨度承重板</td></tr><tr><td style="text-align:left">PP 板</td><td style="text-align:left">韧性较强</td><td style="text-align:left">保护件，需要更多连接点，可承受直接冲击</td></tr><tr><td style="text-align:left">木板</td><td style="text-align:left">成本较低</td><td style="text-align:left">易发生翘曲，特殊情况使用</td></tr></tbody></table></div></div>
 <blockquote class="bq-info">材料本身的性质固定记录在此处。激光切割的功率、速度等工艺参数放在附录中持续更新。</blockquote>
 <h4>线材</h4>
 <p><strong>电源线：</strong></p>
@@ -535,24 +561,25 @@ tr:nth-child(even){background:#fafafa}
 <p>下载后按默认步骤安装，注意选择安装位置（文件夹自动生成）。</p>
 <p><strong>注意事项：</strong></p>
 <ul><li>所有复选框均须勾选</li><li>运行后注册指引，选择中国内地（大陆）</li><li>只选择 P1S 和 P2S</li><li>材料保持默认配置</li><li>安装网络插件</li><li>左上角登录注册（手机号或第三方）</li></ul>
-<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/build/bambu-install.jpg" target="_blank" rel="noopener"><img src="../images/display/build/bambu-install.jpg" alt="Bambu Studio 安装：选择安装位置（左）与安装完成（右）" loading="lazy" data-print="../images/print/build/bambu-install.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-2</span> Bambu Studio 安装：选择安装位置（左）与安装完成（右）</figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-2"><a class="fig-hi" href="../images/hi/build/bambu-install.jpg" target="_blank" rel="noopener"><img src="../images/display/build/bambu-install.jpg" alt="Bambu Studio 安装：选择安装位置（左）与安装完成（右）" loading="lazy" data-print="../images/print/build/bambu-install.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-2</span> <span class="fig-title">Bambu Studio 安装：选择安装位置（左）与安装完成（右）</span></figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-3"><a class="fig-hi" href="../images/hi/build/bambu-setup.jpg" target="_blank" rel="noopener"><img src="../images/display/build/bambu-setup.jpg" alt="Bambu Studio 首次运行：注册/登录、选择打印机、选择材料、安装网络插件" loading="lazy" data-print="../images/print/build/bambu-setup.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-3</span> <span class="fig-title">Bambu Studio 首次运行：注册/登录、选择打印机、选择材料、安装网络插件</span></figcaption></figure></div>
 <h3 id="从Onshape导出建模文件">从 Onshape 导出建模文件</h3>
 <ol><li>打开建模文件，选中目标零件，左下角会标记出该零件在左侧实例列表中的位置。</li><li>右键该零件，选择切换到该实例对应的工作栏，进入零件构造区。</li><li>在左下角零件数位置右键，选择导出。<ul><li>注意：只有获取到文档的更改权限后，才有导出选项。</li></ul></li><li>将格式改为 STEP，文件名按需求更改，其余选项默认即可。</li></ol>
-<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/build/onshape-export.jpg" target="_blank" rel="noopener"><img src="../images/display/build/onshape-export.jpg" alt="Onshape 导出：右键零件选择“导出”，格式选择 STEP" loading="lazy" data-print="../images/print/build/onshape-export.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-3</span> Onshape 导出：右键零件选择“导出”，格式选择 STEP</figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-4"><a class="fig-hi" href="../images/hi/build/onshape-export.jpg" target="_blank" rel="noopener"><img src="../images/display/build/onshape-export.jpg" alt="Onshape 导出：右键零件选择“导出”，格式选择 STEP" loading="lazy" data-print="../images/print/build/onshape-export.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-4</span> <span class="fig-title">Onshape 导出：右键零件选择“导出”，格式选择 STEP</span></figcaption></figure></div>
 <h3 id="BambuStudio导入与摆盘">Bambu Studio 导入与摆盘</h3>
 <ul><li>在 Bambu Studio 创建新项目，点击上方"导入"按钮导入 STEP 文件，导入选项默认确认即可。</li><li>若零件位置不符合预期，不选中任何零件，右键打印盘选择"自动摆放"或"自动朝向"。</li><li>手动调整：选中零件，长按左键拖动移动；点击旋转按钮通过相对/绝对两种方式旋转。</li><li>操作逻辑差异：Bambu Studio 默认与 Onshape 相同——左键拖动为旋转视图，右键拖动为平移视图；如不习惯也可在设置中调整视图操作方式。选中零件后左键拖动可直接移动零件。</li></ul>
-<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/build/bambu-arrange.jpg" target="_blank" rel="noopener"><img src="../images/display/build/bambu-arrange.jpg" alt="Bambu Studio 导入零件后，右键打印盘进行自动摆放/自动朝向" loading="lazy" data-print="../images/print/build/bambu-arrange.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-4</span> Bambu Studio 导入零件后，右键打印盘进行自动摆放/自动朝向</figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-5"><a class="fig-hi" href="../images/hi/build/bambu-arrange.jpg" target="_blank" rel="noopener"><img src="../images/display/build/bambu-arrange.jpg" alt="Bambu Studio 导入零件后，右键打印盘进行自动摆放/自动朝向" loading="lazy" data-print="../images/print/build/bambu-arrange.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-5</span> <span class="fig-title">Bambu Studio 导入零件后，右键打印盘进行自动摆放/自动朝向</span></figcaption></figure></div>
 <h3 id="打印参数配置">打印参数配置</h3>
 <p><strong>打印机与耗材选择：</strong></p>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">打印机</th><th style="text-align:left">喷嘴</th><th style="text-align:left">耗材</th></tr></thead><tbody><tr><td style="text-align:left">P1S（未更换喷嘴）</td><td style="text-align:left">0.4 mm</td><td style="text-align:left">PLA Basic</td></tr><tr><td style="text-align:left">P1S（已更换喷嘴，专门打印碳材）</td><td style="text-align:left">0.6 mm</td><td style="text-align:left">PETG-CF</td></tr><tr><td style="text-align:left">P2S（两台）</td><td style="text-align:left">0.4 mm</td><td style="text-align:left">PLA Basic</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-5"><div class="table-caption">表 3-5<span class="table-title-gap"></span>打印机与耗材配置</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">打印机</th><th style="text-align:left">喷嘴</th><th style="text-align:left">耗材</th></tr></thead><tbody><tr><td style="text-align:left">P1S（未更换喷嘴）</td><td style="text-align:left">0.4 mm</td><td style="text-align:left">PLA Basic</td></tr><tr><td style="text-align:left">P1S（已更换喷嘴，专门打印碳材）</td><td style="text-align:left">0.6 mm</td><td style="text-align:left">PETG-CF</td></tr><tr><td style="text-align:left">P2S（两台）</td><td style="text-align:left">0.4 mm</td><td style="text-align:left">PLA Basic</td></tr></tbody></table></div></div>
 <p><strong>按零件类型选择工艺参数：</strong></p>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">类型</th><th style="text-align:left">参数</th></tr></thead><tbody><tr><td style="text-align:left">装饰件</td><td style="text-align:left">Bambu Studio 默认参数</td></tr><tr><td style="text-align:left">非承重结构件</td><td style="text-align:left">按建模组常用配置</td></tr><tr><td style="text-align:left">承重结构件</td><td style="text-align:left">按建模组常用配置（高强度）</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-6"><div class="table-caption">表 3-6<span class="table-title-gap"></span>零件类型与工艺参数</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">类型</th><th style="text-align:left">参数</th></tr></thead><tbody><tr><td style="text-align:left">装饰件</td><td style="text-align:left">Bambu Studio 默认参数</td></tr><tr><td style="text-align:left">非承重结构件</td><td style="text-align:left">按建模组常用配置</td></tr><tr><td style="text-align:left">承重结构件</td><td style="text-align:left">按建模组常用配置（高强度）</td></tr></tbody></table></div></div>
 <blockquote class="bq-info">以上参数均为我队的常用配置，如有特殊需求可自行修改。</blockquote>
 <p><strong>多零件摆盘：</strong></p>
 <ul><li>同一打印盘需要多个相同零件：选中零件右键选择"克隆"。</li><li>添加不同零件：再次点击"导入"按钮导入即可。</li></ul>
 <h3 id="连接3D打印机">连接 3D 打印机</h3>
 <ul><li>进入"设备"一栏，开启局域网模式后自动扫描局域网内的打印机（开启局域网模式可能退出当前登录账号，可忽略提示）。</li><li>若无法扫描到目标打印机：先确认打印机已开启局域网模式；仍无法识别可通过 IP + 访问码手动绑定。IP 在打印机设置的 WiFi 页面查找，访问码在开启局域网模式后的登录头像位置查看。</li><li>切片完成后在"预览"一栏确认；打印前将预览图发给当前建模或结构负责人确认配置，再发送打印。</li></ul>
-<div class="fig-single"><figure class="fig"><a class="fig-hi" href="../images/hi/build/printer-network.jpg" target="_blank" rel="noopener"><img src="../images/display/build/printer-network.jpg" alt="打印机设置中开启“仅局域网”（图中设备名已隐去）" loading="lazy" data-print="../images/print/build/printer-network.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-5</span> 打印机设置中开启“仅局域网”（图中设备名已隐去）</figcaption></figure></div>
+<div class="fig-single"><figure class="fig" id="fig-3-6"><a class="fig-hi" href="../images/hi/build/printer-network.jpg" target="_blank" rel="noopener"><img src="../images/display/build/printer-network.jpg" alt="打印机设置中开启“仅局域网”（图中设备名已隐去）" loading="lazy" data-print="../images/print/build/printer-network.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">图 3-6</span> <span class="fig-title">打印机设置中开启“仅局域网”（图中设备名已隐去）</span></figcaption></figure></div>
 <h3 id="打印设置">打印设置</h3>
 <p><strong>P2S 打印机：</strong></p>
 <ul><li>打印前开启延时摄影。</li><li>必须开启自动热床调平。</li><li>选择对应装载的耗材与目标打印机。</li></ul>
@@ -572,18 +599,18 @@ tr:nth-child(even){background:#fafafa}
 <p><strong>算例</strong>：电机 6000 rpm，减速比 20:1，轮径 4 in（0.1016 m）：</p>
 <ul><li>轮速 = 6000 ÷ 20 = 300 rpm；</li><li>线速度 = 300 × π × 0.1016 ≈ 95.7 m/min ≈ 1.6 m/s。</li></ul>
 <h3 id="62传动形式">6.2 传动形式</h3>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">形式</th><th style="text-align:left">优点</th><th style="text-align:left">注意</th></tr></thead><tbody><tr><td style="text-align:left">直传</td><td style="text-align:left">简单、效率高</td><td style="text-align:left">电机位置受限</td></tr><tr><td style="text-align:left">齿轮</td><td style="text-align:left">紧凑、可换比</td><td style="text-align:left">中心距与齿隙</td></tr><tr><td style="text-align:left">同步带</td><td style="text-align:left">远距离、安静</td><td style="text-align:left">张紧与跳齿</td></tr><tr><td style="text-align:left">链传动</td><td style="text-align:left">高扭矩、耐冲击</td><td style="text-align:left">润滑与张紧</td></tr><tr><td style="text-align:left">齿条/丝杆</td><td style="text-align:left">直线运动</td><td style="text-align:left">背隙与支撑</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-7"><div class="table-caption">表 3-7<span class="table-title-gap"></span>传动形式对比</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">形式</th><th style="text-align:left">优点</th><th style="text-align:left">注意</th></tr></thead><tbody><tr><td style="text-align:left">直传</td><td style="text-align:left">简单、效率高</td><td style="text-align:left">电机位置受限</td></tr><tr><td style="text-align:left">齿轮</td><td style="text-align:left">紧凑、可换比</td><td style="text-align:left">中心距与齿隙</td></tr><tr><td style="text-align:left">同步带</td><td style="text-align:left">远距离、安静</td><td style="text-align:left">张紧与跳齿</td></tr><tr><td style="text-align:left">链传动</td><td style="text-align:left">高扭矩、耐冲击</td><td style="text-align:left">润滑与张紧</td></tr><tr><td style="text-align:left">齿条/丝杆</td><td style="text-align:left">直线运动</td><td style="text-align:left">背隙与支撑</td></tr></tbody></table></div></div>
 <h3 id="63轴系与轮系">6.3 轴系与轮系</h3>
 <ul><li>轴：5 mm hex、8 mm REX 等，按供应商标准件选；轴承座必须与轴垂直；</li><li>轴套/顶丝：顶丝禁用于高扭矩传动；优先用夹紧式轮毂；</li><li>轮系：mecanum/omni/tank 按赛题与场地选择；轮径影响速度与越障，轮距影响转向；</li><li>张紧：同步带/链必须可调张紧，避免比赛途中跳齿。</li></ul>
 <h3 id="64底盘检查">6.4 底盘检查</h3>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">项目</th><th style="text-align:left">标准</th><th style="text-align:left">结果</th></tr></thead><tbody><tr><td style="text-align:left">四轮着地</td><td style="text-align:left">静置时四轮同时接触地面</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">轴平行</td><td style="text-align:left">左右轴平行，无别劲</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">传动顺畅</td><td style="text-align:left">手转轮子无卡滞/异响</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">紧固</td><td style="text-align:left">关键螺丝有防松措施</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">走线</td><td style="text-align:left">线缆不进入轮系</td><td style="text-align:left">☐</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-8"><div class="table-caption">表 3-8<span class="table-title-gap"></span>底盘检查清单</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">项目</th><th style="text-align:left">标准</th><th style="text-align:left">结果</th></tr></thead><tbody><tr><td style="text-align:left">四轮着地</td><td style="text-align:left">静置时四轮同时接触地面</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">轴平行</td><td style="text-align:left">左右轴平行，无别劲</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">传动顺畅</td><td style="text-align:left">手转轮子无卡滞/异响</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">紧固</td><td style="text-align:left">关键螺丝有防松措施</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">走线</td><td style="text-align:left">线缆不进入轮系</td><td style="text-align:left">☐</td></tr></tbody></table></div></div>
 <h2 id="七结构设计与装配工艺">七、结构设计与装配工艺</h2>
 <h3 id="71结构与连接">7.1 结构与连接</h3>
 <ul><li>优先使用型材、结构板与标准连接件；受力处加三角支撑，避免单点悬臂；</li><li>M3/M4 螺丝按受力选择，受力件用杯头螺丝 + 尼龙螺母/螺纹胶；</li><li>打印件不直接承受冲击，受力处加金属衬套或改为板材；</li><li>模块化：每个机构可独立拆装，接插件留在模块边界。</li></ul>
 <h3 id="72装配顺序">7.2 装配顺序</h3>
 <ol><li>预装：按 BOM 清点零件，打印件去毛刺、试装轴承；</li><li>底盘：先装轴系与轮系，确认四轮着地；</li><li>机构：从内到外、从下到上安装，先定位后拧紧；</li><li>电控：最后固定 Hub、走线、做应力释放；</li><li>检查：手动转动所有运动件，确认无卡滞/干涉，再通电。</li></ol>
 <h3 id="73装配检查清单">7.3 装配检查清单</h3>
-<div class="table-wrap"><table><thead><tr><th style="text-align:left">项目</th><th style="text-align:left">标准</th><th style="text-align:left">结果</th></tr></thead><tbody><tr><td style="text-align:left">紧固</td><td style="text-align:left">关键螺丝无松动，防松到位</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">运动</td><td style="text-align:left">所有运动件行程正确、无卡滞</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">干涉</td><td style="text-align:left">无零件/线缆干涉</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">线缆</td><td style="text-align:left">有固定、有余量、不磨运动件</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">维修</td><td style="text-align:left">易损件可在 5 分钟内拆装</td><td style="text-align:left">☐</td></tr></tbody></table></div>
+<div class="table-figure" id="tbl-3-9"><div class="table-caption">表 3-9<span class="table-title-gap"></span>装配检查清单</div><div class="table-wrap"><table><thead><tr><th style="text-align:left">项目</th><th style="text-align:left">标准</th><th style="text-align:left">结果</th></tr></thead><tbody><tr><td style="text-align:left">紧固</td><td style="text-align:left">关键螺丝无松动，防松到位</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">运动</td><td style="text-align:left">所有运动件行程正确、无卡滞</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">干涉</td><td style="text-align:left">无零件/线缆干涉</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">线缆</td><td style="text-align:left">有固定、有余量、不磨运动件</td><td style="text-align:left">☐</td></tr><tr><td style="text-align:left">维修</td><td style="text-align:left">易损件可在 5 分钟内拆装</td><td style="text-align:left">☐</td></tr></tbody></table></div></div>
 <h2 id="八第一次任务">八、第一次任务</h2>
 <p>打印或激光切割一个小支架，按装配顺序装到标定板上，完成一次装配检查清单。验收：尺寸/孔位正确、无松动、可快速拆装、走线不干涉。</p>
 <p><!-- TODO(I-05): 打印/激光参数表待实验室实测后补入《附录》参数速查。 --></p>

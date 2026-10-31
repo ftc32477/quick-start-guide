@@ -197,8 +197,22 @@ h2,h3{scroll-margin-top:16px}
 .fig{margin:14px 0;text-align:center}
 .fig-hi{display:block;line-height:0;cursor:zoom-in;text-decoration:none}
 .fig img{max-width:100%;height:auto;margin:0 auto;border-radius:var(--radius)}
-.fig figcaption{text-align:center;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-.fig-label{font-weight:600;color:var(--muted);margin-right:.35em}
+.fig figcaption{text-align:center;font-size:12px;color:#333;margin-top:6px;line-height:1.5;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.fig-label{font-weight:600;color:#222;margin-right:1em}
+.fig-title{font-weight:400}
+.table-figure{margin:18px 0}
+.table-caption{text-align:center;font-size:12px;font-weight:600;color:#222;margin:4px 0 6px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.table-title-gap{display:inline-block;width:1em}
+.book-index{margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+.book-index h2{margin-top:24px}
+.index-list{list-style:none;padding:0;margin:8px 0 0}
+.index-list li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--border);font-size:13px}
+.index-list a{color:var(--text);text-decoration:none}
+.index-list a:hover{color:var(--red)}
+.idx-gap{display:inline-block;width:1em}
+.idx-page{color:var(--muted);white-space:nowrap}
+.idx-page-todo{letter-spacing:1px}
+.idx-empty{color:var(--muted);font-size:13px}
 .fig-align-left{text-align:left}
 .fig-align-right{text-align:right}
 .fig-align-left img{margin-left:0}
@@ -317,8 +331,20 @@ tr:nth-child(even){background:#fafafa}
     width:100% !important;max-width:100% !important;
     table-layout:fixed;font-size:12px
   }
-  th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
+  th,td{padding:5px 6px;word-break:normal;overflow-wrap:break-word;border:none!important;border-bottom:0.5pt solid #999!important;background:none!important;color:#111!important}
+  th{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif!important;font-weight:600}
+  thead th{border-top:1pt solid #222!important;border-bottom:0.75pt solid #222!important}
+  tbody tr:last-child td{border-bottom:1pt solid #222!important}
+  tr:nth-child(even){background:none!important}
   tr{page-break-inside:avoid}
+  .table-caption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;font-weight:600;text-align:center;margin:8pt 0 3pt;line-height:1.45}
+  .table-figure{break-inside:avoid;page-break-inside:avoid}
+  .fig figcaption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;color:#222;line-height:1.45}
+  .fig-label{margin-right:1em;font-weight:600}
+  .book-index{break-before:page;page-break-before:always;margin-top:0;border-top:none;padding-top:0}
+  .book-index h2{font-size:16pt;margin:18pt 0 8pt}
+  .index-list li{font-size:9pt;padding:3pt 0}
+  .idx-page{color:#333}
   pre{white-space:pre-wrap !important;overflow-wrap:anywhere !important;overflow:visible !important}
   /* 图片/图片组：尺寸封顶 + 真实表格布局，避免跨页拆图与切段 */
   figure.fig,.fig-single{break-inside:avoid;page-break-inside:avoid}
@@ -405,7 +431,7 @@ tr:nth-child(even){background:#fafafa}
 <ul><li><strong>President</strong>: Du Xingzhou (杜星洲)</li><li><strong>Hardware</strong>: Xie Jincan (谢金灿), Shi Yuguang (时宇光), Jiang Yichen (姜易辰), Xue Chen (薛晨), Du Fengyu (杜丰宇)</li><li><strong>Programming</strong>: Du Xingzhou (杜星洲), Fu Xiuqi (付修齐), Zhang Xipeng (张熙芃), Liu Chuyi (刘楚翌)</li><li><strong>Outreach</strong>: Han Zixuan (韩子萱), Chen Xibei (陈西贝), Li Jiaoyang (李骄洋), Liu Yuxuan (柳宇轩), Wang Yizhou (王一舟)</li></ul>
 <hr>
 <h2 id="TeamPhotos">Team Photos</h2>
-<table class="media-row media-cols-2" role="presentation"><tbody><tr><td><figure class="fig"><a class="fig-hi" href="../images/hi/afterword/group_photo_20251219.jpg" target="_blank" rel="noopener"><img src="../images/display/afterword/group_photo_20251219.jpg" alt="Team group photo (December 19, 2025)" loading="lazy" data-print="../images/print/afterword/group_photo_20251219.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">Figure Postscript-1</span> Team group photo (December 19, 2025)</figcaption></figure></td><td><figure class="fig"><a class="fig-hi" href="../images/hi/afterword/group_photo_20260528.jpg" target="_blank" rel="noopener"><img src="../images/display/afterword/group_photo_20260528.jpg" alt="Team group photo (May 28, 2026)" loading="lazy" data-print="../images/print/afterword/group_photo_20260528.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">Figure Postscript-2</span> Team group photo (May 28, 2026)</figcaption></figure></td></tr></tbody></table>
+<table class="media-row media-cols-2" role="presentation"><tbody><tr><td><figure class="fig" id="fig-Postscript-1"><a class="fig-hi" href="../images/hi/afterword/group_photo_20251219.jpg" target="_blank" rel="noopener"><img src="../images/display/afterword/group_photo_20251219.jpg" alt="Team group photo (December 19, 2025)" loading="lazy" data-print="../images/print/afterword/group_photo_20251219.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">Figure Postscript-1</span> <span class="fig-title">Team group photo (December 19, 2025)</span></figcaption></figure></td><td><figure class="fig" id="fig-Postscript-2"><a class="fig-hi" href="../images/hi/afterword/group_photo_20260528.jpg" target="_blank" rel="noopener"><img src="../images/display/afterword/group_photo_20260528.jpg" alt="Team group photo (May 28, 2026)" loading="lazy" data-print="../images/print/afterword/group_photo_20260528.jpg" style="max-width:100%"></a><figcaption><span class="fig-label">Figure Postscript-2</span> <span class="fig-title">Team group photo (May 28, 2026)</span></figcaption></figure></td></tr></tbody></table>
 <p><strong>Photo roster (December 19, 2025)</strong>: Top row, left to right: Shi Yuguang (时宇光), Wang Yizhou (王一舟), Jiang Yichen (姜易辰), Fu Xiuqi (付修齐), Du Xingzhou (杜星洲), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃); bottom row, left to right: Du Fengyu (杜丰宇), Liu Chuyi (刘楚翌), Yu Zichen (于紫晨), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).</p>
 <p><strong>Photo roster (May 28, 2026)</strong>: Top row, left to right: Wang Yizhou (王一舟), Shi Yuguang (时宇光), Du Xingzhou (杜星洲), Fu Xiuqi (付修齐), Xue Chen (薛晨), Xie Jincan (谢金灿), Zhang Xipeng (张熙芃), Liu Chuyi (刘楚翌); bottom row, left to right: Liu Yuxuan (柳宇轩), Du Fengyu (杜丰宇), Han Zixuan (韩子萱), Li Jiaoyang (李骄洋), Chen Xibei (陈西贝).</p>
 <hr>

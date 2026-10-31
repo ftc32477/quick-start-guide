@@ -301,6 +301,8 @@ RD Works V8 是我队采用的激光切割机的配套驱动软件。
 
 ![Bambu Studio 安装：选择安装位置（左）与安装完成（右）](../images/build/bambu-install.jpg)
 
+![Bambu Studio 首次运行：注册/登录、选择打印机、选择材料、安装网络插件](../images/build/bambu-setup.jpg)
+
 
 ### 从 Onshape 导出建模文件
 

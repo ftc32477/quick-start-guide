@@ -212,3 +212,19 @@
 - 赛事数据/侦察工具（非官方）：[https://ftcscout.org/](https://ftcscout.org/)
 - 零件与图纸：[https://www.gobilda.com/](https://www.gobilda.com/)、[https://docs.revrobotics.com/](https://docs.revrobotics.com/)
 - 路径规划：[https://pedropathing.com/](https://pedropathing.com/)
+
+## 九、编制依据（节选）
+
+本指南在开本、书名页、图表版式与索引编排上参考以下标准的适用条款。本指南为内部电子读物，不涉及 ISBN/CIP、印刷装订与图书在版编目，下列标准中不适用部分未强行套用。
+
+- GB/T 788—1999《图书和杂志开本及其幅面尺寸》
+- GB/T 12450—2001《图书书名页》
+- CY/T 120—2015《学术出版规范 图书版式》
+- CY/T 170—2019《学术出版规范 表格》
+- CY/T 171—2019《学术出版规范 插图》
+- GB/T 7714—2025《信息与文献 参考文献著录规则》（本指南无独立参考文献表，仅作引用体例参考）
+- GB/T 3792.2—2006《普通图书著录规则》（本指南不单独编制书目记录）
+- CY/T 29—2021《骑马订装书刊要求》、CY/T 247—2021《线装书籍要求》（印刷装订环节参考，电子版不适用）
+- CY/T 62—2009《中文图书标识规则》（图书标识环节，内部电子版不适用）
+
+标准查询：[国家标准全文公开系统](https://std.samr.gov.cn/)；[国家新闻出版署行业标准](https://www.nppa.gov.cn/xxgk/fdzdgknr/hybz/)。

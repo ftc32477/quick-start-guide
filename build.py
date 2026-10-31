@@ -1226,6 +1226,9 @@ def new_figure_context(lang_key, page_key, collect=False, fig_map=None):
         "collect": collect,
         "counter": 0,
         "map": fig_map if fig_map is not None else {},
+        "table_counter": 0,
+        "tables": [],
+        "figures": [],
         "warnings": [],
     }
 
@@ -1324,11 +1327,18 @@ def render_figure(item, ctx):
         else:
             label = ctx["map"].get(fid, label)
     alt = item["alt"]
+    anchor = fid or f"fig-{ctx.get('prefix','')}-{ctx['counter']}"
+    if not ctx["collect"] and ctx.get("lang") == "zh-hans" and alt:
+        ctx["figures"].append({
+            "label": label,
+            "title": alt,
+            "anchor": anchor,
+        })
     cap = ""
     if alt:
         cap = (f'<figcaption><span class="fig-label">{escape_html(label)}</span> '
-               f'{escape_html(alt)}</figcaption>')
-    id_attr = f' id="{escape_html(fid)}"' if fid else ""
+               f'<span class="fig-title">{escape_html(alt)}</span></figcaption>')
+    id_attr = f' id="{escape_html(anchor)}"'
     variants = _image_variant_srcs(item["src"])
     if variants:
         display_src, print_src, hi_src = variants
@@ -1459,6 +1469,8 @@ def parse_markdown(text, fig_ctx=None):
     out = []
     headings = []
     used_ids = {}
+    current_heading = ""
+    heading_table_seq = {}
     i = 0
 
     def flush_paragraph(buf):
@@ -1529,7 +1541,13 @@ def parse_markdown(text, fig_ctx=None):
                 i += 1
 
             if len(table_lines) >= 2:
-                out.append(render_table(table_lines))
+                cap = current_heading or "表格"
+                if cap in heading_table_seq:
+                    heading_table_seq[cap] += 1
+                    cap = f"{cap}（{heading_table_seq[cap]}）"
+                else:
+                    heading_table_seq[cap] = 1
+                out.append(render_table(table_lines, caption=cap, ctx=_FIG_CTX))
             else:
                 for tl in table_lines:
                     out.append(f"<p>{inline_parse(tl.strip())}</p>")
@@ -1551,6 +1569,7 @@ def parse_markdown(text, fig_ctx=None):
             level = len(heading_match.group(1))
             content = heading_match.group(2).strip()
             content = re.sub(r"\s+#+\s*$", "", content)
+            current_heading = plain_text(content)
             if level in (2, 3):
                 plain = plain_text(content)
                 hid = slugify(plain)
@@ -1802,8 +1821,8 @@ def escape_html(text):
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def render_table(lines):
-    """渲染 Markdown 表格。"""
+def render_table(lines, caption=None, ctx=None):
+    """渲染 Markdown 表格；zh-hans 自动加表号/表题。"""
     def split_cells(l):
         return [c.strip() for c in l.strip().strip("|").split("|")]
 
@@ -1839,7 +1858,20 @@ def render_table(lines):
         )
     tbody = "<tbody>" + "".join(tbody_rows) + "</tbody>"
 
-    return f'<div class="table-wrap"><table>{thead}{tbody}</table></div>'
+    wrap = f'<div class="table-wrap"><table>{thead}{tbody}</table></div>'
+    if ctx is None or ctx.get("lang") != "zh-hans" or ctx.get("collect"):
+        return wrap
+    ctx["table_counter"] += 1
+    prefix = ctx.get("prefix") or ""
+    num = f"表 {prefix}-{ctx['table_counter']}" if prefix else f"表 {ctx['table_counter']}"
+    title = ((caption or "表格").strip())
+    page_key = ctx.get("page_key", "")
+    title = TABLE_TITLE_OVERRIDES.get((page_key, ctx["table_counter"]), title)
+    anchor = f"tbl-{prefix}-{ctx['table_counter']}" if prefix else f"tbl-{ctx['table_counter']}"
+    ctx["tables"].append({"label": num, "title": title, "anchor": anchor})
+    return (f'<div class="table-figure" id="{anchor}">'
+            f'<div class="table-caption">{escape_html(num)}<span class="table-title-gap"></span>{escape_html(title)}</div>'
+            f'{wrap}</div>')
 
 
 # ============================================================
@@ -2025,8 +2057,22 @@ h2,h3{scroll-margin-top:16px}
 .fig{margin:14px 0;text-align:center}
 .fig-hi{display:block;line-height:0;cursor:zoom-in;text-decoration:none}
 .fig img{max-width:100%;height:auto;margin:0 auto;border-radius:var(--radius)}
-.fig figcaption{text-align:center;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
-.fig-label{font-weight:600;color:var(--muted);margin-right:.35em}
+.fig figcaption{text-align:center;font-size:12px;color:#333;margin-top:6px;line-height:1.5;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.fig-label{font-weight:600;color:#222;margin-right:1em}
+.fig-title{font-weight:400}
+.table-figure{margin:18px 0}
+.table-caption{text-align:center;font-size:12px;font-weight:600;color:#222;margin:4px 0 6px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+.table-title-gap{display:inline-block;width:1em}
+.book-index{margin-top:40px;padding-top:24px;border-top:1px solid var(--border)}
+.book-index h2{margin-top:24px}
+.index-list{list-style:none;padding:0;margin:8px 0 0}
+.index-list li{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dotted var(--border);font-size:13px}
+.index-list a{color:var(--text);text-decoration:none}
+.index-list a:hover{color:var(--red)}
+.idx-gap{display:inline-block;width:1em}
+.idx-page{color:var(--muted);white-space:nowrap}
+.idx-page-todo{letter-spacing:1px}
+.idx-empty{color:var(--muted);font-size:13px}
 .fig-align-left{text-align:left}
 .fig-align-right{text-align:right}
 .fig-align-left img{margin-left:0}
@@ -2145,8 +2191,20 @@ tr:nth-child(even){background:#fafafa}
     width:100% !important;max-width:100% !important;
     table-layout:fixed;font-size:12px
   }
-  th,td{padding:6px 8px;word-break:normal;overflow-wrap:break-word}
+  th,td{padding:5px 6px;word-break:normal;overflow-wrap:break-word;border:none!important;border-bottom:0.5pt solid #999!important;background:none!important;color:#111!important}
+  th{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif!important;font-weight:600}
+  thead th{border-top:1pt solid #222!important;border-bottom:0.75pt solid #222!important}
+  tbody tr:last-child td{border-bottom:1pt solid #222!important}
+  tr:nth-child(even){background:none!important}
   tr{page-break-inside:avoid}
+  .table-caption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;font-weight:600;text-align:center;margin:8pt 0 3pt;line-height:1.45}
+  .table-figure{break-inside:avoid;page-break-inside:avoid}
+  .fig figcaption{font-family:"Noto Sans SC","Source Han Sans SC",sans-serif;font-size:9pt;color:#222;line-height:1.45}
+  .fig-label{margin-right:1em;font-weight:600}
+  .book-index{break-before:page;page-break-before:always;margin-top:0;border-top:none;padding-top:0}
+  .book-index h2{font-size:16pt;margin:18pt 0 8pt}
+  .index-list li{font-size:9pt;padding:3pt 0}
+  .idx-page{color:#333}
   pre{white-space:pre-wrap !important;overflow-wrap:anywhere !important;overflow:visible !important}
   /* 图片/图片组：尺寸封顶 + 真实表格布局，避免跨页拆图与切段 */
   figure.fig,.fig-single{break-inside:avoid;page-break-inside:avoid}
@@ -3424,6 +3482,98 @@ def collect_figure_maps(lang_key):
     return fig_map, warnings
 
 
+def _load_index_pages(lang_key="zh-hans"):
+    """读取由 PDF 后处理生成的图表页码映射（缺失时返回空表）。"""
+    path = os.path.join(BASE_DIR, "data", f"index-pages-{lang_key}.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, ValueError):
+        return {}
+
+
+# 表格标题人工校订（page_key, 页内表序号）→ 表题；用于替代“按最近标题”自动命名。
+TABLE_TITLE_OVERRIDES = {
+    ("preface", 1): "阅读路径与阅读约定",
+    ("member", 1): "常用网址",
+    ("modeling", 1): "常用网址",
+    ("modeling", 2): "设计评审清单",
+    ("build", 1): "常用网址",
+    ("build", 2): "常用材料特性",
+    ("build", 3): "3D 打印耗材选择",
+    ("build", 4): "激光切割耗材",
+    ("build", 5): "打印机与耗材配置",
+    ("build", 6): "零件类型与工艺参数",
+    ("build", 7): "传动形式对比",
+    ("build", 8): "底盘检查清单",
+    ("build", 9): "装配检查清单",
+    ("programming", 1): "常用网址",
+    ("programming", 2): "GitHub 角色与权限",
+    ("programming", 3): "GitHub 常用名词",
+    ("programming", 4): "团队仓库与修改方式",
+    ("programming", 5): "开源许可证速查",
+    ("programming", 6): "开源项目检索渠道",
+    ("programming", 7): "程序常用硬件",
+    ("outreach", 1): "奖项答辩准备清单",
+    ("outreach", 2): "赞助分层模板",
+    ("operations", 1): "FTC 赛事的三类比赛",
+    ("operations", 2): "赛前机器人检查清单",
+    ("operations", 3): "赛事日时间管理",
+    ("operations", 4): "Drive Team 角色分工",
+    ("operations", 5): "Drive Team 训练计划",
+    ("operations", 6): "Scouting 侦察表",
+    ("operations", 7): "赛后复盘表",
+    ("appendix", 1): "FTC 常用术语中英对照",
+    ("appendix", 2): "3D 打印参数速查",
+    ("appendix", 3): "激光切割参数速查",
+    ("appendix", 4): "紧固与电气参数速查",
+    ("appendix", 5): "程序与网络参数速查",
+    ("appendix", 6): "赛前机器人自检清单",
+    ("appendix", 7): "赛事日物品清单",
+    ("appendix", 8): "收工检查清单",
+    ("appendix", 9): "设计评审清单（建模/结构）",
+    ("appendix", 10): "程序测试清单",
+    ("appendix", 11): "模板库索引",
+    ("appendix", 12): "故障排查速查",
+    ("appendix", 13): "工具清单",
+}
+
+
+def render_book_index(entries):
+    """渲染附录末尾的插图索引与表格索引。"""
+    pages = _load_index_pages("zh-hans")
+    fig_pages = pages.get("figures", {})
+    tbl_pages = pages.get("tables", {})
+
+    def links(items, kind, page_map):
+        rows = []
+        for e in items:
+            href = f'{e["page_key"]}.html#{e["anchor"]}'
+            page = page_map.get(e["label"], "")
+            page_html = (f'<span class="idx-page">第 {escape_html(page)} 页</span>'
+                         if page else '<span class="idx-page idx-page-todo">—</span>')
+            rows.append(
+                f'<li><a href="{href}">{escape_html(e["label"])}'
+                f'<span class="idx-gap"></span>{escape_html(e["title"])}</a>{page_html}</li>'
+            )
+        if not rows:
+            return f'<p class="idx-empty">本版暂无{kind}。</p>'
+        return '<ol class="index-list">' + "".join(rows) + "</ol>"
+
+    figs, tbls = [], []
+    for block in entries:
+        for e in block.get("figures", []):
+            figs.append({**e, "page_key": block["page_key"]})
+        for e in block.get("tables", []):
+            tbls.append({**e, "page_key": block["page_key"]})
+
+    parts = ['<section class="book-index" id="book-index">',
+             '<h2>插图索引</h2>', links(figs, "插图", fig_pages),
+             '<h2>表格索引</h2>', links(tbls, "表格", tbl_pages),
+             '</section>']
+    return "\n".join(parts)
+
+
 def build():
     """读取所有语言的 Markdown 文件并生成 HTML。"""
     print("=" * 56)
@@ -3450,6 +3600,7 @@ def build():
         print(f"  [图片警告] …另有 {len(ref_warnings) - 20} 条")
 
     total = 0
+    index_entries = {}
     for lang_key, lang in LANGUAGES.items():
         lang_src = os.path.join(SRC_DIR, lang_key)
         lang_dist = os.path.join(DIST_DIR, lang_key)
@@ -3487,6 +3638,13 @@ def build():
                 f.write(full_html)
             total += 1
 
+            if lang_key == "zh-hans" and (ctx.get("tables") or ctx.get("figures")):
+                index_entries.setdefault(lang_key, []).append({
+                    "page_key": page_key,
+                    "tables": ctx.get("tables", []),
+                    "figures": ctx.get("figures", []),
+                })
+
         # 该语言的历史版本页
         versions_html = render_versions_page(lang_key)
         with open(os.path.join(lang_dist, "versions.html"), "w", encoding="utf-8") as f:
@@ -3494,6 +3652,17 @@ def build():
         total += 1
 
         print(f"  [构建] {lang['label']} ({lang_key}) — 主页 + {len(lang_pages)} 页 + 历史版本页")
+
+    # zh-hans 附录末尾追加图书式“插图索引 / 表格索引”
+    if index_entries.get("zh-hans"):
+        appendix_path = os.path.join(DIST_DIR, "zh-hans", "appendix.html")
+        if os.path.exists(appendix_path):
+            with open(appendix_path, encoding="utf-8") as f:
+                appendix_html = f.read()
+            index_html = render_book_index(index_entries["zh-hans"])
+            appendix_html = appendix_html.replace("</main>", index_html + "\n</main>", 1)
+            with open(appendix_path, "w", encoding="utf-8") as f:
+                f.write(appendix_html)
 
     # 生成根门户（语言选择落地页）
     portal_html = render_portal()
